@@ -984,21 +984,6 @@ list( APPEND SOURCES
       xml/XMLWriter.h
       xml/audacityproject.dtd
 
-      # Update version
-      $<$<BOOL:${${_OPT}has_updates_check}>:
-          update/VersionId.h
-          update/VersionId.cpp
-          update/VersionPatch.h
-          update/UpdateDataParser.h
-          update/UpdateDataParser.cpp
-          update/UpdateManager.h
-          update/UpdateManager.cpp
-          update/UpdatePopupDialog.h
-          update/UpdatePopupDialog.cpp
-          prefs/ApplicationPrefs.h
-          prefs/ApplicationPrefs.cpp
-      >
-
       Experimental.cmake
 )
 
