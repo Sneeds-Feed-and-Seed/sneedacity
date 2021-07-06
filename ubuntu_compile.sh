@@ -7,3 +7,4 @@ mkdir sneed_build
 cd sneed_build
 cmake -G "Unix Makefiles" -Dsneedacity_use_ffmpeg=loaded ../sneedacity
 make -j$(nproc)
+sudo make install
