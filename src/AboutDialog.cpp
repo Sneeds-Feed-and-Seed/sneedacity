@@ -132,6 +132,7 @@ void AboutDialog::CreateCreditsList()
    AddCredit(wxT("Paul Licameli"), developerFormat, roleTeamMember);
    AddCredit(wxT("Vitaly Sverchinsky"), developerFormat, roleTeamMember);
    AddCredit(wxT("Dmitry Vedenko"), developerFormat, roleTeamMember);
+   AddCredit(wxT("Anonymous contributors from 4chan technology board /g/"), developerFormat, roleTeamMember);
 
    // Emeritus: people who were "lead developers" or made an
    // otherwise distinguished contribution, but who are no
