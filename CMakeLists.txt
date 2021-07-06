@@ -521,14 +521,6 @@ cmd_option( ${_OPT}perform_codesign
             Off
 )
 
-cmake_dependent_option(
-   ${_OPT}perform_notarization
-   "Perform notarization during the install step. This only works on macOS."
-   Off
-   "${_OPT}perform_codesign;APPLE"
-   Off
-)
-
 if( ${_OPT}perform_codesign )
    include( AudacityCodeSigning )
 endif()

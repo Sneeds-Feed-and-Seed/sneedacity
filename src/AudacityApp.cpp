@@ -111,7 +111,6 @@ It handles initialization and termination by subclassing wxApp.
 #include "tracks/ui/Scrubbing.h"
 #include "widgets/FileConfig.h"
 #include "widgets/FileHistory.h"
-#include "update/UpdateManager.h"
 
 #ifdef HAS_NETWORKING
 #include "NetworkManager.h"
@@ -1458,10 +1457,6 @@ bool AudacityApp::InitPart2()
       // project->MayCheckForUpdates();
       SplashDialog::DoHelpWelcome(*project);
    }
-
-#if defined(HAVE_UPDATES_CHECK)
-   UpdateManager::Start();
-#endif
 
    #ifdef USE_FFMPEG
    FFmpegStartup();
