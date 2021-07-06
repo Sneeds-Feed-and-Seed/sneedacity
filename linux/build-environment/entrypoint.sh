@@ -38,7 +38,6 @@ cmake_options=(
     -Dsneedacity_use_sbsms=local # We prefer using the latest version of sbsms
     -Dsneedacity_use_soundtouch=system
     -Dsneedacity_use_twolame=system
-    -Dsneedacity_has_networking=yes 
     -Dsneedacity_use_curl=system
 )
 

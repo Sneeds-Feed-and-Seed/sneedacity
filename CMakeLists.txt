@@ -151,10 +151,6 @@ cmd_option( ${_OPT}obey_system_dependencies
             Off
 )
 
-cmd_option( ${_OPT}has_networking 
-   "Build networking features into Sneedacity"
-   Off)
-
 include( SneedacityDependencies )
 
 # Pull all the modules we'll need
@@ -207,10 +203,6 @@ elseif( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
    endif()
    message( STATUS "  MacOS SDK: ${CMAKE_OSX_SYSROOT}" )
    message( STATUS )
-
-   if(${_OPT}has_crashreports)
-      set(CMAKE_XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym")
-   endif()
 
 endif()
 
