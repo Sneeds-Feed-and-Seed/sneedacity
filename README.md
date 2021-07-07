@@ -5,7 +5,8 @@
 <a href="https://matrix.to/#/#sneedacity:matrix.org" alt="Matrix room"><img src="https://img.shields.io/badge/matrix-%23sneedacity:matrix.org-brightgreen.svg"></a>
 <a href="https://web.libera.chat/#sneedacity" alt="Libera.chat channel"><img src="https://img.shields.io/badge/libera.chat-%23sneedacity-brightgreen.svg"></a>
 </p>
-=========================
+
+---
 
 **Sneedacity** (formerly Audacity) is an easy-to-use, multi-track audio editor and recorder for Windows, Mac OS X, GNU/Linux and other operating systems. Sneedacity is open source software licensed under GPL, version 2 or later.
 
