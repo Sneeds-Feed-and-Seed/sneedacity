@@ -34,4 +34,3 @@
 | sneedacity_use_vst                  | BOOL   | ON         | Use VST2 plug-in support [on, off]                              |
 | sneedacity_use_wxwidgets            | STRING | local      | Use wxwidgets library [system (if available), local, off]       |
 | sneedacity_use_zlib                 | STRING | local      | Use zlib library [system (if available), local, off]            |
-| sneedacity_use_curl                 | STRING | local      | Use curl library [system (if available), local]                 |

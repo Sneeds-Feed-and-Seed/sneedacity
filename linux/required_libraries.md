@@ -7,7 +7,6 @@
 | libsoxr           | >= 0.1.3      | libsoxr-dev                                  |
 | ~~portaudio-v19~~ | ~~>= 19.6.0~~ | ~~portaudio19-dev~~                          |
 | sqlite3           | >= 3.31.1     | libsqlite3-dev                               |
-| libcurl           | >= 7.68.0     | libcurl-dev                                  |
 | ffmpeg            | >= 4.2.4      | libavcodec-dev libavformat-dev libavutil-dev |
 | libid3tag         | >= 0.15.1b    | libid3tag0-dev                               |
 | libmad            | >= 0.15.1b    | libmad0-dev                                  |

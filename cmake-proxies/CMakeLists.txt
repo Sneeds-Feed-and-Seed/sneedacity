@@ -101,14 +101,6 @@ add_conan_lib(
    PKG_CONFIG "mad >= 0.15.1b"
 )
 
-if( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
-   set( curl_ssl "darwinssl" )
-elseif( CMAKE_SYSTEM_NAME MATCHES "Windows" )
-   set( curl_ssl "schannel")
-else()
-   set ( curl_ssl "openssl" )
-endif ()
-
 add_conan_lib(
    ThreadPool
    threadpool/20140926
