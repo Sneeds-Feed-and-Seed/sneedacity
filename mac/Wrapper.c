@@ -4,7 +4,7 @@
 
   Wrapper.c
 
-  Sneedacity(R) is copyright (c) 2020-2020 Sneedacity Team.
+  Sneedacity(R) is copyright (c) 2020-2021 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 *******************************************************************//**
@@ -28,20 +28,22 @@ executable.
 #include <string.h>
 #include <unistd.h>
 
+#define SNEEDACITY_LEN 11
 static const char sneedacity[] = "Sneedacity";
 extern char **environ;
 
 int main(int argc, char *argv[])
 {
-   size_t len = strlen(argv[0]);
-   char *path = alloca(len + sizeof(sneedacity)); // not precise, but we don't need it to be
-
-   strcpy(path, argv[0]);
+   size_t len = strnlen(argv[0], 256) + 1, // to account for terminating char
+          exlen = len + SNEEDACITY_LEN;
+          
+   char *path = alloca(exlen);
+   strncpy(path, argv[0], len);
 
    char *slash = strrchr(path, '/');
    if (slash)
    {
-      strcpy(++slash, sneedacity);
+      strncpy(++slash, sneedacity, exlen);
    }
 
    unsetenv("DYLD_LIBRARY_PATH");
