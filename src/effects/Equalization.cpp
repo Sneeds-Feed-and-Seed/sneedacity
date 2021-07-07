@@ -3833,7 +3833,7 @@ void EditCurvesDialog::OnExport( wxCommandEvent & WXUNUSED(event))
 void EditCurvesDialog::OnLibrary( wxCommandEvent & WXUNUSED(event))
 {
    // full path to wiki.
-   wxLaunchDefaultBrowser(wxT("https://wiki.sneedacityteam.org/wiki/EQCurvesDownload"));
+   wxLaunchDefaultBrowser(wxT("https://wiki.audacityteam.org/wiki/EQCurvesDownload"));
 }
 
 void EditCurvesDialog::OnDefaults( wxCommandEvent & WXUNUSED(event))

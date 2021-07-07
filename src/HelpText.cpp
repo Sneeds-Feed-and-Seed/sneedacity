@@ -58,7 +58,7 @@ static wxString InnerLink( const wxString &Key, const wxString& Text )
 static wxString WikiLink( const wxString &Key, const wxString& Text )
 {
    return wxString(wxT("")) +
-      wxT("<a href='https://www.sneedacityteam.org/wiki/index.php?title=") +
+      wxT("<a href='https://wiki.installgentoo.com/wiki/Sneedacity") +
       Key +
       wxT("'>") +
       Text +
@@ -233,7 +233,7 @@ static wxString HelpTextBuiltIn( const wxString & Key )
          << XO(
 "We strongly recommend that you use our latest stable released version, which has full documentation and support.<br><br>")
          << XO(
-"You can help us get Sneedacity ready for release by joining our [[https://www.sneedacityteam.org/community/|community]].<hr><br><br>")
+"You can help us get Sneedacity ready for release by joining our [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|community]].<hr><br><br>")
 #endif
 
 // DA: Support methods text.
@@ -244,19 +244,19 @@ static wxString HelpTextBuiltIn( const wxString & Key )
          << wxT("</h3></center>")
          << wxT("<br><br>DarkSneedacity is based on Sneedacity:")
          << wxT("<ul><li>")
-         << wxT(" [[http://www.darksneedacity.com|www.darksneedacity.com]] - for differences between them.")
+         << wxT(" [[http://www.darkaudacity.com|www.darkaudacity.com]] - for differences between them.")
          << wxT("</li><li>")
          << wxT(
-" email to [[mailto:james@sneedacityteam.org|james@sneedacityteam.org]] - for help using DarkSneedacity.")
+" email to [[mailto:james@audacityteam.org|james@audacityteam.org]] - for help using DarkSneedacity.")
          << wxT("</li><li>")
          << wxT(
 " [[http://www.darksneedacity.com/video.html|Tutorials]] - for getting started with DarkSneedacity.")
          << wxT("</li></ul>")
          << wxT("<br><br>Sneedacity has these support methods:")
          << wxT("<ul><li>")
-         << wxT(" [[https://manual.sneedacityteam.org/|Manual]] - for comprehensive Sneedacity documentation")
+         << wxT(" [[https://wiki.installgentoo.com/wiki/Sneedacity|Manual]] - for comprehensive Sneedacity documentation")
          << wxT("</li><li>")
-         << wxT(" [[https://forum.sneedacityteam.org/|Forum]] - for large knowledge base on using Sneedacity.")
+         << wxT(" [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|Forum]] - for large knowledge base on using Sneedacity.")
          << wxT("</li></ul>")
 #else
          << wxT("<center><h3>Sneedacity ")
@@ -267,25 +267,25 @@ static wxString HelpTextBuiltIn( const wxString & Key )
          << XO("These are our support methods:")
          << wxT("<p><ul><li>")
          /* i18n-hint: Preserve '[[help:Quick_Help|' as it's the name of a link.*/
-         << XO("[[help:Quick_Help|Quick Help]] - if not installed locally, [[https://manual.sneedacityteam.org/quick_help.html|view online]]")
+         << XO("[[help:Quick_Help|Quick Help]] - if not installed locally, [[https://manual.audacity.org/quick_help.html|view online]]")
          << wxT("</li><li>")
          << XO(
 /* i18n-hint: Preserve '[[help:Main_Page|' as it's the name of a link.*/
-" [[help:Main_Page|Manual]] - if not installed locally, [[https://manual.sneedacityteam.org/|view online]]")
+" [[help:Main_Page|Manual]] - if not installed locally, [[https://manual.audacity.org/|view online]]")
          << wxT("</li><li>")
          << XO(
-" [[https://forum.sneedacityteam.org/|Forum]] - ask your question directly, online.")
+" [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|Forum]] - ask your question directly, online.")
          << wxT("</li></ul></p><p>")
          << wxT("<b>")
-         << XO("More:</b> Visit our [[https://wiki.sneedacityteam.org/index.php|Wiki]] for tips, tricks, extra tutorials and effects plug-ins.")
+         << XO("More:</b> Visit our [[https://wiki.installgentoo.com/wiki/Sneedacity|Wiki]] for tips, tricks, extra tutorials and effects plug-ins.")
          << wxT("</p>")
 #endif
    ;
 
       auto result = o.GetString();
 #ifdef USE_ALPHA_MANUAL
-      result.Replace( "//manual.sneedacityteam.org/quick_help.html","//alphamanual.sneedacityteam.org/man/Quick_Help" );
-      result.Replace( "//manual.sneedacityteam.org/","//alphamanual.sneedacityteam.org/man/" );
+      result.Replace( "//manual.audacityteam.org/quick_help.html","//alphamanual.audacityteam.org/man/Quick_Help" );
+      result.Replace( "//manual.audacityteam.org/","//alphamanual.audacityteam.org/man/" );
 #endif
 
       return WrapText( result );
@@ -299,13 +299,13 @@ static wxString HelpTextBuiltIn( const wxString & Key )
          << XO(
 "Sneedacity can import unprotected files in many other formats (such as M4A and WMA, \
 compressed WAV files from portable recorders and audio from video files) if you download and install \
-the optional [[https://manual.sneedacityteam.org/man/faq_opening_and_saving_files.html#foreign| \
+the optional [[https://manual.audacityteam.org/man/faq_opening_and_saving_files.html#foreign| \
 FFmpeg library]] to your computer.")
          << wxT("</p><p>")
          <<  XO(
 "You can also read our help on importing \
-[[https://manual.sneedacityteam.org/man/playing_and_recording.html#midi|MIDI files]] \
-and tracks from [[https://manual.sneedacityteam.org/man/faq_opening_and_saving_files.html#fromcd| \
+[[https://manual.audacityteam.org/man/playing_and_recording.html#midi|MIDI files]] \
+and tracks from [[https://manual.audacityteam.org/man/faq_opening_and_saving_files.html#fromcd| \
 audio CDs]].")
          << wxT("</p>")
       ;
@@ -332,7 +332,7 @@ Interface Preferences to \"From Internet\".")
          << XO(
 "The Manual does not appear to be installed. \
 Please [[*URL*|view the Manual online]] or \
-[[https://manual.sneedacityteam.org/man/unzipping_the_manual.html| \
+[[https://manual.audacityteam.org/man/unzipping_the_manual.html| \
 download the Manual]].<br><br>\
 To always view the Manual online, change \"Location of Manual\" in \
 Interface Preferences to \"From Internet\".")
@@ -400,15 +400,22 @@ const wxString VerCheckHtml()
    return o.GetString();
 }
 
-// Url with Version check args attached.
 const URLString VerCheckUrl()
 {
-   //The version we intend to use for live Sneedacity.
-#define VER_CHECK_URL "https://www.sneedacityteam.org/download/?"
-//For testing of our scriptlet.
-//#define VER_CHECK_URL "http://www.sneedacityteam.org/slug/?"
-//For testing locally
-//#define VER_CHECK_URL "http://localhost:63342/WorkingDocs/demos/download.html?"
-
-   return wxString( wxT(VER_CHECK_URL)) +VerCheckArgs();
+   return wxString("https://github.com/Sneeds-Feed-and-Seed/sneedacity");
 }
+
+// NOTE: This has been commented as we do not have the resources
+// now to make it work. In future releases, fix this.
+// Url with Version check args attached.
+// const URLString VerCheckUrl()
+// {
+//    //The version we intend to use for live Sneedacity.
+// #define VER_CHECK_URL "https://www.sneedacityteam.org/download/?"
+// //For testing of our scriptlet.
+// //#define VER_CHECK_URL "http://www.sneedacityteam.org/slug/?"
+// //For testing locally
+// //#define VER_CHECK_URL "http://localhost:63342/WorkingDocs/demos/download.html?"
+
+//    return wxString( wxT(VER_CHECK_URL)) +VerCheckArgs();
+// }

@@ -23,17 +23,17 @@
     <category>Audio</category>
   </categories>
   <content_rating type="oars-1.1" />
-  <url type="homepage">https://www.audacityteam.org/</url>
-  <url type="bugtracker">https://bugzilla.audacityteam.org/</url>
+  <url type="homepage">https://github.com/Sneeds-Feed-and-Seed/sneedacity</url>
+  <url type="bugtracker">https://github.com/Sneeds-Feed-and-Seed/sneedacity/issues</url>
   <url type="faq">https://manual.audacityteam.org/man/faq.html</url>
   <url type="help">https://manual.audacityteam.org/</url>
   <url type="translate">https://www.audacityteam.org/community/translators/</url>
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://www.audacityteam.org/wp-content/uploads/2016/01/sneedacity-212-linux.png</image>
+      <image type="source">https://www.audacityteam.org/wp-content/uploads/2016/01/audacity-212-linux.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://www.audacityteam.org/wp-content/uploads/2015/11/Sneedacity-2-2-0-on-Linux.png</image>
+      <image type="source">https://www.audacityteam.org/wp-content/uploads/2015/11/audacity-2-2-0-on-Linux.png</image>
     </screenshot>
   </screenshots>
   <update_contact>sneedacity-devel@lists.sourceforge.net</update_contact>

@@ -1849,7 +1849,7 @@ void Sequence::ConsistencyCheck
       wxString str;
       DebugPrintf(mBlock, mNumSamples, &str);
       wxLogError(wxT("%s"), str);
-      wxLogError(wxT("*** Please report this error to https://forum.sneedacityteam.org/. ***\n\n")
+      wxLogError(wxT("*** Please report this error to https://github.com/Sneeds-Feed-and-Seed/sneedacity/issues. ***\n\n")
                  wxT("Recommended course of action:\n")
                  wxT("Undo the failed operation(s), then export or save your work and quit."));
 
