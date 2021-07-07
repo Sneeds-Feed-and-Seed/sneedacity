@@ -151,8 +151,6 @@ cmd_option( ${_OPT}obey_system_dependencies
             Off
 )
 
-include( SneedacityDependencies )
-
 # Pull all the modules we'll need
 include( CheckCXXCompilerFlag )
 include( CheckIncludeFile )
@@ -456,7 +454,6 @@ find_package( Python3 )
 if( Python3_FOUND )
    set( PYTHON "${Python3_EXECUTABLE}" )
 elseif( CMAKE_SYSTEM_NAME MATCHES "Windows" )
-   # This is an odd case now, as Conan requires Python as well
    nuget_package( pkgdir "python3" "3.7.7" )
    file( TO_NATIVE_PATH "${pkgdir}/tools/python.exe" PYTHON )
 endif()
@@ -467,10 +464,6 @@ include( "src/Experimental.cmake" )
 
 # Add our children
 add_subdirectory( "cmake-proxies" )
-
-# Conan uses find_package and does not set GLOBAL flag
-resolve_conan_dependencies()
-
 add_subdirectory( "help" )
 add_subdirectory( "images" )
 add_subdirectory( "libraries" )

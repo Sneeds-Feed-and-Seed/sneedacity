@@ -3,27 +3,8 @@
 ## Prerequisites
 
 * **python3** >= 3.5
-* **conan** >= 1.32.0
 * **cmake** >= 3.16
 * A working C++17 compiler
-
-### Conan
-
-[The best way to install Conan is `pip`.](https://docs.conan.io/en/latest/installation.html)
-
-To install Conan on Windows:
-
-```
-$ pip install conan
-```
-
-To install Conan on macOS and Linux:
-
-```
-$ sudo pip3 install conan
-```
-
-Alternatively, on macOS, Conan is available from `brew`.
 
 ### CMake
 
@@ -52,7 +33,6 @@ On Debian or Ubuntu, you can install everything required using the following com
 ```
 $ sudo apt-get update
 $ sudo apt-get install -y build-essential cmake git python3-pip
-$ sudo pip3 install conan
 $ sudo apt-get install libgtk2.0-dev libasound2-dev libavformat-dev libjack-jackd2-dev uuid-dev
 ```
 
@@ -83,8 +63,6 @@ $ sudo apt-get install libgtk2.0-dev libasound2-dev libavformat-dev libjack-jack
 7. You can now run and debug Sneedacity!
       
 Generally, steps 1-5 are only needed the first-time you configure. Then, after you've generated the solution, you can open it in Visual Studio next time. If the project configuration has changed, the IDE will invoke CMake internally. 
-
-> Conan Center provides prebuilt binaries only for **x64**. Configuring the project for Win32 will take much longer, as all the 3rd party libraries will be built during the configuration.
 
 ## macOS
 
