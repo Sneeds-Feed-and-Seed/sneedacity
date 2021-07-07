@@ -60,12 +60,12 @@ jobs:
       run: |
         source "scripts/ci/environment.sh"
     
-    - name: Install Apple codesigning certificates
-      uses: apple-actions/import-codesign-certs@v1
-      if: startswith( matrix.config.os, 'macos' ) && github.event_name == 'push' && github.repository_owner == 'audacity'
-      with: 
-        p12-file-base64: ${{ secrets.APPLE_CERTIFICATE }}
-        p12-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+    #- name: Install Apple codesigning certificates
+    #  uses: apple-actions/import-codesign-certs@v1
+    #  if: startswith( matrix.config.os, 'macos' ) && github.event_name == 'push' && github.repository_owner == 'audacity'
+    #  with: 
+    #    p12-file-base64: ${{ secrets.APPLE_CERTIFICATE }}
+    #    p12-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
 
     - name: Cache for .conan
       id: cache-conan
