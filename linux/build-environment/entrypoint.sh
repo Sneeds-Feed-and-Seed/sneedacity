@@ -4,7 +4,7 @@ conan --version
 
 if [ ! -d "sneedacity" ]
 then
-    git clone https://github.com/sneedacity/sneedacity
+    git clone https://github.com/Sneeds-Feed-and-Seed/sneedacity
 fi
 
 mkdir -p build

@@ -42,7 +42,7 @@ try:
     import htmldata
 except:
     print('Requires Python3 htmldata module:')
-    print(' https://github.com/sneedacity/sneedacity/blob/master/scripts/mw2html_sneedacity/htmldata.py')
+    print(' https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/scripts/mw2html_sneedacity/htmldata.py')
     sys.exit()
 
 
