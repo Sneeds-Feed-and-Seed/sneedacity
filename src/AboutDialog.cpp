@@ -138,7 +138,7 @@ void AboutDialog::CreateCreditsList()
    // otherwise distinguished contribution, but who are no
    // longer active.
    AddCredit(
-      wxT("[[https://wiki.sneedacityteam.org/wiki/User:Galeandrews|Gale Andrews]]"),
+      wxT("[[https://wiki.audacityteam.org/wiki/User:Galeandrews|Gale Andrews]]"),
       qualityAssuranceFormat, roleEmeritusTeam);
    AddCredit(wxT("Richard Ash"), developerFormat, roleEmeritusTeam);
    AddCredit(wxT("Christian Brochec"),
@@ -251,6 +251,8 @@ void AboutDialog::CreateCreditsList()
 
    // Thanks
 
+   AddCredit(wxT("Chuck"), roleThanks);
+   AddCredit(wxT("Cookieengineer"), roleThanks);
    AddCredit(wxT("Dave Beydler"), roleThanks);
    AddCredit(wxT("Brian Cameron"), roleThanks);
    AddCredit(wxT("Jason Cohen"), roleThanks);
@@ -331,8 +333,8 @@ void AboutDialog::PopulateSneedacityPage( ShuttleGui & S )
 // DA: Says that it is a customised version.
 #ifdef EXPERIMENTAL_DA
       wxT(
-"Sneedacity, which this is a customised version of, is a free program written by a worldwide team of [[https://www.sneedacityteam.org/about/credits|volunteers]]. \
-Sneedacity is [[https://www.sneedacityteam.org/download|available]] for Windows, Mac, and GNU/Linux (and other Unix-like systems).")
+"Sneedacity, which this is a customised version of, is a free program written by a worldwide team of [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|volunteers]]. \
+Sneedacity is [[https://github.com/Sneeds-Feed-and-Seed/sneedacity/releases|available]] for Windows, Mac, and GNU/Linux (and other Unix-like systems).")
 #else
 /* Do the i18n of a string with markup carefully with hints.
  (Remember languages with cases.) */
@@ -343,11 +345,11 @@ Sneedacity is [[https://www.sneedacityteam.org/download|available]] for Windows,
 %s is %s for Windows, Mac, and GNU/Linux (and other Unix-like systems).")
          .Format(
             ProgramName,
-            Verbatim("[[https://www.sneedacityteam.org/about/credits|%s]]")
+            Verbatim("[[https://github.com/Sneeds-Feed-and-Seed/sneedacity|%s]]")
                /* i18n-hint: substitutes into "a worldwide team of %s" */
                .Format( XO("volunteers") ),
             ProgramName,
-            Verbatim("[[https://www.sneedacityteam.org/download|%s]]")
+            Verbatim("[[https://github.com/Sneeds-Feed-and-Seed/sneedacity/releases|%s]]")
                /* i18n-hint: substitutes into "Sneedacity is %s" */
                .Format( XO("available") ) )
 #endif
@@ -361,13 +363,13 @@ Sneedacity is [[https://www.sneedacityteam.org/download|available]] for Windows,
 For help, view the tips and tricks on our %s or \
 visit our %s.")
       .Format(
-         Verbatim("[[https://forum.sneedacityteam.org/|%s]]")
+         Verbatim("[[https://github.com/Sneeds-Feed-and-Seed/sneedacity/issues|%s]]")
             /* i18n-hint substitutes into "write to our %s" */
             .Format( XC("forum", "dative") ),
-         Verbatim("[[https://wiki.sneedacityteam.org/|%s]]")
+         Verbatim("[[https://wiki.installgentoo.com/wiki/Sneedacity|%s]]")
             /* i18n-hint substitutes into "view the tips and tricks on our %s" */
             .Format( XO("wiki") ),
-         Verbatim("[[https://forum.sneedacityteam.org/|%s]]")
+         Verbatim("[[https://app.element.io/#/room/#sneedacity:matrix.org|%s]]")
             /* i18n-hint substitutes into "visit our %s" */
             .Format( XC("forum", "accusative") ) );
    auto par2StrTranslated = par2Str.Translation();
@@ -482,11 +484,11 @@ visit our %s.")
       << wxT("<p><br>")
       /* i18n-hint: The program's name substitutes for %s */
       << XO("%s website: ").Format( ProgramName )
-      << wxT("[[https://www.sneedacityteam.org/|https://www.sneedacityteam.org/]]")
+      << wxT("[[https://github.com/Sneeds-Feed-and-Seed/sneedacity|https://github.com/Sneeds-Feed-and-Seed/sneedacity]]")
 
 // DA: Link for DA url too
 #ifdef EXPERIMENTAL_DA
-      << wxT("<br>DarkSneedacity website: [[http://www.darksneedacity.com/|https://www.darksneedacity.com/]]")
+      << wxT("<br>DarkSneedacity website: [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|https://github.com/Sneeds-Feed-and-Seed/sneedacity]]")
 #else
       << wxT("<p><br>&nbsp; &nbsp; ")
       /* i18n-hint Sneedacity's name substitutes for first and third %s,

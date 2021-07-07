@@ -89,7 +89,7 @@ SplashDialog::SplashDialog(wxWindow * parent)
 void SplashDialog::OnChar(wxMouseEvent &event)
 {
    if ( event.ShiftDown() && event.ControlDown() )
-      wxLaunchDefaultBrowser("https://www.sneedacityteam.org");
+      wxLaunchDefaultBrowser("https://github.com/Sneeds-Feed-and-Seed/sneedacity");
 }
 
 void SplashDialog::Populate( ShuttleGui & S )
