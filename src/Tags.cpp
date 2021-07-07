@@ -203,11 +203,8 @@ static const wxChar *DefaultGenres[] =
    wxT("Hardcore"),
    wxT("Terror"),
    wxT("Indie"),
-   wxT("BritPop"),
-
-   // Standard name is offensive (see "http://www.audacityteam.org/forum/viewtopic.php?f=11&t=3924").
-   wxT("Offensive"), // wxT("Negerpunk"),
-
+   wxT("Britpop"),
+   wxT("Negerpunk"),
    wxT("Polsk Punk"),
    wxT("Beat"),
    wxT("Christian Gangsta Rap"),
@@ -220,7 +217,7 @@ static const wxChar *DefaultGenres[] =
    wxT("Salsa"),
    wxT("Thrash Metal"),
    wxT("Anime"),
-   wxT("JPop"),
+   wxT("J-Pop"),
    wxT("Synthpop")
 };
 
@@ -1108,10 +1105,10 @@ void TagsEditorDialog::OnChange(wxGridEvent & event)
 
    // Do not permit duplication of any of the tags.
    // Tags differing only in case are nondistinct.
-   auto row = event.GetRow();
+   int row = event.GetRow();
    const wxString key0 = mGrid->GetCellValue(row, 0).Upper();
-   auto nn = mGrid->GetNumberRows();
-   for (decltype(nn) ii = 0; ii < nn; ++ii) {
+   int nn = mGrid->GetNumberRows();
+   for (int ii = 0; ii < nn; ++ii) {
       if (ii == row)
          continue;
       auto key = mGrid->GetCellValue(ii, 0).Upper();
