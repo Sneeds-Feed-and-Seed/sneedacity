@@ -19,9 +19,6 @@ jobs:
       # This variables will be used by all the steps
       WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
       WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
-      # Conan home location to be used for cache action
-      CONAN_USER_HOME: "${{ github.workspace }}/conan-home/"
-      CONAN_USER_HOME_SHORT: "${{ github.workspace }}/conan-home/short"
     strategy:
       fail-fast: false
       matrix:
@@ -66,17 +63,6 @@ jobs:
     #  with: 
     #    p12-file-base64: ${{ secrets.APPLE_CERTIFICATE }}
     #    p12-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-
-    - name: Cache for .conan
-      id: cache-conan
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-conan-modules
-      with:
-        path: ${{ env.CONAN_USER_HOME }}
-        key: host-${{ matrix.config.name }}-${{ hashFiles('cmake-proxies/CMakeLists.txt') }}
-        restore-keys: |
-          host-${{ matrix.config.name }}-
 
     - name: Configure
       env:

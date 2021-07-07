@@ -55,6 +55,3 @@ apt-get install -y --no-install-recommends \
   "${apt_packages_basic[@]}" \
   "${apt_packages_minimal_deps[@]}" \
   "${apt_packages_full_deps[@]}"
-
-
-pip3 install conan
