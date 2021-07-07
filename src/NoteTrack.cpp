@@ -573,7 +573,7 @@ void NoteTrack::Paste(double t, const Track *src)
       auto myOffset = this->GetOffset();
       if (t < myOffset) {
          // workaround strange behavior described at
-         // http://bugzilla.audacityteam.org/show_bug.cgi?id=1735#c3
+         // http://bugzilla.sneedacityteam.org/show_bug.cgi?id=1735#c3
          SetOffset(t);
          InsertSilence(t, myOffset - t);
       }

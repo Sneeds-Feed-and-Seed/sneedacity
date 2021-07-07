@@ -31,6 +31,7 @@ i.e. an alternative to the usual interface, for Sneedacity.
 
 #include "FileNames.h"
 #include "MemoryX.h"
+#include "PluginManager.h"
 
 #include "sneedacity/PluginInterface.h"
 
@@ -447,8 +448,20 @@ bool ModuleManager::DiscoverProviders()
    FileNames::FindFilesInPathList(wxT("*.so"), pathList, provList);
 #endif
 
-   for ( const auto &path : provList )
-      LoadModule(path);
+   PluginManager & pm = PluginManager::Get();
+
+   for (int i = 0, cnt = provList.size(); i < cnt; i++)
+   {
+      ModuleInterface *module = LoadModule(provList[i]);
+      if (module)
+      {
+         // Register the provider
+         pm.RegisterPlugin(module);
+
+         // Now, allow the module to auto-register children
+         module->AutoRegisterPlugins(pm);
+      }
+   }
 #endif
 
    return true;
@@ -456,6 +469,8 @@ bool ModuleManager::DiscoverProviders()
 
 void ModuleManager::InitializeBuiltins()
 {
+   PluginManager & pm = PluginManager::Get();
+
    for (auto moduleMain : builtinModuleList())
    {
       ModuleInterfaceHandle module {
@@ -466,10 +481,13 @@ void ModuleManager::InitializeBuiltins()
       {
          // Register the provider
          ModuleInterface *pInterface = module.get();
-         auto id = GetID(pInterface);
+         const PluginID & id = pm.RegisterPlugin(pInterface);
 
          // Need to remember it 
          mDynModules[id] = std::move(module);
+
+         // Allow the module to auto-register children
+         pInterface->AutoRegisterPlugins(pm);
       }
       else
       {
@@ -485,6 +503,22 @@ void ModuleInterfaceDeleter::operator() (ModuleInterface *pInterface) const
       pInterface->Terminate();
       std::unique_ptr < ModuleInterface > { pInterface }; // DELETE it
    }
+}
+
+PluginPaths ModuleManager::FindPluginsForProvider(const PluginID & providerID,
+                                                    const PluginPath & path)
+{
+   // Instantiate if it hasn't already been done
+   if (mDynModules.find(providerID) == mDynModules.end())
+   {
+      // If it couldn't be created, just give up and return an empty list
+      if (!CreateProviderInstance(providerID, path))
+      {
+         return {};
+      }
+   }
+
+   return mDynModules[providerID]->FindPluginPaths(PluginManager::Get());
 }
 
 bool ModuleManager::RegisterEffectPlugin(const PluginID & providerID, const PluginPath & path, TranslatableString &errMsg)

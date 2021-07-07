@@ -156,7 +156,7 @@ bool FileNames::DoCopyFile(
 #else
    // PRL:  Compensate for buggy wxCopyFile that returns false success,
    // which was a cause of case 4 in comment 10 of
-   // http://bugzilla.audacityteam.org/show_bug.cgi?id=1759
+   // http://bugzilla.sneedacityteam.org/show_bug.cgi?id=1759
    // Destination file was created, but was empty
    // Bug was introduced after wxWidgets 2.8.12 at commit
    // 0597e7f977c87d107e24bf3e95ebfa3d60efc249 of wxWidgets repo

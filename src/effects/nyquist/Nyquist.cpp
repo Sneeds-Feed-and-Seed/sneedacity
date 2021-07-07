@@ -899,7 +899,7 @@ bool NyquistEffect::Process()
          //
          // MB: setlocale is not thread-safe.  Should use uselocale()
          //     if available, or fix libnyquist to be locale-independent.
-         // See also http://bugzilla.audacityteam.org/show_bug.cgi?id=642#c9
+         // See also http://bugzilla.sneedacityteam.org/show_bug.cgi?id=642#c9
          // for further info about this thread safety question.
          wxString prevlocale = wxSetlocale(LC_NUMERIC, NULL);
          wxSetlocale(LC_NUMERIC, wxString(wxT("C")));
@@ -1306,7 +1306,7 @@ bool NyquistEffect::ProcessOne()
    }
 
    // Restore the Nyquist sixteenth note symbol for Generate plug-ins.
-   // See http://bugzilla.audacityteam.org/show_bug.cgi?id=490.
+   // See http://bugzilla.sneedacityteam.org/show_bug.cgi?id=490.
    if (GetType() == EffectTypeGenerate) {
       cmd += wxT("(setf s 0.25)\n");
    }

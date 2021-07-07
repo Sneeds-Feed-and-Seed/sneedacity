@@ -876,7 +876,7 @@ SneedacityProject *ProjectFileManager::OpenFile( const ProjectChooserFn &chooser
    //    and SneedacityApp::MRUOpen(), but if you open an aup file by double-clicking it
    //    from, e.g., Win Explorer, it would bypass those, get to here with no check,
    //    then open a NEW project from the same data with no warning.
-   //    This was reported in http://bugzilla.audacityteam.org/show_bug.cgi?id=137#c17,
+   //    This was reported in http://bugzilla.sneedacityteam.org/show_bug.cgi?id=137#c17,
    //    but is not really part of that bug. Anyway, prevent it!
    if (IsAlreadyOpen(fileName))
       return nullptr;
@@ -1040,7 +1040,7 @@ SneedacityProject *ProjectFileManager::OpenProjectFile(
    }
    else {
       // Vaughan, 2011-10-30:
-      // See first topic at http://bugzilla.audacityteam.org/show_bug.cgi?id=451#c16.
+      // See first topic at http://bugzilla.sneedacityteam.org/show_bug.cgi?id=451#c16.
       // Calling mTracks->Clear() with deleteTracks true results in data loss.
 
       // PRL 2014-12-19:
