@@ -21,6 +21,9 @@
 - **Accessibility** for VI users.
 - **Analysis and visualization** tools to analyze audio, or other signal data.
 
+## Pre-built binaries
+Binaries for the latest known to work build of Sneedacity are available [here](https://github.com/Sneeds-Feed-and-Seed/sneedacity/actions/runs/1009360152)
+
 ## Getting Started
 
 Build instructions are available [here](BUILDING.md).
