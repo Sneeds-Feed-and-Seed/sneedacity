@@ -858,7 +858,7 @@ void DoReloadPreferences( SneedacityProject &project )
 #if defined(__WXGTK__)
       // Workaround for:
       //
-      //   http://bugzilla.audacityteam.org/show_bug.cgi?id=458
+      //   http://bugzilla.sneedacityteam.org/show_bug.cgi?id=458
       //
       // This workaround should be removed when Sneedacity updates to wxWidgets
       // 3.x which has a fix.

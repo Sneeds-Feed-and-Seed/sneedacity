@@ -187,7 +187,7 @@ bool Sequence::ConvertToSampleFormat(sampleFormat format,
          ensureSampleBufferSize(bufferNew, format, newSize, len);
          CopySamples(bufferOld.ptr(), oldFormat, bufferNew.ptr(), format, len);
 
-         // Note this fix for http://bugzilla.audacityteam.org/show_bug.cgi?id=451,
+         // Note this fix for http://bugzilla.sneedacityteam.org/show_bug.cgi?id=451,
          // using Blockify, allows (len < mMinSamples).
          // This will happen consistently when going from more bytes per sample to fewer...
          // This will create a block that's smaller than mMinSamples, which
@@ -966,7 +966,7 @@ void Sequence::WriteXML(XMLWriter &xmlFile) const
    for (b = 0; b < mBlock.size(); b++) {
       const SeqBlock &bb = mBlock[b];
 
-      // See http://bugzilla.audacityteam.org/show_bug.cgi?id=451.
+      // See http://bugzilla.sneedacityteam.org/show_bug.cgi?id=451.
       if (bb.sb->GetSampleCount() > mMaxSamples)
       {
          // PRL:  Bill observed this error.  Not sure how it was caused.
@@ -1849,7 +1849,7 @@ void Sequence::ConsistencyCheck
       wxString str;
       DebugPrintf(mBlock, mNumSamples, &str);
       wxLogError(wxT("%s"), str);
-      wxLogError(wxT("*** Please report this error to https://forum.audacityteam.org/. ***\n\n")
+      wxLogError(wxT("*** Please report this error to https://forum.sneedacityteam.org/. ***\n\n")
                  wxT("Recommended course of action:\n")
                  wxT("Undo the failed operation(s), then export or save your work and quit."));
 

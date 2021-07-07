@@ -722,13 +722,8 @@ void PluginManager::Initialize()
    // And force load of setting to verify it's accessible
    GetSettings();
 
-   auto &mm = ModuleManager::Get();
-   mm.DiscoverProviders();
-   for (const auto &[id, module] : mm.Providers()) {
-      RegisterPlugin(module.get());
-      // Allow the module to auto-register children
-      module->AutoRegisterPlugins(*this);
-   }
+   // Then look for providers (they may autoregister plugins)
+   ModuleManager::Get().DiscoverProviders();
 
    // And finally check for updates
 #ifndef EXPERIMENTAL_EFFECT_MANAGEMENT
@@ -1382,9 +1377,7 @@ void PluginManager::CheckForUpdates(bool bFast)
          else
          {
             // Collect plugin paths
-            PluginPaths paths;
-            if (auto provider = mm.CreateProviderInstance( plugID, plugPath ) )
-               paths = provider->FindPluginPaths( *this );
+            auto paths = mm.FindPluginsForProvider(plugID, plugPath);
             for (size_t i = 0, cnt = paths.size(); i < cnt; i++)
             {
                wxString path = paths[i].BeforeFirst(wxT(';'));;

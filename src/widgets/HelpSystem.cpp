@@ -48,11 +48,11 @@
 #include "../prefs/GUIPrefs.h"
 
 #ifdef USE_ALPHA_MANUAL
-const wxString HelpSystem::HelpHostname = wxT("alphamanual.audacityteam.org");
+const wxString HelpSystem::HelpHostname = wxT("alphamanual.sneedacityteam.org");
 const wxString HelpSystem::HelpServerHomeDir = wxT("/man/");
 const wxString HelpSystem::HelpServerManDir = wxT("/man/");
 #else
-const wxString HelpSystem::HelpHostname = wxT("manual.audacityteam.org");
+const wxString HelpSystem::HelpHostname = wxT("manual.sneedacityteam.org");
 const wxString HelpSystem::HelpServerHomeDir = wxT("/");
 const wxString HelpSystem::HelpServerManDir = wxT("/man/");
 #endif

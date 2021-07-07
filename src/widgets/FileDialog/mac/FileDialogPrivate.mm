@@ -97,7 +97,7 @@
 
 // Do NOT remove this method.  For an explanation, refer to:
 //
-//    http://bugzilla.audacityteam.org/show_bug.cgi?id=2371
+//    http://bugzilla.sneedacityteam.org/show_bug.cgi?id=2371
 //
 - (BOOL)panel:(id)sender validateURL:(NSURL *)url error:(NSError * _Nullable *)outError;
 {

@@ -12,8 +12,7 @@
 #ifndef __SNEEDACITY_MODULEMANAGER_H__
 #define __SNEEDACITY_MODULEMANAGER_H__
 
-#include "MemoryX.h"
-#include <functional>
+#include <memory>
 #include <map>
 #include <vector>
 
@@ -99,10 +98,7 @@ public:
    // Can be called before Initialize()
    bool DiscoverProviders();
 
-   // Supports range-for iteration
-   auto Providers() const
-   { return make_iterator_range(mDynModules.cbegin(), mDynModules.cend()); }
-
+   PluginPaths FindPluginsForProvider(const PluginID & provider, const PluginPath & path);
    bool RegisterEffectPlugin(const PluginID & provider, const PluginPath & path,
                        TranslatableString &errMsg);
 

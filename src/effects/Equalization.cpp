@@ -1831,7 +1831,7 @@ bool EffectEqualization::GetDefaultFileName(wxFileName &fileName)
       //auto errorMessage = XO("EQCurves.xml and EQDefaultCurves.xml were not found on your system.\nPlease press 'help' to visit the download page.\n\nSave the curves at %s")
       //   .Format( FileNames::DataDir() );
       //ShowErrorDialog(mUIParent, XO("EQCurves.xml and EQDefaultCurves.xml missing"),
-      //   errorMessage, wxT("http://wiki.audacityteam.org/wiki/EQCurvesDownload"), false);
+      //   errorMessage, wxT("http://wiki.sneedacityteam.org/wiki/EQCurvesDownload"), false);
 
       // Have another go at finding EQCurves.xml in the data dir, in case 'help' helped
       fileName = wxFileName( FileNames::DataDir(), wxT("EQDefaultCurves.xml") );
@@ -3833,7 +3833,7 @@ void EditCurvesDialog::OnExport( wxCommandEvent & WXUNUSED(event))
 void EditCurvesDialog::OnLibrary( wxCommandEvent & WXUNUSED(event))
 {
    // full path to wiki.
-   wxLaunchDefaultBrowser(wxT("https://wiki.audacityteam.org/wiki/EQCurvesDownload"));
+   wxLaunchDefaultBrowser(wxT("https://wiki.sneedacityteam.org/wiki/EQCurvesDownload"));
 }
 
 void EditCurvesDialog::OnDefaults( wxCommandEvent & WXUNUSED(event))
