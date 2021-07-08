@@ -133,6 +133,8 @@ list( APPEND SOURCES
       Diags.h
       Dither.cpp
       Dither.h
+      EasterEgg.cpp
+      EasterEgg.h
       Envelope.cpp
       Envelope.h
       EnvelopeEditor.cpp
