@@ -1,4 +1,4 @@
 #ifndef AVUTIL_FFVERSION_H
 #define AVUTIL_FFVERSION_H
-#define FFMPEG_VERSION "2.2.2-1"
+#define FFMPEG_VERSION "4.4"
 #endif /* AVUTIL_FFVERSION_H */
