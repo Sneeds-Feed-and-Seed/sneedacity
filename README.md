@@ -22,7 +22,8 @@
 - **Analysis and visualization** tools to analyze audio, or other signal data.
 
 ## Pre-built binaries
-Binaries for the latest known to work build of Sneedacity are available [here](https://github.com/Sneeds-Feed-and-Seed/sneedacity/actions?query=branch%3Amaster+is%3Asuccess+event%3Apush).
+
+Binaries for the latest known to work build of Sneedacity are available [here](https://nightly.link/Sneeds-Feed-and-Seed/sneedacity/actions/runs/1012473619).
 
 ## Getting Started
 
