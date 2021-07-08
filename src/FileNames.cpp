@@ -236,7 +236,7 @@ FilePath FileNames::ConfigDir()
 {
 #if defined(__WXGTK__)
    if (gOldUnixDataDir.empty())
-      gOldUnixDataDir = wxFileName::GetHomeDir() + wxT("/.audacity-data");
+      gOldUnixDataDir = wxFileName::GetHomeDir() + wxT("/.sneedacity-data");
 #endif
 
    if (gConfigDir.empty())
@@ -260,7 +260,7 @@ FilePath FileNames::ConfigDir()
 #endif
       } else {
          // Use OS-provided user data dir folder
-         wxString configDir(wxStandardPaths::Get().GetUserConfigDir() + wxT("/audacity"));
+         wxString configDir(wxStandardPaths::Get().GetUserConfigDir() + wxT("/sneedacity"));
          gConfigDir = FileNames::MkDir(configDir);
       }
    }
@@ -272,7 +272,7 @@ FilePath FileNames::DataDir()
 {
 #if defined(__WXGTK__)
    if (gOldUnixDataDir.empty())
-      gOldUnixDataDir = wxFileName::GetHomeDir() + wxT("/.audacity-data");
+      gOldUnixDataDir = wxFileName::GetHomeDir() + wxT("/.sneedacity-data");
 #endif
    // LLL:  Wouldn't you know that as of WX 2.6.2, there is a conflict
    //       between wxStandardPaths and wxConfig under Linux.  The latter
@@ -310,7 +310,7 @@ FilePath FileNames::DataDir()
          if ( !wxGetEnv(wxS("XDG_DATA_HOME"), &dataDir) || dataDir.empty() )
             dataDir = wxFileName::GetHomeDir() + wxT("/.local/share");
 
-         dataDir = dataDir + wxT("/audacity");
+         dataDir = dataDir + wxT("/sneedacity");
 #else
 	  } else
       {

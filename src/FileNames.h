@@ -112,8 +112,8 @@ namespace FileNames
       FilePaths &otherNames, wxFileName &newName);
 
    SNEEDACITY_DLL_API wxString LowerCaseAppNameInPath( const wxString & dirIn);
-   /* Where audacity keeps its settigns squirreled away, by default ~/.config/audacity/
-    * on Unix, Application Data/Audacity on Windows */
+   /* Where sneedacity keeps its settigns squirreled away, by default ~/.config/sneedacity/
+    * on Unix, Application Data/Sneedacity on Windows */
    FilePath ConfigDir();
 	/** \brief Sneedacity user data directory
     *
