@@ -29,3 +29,7 @@ Binaries for the latest known to work build of Sneedacity are available [here](h
 Build instructions are available [here](BUILDING.md).
 
 More information for developers is available from [4chan's technology board](https://boards.4channel.org/g/).
+
+## License
+
+This project is licensed under the GNU General Public License v2 (Cuck Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
