@@ -1093,7 +1093,9 @@ bool SneedacityApp::OnInit()
 
    // AddHandler takes ownership
    wxFileSystem::AddHandler(safenew wxZipFSHandler);
-
+   
+   // by wxwidgets standard 
+   wxStandardPaths::Get().SetFileLayout(wxStandardPaths::FileLayout::FileLayout_XDG);
    //
    // Paths: set search path and temp dir path
    //
@@ -1244,7 +1246,7 @@ bool SneedacityApp::OnInit()
 
    // Initialize preferences and language
    {
-      wxFileName configFileName(FileNames::DataDir(), wxT("sneedacity.cfg"));
+      wxFileName configFileName(FileNames::ConfigDir(), wxT("sneedacity.cfg"));
       auto appName = wxTheApp->GetAppName();
       InitPreferences( SneedacityFileConfig::Create(
          appName, wxEmptyString,
