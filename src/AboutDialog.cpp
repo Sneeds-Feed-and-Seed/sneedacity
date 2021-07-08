@@ -146,12 +146,12 @@ void AboutDialog::CreateCreditsList()
    AddCredit(wxT("AndroidKitKat"), sneederFormat, roleSneed);
    AddCredit(wxT("moxniso"), sneederFormat, roleSneed);
    AddCredit(wxT("kakolisgay"), sneederFormat, roleSneed);
-   AddCredit(wxT("joabbautista9"), sneederFormat, roleSneed);
    AddCredit(wxT("IThinkImOKAY"), sneederFormat, roleSneed);
    AddCredit(wxT("Furitenman"), sneederFormat, roleSneed);
    AddCredit(wxT("baboyl"), sneederFormat, roleSneed);
    AddCredit(wxT("ishimotoshinobu"), sneederFormat, roleSneed);
    AddCredit(wxT("sowa705"), sneederFormat, roleSneed);
+   
    AddCredit(wxT("Other anonymous contributors from 4chan technology board /g/"), unformattedFormat, roleSneed);
 
    // The Sneedacity Team: developers and support
