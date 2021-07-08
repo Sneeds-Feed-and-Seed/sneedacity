@@ -3,7 +3,7 @@
   WrappedType.h
 
   James Crook
-  (C) Sneedacity Developers, 2007
+  (C) Sneedacity Developers, 2021
 
   wxWidgets license. See Licensing.txt
 
