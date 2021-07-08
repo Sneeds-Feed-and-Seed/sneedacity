@@ -112,10 +112,13 @@ namespace FileNames
       FilePaths &otherNames, wxFileName &newName);
 
    SNEEDACITY_DLL_API wxString LowerCaseAppNameInPath( const wxString & dirIn);
-   /** \brief Sneedacity user data directory
+   /* Where sneedacity keeps its settigns squirreled away, by default ~/.config/sneedacity/
+    * on Unix, Application Data/Sneedacity on Windows */
+   FilePath ConfigDir();
+	/** \brief Sneedacity user data directory
     *
     * Where sneedacity keeps its settings and other user data squirreled away,
-    * by default ~/.sneedacity-data/ on Unix, Application Data/Sneedacity on
+    * by default ~/.local/share/sneedacity/ on Unix, Application Data/Sneedacity on
     * windows system */
    SNEEDACITY_DLL_API FilePath DataDir();
    SNEEDACITY_DLL_API FilePath ResourcesDir();

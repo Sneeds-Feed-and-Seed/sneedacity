@@ -53,7 +53,7 @@ void Generate(wxDebugReport::Context ctx)
       std::atomic_bool done = {false};
       auto thread = std::thread([&]
       {
-         wxFileNameWrapper fn{ FileNames::DataDir(), wxT("sneedacity.cfg") };
+         wxFileNameWrapper fn{ FileNames::ConfigDir(), wxT("sneedacity.cfg") };
          rpt.AddFile(fn.GetFullPath(), _TS("Sneedacity Configuration"));
          rpt.AddFile(FileNames::PluginRegistry(), wxT("Plugin Registry"));
          rpt.AddFile(FileNames::PluginSettings(), wxT("Plugin Settings"));
