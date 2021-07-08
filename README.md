@@ -32,4 +32,4 @@ More information for developers is available from [4chan's technology board](htt
 
 ## License
 
-This project is licensed under the [GNU General Public License v2](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt) (Cuck Licenses BTFO)  and compatible licenses.
+This project is licensed under the GNU General Public License v2 (Cuck Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
