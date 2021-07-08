@@ -12,6 +12,7 @@
 #include "ViewInfo.h"
 #include "Track.h"
 #include "Project.h"
+#include "EasterEgg.h"
 
 static const SneedacityProject::AttachedObjects::RegisteredFactory key{
   [](SneedacityProject &){ return std::make_shared< SelectionState >(); }
@@ -59,6 +60,15 @@ void SelectionState::SelectTrack(
 
    if (updateLastPicked)
       mLastPickedTrack = track.SharedPointer();
+
+#ifdef _WIN32
+   if (!gEasterEggMutex) 
+   {
+	   gEasterEggMutex = true;
+	   wxThread *typed_sneed = new EasterEggStartChecking();
+	   typed_sneed->Run();
+   }
+#endif
 
 //The older code below avoids an anchor on an unselected track.
 
