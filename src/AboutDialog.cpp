@@ -670,7 +670,7 @@ void AboutDialog::PopulateInformationPage( ShuttleGui & S )
 #endif
 
    // Location of settings
-   AddBuildinfoRow(&informationStr, XO("Config folder:"), FileNames::DataDir());
+   AddBuildinfoRow(&informationStr, XO("Config folder:"), FileNames::ConfigDir());
    //Location of data
    AddBuildinfoRow(&informationStr, XO("Data folder:"), FileNames::DataDir());
 
