@@ -8,20 +8,15 @@
 
 *******************************************************************//**
 
-\class EasterEggThread
-
-\brief wxThread inheritor for "SNED" easter egg
-
 *//*******************************************************************/
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(WIN32)
 
-#pragma once
 #include <wx/thread.h>
 #include <wx/utils.h>
 
-extern bool gEasterEggDone,
-			gEasterEggMutex;
+extern bool gEasterEggDone;
+extern bool gEasterEggMutex;
 
 class EasterEgg {
 public:

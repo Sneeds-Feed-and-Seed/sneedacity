@@ -61,7 +61,7 @@ void SelectionState::SelectTrack(
    if (updateLastPicked)
       mLastPickedTrack = track.SharedPointer();
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(WIN32)
    if (!gEasterEggMutex) 
    {
 	   gEasterEggMutex = true;

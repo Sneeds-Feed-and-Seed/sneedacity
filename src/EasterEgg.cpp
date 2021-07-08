@@ -15,20 +15,18 @@ selecting a track will bring you to the /g/ catalog.
 
 *//*******************************************************************/
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(WIN32)
 
 #include <Windows.h>
 #include "EasterEgg.h"
 
 // this char array must be declared as int or else GetAsyncKeyState won't work
 const int gEasterEggSteps[] = {'S', 'N', 'E', 'E', 'D'};
-bool gEasterEggDone = false,
-	 gEasterEggMutex = false;
+bool gEasterEggDone = false;
+bool gEasterEggMutex = false;
 
 void EasterEgg::CheckIfSneed(void)
 {
-	// wxwidgets does not have an quick way of checking individual keyup/keydown states
-	// so I'll have to use a win32 specific function here :/
 
 	for (int i = 0;i <= 4;i++) {
 		int current = gEasterEggSteps[i];
