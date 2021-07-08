@@ -8,7 +8,7 @@ In the interest of fostering an open and welcoming environment of farmers, we as
 
 Examples of behavior that contributes to creating a farmer-positive environment include:
 
-* Using welcoming and inclusive language
+* Using welcoming and civil language
 * Being respectful of differing viewpoints about farming
 * Gracefully accepting constructive criticism
 * Focusing on what is best for the farm
