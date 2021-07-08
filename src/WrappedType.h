@@ -4,6 +4,7 @@
 
   James Crook
   (C) Sneedacity Developers, 2021
+  (C) Audacity Developers, 2007
 
   wxWidgets license. See Licensing.txt
 
