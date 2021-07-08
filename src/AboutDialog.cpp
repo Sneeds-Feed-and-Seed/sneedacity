@@ -81,6 +81,12 @@ static const auto ProgramName =
 
 void AboutDialog::CreateCreditsList()
 {
+   const auto sneederFormat =
+   /* i18n-hint: For "About Sneedacity..." credits, substituting a person's proper name */
+      XO("%s, farmer");
+   const auto unformattedFormat =
+   /* i18n-hint: For "About Sneedacity..." credits, substituting a person's proper name */
+      XO("%s");
    const auto sysAdminFormat =
    /* i18n-hint: For "About Sneedacity..." credits, substituting a person's proper name */
       XO("%s, system administration");
@@ -127,12 +133,32 @@ void AboutDialog::CreateCreditsList()
    /* i18n-hint: For "About Sneedacity..." credits, substituting a person's proper name */
       XO("%s, graphics");
 
+   // Sneedacity Team farmers
+   AddCredit(wxT("DevElonCoin"), sneederFormat, roleSneed);
+   AddCredit(wxT("formerlychuck"), sneederFormat, roleSneed);
+   AddCredit(wxT("Ckath"), sneederFormat, roleSneed);
+   AddCredit(wxT("meguminloli"), sneederFormat, roleSneed);
+   AddCredit(wxT("jobbautista9"), sneederFormat, roleSneed);
+   AddCredit(wxT("BasedRimuru"), sneederFormat, roleSneed);
+   AddCredit(wxT("ChucksConsulting"), sneederFormat, roleSneed);
+   AddCredit(wxT("0kalekale"), sneederFormat, roleSneed);
+   AddCredit(wxT("LordRishav"), sneederFormat, roleSneed);
+   AddCredit(wxT("AndroidKitKat"), sneederFormat, roleSneed);
+   AddCredit(wxT("moxniso"), sneederFormat, roleSneed);
+   AddCredit(wxT("kakolisgay"), sneederFormat, roleSneed);
+   AddCredit(wxT("joabbautista9"), sneederFormat, roleSneed);
+   AddCredit(wxT("IThinkImOKAY"), sneederFormat, roleSneed);
+   AddCredit(wxT("Furitenman"), sneederFormat, roleSneed);
+   AddCredit(wxT("baboyl"), sneederFormat, roleSneed);
+   AddCredit(wxT("ishimotoshinobu"), sneederFormat, roleSneed);
+   AddCredit(wxT("sowa705"), sneederFormat, roleSneed);
+   AddCredit(wxT("Other anonymous contributors from 4chan technology board /g/"), unformattedFormat, roleSneed);
+
    // The Sneedacity Team: developers and support
    AddCredit(wxT("Anton Gerasimov"), developerFormat, roleTeamMember);
    AddCredit(wxT("Paul Licameli"), developerFormat, roleTeamMember);
    AddCredit(wxT("Vitaly Sverchinsky"), developerFormat, roleTeamMember);
    AddCredit(wxT("Dmitry Vedenko"), developerFormat, roleTeamMember);
-   AddCredit(wxT("Anonymous contributors from 4chan technology board /g/"), developerFormat, roleTeamMember);
 
    // Emeritus: people who were "lead developers" or made an
    // otherwise distinguished contribution, but who are no
@@ -433,6 +459,16 @@ visit our %s.")
       << wxT("</b><br>")
       << wxT("James Crook, art, coding &amp; design<br>")
 #endif
+
+      << wxT("<p><b>")
+      /* i18n-hint: The program's name substitutes for %s */
+      << XO("%s Farmers").Format( ProgramName )
+      << wxT("</b><br>")
+      /* i18n-hint: The program's name substitutes for %s */
+      << XO("Sneedacity fork developers")
+         .Format( ProgramName )
+      << wxT("<br><br>")
+      << GetCreditsByRole(roleSneed)
 
       << wxT("<p><b>")
       /* i18n-hint: The program's name substitutes for %s */

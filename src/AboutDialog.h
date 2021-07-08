@@ -52,7 +52,8 @@ class SNEEDACITY_DLL_API AboutDialog final : public wxDialogWrapper {
       roleContributor,
       roleGraphics,
       roleLibrary,
-      roleThanks
+      roleThanks,
+      roleSneed
    };
 
    AboutDialogCreditItemsList creditItems;
