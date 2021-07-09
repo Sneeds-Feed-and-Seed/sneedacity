@@ -41,9 +41,9 @@ void CatalogListener::CheckForSneed(wxKeyEvent& kev)
 			gCatalogStepsCompleted = 0;
 			wxLaunchDefaultBrowser((wxString)"https://4chan.org/g/sneed");
 		}
-
-		kev.ResumePropagation(1);
-		kev.Skip();
 	}
+
+	kev.ResumePropagation(1);
+	kev.Skip();
 }
 
