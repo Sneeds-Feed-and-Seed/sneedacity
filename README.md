@@ -25,6 +25,15 @@
 
 Binaries for the latest known to work build of Sneedacity are available [here](https://nightly.link/Sneeds-Feed-and-Seed/sneedacity/actions/runs/1012473619).
 
+## Mirrors
+
+- https://gitlab.com/sneeds-feed-and-seed/sneedacity
+- https://codeberg.org/Sneeds-Feed-and-Seed/sneedacity
+- https://git.swurl.xyz/Sneeds-Feed-and-Seed/sneedacity
+- https://git.vixfwis.dev/Sneeds-Feed-and-Seed/sneedacity
+- https://git.z6d5jm2owmfzf67e5ow77rqvutf2rfclur353w5v4sni4frbx7asqdid.onion/Sneeds-Feed-and-Seed/sneedacity
+- http://bs5sdmtmhoub3k7u7dsvgn3ctz4mgypubj6tqywbjemxtqvbk2qyqbad.onion/Sneeds-Feed-and-Seed/sneedacity
+
 ## Getting Started
 
 Build instructions are available [here](BUILDING.md).
@@ -33,4 +42,4 @@ More information for developers is available from [4chan's technology board](htt
 
 ## License
 
-This project is licensed under the GNU General Public License v2 (Cuck Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
+This project is licensed under the GNU General Public License v2 (Permissive Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
