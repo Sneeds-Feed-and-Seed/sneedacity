@@ -32,8 +32,6 @@ void CatalogListener::CheckForSneed(wxKeyEvent& kev)
 	{
 		if (kev.GetKeyCode() == gCatalogSteps[gCatalogStepsCompleted]) {
 			gCatalogStepsCompleted++;
-			break;
-		}
 		else 
 			gCatalogStepsCompleted = 0;
 
