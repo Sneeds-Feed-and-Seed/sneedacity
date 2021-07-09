@@ -201,6 +201,13 @@ cp "${SRCROOT}/Resources/Sneedacity-DMG-background.png" "${DMG}/.background"
 #Add a custom icon for the DMG
 #cp -p mac/Resources/Sneedacity.icns "${DMG}"/.VolumeIcon.icns
 
+# Make sure it's not already attached
+ATTACHED=$(hdiutil info | awk "/\/Volumes\/${VOL}/{print \$1}")
+if [ -n "${ATTACHED}" ]
+then
+   hdiutil detach "${ATTACHED}"
+fi
+
 # Create and mount the image
 hdiutil create -ov -format UDRW -srcdir "$DMG" -fs HFS+ -volname "$VOL" TMP.dmg
 if [ $? -ne 0 ]
