@@ -8,10 +8,11 @@ We welcome feedback on Sneedacity, suggestions for new or improved features,
 and bug reports. Please visit 
 https://forum.audacityteam.org/viewforum.php?f=25 .
 
-Sneedacity is copyright (c) 1999-2021 by Sneedacity Team. This copyright 
-notice applies to all documents in the Sneedacity source code archive, 
-except as otherwise noted (mostly in the lib-src subdirectories). 
-"Sneedacity" is a registered trademark. 
+Sneedacity is copyright:
+(c) 2021 by Sneedacity Team
+(c) 1999-2021 by Audacity Team
+This copyright notice applies to all documents in the Sneedacity source code
+archive, except as otherwise noted (mostly in the lib-src subdirectories).
 
 The Sneedacity documentation is licensed under the Creative Commons
 Attribution 3.0 license: https://creativecommons.org/licenses/by/3.0/legalcode .
