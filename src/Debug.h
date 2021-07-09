@@ -6,6 +6,7 @@
 using namespace std;
 
 inline bool global_debug_prints_enabled;
-void dprintf(string message);
+template <typename T, typename... Types>
+void dprintf(T var1, Types... var2);
 
 #endif
