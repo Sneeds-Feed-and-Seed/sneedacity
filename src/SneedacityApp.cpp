@@ -173,7 +173,35 @@ static void wxOnAssert(const wxChar *fileName, int lineNumber, const wxChar *msg
 #endif
 
 namespace {
+#if _WIN32
+#include <Windows.h>
+    // In case it's not system theme is not defined, return 1 for light theme
+    const char* getSystemTheme() {
+        HKEY resultKey;
+        LONG err = RegOpenKeyEx(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", 0, KEY_READ, &resultKey);
+        if (err != ERROR_SUCCESS)
+        {
+            return "light";
+        }
+        DWORD dataType;
+        WCHAR value[255];
+        PVOID pvdata = value;
+        DWORD size = sizeof(value);
+        err = RegGetValue(resultKey, NULL, L"AppsUseLightTheme", RRF_RT_ANY, &dataType, pvdata, &size);
+        if (err != ERROR_SUCCESS)
+        {
+            return "light";
+        }
 
+        if (*(DWORD*)pvdata == 0) {
+            return "dark";
+        }
+        else {
+            return "light";
+        }
+        RegCloseKey(resultKey);
+    }
+#endif // _WIN32
 void PopulatePreferences()
 {
    bool resetPrefs = false;
@@ -371,6 +399,13 @@ void PopulatePreferences()
       gPrefs->Write(wxT("/GUI/Toolbars/Time/Path"),"0,1");
       gPrefs->Write(wxT("/GUI/Toolbars/Time/Show"),1);
    }
+
+#if _WIN32
+   {
+       auto theme = getSystemTheme();
+       gPrefs->Write(wxT("/Gui/Theme"), theme);
+   }
+#endif // _WIN32
 
    // write out the version numbers to the prefs file for future checking
    gPrefs->Write(wxT("/Version/Major"), SNEEDACITY_VERSION);
