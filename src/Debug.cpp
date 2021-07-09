@@ -1,7 +1,7 @@
 //Copyright 2021 Sneedacity Project
 
 #include <string>
-#include <ostream>
+#include <iostream>
 #include "Debug.h"
 
 template <typename T, typename... Types>
