@@ -1,0 +1,18 @@
+/**********************************************************************
+
+  Sneedacity: A Digital Audio Editor
+
+  InsideNyquist.dox2
+
+  Sneed
+
+********************************************************************//**
+
+\page InsideNyquist Inside Nyquist
+
+\section NyquistIntro Introduction
+
+Nyquist is a LISP interpreter, based on XLISP.
+
+
+*//********************************************************************/

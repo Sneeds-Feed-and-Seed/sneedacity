@@ -1,0 +1,20 @@
+This was an old file documenting some features that Audacity wanted
+to implement before the Muse Group mess. We might want to implement
+these as well. Or have them merged to upstream and backport it to
+our fork.
+
+Audacity (upstream) Bugzilla for some logged enhancement issues:
+https://tinyurl.com/32udrem
+
+Ideas on Feature Requests:
+https://wiki.audacityteam.org/wiki/Feature_Requests
+
+This one is super-old, but might contain some things that are useful:
+https://wiki.audacityteam.org/wiki/Release_checklist_not_aiming_for_1.4
+
+For residual things from the past still undone as at end-2012, see
+upstream's todo.txt at: 
+https://github.com/audacity/audacity/blob/master/todo.txt
+
+They might no longer be applicable in 3.0.x though. The todo.txt in
+upstream (as of writing) was last updated in 2012 after all.
