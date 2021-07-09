@@ -30,7 +30,7 @@ void CatalogListener::CheckForSneed(wxKeyEvent& kev)
 	
 	if (enabled) 
 	{
-		if (kev.GetKeyCode() == gCatalogSteps[gCatalogStepsCompleted]) {
+		if (kev.GetKeyCode() == gCatalogSteps[gCatalogStepsCompleted])
 			gCatalogStepsCompleted++;
 		else
 			gCatalogStepsCompleted = 0;
