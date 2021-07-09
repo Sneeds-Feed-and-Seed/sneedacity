@@ -5,6 +5,10 @@
   AdornedRulerPanel.cpp
 
   Dominic Mazzoni
+  
+  Copyright (C) 2021 https://github.com/abb128
+  Copyright (C) 1999-2021 Audacity Team
+  Licensed under the GNU GPL v3+
 
 *******************************************************************//**
 

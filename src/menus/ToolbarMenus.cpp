@@ -1,4 +1,18 @@
+/**********************************************************************
 
+  Sneedacity: A Digital Audio Editor
+
+  ToolbarMenus.cpp
+
+  Copyright (C) 2021 https://github.com/abb128
+  Copyright (C) 1999-2021 Audacity Team
+  Licensed under the GNU GPL v3+
+
+******************************************************************//**
+
+  handles the editing of toolbars
+
+*//*******************************************************************/
 
 #include "../Menus.h"
 #include "../ProjectSettings.h"
