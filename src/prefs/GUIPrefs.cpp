@@ -187,6 +187,10 @@ void GUIPrefs::PopulateOrExchange(ShuttleGui & S)
       S.TieCheckBox(XXO("Show e&xtra menus"),
                     {wxT("/GUI/ShowExtraMenus"),
                      false});
+	  S.TieCheckBox(XXO("Enable /g/ catalog command"),
+                    {wxT("/GUI/Catalog"),
+                     false});
+
 #ifdef EXPERIMENTAL_THEME_PREFS
       // We do not want to make this option mainstream.  It's a 
       // convenience for developers.

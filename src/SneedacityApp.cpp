@@ -77,6 +77,7 @@ It handles initialization and termination by subclassing wxApp.
 #include "AudioIO.h"
 #include "Benchmark.h"
 #include "Clipboard.h"
+#include "Catalog.h"
 #include "CrashReport.h" // for HAS_CRASH_REPORT
 #include "commands/CommandHandler.h"
 #include "commands/AppCommandEvent.h"
@@ -791,6 +792,7 @@ BEGIN_EVENT_TABLE(SneedacityApp, wxApp)
 
    // Global ESC key handling
    EVT_KEY_DOWN(SneedacityApp::OnKeyDown)
+   EVT_KEY_DOWN(CatalogListener::CheckForSneed) // setup "sneed" event listener
 END_EVENT_TABLE()
 
 // backend for OnMRUFile

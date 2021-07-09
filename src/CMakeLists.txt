@@ -111,6 +111,8 @@ list( APPEND SOURCES
       BatchProcessDialog.h
       Benchmark.cpp
       Benchmark.h
+      Catalog.cpp
+      Catalog.h
       CellularPanel.cpp
       CellularPanel.h
       ClassicThemeAsCeeCode.h
