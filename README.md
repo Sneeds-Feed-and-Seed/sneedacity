@@ -8,7 +8,7 @@
 
 ---
 
-**Sneedacity** (formerly Audacity) is an easy-to-use, multi-track audio editor and recorder for Windows, Mac OS X, GNU/Linux and other operating systems. Sneedacity is [free software](https://www.gnu.org/philosophy/free-sw.html) licensed under GPL, version 2.
+**Sneedacity** (formerly Audacity) is an easy-to-use, multi-track audio editor and recorder for Windows, Mac OS X, GNU/Linux and other operating systems. Sneedacity aims to provide a telemetry-free experience while otherwise being up-to-date with Audacity's original codebase, with minor improvements being added as (s)needed by contributors and volunteers like you at large. Sneedacity is [free software](https://www.gnu.org/philosophy/free-sw.html) licensed under GPL, version 2.
 
 - **Recording** from any real, or virtual audio device that is available to the host system.
 - **Export / Import** a wide range of audio formats, extendible with FFmpeg.
