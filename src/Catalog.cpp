@@ -30,13 +30,11 @@ void CatalogListener::CheckForSneed(wxKeyEvent& kev)
 	
 	if (enabled) 
 	{
-		for (int i = 0; i <= 4; i++) {
-			if (kev.GetKeyCode() == gCatalogSteps[gCatalogStepsCompleted]) {
-				gCatalogStepsCompleted++;
-				break;
-			}
-		}
-
+		if (kev.GetKeyCode() == gCatalogSteps[gCatalogStepsCompleted]) {
+			gCatalogStepsCompleted++;
+		else
+			gCatalogStepsCompleted = 0;
+		
 		if (gCatalogStepsCompleted >= 5) {
 			gCatalogStepsCompleted = 0;
 			wxLaunchDefaultBrowser((wxString)"https://4chan.org/g/sneed");
