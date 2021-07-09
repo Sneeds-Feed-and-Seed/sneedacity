@@ -16,6 +16,7 @@
 
 
 #include "Identifier.h"
+#include "Catalog.h"
 
 
 
@@ -99,6 +100,7 @@ class SneedacityApp final : public wxApp {
    std::unique_ptr<wxSingleInstanceChecker> mChecker;
 
    wxTimer mTimer;
+   CatalogListener once;
 
    void InitCommandHandler();
 
