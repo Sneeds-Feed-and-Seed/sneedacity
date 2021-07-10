@@ -38,17 +38,16 @@ public:
    /// @return true if the wrapped type is a string.
    inline bool IsString() { return std::holds_alternative<wxString*>(mData); }
 
-   wxString ReadAsString();
-   int ReadAsInt();
-   double ReadAsDouble();
-   bool ReadAsBool();
+   wxString ReadAsString() const;
+   int ReadAsInt() const;
+   double ReadAsDouble() const;
+   bool ReadAsBool() const;
 
-   void WriteToAsString( const wxString & InStr);
-   void WriteToAsInt( const int InInt);
-   void WriteToAsDouble( const double InDouble);
-   void WriteToAsBool( const bool InBool);
+   void WriteToAsString(const wxString & InStr);
+   void WriteToAsInt(const int InInt);
+   void WriteToAsDouble(const double InDouble);
+   void WriteToAsBool(const bool InBool);
 
-private:
    std::variant<wxString*, int, double, bool> mData;
 };
 
