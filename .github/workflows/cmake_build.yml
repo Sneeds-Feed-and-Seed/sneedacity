@@ -111,3 +111,96 @@ jobs:
           build/package/*
           !build/package/_CPack_Packages
         if-no-files-found: error
+    
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: Ckath/create-release@v1.2.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: latest-sneed
+          release_name: Latest Sneed
+          body: |
+              Newest working commit on master
+          prerelease: true
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Environment
+        run: |
+          source "scripts/ci/environment.sh"
+
+      - uses: actions/download-artifact@v2.0.10
+        with:
+          name: Sneedacity_Ubuntu_18.04_${{ github.run_id }}_${{ env.GIT_HASH_SHORT }}
+          path: artifacts/
+      - id: linux-artifact
+        run: echo ::set-output name=file::$(ls artifacts/*linux*.AppImage)
+
+      - uses: actions/download-artifact@v2.0.10
+        with:
+          name: Sneedacity_Windows_32bit_${{ github.run_id }}_${{ env.GIT_HASH_SHORT }}
+          path: artifacts/
+      - id: win32-artifact
+        run: echo ::set-output name=file::$(ls artifacts/*win*32bit.zip)
+
+      - uses: actions/download-artifact@v2.0.10
+        with:
+          name: Sneedacity_Windows_64bit_${{ github.run_id }}_${{ env.GIT_HASH_SHORT }}
+          path: artifacts/
+      - id: win64-artifact
+        run: echo ::set-output name=file::$(ls artifacts/*win*64bit.zip)
+
+      - uses: actions/download-artifact@v2.0.10
+        with:
+          name: Sneedacity_macOS_Intel_${{ github.run_id }}_${{ env.GIT_HASH_SHORT }}
+          path: artifacts/
+      - id: mac-artifact
+        run: echo ::set-output name=file::$(ls artifacts/*macos*.dmg)
+
+      - name: Upload release asset (Ubuntu)
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: Sneedacity_appimage
+          asset_path: ${{ steps.linux-artifact.outputs.file }}
+          asset_content_type: application/x-executable
+
+      - name: Upload release asset (Windows 32bit)
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: Sneedacity_Windows_32bit
+          asset_path: ${{ steps.win32-artifact.outputs.file }}
+          asset_content_type: application/zip
+
+      - name: Upload release asset (Windows 64bit)
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: Sneedacity_Windows_64bit
+          asset_path: ${{ steps.win64-artifact.outputs.file }}
+          asset_content_type: application/zip
+
+      - name: Upload release asset (Mac OS)
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: Sneedacity_macOS
+          asset_path: ${{ steps.mac-artifact.outputs.file }}
+          asset_content_type: application/x-bzip2
