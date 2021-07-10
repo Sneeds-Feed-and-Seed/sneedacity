@@ -91,6 +91,8 @@ is time to refresh some aspect of the screen.
 #include <wx/dcclient.h>
 #include <wx/graphics.h>
 
+#include "Debug.h"
+
 /**
 
 \class TrackPanel
@@ -176,6 +178,7 @@ END_EVENT_TABLE()
 /// TODO:  Move this function to some other source file for reuse elsewhere.
 std::unique_ptr<wxCursor> MakeCursor( int WXUNUSED(CursorId), const char * const pXpm[36],  int HotX, int HotY )
 {
+dprintf("TrackPanel.cpp: MakeCursor");
 #define CURSORS_SIZE32
 #ifdef CURSORS_SIZE32
    const int HotAdjust =0;
@@ -197,6 +200,7 @@ namespace{
 
 SneedacityProject::AttachedWindows::RegisteredFactory sKey{
    []( SneedacityProject &project ) -> wxWeakRef< wxWindow > {
+   dprintf("TrackPanel.cpp: RegisteredFactory");
       auto &ruler = AdornedRulerPanel::Get( project );
       auto &viewInfo = ViewInfo::Get( project );
       auto &window = ProjectWindow::Get( project );
@@ -260,6 +264,7 @@ TrackPanel::TrackPanel(wxWindow * parent, wxWindowID id,
 #pragma warning( default: 4355 )
 #endif
 {
+   dprintf("TrackPanel.cpp: TrackPanel");
    SetLayoutDirection(wxLayout_LeftToRight);
    SetLabel(XO("Track Panel"));
    SetName(XO("Track Panel"));
@@ -343,6 +348,7 @@ void TrackPanel::UpdatePrefs()
 /// goes with this track panel.
 SneedacityProject * TrackPanel::GetProject() const
 {
+//   dprintf("TrackPanel.cpp: GetProject");
    //JKC casting away constness here.
    //Do it in two stages in case 'this' is not a wxWindow.
    //when the compiler will flag the error.
@@ -363,6 +369,7 @@ SneedacityProject * TrackPanel::GetProject() const
 
 void TrackPanel::OnSize( wxSizeEvent &evt )
 {
+   dprintf("TrackPanel.cpp: OnSize");
    evt.Skip();
    const auto &size = evt.GetSize();
    mViewInfo->SetWidth( size.GetWidth() );
@@ -371,6 +378,7 @@ void TrackPanel::OnSize( wxSizeEvent &evt )
 
 void TrackPanel::OnIdle(wxIdleEvent& event)
 {
+   dprintf("TrackPanel.cpp: OnIdle");
    event.Skip();
    // The window must be ready when the timer fires (#1401)
    if (IsShownOnScreen())
@@ -392,6 +400,7 @@ void TrackPanel::OnIdle(wxIdleEvent& event)
 /// AS: This gets called on our wx timer events.
 void TrackPanel::OnTimer(wxTimerEvent& )
 {
+   //dprintf("TrackPanel.cpp: OnTimer");
    mTimeCount++;
 
    SneedacityProject *const p = GetProject();
@@ -447,6 +456,7 @@ void TrackPanel::OnTimer(wxTimerEvent& )
 
 void TrackPanel::OnProjectSettingsChange( wxCommandEvent &event )
 {
+   dprintf("TrackPanel.cpp: OnProjectSettingsChange");
    event.Skip();
    switch ( static_cast<ProjectSettings::EventCode>( event.GetInt() ) ) {
    case ProjectSettings::ChangedSyncLock:
@@ -468,6 +478,7 @@ void TrackPanel::OnUndoReset( wxCommandEvent &event )
 ///  completing a repaint operation.
 void TrackPanel::OnPaint(wxPaintEvent & /* event */)
 {
+   dprintf("TrackPanel.cpp: OnPaint");
    mLastDrawnSelectedRegion = mViewInfo->selectedRegion;
 
 #if DEBUG_DRAW_TIMING
@@ -534,6 +545,7 @@ void TrackPanel::ProcessUIHandleResult
    (TrackPanelCell *pClickedCell, TrackPanelCell *pLatestCell,
     UIHandle::Result refreshResult)
 {
+   dprintf("TrackPanel.cpp: ProcessUIHandleResult");
    const auto panel = this;
    auto pLatestTrack = FindTrack( pLatestCell ).get();
 
@@ -614,6 +626,7 @@ bool TrackPanel::IsAudioActive()
 
 void TrackPanel::UpdateStatusMessage( const TranslatableString &st )
 {
+   dprintf("TrackPanel.cpp: UpdateStatusMessage");
    auto status = st;
    if (HasEscape())
       /* i18n-hint Esc is a key on the keyboard */
@@ -623,6 +636,7 @@ void TrackPanel::UpdateStatusMessage( const TranslatableString &st )
 
 void TrackPanel::UpdateSelectionDisplay()
 {
+   dprintf("TrackPanel.cpp: UpdateSelectionDisplay");
    // Full refresh since the label area may need to indicate
    // newly selected tracks.
    Refresh(false);
@@ -639,6 +653,7 @@ size_t TrackPanel::GetSelectedTrackCount() const
 
 void TrackPanel::UpdateViewIfNoTracks()
 {
+   dprintf("TrackPanel.cpp: UpdateViewIfNoTracks");
    if (mTracks->empty())
    {
       // BG: There are no more tracks on screen
@@ -663,6 +678,7 @@ void TrackPanel::UpdateViewIfNoTracks()
 // ruler size for the track that triggered the event.
 void TrackPanel::OnTrackListResizing(TrackListEvent & e)
 {
+   dprintf("TrackPanel.cpp: OnTrackListResizing");
    auto t = e.mpTrack.lock();
    // A deleted track can trigger the event.  In which case do nothing here.
    // A deleted track can have a valid pointer but no owner, bug 2060
@@ -677,6 +693,7 @@ void TrackPanel::OnTrackListResizing(TrackListEvent & e)
 // Tracks have been removed from the list.
 void TrackPanel::OnTrackListDeletion(wxEvent & e)
 {
+   dprintf("TrackPanel.cpp: OnTrackListDeletion");
    // copy shared_ptr for safety, as in HandleClick
    auto handle = Target();
    if (handle) {
@@ -694,6 +711,7 @@ void TrackPanel::OnTrackListDeletion(wxEvent & e)
 
 void TrackPanel::OnKeyDown(wxKeyEvent & event)
 {
+   dprintf("TrackPanel.cpp: OnKeyDown");
    switch (event.GetKeyCode())
    {
       // Allow PageUp and PageDown keys to
@@ -714,6 +732,7 @@ void TrackPanel::OnKeyDown(wxKeyEvent & event)
 
 void TrackPanel::OnMouseEvent(wxMouseEvent & event)
 {
+   dprintf("TrackPanel.cpp: OnMouseEvent");
    if (event.LeftDown()) {
       // wxTimers seem to be a little unreliable, so this
       // "primes" it to make sure it keeps going for a while...
@@ -749,6 +768,7 @@ double TrackPanel::GetMostRecentXPos()
 
 void TrackPanel::RefreshTrack(Track *trk, bool refreshbacking)
 {
+   dprintf("TrackPanel.cpp: RefreshTrack");
    if (!trk)
       return;
 
@@ -781,6 +801,7 @@ void TrackPanel::RefreshTrack(Track *trk, bool refreshbacking)
 void TrackPanel::Refresh(bool eraseBackground /* = TRUE */,
                          const wxRect *rect /* = NULL */)
 {
+   dprintf("TrackPanel.cpp: Refresh");
    // Tell OnPaint() to refresh the backing bitmap.
    //
    // Originally I had the check within the OnPaint() routine and it
@@ -801,6 +822,7 @@ void TrackPanel::Refresh(bool eraseBackground /* = TRUE */,
 
 void TrackPanel::OnAudioIO(wxCommandEvent & evt)
 {
+   dprintf("TrackPanel.cpp: OnAudioIO");
    evt.Skip();
    // Some hit tests want to change their cursor to and from the ban symbol
    CallAfter( [this]{ CellularPanel::HandleCursorForPresentMouseState(); } );
@@ -813,6 +835,7 @@ void TrackPanel::OnAudioIO(wxCommandEvent & evt)
 /// actual contents of each track are drawn by the TrackArtist.
 void TrackPanel::DrawTracks(wxDC * dc)
 {
+   dprintf("TrackPanel.cpp: DrawTracks");
    wxRegion region = GetUpdateRegion();
 
    const wxRect clip = GetRect();
@@ -863,6 +886,7 @@ std::shared_ptr< TrackPanelCell > TrackPanel::GetBackgroundCell()
 
 void TrackPanel::UpdateVRulers()
 {
+   dprintf("TrackPanel.cpp: UpdateVRulers");
    for (auto t : GetTracks()->Any< WaveTrack >())
       UpdateTrackVRuler(t);
 
@@ -871,6 +895,7 @@ void TrackPanel::UpdateVRulers()
 
 void TrackPanel::UpdateVRuler(Track *t)
 {
+   dprintf("TrackPanel.cpp: UpdateVRuler");
    if (t)
       UpdateTrackVRuler(t);
 
@@ -879,6 +904,7 @@ void TrackPanel::UpdateVRuler(Track *t)
 
 void TrackPanel::UpdateTrackVRuler(Track *t)
 {
+   dprintf("TrackPanel.cpp: UpdateTrackVRuler");
    wxASSERT(t);
    if (!t)
       return;
@@ -918,6 +944,7 @@ void TrackPanel::UpdateTrackVRuler(Track *t)
 
 void TrackPanel::UpdateVRulerSize()
 {
+   dprintf("TrackPanel.cpp: UpdateVRulerSize");
    auto trackRange = GetTracks()->Any();
    if (trackRange) {
       wxSize s { 0, 0 };
@@ -936,12 +963,14 @@ void TrackPanel::UpdateVRulerSize()
 
 void TrackPanel::OnTrackMenu(Track *t)
 {
+   dprintf("TrackPanel.cpp: OnTrackMenu");
    CellularPanel::DoContextMenu( t ? &TrackView::Get( *t ) : nullptr );
 }
 
 // Tracks have been removed from the list.
 void TrackPanel::OnEnsureVisible(TrackListEvent & e)
 {
+   dprintf("TrackPanel.cpp: OnEnsureVisible");
    e.Skip();
    bool modifyState = e.GetInt();
 
@@ -987,6 +1016,7 @@ void TrackPanel::OnEnsureVisible(TrackListEvent & e)
 // 0.0 scrolls to top
 // 1.0 scrolls to bottom.
 void TrackPanel::VerticalScroll( float fracPosition){
+   dprintf("TrackPanel.cpp: VerticalScroll");
 
    int trackTop = 0;
    int trackHeight = 0;
@@ -1030,6 +1060,7 @@ namespace {
 void GetTrackNameExtent(
    wxDC &dc, const Track *t, wxCoord *pW, wxCoord *pH )
 {
+   dprintf("TrackPanel.cpp: GetTrackNameExtent");
    wxFont labelFont(12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
    dc.SetFont(labelFont);
    dc.GetTextExtent( t->GetName(), pW, pH );
@@ -1052,6 +1083,7 @@ void DrawTrackName(
    int leftOffset,
    TrackPanelDrawingContext &context, const Track * t, const wxRect & rect )
 {
+   dprintf("TrackPanel.cpp: TrackPanelDrawingContext");
    if( !TrackArtist::Get( context )->mbShowTrackNameInTrack )
       return;
    auto name = t->GetName();
@@ -1277,6 +1309,7 @@ struct ChannelGroup final : TrackPanelGroup {
       : mpTrack{ pTrack }, mLeftOffset{ leftOffset } {}
    Subdivision Children( const wxRect &rect_ ) override
    {
+//   dprintf("TrackPanel.cpp: Subdivision Children 1");
       auto rect = rect_;
       Refinement refinement;
 
@@ -1430,6 +1463,7 @@ struct Subgroup final : TrackPanelGroup {
    explicit Subgroup( TrackPanel &panel ) : mPanel{ panel } {}
    Subdivision Children( const wxRect &rect ) override
    {
+   //dprintf("TrackPanel.cpp: Subdivision Children");
       const auto &viewInfo = *mPanel.GetViewInfo();
       wxCoord yy = -viewInfo.vpos;
       Refinement refinement;
@@ -1475,6 +1509,7 @@ struct MainGroup final : TrackPanelGroup {
 
 std::shared_ptr<TrackPanelNode> TrackPanel::Root()
 {
+   //dprintf("TrackPanel.cpp: Root");
    // Root and other subgroup objects are throwaways.
    // They might instead be cached to avoid repeated allocation.
    // That cache would need invalidation when there is addition, deletion, or
@@ -1487,6 +1522,7 @@ std::shared_ptr<TrackPanelNode> TrackPanel::Root()
 // The given track is assumed to be the first channel
 wxRect TrackPanel::FindTrackRect( const Track * target )
 {
+   dprintf("TrackPanel.cpp: FindTrackRect");
    auto leader = *GetTracks()->FindLeader( target );
    if (!leader) {
       return { 0, 0, 0, 0 };
@@ -1501,12 +1537,14 @@ wxRect TrackPanel::FindTrackRect( const Track * target )
 
 TrackPanelCell *TrackPanel::GetFocusedCell()
 {
+   //dprintf("TrackPanel.cpp: GetFocusedCell");
    auto pTrack = TrackFocus::Get( *GetProject() ).Get();
    return pTrack ? &TrackView::Get( *pTrack ) : nullptr;
 }
 
 void TrackPanel::SetFocusedCell()
 {
+   dprintf("TrackPanel.cpp: SetFocusedCell");
    // This may have a side-effect of assigning a focus if there was none
    auto& trackFocus = TrackFocus::Get(*GetProject());
    trackFocus.Set(trackFocus.Get());
@@ -1515,6 +1553,7 @@ void TrackPanel::SetFocusedCell()
 
 void TrackPanel::OnTrackFocusChange( wxCommandEvent &event )
 {
+   dprintf("TrackPanel.cpp: ");
    event.Skip();
    auto cell = GetFocusedCell();
 
@@ -1535,6 +1574,7 @@ IsVisibleTrack::IsVisibleTrack(SneedacityProject *project)
 
 bool IsVisibleTrack::operator () (const Track *pTrack) const
 {
+   dprintf("TrackPanel.cpp: operator");
    // Need to return true if this track or a later channel intersects
    // the view
    return

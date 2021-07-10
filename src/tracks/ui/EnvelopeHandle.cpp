@@ -26,6 +26,7 @@ Paul Licameli split from TrackPanel.cpp
 #include "../../ViewInfo.h"
 #include "../../WaveTrack.h"
 #include "../../../images/Cursors.h"
+#include "../../Debug.h"
 
 EnvelopeHandle::EnvelopeHandle( Envelope *pEnvelope )
    : mEnvelope{ pEnvelope }
@@ -34,6 +35,9 @@ EnvelopeHandle::EnvelopeHandle( Envelope *pEnvelope )
 
 void EnvelopeHandle::Enter(bool, SneedacityProject *)
 {
+   //dprintf("EnvelopeHandle.cpp: ");
+   dprintf("EnvelopeHandle.cpp: Enter");
+
 #ifdef EXPERIMENTAL_TRACK_PANEL_HIGHLIGHTING
    mChangeHighlight = RefreshCode::RefreshCell;
 #endif
@@ -45,6 +49,7 @@ EnvelopeHandle::~EnvelopeHandle()
 UIHandlePtr EnvelopeHandle::HitAnywhere
 (std::weak_ptr<EnvelopeHandle> & WXUNUSED(holder), Envelope *envelope, bool timeTrack)
 {
+   dprintf("EnvelopeHandle.cpp: HitAnywhere");
    auto result = std::make_shared<EnvelopeHandle>( envelope );
    result->mTimeTrack = timeTrack;
    return result;
@@ -55,6 +60,7 @@ namespace {
       (const SneedacityProject &project, const TimeTrack &tt,
        double &dBRange, bool &dB, float &zoomMin, float &zoomMax)
    {
+      dprintf("EnvelopeHandle.cpp: GetTimeTrackData");
       const auto &viewInfo = ViewInfo::Get( project );
       dBRange = viewInfo.dBr;
       dB = tt.GetDisplayLog();
@@ -89,6 +95,7 @@ UIHandlePtr EnvelopeHandle::WaveTrackHitTest
  const wxMouseState &state, const wxRect &rect,
  const SneedacityProject *pProject, const std::shared_ptr<WaveTrack> &wt)
 {
+   dprintf("EnvelopeHandle.cpp: WaveTrackHitTest");
    /// method that tells us if the mouse event landed on an
    /// envelope boundary.
    auto &viewInfo = ViewInfo::Get(*pProject);
@@ -116,6 +123,7 @@ UIHandlePtr EnvelopeHandle::HitEnvelope
  Envelope *envelope, float zoomMin, float zoomMax,
  bool dB, float dBRange, bool timeTrack)
 {
+   dprintf("EnvelopeHandle.cpp: HitEnvelope");
    const auto &viewInfo = ViewInfo::Get( *pProject );
 
    const double envValue =
@@ -166,6 +174,8 @@ UIHandlePtr EnvelopeHandle::HitEnvelope
 UIHandle::Result EnvelopeHandle::Click
 (const TrackPanelMouseEvent &evt, SneedacityProject *pProject)
 {
+
+   dprintf("EnvelopeHandle.cpp: Click");
    using namespace RefreshCode;
    const bool unsafe = ProjectAudioIO::Get( *pProject ).IsAudioActive();
    if ( unsafe )
@@ -236,6 +246,7 @@ UIHandle::Result EnvelopeHandle::Click
 UIHandle::Result EnvelopeHandle::Drag
 (const TrackPanelMouseEvent &evt, SneedacityProject *pProject)
 {
+   dprintf("EnvelopeHandle.cpp: Drag");
    using namespace RefreshCode;
    const wxMouseEvent &event = evt.event;
    const auto &viewInfo = ViewInfo::Get( *pProject );
@@ -252,6 +263,7 @@ UIHandle::Result EnvelopeHandle::Drag
 HitTestPreview EnvelopeHandle::Preview
 (const TrackPanelMouseState &, SneedacityProject *pProject)
 {
+   dprintf("EnvelopeHandle.cpp: Preview");
    const bool unsafe = ProjectAudioIO::Get( *pProject ).IsAudioActive();
    static auto disabledCursor =
       ::MakeCursor(wxCURSOR_NO_ENTRY, DisabledCursorXpm, 16, 16);
@@ -274,6 +286,7 @@ UIHandle::Result EnvelopeHandle::Release
 (const TrackPanelMouseEvent &evt, SneedacityProject *pProject,
  wxWindow *)
 {
+   dprintf("EnvelopeHandle.cpp: Release");
    const wxMouseEvent &event = evt.event;
    const auto &viewInfo = ViewInfo::Get( *pProject );
    const bool unsafe = ProjectAudioIO::Get( *pProject ).IsAudioActive();
@@ -297,6 +310,7 @@ UIHandle::Result EnvelopeHandle::Release
 
 UIHandle::Result EnvelopeHandle::Cancel(SneedacityProject *pProject)
 {
+   dprintf("EnvelopeHandle.cpp: Cancel");
    ProjectHistory::Get( *pProject ).RollbackState();
    mEnvelopeEditors.clear();
    return RefreshCode::RefreshCell;
@@ -305,6 +319,7 @@ UIHandle::Result EnvelopeHandle::Cancel(SneedacityProject *pProject)
 bool EnvelopeHandle::ForwardEventToEnvelopes
    (const wxMouseEvent &event, const ViewInfo &viewInfo)
 {
+   dprintf("EnvelopeHandle.cpp: ForwardEventToEnvelopes");
    /// The Envelope class actually handles things at the mouse
    /// event level, so we have to forward the events over.  Envelope
    /// will then tell us whether or not we need to redraw.

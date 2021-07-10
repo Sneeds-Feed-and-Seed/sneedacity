@@ -15,6 +15,7 @@ Paul Licameli split from TrackPanel.cpp
 #include "../../Project.h"
 #include "../../xml/XMLTagHandler.h"
 #include "../../xml/XMLWriter.h"
+#include "../../Debug.h"
 
 TrackView::TrackView( const std::shared_ptr<Track> &pTrack )
    : CommonTrackCell{ pTrack }
@@ -190,6 +191,10 @@ struct TrackPositioner final : ClientData::Base, wxEvtHandler
 
    void OnUpdate( TrackListEvent & e )
    {
+      /*
+         Called when we create a new track, when we stop recording, when we delete a track.
+      */
+      dprintf("TrackView.cpp: OnUpdate");
       e.Skip();
 
       auto iter =
