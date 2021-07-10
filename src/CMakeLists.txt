@@ -52,6 +52,12 @@ else()
    set ( wxIS_GTK on)
 endif()
 
+# Use of most modern C++ features are not available with the default
+# macOS deployment target, we must specifically set it to 10.14
+if ( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
+   set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "Minimum OS X deployment version")
+endif()
+
 # Handle Ladspa option
 cmd_option(
    ${_OPT}use_ladspa
