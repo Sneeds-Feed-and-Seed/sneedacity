@@ -2480,4 +2480,3 @@ void SneedacityApp::AssociateFileTypes()
    }
 }
 #endif
-

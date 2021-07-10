@@ -1,40 +1,40 @@
-Sneedacity(R): free, open source, cross-platform audio software for 
-multi-track recording and editing: https://www.audacityteam.org/ . 
+Sneedacity: free, open source, cross-platform audio software for 
+multi-track recording and editing: https://wiki.installgentoo.com/wiki/Sneedacity .
 
-User support is provided on Sneedacity Forum:
-https://forum.audacityteam.org/ .
+User support is provided on Matrix and IRC:
+#sneedacity:matrix.org
+ircs://irc.libera.chat/sneedacity (#sneedacity)
+ircs://irc.rizon.net/sneedacity (#sneedacity)
 
 We welcome feedback on Sneedacity, suggestions for new or improved features, 
 and bug reports. Please visit 
-https://forum.audacityteam.org/viewforum.php?f=25 .
+https://github.com/Sneeds-Feed-and-Seed/sneedacity/issues .
 
-Sneedacity is copyright (c) 1999-2021 by Sneedacity Team. This copyright 
-notice applies to all documents in the Sneedacity source code archive, 
-except as otherwise noted (mostly in the lib-src subdirectories). 
-"Sneedacity" is a registered trademark. 
+Sneedacity is copyright:
+(c) 2021 by Sneedacity Team
+(c) 1999-2021 by Audacity Team
+This copyright notice applies to all documents in the Sneedacity source code
+archive, except as otherwise noted (mostly in the lib-src subdirectories).
 
 The Sneedacity documentation is licensed under the Creative Commons
 Attribution 3.0 license: https://creativecommons.org/licenses/by/3.0/legalcode .
 
-Compilation instructions for Sneedacity are provided in the source code:
-* Windows: win\build.txt
-* macOS: mac/build.txt
-* GNU/Linux: linux/build.txt 
+Compilation instructions for Sneedacity are provided in BUILDING.md.
 
-You can ask for help with compilation problems at:
-https://forum.audacityteam.org/viewforum.php?f=19 .
+You can ask for help with compilation problems at the Matrix and IRC channels.
 
 If you want to suggest some simple text change in our code, please submit a 
 pull request on https://github.com/sneedacity/sneedacity/pulls . It's usually 
-best to discuss functional code changes with us first on sneedacity-devel: 
-https://lists.sourceforge.net/lists/listinfo/sneedacity-devel . 
+best to discuss functional code changes with us first on Matrix/IRC or via a
+GitHub issue. You can also mark your PR as a draft first if it's still a work
+in progress.
 
 Version 3.0.3
 
 Contents of this README:
 
 1.  Licensing
-2.  Changes since version 3.0.2
+2.  Changes since version 3.0.0
 3.  Known Issues at Release
 4.  Source Code, Libraries and Additional Copyright Information
 
@@ -64,19 +64,19 @@ to https://www.gnu.org/licenses/old-licenses/gpl-2.0.html or write to
 
 --------------------------------------------------------------------------------
 
-2. Changes since version 3.0.0: 
+2. Changes since version 3.0.0: (before Audacity was forked to Sneedacity)
 
 
 Improvements
 
- * More information to help Sneedacity developers is now provided 
+ * More information to help Audacity developers is now provided 
    with most error reports.
  * Manage Macros dialog is now clearer about how to save and
    close the dialog, thanks to changes in buttons.
  * In MP3 export we removed a legacy option for a slower encoding
    that is no better than the faster one.
 
-See also: https://wiki.audacityteam.org/wiki/New_features_in_Sneedacity_3.0.2
+See also: https://wiki.audacityteam.org/wiki/New_features_in_Audacity_3.0.2
 
 
 Bug Fixes
@@ -99,7 +99,7 @@ Bug Fixes
  * 2707 - Opened projects not being removed from "sneedacity.cfg"
  * 2708 - Nyquist effects fail silently with One hour plus stereo
  * 2709 - Mac: Missing sub-menu check marks in French
- * 2710 - Compressor with audio before T=0 crashes Sneedacity
+ * 2710 - Compressor with audio before T=0 crashes Audacity
  * 2714 - (Japanese & Korean) "Unable to parse project information"
  * 2716 - Cleared "Recent Files" are restored on next launch
  * 2718 - Failed to execute a project file command (on server)
@@ -112,13 +112,13 @@ See also: https://wiki.audacityteam.org/wiki/Release_Notes_3.0.2
 -------------------------------------------------------------------------------
 
 
-3. Some Known Issues in 3.0.2:
+3. Some Known Issues in 3.0.2: (before Audacity was forked to Sneedacity)
 
 We have two significant bugs we would like help in tracking down:
 
-1) Sneedacity may occasionally report "Failed to open the project 
+1) Audacity may occasionally report "Failed to open the project 
    database".  We don't think this is causing people to lose data.
-2) Sneedacity may offer to 'recover' a project at start up, when
+2) Audacity may offer to 'recover' a project at start up, when
    there is nothing to recover.
 
 If there are repeatable steps to make these bugs happen, this

@@ -111,6 +111,8 @@ list( APPEND SOURCES
       BatchProcessDialog.h
       Benchmark.cpp
       Benchmark.h
+      Catalog.cpp
+      Catalog.h
       CellularPanel.cpp
       CellularPanel.h
       ClassicThemeAsCeeCode.h
@@ -961,10 +963,6 @@ list( APPEND SOURCES
       widgets/ReadOnlyText.h
       widgets/Ruler.cpp
       widgets/Ruler.h
-      $<$<BOOL:${${_OPT}has_sentry_reporting}>:
-         widgets/ErrorReportDialog.cpp
-         widgets/ErrorReportDialog.h
-      >
       widgets/Warning.cpp
       widgets/Warning.h
       widgets/WindowAccessible.cpp
