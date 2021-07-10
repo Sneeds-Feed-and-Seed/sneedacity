@@ -77,7 +77,6 @@ It handles initialization and termination by subclassing wxApp.
 #include "AudioIO.h"
 #include "Benchmark.h"
 #include "Clipboard.h"
-#include "Catalog.h"
 #include "CrashReport.h" // for HAS_CRASH_REPORT
 #include "commands/CommandHandler.h"
 #include "commands/AppCommandEvent.h"
@@ -695,10 +694,12 @@ IMPLEMENT_WX_THEME_SUPPORT
 
 int main(int argc, char *argv[])
 {
+
+   global_debug_prints_enabled = false;
+
    wxDISABLE_DEBUG_SUPPORT();
 
-   // Proceed to SneedacityApp::OnInit(), then to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
-
+   // Proceed to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
    return wxEntry(argc, argv);
 }
 
@@ -795,7 +796,6 @@ BEGIN_EVENT_TABLE(SneedacityApp, wxApp)
 
    // Global ESC key handling
    EVT_KEY_DOWN(SneedacityApp::OnKeyDown)
-   EVT_KEY_DOWN(CatalogListener::CheckForSneed) // setup "sneed" event listener
 END_EVENT_TABLE()
 
 // backend for OnMRUFile
@@ -1347,12 +1347,11 @@ bool SneedacityApp::InitPart2()
       exit(0);
    }
 
-   global_debug_prints_enabled = false;   
    if (parser->Found(wxT("d")))
    {
       global_debug_prints_enabled = true;
    }
-   dprintf("InitPart2: global_debug_prints_enabled = true");
+   dprintf("InitPart2: global_debug_prints_enabled =", global_debug_prints_enabled);
 
 
    long lval;
@@ -2481,4 +2480,3 @@ void SneedacityApp::AssociateFileTypes()
    }
 }
 #endif
-

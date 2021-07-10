@@ -1,15 +1,5 @@
 //Copyright 2021 Sneedacity Project
 
-#include <string>
-#include <iostream>
-#include "Debug.h"
-
-using namespace std;
-
-void dprintf(const string message) {
-   if(global_debug_prints_enabled) {
-      std::cout << message << "\n";
-   }
-}
-
-
+/*
+   At this moment the file is empty because the dprintf function is implemented in the header, but reserving for future use.
+*/
