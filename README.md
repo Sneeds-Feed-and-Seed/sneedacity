@@ -42,4 +42,4 @@ More information for developers is available from [4chan's technology board](htt
 
 ## License
 
-This project is licensed under the GNU General Public License v2 (Permissive Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
+This project is licensed under the GNU General Public License v2 (CORNVTVS Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
