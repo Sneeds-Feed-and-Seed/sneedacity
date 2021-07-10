@@ -28,6 +28,8 @@ Paul Licameli split from WaveTrackView.cpp
 #include <wx/dcmemory.h>
 #include <wx/graphics.h>
 
+#include "Debug.h"
+
 static WaveTrackSubView::Type sType{
    WaveTrackViewConstants::Spectrum,
    { wxT("Spectrogram"), XXO("&Spectrogram") }
@@ -46,6 +48,7 @@ std::vector<UIHandlePtr> SpectrumView::DetailedHitTest(
    const TrackPanelMouseState &state,
    const SneedacityProject *pProject, int currentTool, bool bMultiTool )
 {
+   dprintf("SpectrumView.cpp: DetailedHitTest");
    const auto wt = std::static_pointer_cast< WaveTrack >( FindTrack() );
 
    return WaveTrackSubView::DoDetailedHitTest(
@@ -55,6 +58,7 @@ std::vector<UIHandlePtr> SpectrumView::DetailedHitTest(
 
 void SpectrumView::DoSetMinimized( bool minimized )
 {
+   dprintf("SpectrumView.cpp: DoSetMinimized");
    auto wt = static_cast<WaveTrack*>( FindTrack().get() );
 
 #ifdef EXPERIMENTAL_HALF_WAVE
@@ -154,6 +158,7 @@ inline AColor::ColorGradientChoice
 ChooseColorSet( float bin0, float bin1, float selBinLo,
    float selBinCenter, float selBinHi, int dashCount, bool isSpectral )
 {
+   dprintf("SpectrumView.cpp: ChooseColorSet");
    if (!isSpectral)
       return  AColor::ColorGradientTimeSelected;
    if ((selBinCenter >= 0) && (bin0 <= selBinCenter) &&
@@ -174,6 +179,7 @@ void DrawClipSpectrum(TrackPanelDrawingContext &context,
                                    const WaveClip *clip,
                                    const wxRect & rect)
 {
+   dprintf("SpectrumView.cpp: DrawClipSpectrum");
    auto &dc = context.dc;
    const auto artist = TrackArtist::Get( context );
    const auto &selectedRegion = *artist->pSelectedRegion;
@@ -617,6 +623,7 @@ void SpectrumView::DoDraw( TrackPanelDrawingContext &context,
                                 const WaveTrack *track,
                                 const wxRect & rect )
 {
+   dprintf("SpectrumView.cpp: TrackPanelDrawingContext");
    const auto artist = TrackArtist::Get( context );
    const auto &blankSelectedBrush = artist->blankSelectedBrush;
    const auto &blankBrush = artist->blankBrush;
@@ -707,6 +714,7 @@ struct SpectrogramSettingsHandler : PopupMenuHandler {
 
 void SpectrogramSettingsHandler::OnSpectrogramSettings(wxCommandEvent &)
 {
+   dprintf("SpectrumView.cpp: OnSpectrogramSettings");
    class ViewSettingsDialog final : public PrefsDialog
    {
    public:

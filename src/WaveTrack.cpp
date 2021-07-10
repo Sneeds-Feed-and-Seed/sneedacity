@@ -62,6 +62,8 @@ from the project that will own the track.
 #include "tracks/ui/TrackView.h"
 #include "tracks/ui/TrackControls.h"
 
+#include "Debug.h"
+
 using std::max;
 
 static ProjectFileIORegistry::Entry registerFactory{
@@ -84,6 +86,7 @@ WaveTrack::Holder WaveTrackFactory::DuplicateWaveTrack(const WaveTrack &orig)
 
 WaveTrack::Holder WaveTrackFactory::NewWaveTrack(sampleFormat format, double rate)
 {
+   dprintf("WaveTrack.cpp: NewWaveTrack");
    if (format == (sampleFormat)0)
       format = QualitySettings::SampleFormatChoice();
    if (rate == 0)
@@ -96,6 +99,7 @@ WaveTrack::WaveTrack( const SampleBlockFactoryPtr &pFactory,
    : PlayableTrack()
    , mpFactory(pFactory)
 {
+   dprintf("WaveTrack.cpp: WaveTrack");
    mLegacyProjectFileOffset = 0;
 
    mFormat = format;
@@ -141,6 +145,7 @@ WaveTrack::WaveTrack(const WaveTrack &orig):
 // Copy the track metadata but not the contents.
 void WaveTrack::Init(const WaveTrack &orig)
 {
+   dprintf("WaveTrack.cpp: Init");
    PlayableTrack::Init(orig);
    mpFactory = orig.mpFactory;
    
@@ -162,6 +167,7 @@ void WaveTrack::Init(const WaveTrack &orig)
 
 void WaveTrack::Reinit(const WaveTrack &orig)
 {
+   dprintf("WaveTrack.cpp: Reinit");
    Init(orig);
 
    {
@@ -185,6 +191,7 @@ void WaveTrack::Reinit(const WaveTrack &orig)
 
 void WaveTrack::Merge(const Track &orig)
 {
+   dprintf("WaveTrack.cpp: Merge");
    orig.TypeSwitch( [&](const WaveTrack *pwt) {
       const WaveTrack &wt = *pwt;
       mGain    = wt.mGain;
@@ -205,12 +212,14 @@ WaveTrack::~WaveTrack()
 
 double WaveTrack::GetOffset() const
 {
+   dprintf("WaveTrack.cpp: GetOffset");
    return GetStartTime();
 }
 
 /*! @excsafety{No-fail} */
 void WaveTrack::SetOffset(double o)
 {
+   dprintf("WaveTrack.cpp: SetOffset");
    double delta = o - GetOffset();
 
    for (const auto &clip : mClips)
@@ -226,6 +235,7 @@ auto WaveTrack::GetChannelIgnoringPan() const -> ChannelType {
 
 auto WaveTrack::GetChannel() const -> ChannelType
 {
+   dprintf("WaveTrack.cpp: GetChannel");
    if( mChannel != Track::MonoChannel )
       return mChannel; 
    auto pan = GetPan();
@@ -238,6 +248,7 @@ auto WaveTrack::GetChannel() const -> ChannelType
 
 void WaveTrack::SetPanFromChannelType()
 { 
+   dprintf("WaveTrack.cpp: SetPanFromChannelType");
    if( mChannel == Track::LeftChannel )
       SetPan( -1.0f );
    else if( mChannel == Track::RightChannel )
@@ -246,6 +257,7 @@ void WaveTrack::SetPanFromChannelType()
 
 void WaveTrack::SetLastScaleType() const
 {
+   dprintf("WaveTrack.cpp: SetLastScaleType");
    mLastScaleType = GetWaveformSettings().scaleType;
 }
 
@@ -268,6 +280,7 @@ void WaveTrack::SetDisplayBounds(float min, float max) const
 
 void WaveTrack::GetSpectrumBounds(float *min, float *max) const
 {
+   dprintf("WaveTrack.cpp: GetSpectrumBounds");
    const double rate = GetRate();
 
    const SpectrogramSettings &settings = GetSpectrogramSettings();
@@ -755,6 +768,7 @@ void WaveTrack::ClearAndPaste(double t0, // Start of time to clear
                               const TimeWarper *effectWarper // How does time change
                               )
 {
+   dprintf("WaveTrack.cpp: ClearAndPaste");
    double dur = std::min(t1 - t0, src->GetEndTime());
 
    // If duration is 0, then it's just a plain paste
@@ -1173,6 +1187,7 @@ void WaveTrack::SyncLockAdjust(double oldT1, double newT1)
 /*! @excsafety{Weak} */
 void WaveTrack::Paste(double t0, const Track *src)
 {
+   dprintf("WaveTrack.cpp: Paste");
    bool editClipCanMove = GetEditClipsCanMove();
 
    bool bOk = src && src->TypeSwitch< bool >( [&](const WaveTrack *other) {
@@ -1901,6 +1916,7 @@ bool WaveTrack::Get(samplePtr buffer, sampleFormat format,
                     sampleCount start, size_t len, fillFormat fill,
                     bool mayThrow, sampleCount * pNumWithinClips) const
 {
+   dprintf("WaveTrack.cpp: Get");
    // Simple optimization: When this buffer is completely contained within one clip,
    // don't clear anything (because we won't have to). Otherwise, just clear
    // everything to be on the safe side.
@@ -2548,6 +2564,7 @@ void WaveTrackCache::SetTrack(const std::shared_ptr<const WaveTrack> &pTrack)
 const float *WaveTrackCache::GetFloats(
    sampleCount start, size_t len, bool mayThrow)
 {
+   dprintf("WaveTrack.cpp: WaveTrackCache::GetFloats");
    constexpr auto format = floatSample;
    if (format == floatSample && len > 0) {
       const auto end = start + len;

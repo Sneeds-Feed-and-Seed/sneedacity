@@ -37,6 +37,7 @@ for shared and private configs - which need to move out.
 #include "ModuleManager.h"
 #include "PlatformCompatibility.h"
 #include "widgets/SneedacityMessageBox.h"
+#include "Debug.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -46,6 +47,7 @@ for shared and private configs - which need to move out.
 
 PluginDescriptor::PluginDescriptor()
 {
+   dprintf("PluginManager.cpp: PluginDescriptor");
    mPluginType = PluginTypeNone;
    mEnabled = false;
    mValid = false;
@@ -67,11 +69,13 @@ PluginDescriptor &PluginDescriptor::operator =(PluginDescriptor &&) = default;
 
 bool PluginDescriptor::IsInstantiated() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mInstance != nullptr;
 }
 
 ComponentInterface *PluginDescriptor::GetInstance()
 {
+   //dprintf("PluginManager.cpp: ");
    if (!mInstance)
    {
       if (GetPluginType() == PluginTypeModule)
@@ -88,97 +92,116 @@ ComponentInterface *PluginDescriptor::GetInstance()
 
 void PluginDescriptor::SetInstance(std::unique_ptr<ComponentInterface> instance)
 {
+   //dprintf("PluginManager.cpp: ");
    muInstance = std::move(instance);
    mInstance = muInstance.get();
 }
 
 PluginType PluginDescriptor::GetPluginType() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mPluginType;
 }
 
 const PluginID & PluginDescriptor::GetID() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mID;
 }
 
 const PluginID & PluginDescriptor::GetProviderID() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mProviderID;
 }
 
 const PluginPath & PluginDescriptor::GetPath() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mPath;
 }
 
 const ComponentInterfaceSymbol & PluginDescriptor::GetSymbol() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mSymbol;
 }
 
 wxString PluginDescriptor::GetUntranslatedVersion() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mVersion;
 }
 
 wxString PluginDescriptor::GetVendor() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mVendor;
 }
 
 bool PluginDescriptor::IsEnabled() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEnabled;
 }
 
 bool PluginDescriptor::IsValid() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mValid;
 }
 
 void PluginDescriptor::SetPluginType(PluginType type)
 {
+   //dprintf("PluginManager.cpp: ");
    mPluginType = type;
 }
 
 void PluginDescriptor::SetID(const PluginID & ID)
 {
+   //dprintf("PluginManager.cpp: ");
    mID = ID;
 }
 
 void PluginDescriptor::SetProviderID(const PluginID & providerID)
 {
+   //dprintf("PluginManager.cpp: ");
    mProviderID = providerID;
 }
 
 void PluginDescriptor::SetPath(const PluginPath & path)
 {
+   //dprintf("PluginManager.cpp: ");
    mPath = path;
 }
 
 void PluginDescriptor::SetSymbol(const ComponentInterfaceSymbol & symbol)
 {
+   //dprintf("PluginManager.cpp: ");
    mSymbol = symbol;
 }
 
 void PluginDescriptor::SetVersion(const wxString & version)
 {
+   //dprintf("PluginManager.cpp: ");
    mVersion = version;
 }
 
 void PluginDescriptor::SetVendor(const wxString & vendor)
 {
+   //dprintf("PluginManager.cpp: ");
    mVendor = vendor;
 }
 
 void PluginDescriptor::SetEnabled(bool enable)
 {
+   //dprintf("PluginManager.cpp: ");
    mEnabled = enable;
 }
 
 void PluginDescriptor::SetValid(bool valid)
 {
+   //dprintf("PluginManager.cpp: ");
    mValid = valid;
 }
 
@@ -186,71 +209,85 @@ void PluginDescriptor::SetValid(bool valid)
 
 wxString PluginDescriptor::GetEffectFamily() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectFamily;
 }
 
 EffectType PluginDescriptor::GetEffectType() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectType;
 }
 
 bool PluginDescriptor::IsEffectInteractive() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectInteractive;
 }
 
 bool PluginDescriptor::IsEffectDefault() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectDefault;
 }
 
 bool PluginDescriptor::IsEffectLegacy() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectLegacy;
 }
 
 bool PluginDescriptor::IsEffectRealtime() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectRealtime;
 }
 
 bool PluginDescriptor::IsEffectAutomatable() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mEffectAutomatable;
 }
 
 void PluginDescriptor::SetEffectFamily(const wxString & family)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectFamily = family;
 }
 
 void PluginDescriptor::SetEffectType(EffectType type)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectType = type;
 }
 
 void PluginDescriptor::SetEffectInteractive(bool interactive)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectInteractive = interactive;
 }
 
 void PluginDescriptor::SetEffectDefault(bool dflt)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectDefault = dflt;
 }
 
 void PluginDescriptor::SetEffectLegacy(bool legacy)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectLegacy = legacy;
 }
 
 void PluginDescriptor::SetEffectRealtime(bool realtime)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectRealtime = realtime;
 }
 
 void PluginDescriptor::SetEffectAutomatable(bool automatable)
 {
+   //dprintf("PluginManager.cpp: ");
    mEffectAutomatable = automatable;
 }
 
@@ -258,22 +295,26 @@ void PluginDescriptor::SetEffectAutomatable(bool automatable)
 
 const wxString & PluginDescriptor::GetImporterIdentifier() const
 {
+   //dprintf("PluginManager.cpp: ");
    return mImporterIdentifier;
 }
 
 void PluginDescriptor::SetImporterIdentifier(const wxString & identifier)
 {
+   //dprintf("PluginManager.cpp: ");
    mImporterIdentifier = identifier;
 }
 
 const FileExtensions & PluginDescriptor::GetImporterExtensions()
    const
 {
+   //dprintf("PluginManager.cpp: ");
    return mImporterExtensions;
 }
 
 void PluginDescriptor::SetImporterExtensions( FileExtensions extensions )
 {
+   //dprintf("PluginManager.cpp: ");
    mImporterExtensions = std::move( extensions );
 }
 
@@ -329,6 +370,7 @@ void PluginDescriptor::SetImporterExtensions( FileExtensions extensions )
 const PluginID &PluginManagerInterface::DefaultRegistrationCallback(
    ModuleInterface *provider, ComponentInterface *pInterface )
 {
+   //dprintf("PluginManager.cpp: ");
    EffectDefinitionInterface * pEInterface = dynamic_cast<EffectDefinitionInterface*>(pInterface);
    if( pEInterface )
       return PluginManager::Get().RegisterPlugin(provider, pEInterface, PluginTypeEffect);
@@ -342,6 +384,7 @@ const PluginID &PluginManagerInterface::DefaultRegistrationCallback(
 const PluginID &PluginManagerInterface::SneedacityCommandRegistrationCallback(
    ModuleInterface *provider, ComponentInterface *pInterface )
 {
+   //dprintf("PluginManager.cpp: ");
    ComponentInterface * pCInterface = dynamic_cast<ComponentInterface*>(pInterface);
    if( pCInterface )
       return PluginManager::Get().RegisterPlugin(provider, pCInterface);
@@ -351,6 +394,7 @@ const PluginID &PluginManagerInterface::SneedacityCommandRegistrationCallback(
 
 RegistryPath PluginManager::GetPluginEnabledSetting( const PluginID &ID ) const
 {
+   //dprintf("PluginManager.cpp: ");
    auto pPlugin = GetPlugin( ID );
    if ( pPlugin )
       return GetPluginEnabledSetting( *pPlugin );
@@ -360,6 +404,7 @@ RegistryPath PluginManager::GetPluginEnabledSetting( const PluginID &ID ) const
 RegistryPath PluginManager::GetPluginEnabledSetting(
    const PluginDescriptor &desc ) const
 {
+   //dprintf("PluginManager.cpp: ");
    switch ( desc.GetPluginType() ) {
       case PluginTypeModule: {
          // Retrieve optional family symbol that was recorded in
@@ -383,6 +428,7 @@ RegistryPath PluginManager::GetPluginEnabledSetting(
 bool PluginManager::IsPluginRegistered(
    const PluginPath &path, const TranslatableString *pName)
 {
+   //dprintf("PluginManager.cpp: ");
    for (auto &pair : mPlugins) {
       if (auto &descriptor = pair.second; descriptor.GetPath() == path) {
          if (pName)
@@ -396,6 +442,7 @@ bool PluginManager::IsPluginRegistered(
 
 const PluginID & PluginManager::RegisterPlugin(ModuleInterface *module)
 {
+   //dprintf("PluginManager.cpp: ");
    PluginDescriptor & plug = CreatePlugin(GetID(module), module, PluginTypeModule);
    plug.SetEffectFamily(module->GetOptionalFamilySymbol().Internal());
 
@@ -407,6 +454,7 @@ const PluginID & PluginManager::RegisterPlugin(ModuleInterface *module)
 
 const PluginID & PluginManager::RegisterPlugin(ModuleInterface *provider, ComponentInterface *command)
 {
+   //dprintf("PluginManager.cpp: ");
    PluginDescriptor & plug = CreatePlugin(GetID(command), command, (PluginType)PluginTypeSneedacityCommand);
 
    plug.SetProviderID(PluginManager::GetID(provider));
@@ -419,6 +467,7 @@ const PluginID & PluginManager::RegisterPlugin(ModuleInterface *provider, Compon
 
 const PluginID & PluginManager::RegisterPlugin(ModuleInterface *provider, EffectDefinitionInterface *effect, int type)
 {
+   //dprintf("PluginManager.cpp: ");
    PluginDescriptor & plug = CreatePlugin(GetID(effect), effect, (PluginType)type);
 
    plug.SetProviderID(PluginManager::GetID(provider));
@@ -438,6 +487,7 @@ const PluginID & PluginManager::RegisterPlugin(ModuleInterface *provider, Effect
 
 const PluginID & PluginManager::RegisterPlugin(ModuleInterface *provider, ImporterInterface *importer)
 {
+   dprintf("PluginManager.cpp: RegisterPlugin");
    PluginDescriptor & plug = CreatePlugin(GetID(importer), importer, PluginTypeImporter);
 
    plug.SetProviderID(PluginManager::GetID(provider));
@@ -453,7 +503,7 @@ void PluginManager::FindFilesInPathList(const wxString & pattern,
                                         FilePaths & files,
                                         bool directories)
 {
-   
+   dprintf("PluginManager.cpp: FindFilesInPathList");   
    wxLogNull nolog;
 
    // Why bother...
@@ -507,66 +557,79 @@ void PluginManager::FindFilesInPathList(const wxString & pattern,
 
 bool PluginManager::HasSharedConfigGroup(const PluginID & ID, const RegistryPath & group)
 {
+   //dprintf("PluginManager.cpp: ");
    return HasGroup(SharedGroup(ID, group));
 }
 
 bool PluginManager::GetSharedConfigSubgroups(const PluginID & ID, const RegistryPath & group, RegistryPaths & subgroups)
 {
+   //dprintf("PluginManager.cpp: ");
    return GetSubgroups(SharedGroup(ID, group), subgroups);
 }
 
 bool PluginManager::GetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, wxString & value, const wxString & defval)
 {
+   //dprintf("PluginManager.cpp: ");
    return GetConfig(SharedKey(ID, group, key), value, defval);
 }
 
 bool PluginManager::GetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, int & value, int defval)
 {
+   //dprintf("PluginManager.cpp: ");
    return GetConfig(SharedKey(ID, group, key), value, defval);
 }
 
 bool PluginManager::GetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, bool & value, bool defval)
 {
+   //dprintf("PluginManager.cpp: ");
    return GetConfig(SharedKey(ID, group, key), value, defval);
 }
 
 bool PluginManager::GetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, float & value, float defval)
 {
+   //dprintf("PluginManager.cpp: ");
    return GetConfig(SharedKey(ID, group, key), value, defval);
 }
 
 bool PluginManager::GetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, double & value, double defval)
 {
+   //dprintf("PluginManager.cpp: ");
    return GetConfig(SharedKey(ID, group, key), value, defval);
 }
 
 bool PluginManager::SetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, const wxString & value)
 {
+   //dprintf("PluginManager.cpp: ");
    return SetConfig(SharedKey(ID, group, key), value);
 }
 
 bool PluginManager::SetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, const int & value)
 {
+   //dprintf("PluginManager.cpp: ");
    return SetConfig(SharedKey(ID, group, key), value);
 }
 
 bool PluginManager::SetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, const bool & value)
 {
+   //dprintf("PluginManager.cpp: ");
    return SetConfig(SharedKey(ID, group, key), value);
 }
 
 bool PluginManager::SetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, const float & value)
 {
+   //dprintf("PluginManager.cpp: ");
    return SetConfig(SharedKey(ID, group, key), value);
 }
 
 bool PluginManager::SetSharedConfig(const PluginID & ID, const RegistryPath & group, const RegistryPath & key, const double & value)
 {
+   //dprintf("PluginManager.cpp: ");
    return SetConfig(SharedKey(ID, group, key), value);
 }
 
 bool PluginManager::RemoveSharedConfigSubgroup(const PluginID & ID, const RegistryPath & group)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = GetSettings()->DeleteGroup(SharedGroup(ID, group));
    if (result)
    {
@@ -760,6 +823,7 @@ void PluginManager::Terminate()
 
 bool PluginManager::DropFile(const wxString &fileName)
 {
+   dprintf("PluginManager.cpp: DropFile");
    auto &mm = ModuleManager::Get();
    const wxFileName src{ fileName };
 
@@ -871,6 +935,7 @@ bool PluginManager::DropFile(const wxString &fileName)
 
 void PluginManager::Load()
 {
+   dprintf("PluginManager.cpp: Load");
    // Create/Open the registry
    auto pRegistry = SneedacityFileConfig::Create(
       {}, {}, FileNames::PluginRegistry());
@@ -956,6 +1021,7 @@ void PluginManager::Load()
 
 void PluginManager::LoadGroup(FileConfig *pRegistry, PluginType type)
 {
+   dprintf("PluginManager.cpp: LoadGroup");
 #ifdef __WXMAC__
    // Bug 1590: On Mac, we should purge the registry of Nyquist plug-ins
    // bundled with other versions of Sneedacity, assuming both versions
@@ -1213,6 +1279,7 @@ void PluginManager::LoadGroup(FileConfig *pRegistry, PluginType type)
 
 void PluginManager::Save()
 {
+   dprintf("PluginManager.cpp: Save");
    // Create/Open the registry
    auto pRegistry = SneedacityFileConfig::Create(
       {}, {}, FileNames::PluginRegistry());
@@ -1244,6 +1311,7 @@ void PluginManager::Save()
 
 void PluginManager::SaveGroup(FileConfig *pRegistry, PluginType type)
 {
+   dprintf("PluginManager.cpp: SaveGroup");
    wxString group = GetPluginTypeString(type);
    for (auto &pair : mPlugins) {
       auto & plug = pair.second;
@@ -1330,6 +1398,7 @@ void PluginManager::SaveGroup(FileConfig *pRegistry, PluginType type)
 // and built-ins.
 void PluginManager::CheckForUpdates(bool bFast)
 {
+   dprintf("PluginManager.cpp: CheckForUpdates");
    ModuleManager & mm = ModuleManager::Get();
    wxArrayString pathIndex;
    for (auto &pair : mPlugins) {
@@ -1415,6 +1484,7 @@ void PluginManager::CheckForUpdates(bool bFast)
 const PluginID & PluginManager::RegisterPlugin(
    std::unique_ptr<EffectDefinitionInterface> effect, PluginType type)
 {
+   dprintf("PluginManager.cpp: RegisterPlugin");
    PluginDescriptor & plug =
       CreatePlugin(GetID(effect.get()), effect.get(), type);
 
@@ -1454,6 +1524,7 @@ const PluginDescriptor *PluginManager::GetPlugin(const PluginID & ID) const
 
 void PluginManager::Iterator::Advance(bool incrementing)
 {
+   dprintf("PluginManager.cpp: PluginManager::Iterator::Advance");
    const auto end = mPm.mPlugins.end();
    if (incrementing && mIterator != end)
       ++mIterator;
@@ -1533,6 +1604,7 @@ const ComponentInterfaceSymbol & PluginManager::GetSymbol(const PluginID & ID)
 
 ComponentInterface *PluginManager::GetInstance(const PluginID & ID)
 {
+   dprintf("PluginManager.cpp: GetInstance");
    if (auto iter = mPlugins.find(ID); iter == mPlugins.end())
       return nullptr;
    else {
@@ -1586,6 +1658,7 @@ PluginID PluginManager::GetID(ImporterInterface *importer)
 // So config compatibility will break if it is changed across Sneedacity versions
 wxString PluginManager::GetPluginTypeString(PluginType type)
 {
+   dprintf("PluginManager.cpp: GetPluginTypeString");
    wxString str;
 
    switch (type)
@@ -1621,6 +1694,7 @@ PluginDescriptor & PluginManager::CreatePlugin(const PluginID & id,
                                                ComponentInterface *ident,
                                                PluginType type)
 {
+   dprintf("PluginManager.cpp: CreatePlugin");
    // This will either create a NEW entry or replace an existing entry
    PluginDescriptor & plug = mPlugins[id];
 
@@ -1637,6 +1711,7 @@ PluginDescriptor & PluginManager::CreatePlugin(const PluginID & id,
 
 FileConfig *PluginManager::GetSettings()
 {
+   dprintf("PluginManager.cpp: GetSettings");
    if (!mSettings)
    {
       mSettings =
@@ -1668,6 +1743,7 @@ FileConfig *PluginManager::GetSettings()
 
 bool PluginManager::HasGroup(const RegistryPath & group)
 {
+   //dprintf("PluginManager.cpp: ");
    auto settings = GetSettings();
 
    bool res = settings->HasGroup(group);
@@ -1685,6 +1761,7 @@ bool PluginManager::HasGroup(const RegistryPath & group)
 
 bool PluginManager::GetSubgroups(const RegistryPath & group, RegistryPaths & subgroups)
 {
+   //dprintf("PluginManager.cpp: ");
    if (group.empty() || !HasGroup(group))
    {
       return false;
@@ -1710,6 +1787,7 @@ bool PluginManager::GetSubgroups(const RegistryPath & group, RegistryPaths & sub
 
 bool PluginManager::GetConfig(const RegistryPath & key, int & value, int defval)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1722,6 +1800,7 @@ bool PluginManager::GetConfig(const RegistryPath & key, int & value, int defval)
 
 bool PluginManager::GetConfig(const RegistryPath & key, wxString & value, const wxString & defval)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1738,6 +1817,7 @@ bool PluginManager::GetConfig(const RegistryPath & key, wxString & value, const 
 
 bool PluginManager::GetConfig(const RegistryPath & key, bool & value, bool defval)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1750,6 +1830,7 @@ bool PluginManager::GetConfig(const RegistryPath & key, bool & value, bool defva
 
 bool PluginManager::GetConfig(const RegistryPath & key, float & value, float defval)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1766,6 +1847,7 @@ bool PluginManager::GetConfig(const RegistryPath & key, float & value, float def
 
 bool PluginManager::GetConfig(const RegistryPath & key, double & value, double defval)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1778,6 +1860,7 @@ bool PluginManager::GetConfig(const RegistryPath & key, double & value, double d
 
 bool PluginManager::SetConfig(const RegistryPath & key, const wxString & value)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1795,6 +1878,7 @@ bool PluginManager::SetConfig(const RegistryPath & key, const wxString & value)
 
 bool PluginManager::SetConfig(const RegistryPath & key, const int & value)
 {
+   //dprintf("PluginManager.cpp: ");
    bool result = false;
 
    if (!key.empty())
@@ -1860,6 +1944,7 @@ bool PluginManager::SetConfig(const RegistryPath & key, const double & value)
 /* Return value is a key for lookup in a config file */
 RegistryPath PluginManager::SettingsPath(const PluginID & ID, bool shared)
 {
+   dprintf("PluginManager.cpp: SettingsPath");
    // All the strings reported by PluginDescriptor and used in this function
    // persist in the plugin settings configuration file, so they should not
    // be changed across Sneedacity versions, or else compatibility of the
@@ -1969,6 +2054,7 @@ const static char padc = wxT('=');
 
 wxString PluginManager::b64encode(const void *in, int len)
 {
+   dprintf("PluginManager.cpp: b64encode");
    unsigned char *p = (unsigned char *) in;
    wxString out;
 
@@ -2009,6 +2095,7 @@ wxString PluginManager::b64encode(const void *in, int len)
 
 int PluginManager::b64decode(const wxString &in, void *out)
 {
+   dprintf("PluginManager.cpp: b64decode");
    int len = in.length();
    unsigned char *p = (unsigned char *) out;
 
