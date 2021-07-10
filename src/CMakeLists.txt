@@ -127,6 +127,8 @@ list( APPEND SOURCES
       DarkThemeAsCeeCode.h
       DBConnection.cpp
       DBConnection.h
+      Debug.cpp
+      Debug.h
       DeviceChange.cpp
       DeviceChange.h
       DeviceManager.cpp

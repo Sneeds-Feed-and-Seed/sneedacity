@@ -112,6 +112,7 @@ It handles initialization and termination by subclassing wxApp.
 #include "tracks/ui/Scrubbing.h"
 #include "widgets/FileConfig.h"
 #include "widgets/FileHistory.h"
+#include "Debug.h"
 
 #ifdef EXPERIMENTAL_EASY_CHANGE_KEY_BINDINGS
 #include "prefs/KeyConfigPrefs.h"
@@ -695,6 +696,8 @@ IMPLEMENT_WX_THEME_SUPPORT
 int main(int argc, char *argv[])
 {
    wxDISABLE_DEBUG_SUPPORT();
+
+   // Proceed to SneedacityApp::OnInit(), then to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
 
    return wxEntry(argc, argv);
 }
@@ -1343,6 +1346,14 @@ bool SneedacityApp::InitPart2()
       wxPrintf("Sneedacity v%s\n", SNEEDACITY_VERSION_STRING);
       exit(0);
    }
+
+   global_debug_prints_enabled = false;   
+   if (parser->Found(wxT("d")))
+   {
+      global_debug_prints_enabled = true;
+   }
+   dprintf("InitPart2: global_debug_prints_enabled = true");
+
 
    long lval;
    if (parser->Found(wxT("b"), &lval))
@@ -2127,6 +2138,9 @@ std::unique_ptr<wxCmdLineParser> SneedacityApp::ParseCommandLine()
    parser->AddParam(_("audio or project file name"),
                     wxCMD_LINE_VAL_STRING,
                     wxCMD_LINE_PARAM_MULTIPLE | wxCMD_LINE_PARAM_OPTIONAL);
+                    
+   // Debug/trace printfs   
+   parser->AddSwitch(wxT("d"), wxT("debug"), _("display debug and trace messages"));
 
    // Run the parser
    if (parser->Parse() == 0)
