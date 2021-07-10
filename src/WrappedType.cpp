@@ -31,227 +31,142 @@
 #include <wx/wxprec.h>
 #include "Internat.h"
 
-/// @return true iff the wrapped type is a string.
-bool WrappedType::IsString()
+
+
+wxString WrappedType::ReadAsString() const
 {
-   return eWrappedType == eWrappedString;
+   struct {
+      wxString ret;
+      void operator()(wxString* str)
+      {
+         ret = *str;
+      }
+      void operator()(int mpInt)
+      {
+         ret = wxString::Format(wxT("%i"), mpInt);
+      }
+      void operator()(double mpDouble)
+      {
+         ret = wxString::Format(wxT("%.8g"), mpDouble);
+      }
+      void operator()(bool mpBool)
+      {
+         ret = mpBool ? wxT("true") : wxT("false");
+      }
+   } to_visit{};
+   std::visit(to_visit, mData);
+   return to_visit.ret;
+}
+
+int WrappedType::ReadAsInt() const
+{
+   struct {
+      void operator()(wxString* str) {
+         long l;
+         str->ToLong(&l);
+         ret = l;
+      }
+      void operator()(int t) { ret = t; }
+      void operator()(double t) { ret = t; }
+      void operator()(bool t) { ret = t; }
+      int ret;
+   } to_visit{};
+   std::visit(to_visit, mData);
+   return to_visit.ret;
+}
+
+double WrappedType::ReadAsDouble() const
+{
+   struct {
+      void operator()(wxString* str) {
+         ret = Internat::CompatibleToDouble( *str );
+      }
+      void operator()(int i) { ret = i; }
+      void operator()(double d) { ret = d; }
+      void operator()(bool b) { ret = b; }
+      double ret;
+   } to_visit{};
+   std::visit(to_visit, mData);
+   return to_visit.ret;
+}
+
+bool WrappedType::ReadAsBool() const
+{
+   struct {
+      void operator()(wxString* str) {
+         ret = str->IsSameAs( wxT("true"), false );
+      }
+      void operator()(int i) { ret = i; }
+      void operator()(double d) { ret = d; }
+      void operator()(bool b) { ret = b; }
+      double ret;
+   } to_visit{};
+   std::visit(to_visit, mData);
+   return to_visit.ret;
 }
 
 
-
-wxString WrappedType::ReadAsString()
+void WrappedType::WriteToAsString( const wxString & inStr)
 {
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      return *mpStr;
-      break;
-   case eWrappedInt:
-      return wxString::Format(wxT("%i"),*mpInt );
-      break;
-   case eWrappedDouble:
-      return wxString::Format(wxT("%.8g"),*mpDouble );
-      break;
-   case eWrappedBool:
-      return (* mpBool) ? wxT("true") : wxT("false" );
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-   return wxT("ERROR"); //Compiler pacifier
+   struct {
+      void operator()(wxString* str) {
+         *str = inStr;
+      }
+      void operator()(int& i) {
+         long l;
+         inStr.ToLong(&l);
+         i = l;
+      }
+      void operator()(double& d) {
+         d = Internat::CompatibleToDouble(inStr);
+      }
+      void operator()(bool& b) {
+         b = inStr.IsSameAs(wxT("true"), false);
+      }
+      const wxString & inStr;
+   } to_visit{ inStr };
+   std::visit(to_visit, mData);
 }
 
-int WrappedType::ReadAsInt()
+void WrappedType::WriteToAsInt( const int inInt)
 {
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-   {
-      long l;
-      mpStr->ToLong(&l);
-      return (int) l;
-      break;
-   }
-   case eWrappedInt:
-      return *mpInt;
-      break;
-   case eWrappedDouble:
-      return (int)*mpDouble;
-      break;
-   case eWrappedBool:
-      return (* mpBool) ? 1 : 0;
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-   return -1;//Compiler pacifier
+   struct {
+      void operator()(wxString* str) {
+         *str = wxString::Format( wxT("%i"), inInt);
+      }
+      void operator()(int& i) { i = inInt; }
+      void operator()(double& d) { d = inInt; }
+      void operator()(bool& b) { b = inInt; }
+      const int & inInt;
+   } to_visit{ inInt };
+   std::visit(to_visit, mData);
 }
 
-double WrappedType::ReadAsDouble()
+void WrappedType::WriteToAsDouble( const double inDouble)
 {
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      return Internat::CompatibleToDouble( *mpStr );
-      break;
-   case eWrappedInt:
-      return (double)*mpInt;
-      break;
-   case eWrappedDouble:
-      return * mpDouble;
-      break;
-   case eWrappedBool:
-      return (* mpBool)? 1.0 : 0.0;
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-   return -1.0f;//Compiler pacifier
-}
-
-bool WrappedType::ReadAsBool()
-{
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      return mpStr->IsSameAs( wxT("true"), false ); // case free comparison.
-      break;
-   case eWrappedInt:
-      return  *mpInt != 0;
-      break;
-   case eWrappedDouble:
-      wxASSERT( false );// DANGEROUS USE OF WrappedType.  Can't rely on equality.
-      return * mpDouble != 0.0f; // this is what the code would be...
-      break;
-   case eWrappedBool:
-      return * mpBool;
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-   return false;//Compiler pacifier
+   struct {
+      void operator()(wxString* str) {
+         *str = wxString::Format( wxT("%.8g"), inDouble );
+      }
+      void operator()(int& i) { i = inDouble; }
+      void operator()(double& d) { d = inDouble; }
+      void operator()(bool& b) { b = inDouble; }
+      const double & inDouble;
+   } to_visit{ inDouble };
+   std::visit(to_visit, mData);
 }
 
 
-void WrappedType::WriteToAsString( const wxString & InStr)
+void WrappedType::WriteToAsBool( const bool inBool)
 {
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      *mpStr = InStr;
-      break;
-   case eWrappedInt:
-   {
-      long l;
-      InStr.ToLong(&l);
-      *mpInt = (int) l;
-      break;
-   }
-   case eWrappedDouble:
-      *mpDouble = Internat::CompatibleToDouble( InStr );
-      break;
-   case eWrappedBool:
-      *mpBool = InStr.IsSameAs( wxT("true"), false ); // case free comparison.;
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
+   struct {
+      void operator()(wxString* str) {
+         *str = inBool ? wxT("true") : wxT("false");
+      }
+      void operator()(int& i) { i = inBool; }
+      void operator()(double& d) { d = inBool; }
+      void operator()(bool& b) { b = inBool; }
+      const bool & inBool;
+   } to_visit{ inBool };
+   std::visit(to_visit, mData);
 }
-
-void WrappedType::WriteToAsInt( const int InInt)
-{
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      *mpStr = wxString::Format( wxT("%i"), InInt );
-      break;
-   case eWrappedInt:
-      *mpInt = InInt;
-      break;
-   case eWrappedDouble:
-      *mpDouble = (double)InInt;
-      break;
-   case eWrappedBool:
-      * mpBool = (InInt !=0);
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-}
-
-void WrappedType::WriteToAsDouble( const double InDouble)
-{
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      *mpStr = wxString::Format( wxT("%.8g"), InDouble );
-      break;
-   case eWrappedInt:
-      *mpInt = (int)InDouble;
-      break;
-   case eWrappedDouble:
-      *mpDouble = InDouble;
-      break;
-   case eWrappedBool:
-      wxASSERT( false );
-      * mpBool = InDouble != 0.0;
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-}
-
-
-void WrappedType::WriteToAsBool( const bool InBool)
-{
-   switch( eWrappedType )
-   {
-   case eWrappedString:
-      *mpStr = InBool ? wxT("true") : wxT("false" );
-      break;
-   case eWrappedInt:
-      *mpInt = InBool ? 1 : 0;
-      break;
-   case eWrappedDouble:
-      *mpDouble = InBool ? 1.0 : 0.0;
-      break;
-   case eWrappedBool:
-      *mpBool = InBool;
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-}
-
