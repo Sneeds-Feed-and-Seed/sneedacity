@@ -3,8 +3,7 @@
 
 #include <string>
 #include <iostream>
-
-using namespace std;
+#include <chrono>
 
 inline bool global_debug_prints_enabled;
 
@@ -13,7 +12,10 @@ void dprintf(Ts&&... ts)
 {
    if (global_debug_prints_enabled)
    {
-      ((std::cout << std::forward<Ts>(ts)), ...) << '\n';
+      int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+      std::cout << now << " ";
+      ((std::cout << std::forward<Ts>(ts)), ...);
+      std::cout << std::endl;
    }
 }
 
