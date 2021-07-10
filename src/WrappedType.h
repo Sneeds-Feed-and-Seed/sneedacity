@@ -12,18 +12,7 @@
 
 #ifndef __WRAPPED_TYPE__
 #define __WRAPPED_TYPE__
-
-
-
-enum teWrappedType
-{
-   eWrappedNotSet,
-   eWrappedString,
-   eWrappedInt,
-   eWrappedDouble,
-   eWrappedBool,
-   eWrappedEnum
-};
+#include <variant>
 
 class wxString;
 class ShuttlePrefs;
@@ -31,24 +20,23 @@ class ShuttlePrefs;
 class SNEEDACITY_DLL_API WrappedType
 {
 public:
-
+   explicit WrappedType()
+   {}
    explicit WrappedType( wxString & InStr )
-      : eWrappedType{ eWrappedString }, mpStr{ &InStr }
+      : mData{ &InStr }
    {}
    explicit WrappedType( int & InInt )
-      : eWrappedType{ eWrappedInt }, mpInt{ &InInt }
+      : mData{ InInt }
    {}
    explicit WrappedType( double & InDouble )
-      : eWrappedType{ eWrappedDouble }, mpDouble{ &InDouble }
+      : mData{ InDouble }
    {}
    explicit WrappedType( bool & InBool )
-      : eWrappedType{ eWrappedBool }, mpBool{ &InBool }
+      : mData{ InBool }
    {}
-   explicit WrappedType()
-      : eWrappedType{ eWrappedNotSet }
-   {}
-
-   bool IsString();
+   
+   /// @return true if the wrapped type is a string.
+   inline bool IsString() { return std::holds_alternative<wxString*>(mData); }
 
    wxString ReadAsString();
    int ReadAsInt();
@@ -60,14 +48,8 @@ public:
    void WriteToAsDouble( const double InDouble);
    void WriteToAsBool( const bool InBool);
 
-public :
-
-   const teWrappedType eWrappedType;
-   wxString *const mpStr {};
-   int *const mpInt {};
-   double *const mpDouble {};
-   bool *const mpBool {};
-
+private:
+   std::variant<wxString*, int, double, bool> mData;
 };
 
 #endif
