@@ -694,10 +694,12 @@ IMPLEMENT_WX_THEME_SUPPORT
 
 int main(int argc, char *argv[])
 {
+
+   global_debug_prints_enabled = false;
+
    wxDISABLE_DEBUG_SUPPORT();
 
-   // Proceed to SneedacityApp::OnInit(), then to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
-
+   // Proceed to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
    return wxEntry(argc, argv);
 }
 
@@ -1345,12 +1347,11 @@ bool SneedacityApp::InitPart2()
       exit(0);
    }
 
-   global_debug_prints_enabled = false;   
    if (parser->Found(wxT("d")))
    {
       global_debug_prints_enabled = true;
    }
-   dprintf("InitPart2: global_debug_prints_enabled = true");
+   dprintf("InitPart2: global_debug_prints_enabled =", global_debug_prints_enabled);
 
 
    long lval;
