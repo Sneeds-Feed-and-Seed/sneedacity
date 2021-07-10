@@ -430,7 +430,7 @@ visit our %s.")
       << wxT("Customised version of the Sneedacity free, open source, cross-platform software " )
       << wxT("for recording and editing sounds.")
       << wxT("<p><br>&nbsp; &nbsp; <b>Sneedacity<sup>&reg;</sup></b> software is copyright &copy; 1999-2021 Sneedacity Team.<br>")
-      << wxT("&nbsp; &nbsp; The name <b>Sneedacity</b> is a registered trademark.<br><br>")
+      << wxT("&nbsp; &nbsp; The name <b>Sneedacity</b> is not a registered trademark.<br><br>")
 
 #else
       << XO("<h3>")
@@ -538,7 +538,7 @@ visit our %s.")
 
       << wxT("&nbsp; &nbsp; ")
       /* i18n-hint Sneedacity's name substitutes for %s */
-      << XO("The name %s is a registered trademark.")
+      << XO("The name %s is not a registered trademark.")
          .Format( Verbatim("<b>%s</b>").Format( ProgramName ) )
       << wxT("<br><br>")
 #endif

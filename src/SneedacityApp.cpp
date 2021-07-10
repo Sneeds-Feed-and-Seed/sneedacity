@@ -1586,7 +1586,7 @@ bool SneedacityApp::InitPart2()
    bool permsReset = false;
    gPrefs->Read(wxT("/MicrophonePermissionsReset"), &permsReset, false);
    if (!permsReset) {
-      system("tccutil reset Microphone org.sneedacityteam.sneedacity");
+      system("tccutil reset Microphone org.audacityteam.sneedacity");
       gPrefs->Write(wxT("/MicrophonePermissionsReset"), true);
    }
 #endif

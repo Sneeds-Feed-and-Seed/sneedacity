@@ -2089,7 +2089,7 @@ void WaveTrack::GetEnvelopeValues(double *buffer, size_t bufferLen,
             if (nClipLen <= 0) // Testing for bug 641, this problem is consistently '== 0', but doesn't hurt to check <.
                return;
 
-            // This check prevents problem cited in http://bugzilla.sneedacityteam.org/show_bug.cgi?id=528#c11,
+            // This check prevents problem cited in http://bugzilla.audacityteam.org/show_bug.cgi?id=528#c11,
             // Gale's cross_fade_out project, which was already corrupted by bug 528.
             // This conditional prevents the previous write past the buffer end, in clip->GetEnvelope() call.
             // Never increase rlen here.

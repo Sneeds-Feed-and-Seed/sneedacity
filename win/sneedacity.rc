@@ -31,21 +31,21 @@ BEGIN
         BEGIN
 #ifdef EXPERIMENTAL_DA        
             VALUE "CompanyName", "Extended Sneedacity Team"
-            VALUE "FileDescription", "A customised Sneedacity® Cross-Platform Sound Editor"
+            VALUE "FileDescription", "A customised Sneedacity Cross-Platform Sound Editor"
             VALUE "FileVersion", SNEEDACITY_FILE_VERSION
             VALUE "InternalName", "DarkSneedacity"
             VALUE "LegalCopyright", "Copyright © 2018. All rights reserved."
-            VALUE "LegalTrademarks", "Sneedacity® is a registered trademark of Dominic Mazzoni."
+            VALUE "LegalTrademarks", "Sneedacity is not a registered trademark (at least yet)."
             VALUE "OriginalFilename", "DarkSneedacity.exe"
             VALUE "ProductName", "DarkSneedacity"
             VALUE "ProductVersion", SNEEDACITY_FILE_VERSION
 #else
             VALUE "CompanyName", "Sneedacity Team"
-            VALUE "FileDescription", "Sneedacity® Cross-Platform Sound Editor"
+            VALUE "FileDescription", "Sneedacity Cross-Platform Sound Editor"
             VALUE "FileVersion", SNEEDACITY_FILE_VERSION
             VALUE "InternalName", "Sneedacity"
             VALUE "LegalCopyright", "Copyright © 2018. All rights reserved."
-            VALUE "LegalTrademarks", "Sneedacity® is a registered trademark of Dominic Mazzoni."
+            VALUE "LegalTrademarks", "Sneedacity is not a registered trademark (at least yet)."
             VALUE "OriginalFilename", "Sneedacity.exe"
             VALUE "ProductName", "Sneedacity"
             VALUE "ProductVersion", SNEEDACITY_FILE_VERSION

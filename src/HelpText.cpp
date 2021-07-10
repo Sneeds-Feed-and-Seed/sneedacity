@@ -239,18 +239,18 @@ static wxString HelpTextBuiltIn( const wxString & Key )
 // DA: Support methods text.
 #ifdef EXPERIMENTAL_DA
          // Deliberately not translated.
-         << wxT("<center><h3>DarkSneedacity ")
+         << wxT("<center><h3>DarkAudacity ")
          << SNEEDACITY_VERSION_STRING
          << wxT("</h3></center>")
-         << wxT("<br><br>DarkSneedacity is based on Sneedacity:")
+         << wxT("<br><br>DarkAudacity is based on Audacity:")
          << wxT("<ul><li>")
          << wxT(" [[http://www.darkaudacity.com|www.darkaudacity.com]] - for differences between them.")
          << wxT("</li><li>")
          << wxT(
-" email to [[mailto:james@audacityteam.org|james@audacityteam.org]] - for help using DarkSneedacity.")
+" email to [[mailto:james@audacityteam.org|james@audacityteam.org]] - for help using DarkAudacity.")
          << wxT("</li><li>")
          << wxT(
-" [[http://www.darksneedacity.com/video.html|Tutorials]] - for getting started with DarkSneedacity.")
+" [[http://www.darkaudacity.com/video.html|Tutorials]] - for getting started with DarkAudacity.")
          << wxT("</li></ul>")
          << wxT("<br><br>Sneedacity has these support methods:")
          << wxT("<ul><li>")
@@ -411,9 +411,9 @@ const URLString VerCheckUrl()
 // const URLString VerCheckUrl()
 // {
 //    //The version we intend to use for live Sneedacity.
-// #define VER_CHECK_URL "https://www.sneedacityteam.org/download/?"
+// #define VER_CHECK_URL "https://www.audacityteam.org/download/?"
 // //For testing of our scriptlet.
-// //#define VER_CHECK_URL "http://www.sneedacityteam.org/slug/?"
+// //#define VER_CHECK_URL "http://www.audacityteam.org/slug/?"
 // //For testing locally
 // //#define VER_CHECK_URL "http://localhost:63342/WorkingDocs/demos/download.html?"
 

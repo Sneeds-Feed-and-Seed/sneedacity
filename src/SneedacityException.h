@@ -43,7 +43,7 @@ protected:
    SneedacityException( const SneedacityException& ) = default;
 
    //! Don't allow moves of this class or subclasses
-   // see https://bugzilla.sneedacityteam.org/show_bug.cgi?id=2442
+   // see https://bugzilla.audacityteam.org/show_bug.cgi?id=2442
    SneedacityException( SneedacityException&& ) = delete;
 
    //! Disallow assignment
