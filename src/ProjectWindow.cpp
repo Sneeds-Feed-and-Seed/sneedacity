@@ -598,9 +598,6 @@ ProjectWindow::ProjectWindow(wxWindow * parent, wxWindowID id,
    mTopPanel->SetLabel( "Top Panel" );// Not localised
    mTopPanel->SetLayoutDirection(wxLayout_LeftToRight);
    mTopPanel->SetAutoLayout(true);
-#ifdef EXPERIMENTAL_DA2
-   mTopPanel->SetBackgroundColour(theTheme.Colour( clrMedium ));
-#endif
 
    wxWindow    * pPage;
 
@@ -634,10 +631,6 @@ ProjectWindow::ProjectWindow(wxWindow * parent, wxWindowID id,
    //pPage->SetBackgroundColour( theTheme.Colour( clrDark ));
 #endif
    pPage->SetLayoutDirection(wxLayout_LeftToRight);
-
-#ifdef EXPERIMENTAL_DA2
-   pPage->SetBackgroundColour(theTheme.Colour( clrMedium ));
-#endif
 
    mMainPage = pPage;
 

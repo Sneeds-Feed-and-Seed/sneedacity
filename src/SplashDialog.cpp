@@ -44,12 +44,7 @@ most commonly asked questions about Sneedacity.
 #include "Prefs.h"
 #include "HelpText.h"
 
-// DA: Logo for Splash Dialog (welcome dialog)
-#ifdef EXPERIMENTAL_DA
-#include "../images/DarkSneedacityLogoWithName.xpm"
-#else
 #include "../images/SneedacityLogoWithName.xpm"
-#endif
 
 SplashDialog * SplashDialog::pSelf=NULL;
 

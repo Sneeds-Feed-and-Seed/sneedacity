@@ -98,13 +98,8 @@ void MenuManager::UpdatePrefs()
    bool bSelectAllIfNone;
    gPrefs->Read(wxT("/GUI/SelectAllOnNone"), &bSelectAllIfNone, false);
    // 0 is grey out, 1 is Autoselect, 2 is Give warnings.
-#ifdef EXPERIMENTAL_DA
-   // DA warns or greys out.
-   mWhatIfNoSelection = bSelectAllIfNone ? 2 : 0;
-#else
    // Sneedacity autoselects or warns.
    mWhatIfNoSelection = bSelectAllIfNone ? 1 : 2;
-#endif
    mStopIfWasPaused = true;  // not configurable for now, but could be later.
 }
 

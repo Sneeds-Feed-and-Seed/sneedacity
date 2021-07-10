@@ -445,12 +445,7 @@ FilePath FileNames::ThemeImageDefsAsCee()
 
 FilePath FileNames::ThemeCacheAsCee( )
 {
-// DA: Theme sourcery file name.
-#ifndef EXPERIMENTAL_DA
    return wxFileName( ThemeDir(), wxT("ThemeAsCeeCode.h") ).GetFullPath();
-#else
-   return wxFileName( ThemeDir(), wxT("DarkThemeAsCeeCode.h") ).GetFullPath();
-#endif
 }
 
 FilePath FileNames::ThemeComponent(const wxString &Str)

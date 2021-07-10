@@ -47,12 +47,7 @@ hold information about one contributor to Sneedacity.
 #include "AllThemeResources.h"
 #include "Theme.h"
 
-// DA: Logo for About box.
-#ifdef EXPERIMENTAL_DA
-#include "../images/DarkSneedacityLogoWithName.xpm"
-#else
 #include "../images/SneedacityLogoWithName.xpm"
-#endif
 
 // Notice this is a "system include".  This is on purpose and only until
 // we convert over to CMake.  Once converted, the "RevisionIndent.h" file
@@ -356,12 +351,6 @@ void AboutDialog::PopulateSneedacityPage( ShuttleGui & S )
    CreateCreditsList();
 
    auto par1Str =
-// DA: Says that it is a customised version.
-#ifdef EXPERIMENTAL_DA
-      wxT(
-"Sneedacity, which this is a customised version of, is a free program written by a worldwide team of [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|volunteers]]. \
-Sneedacity is [[https://github.com/Sneeds-Feed-and-Seed/sneedacity/releases|available]] for Windows, Mac, and GNU/Linux (and other Unix-like systems).")
-#else
 /* Do the i18n of a string with markup carefully with hints.
  (Remember languages with cases.) */
       XO(
@@ -378,7 +367,6 @@ Sneedacity is [[https://github.com/Sneeds-Feed-and-Seed/sneedacity/releases|avai
             Verbatim("[[https://github.com/Sneeds-Feed-and-Seed/sneedacity/releases|%s]]")
                /* i18n-hint: substitutes into "Sneedacity is %s" */
                .Format( XO("available") ) )
-#endif
    ;
 
    // This trick here means that the English language version won't mention using
@@ -420,19 +408,6 @@ visit our %s.")
    wxTextOutputStream informationStr( o );   // string to build up list of information in
    informationStr
       << wxT("<center>")
-// DA: Description and provenance in About box
-#ifdef EXPERIMENTAL_DA
-      #undef _
-      #define _(s) wxGetTranslation((s))
-      << wxT("<h3>DarkSneedacity ")
-      << wxString(SNEEDACITY_VERSION_STRING)
-      << wxT("</center></h3>")
-      << wxT("Customised version of the Sneedacity free, open source, cross-platform software " )
-      << wxT("for recording and editing sounds.")
-      << wxT("<p><br>&nbsp; &nbsp; <b>Sneedacity<sup>&reg;</sup></b> software is copyright &copy; 1999-2021 Sneedacity Team.<br>")
-      << wxT("&nbsp; &nbsp; The name <b>Sneedacity</b> is a registered trademark.<br><br>")
-
-#else
       << XO("<h3>")
       << ProgramName
       << wxT(" ")
@@ -441,7 +416,6 @@ visit our %s.")
       /* i18n-hint: The program's name substitutes for %s */
       << XO("%s the free, open source, cross-platform software for recording and editing sounds.")
             .Format(ProgramName)
-#endif
 
       // << wxT("<p><br>")
       // << par1Str
@@ -451,14 +425,6 @@ visit our %s.")
       << XO("Credits")
       << wxT("</h3>")
       << wxT("<p>")
-
-// DA: Customisation credit
-#ifdef EXPERIMENTAL_DA
-      << wxT("<p><b>")
-      << XO("DarkSneedacity Customisation")
-      << wxT("</b><br>")
-      << wxT("James Crook, art, coding &amp; design<br>")
-#endif
 
       << wxT("<p><b>")
       /* i18n-hint: The program's name substitutes for %s */
@@ -522,10 +488,6 @@ visit our %s.")
       << XO("%s website: ").Format( ProgramName )
       << wxT("[[https://github.com/Sneeds-Feed-and-Seed/sneedacity|https://github.com/Sneeds-Feed-and-Seed/sneedacity]]")
 
-// DA: Link for DA url too
-#ifdef EXPERIMENTAL_DA
-      << wxT("<br>DarkSneedacity website: [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|https://github.com/Sneeds-Feed-and-Seed/sneedacity]]")
-#else
       << wxT("<p><br>&nbsp; &nbsp; ")
       /* i18n-hint Sneedacity's name substitutes for first and third %s,
        and a "copyright" symbol for the second */
@@ -541,7 +503,6 @@ visit our %s.")
       << XO("The name %s is a registered trademark.")
          .Format( Verbatim("<b>%s</b>").Format( ProgramName ) )
       << wxT("<br><br>")
-#endif
 
       << wxT("</center>")
    ;
@@ -773,11 +734,7 @@ void AboutDialog::PopulateInformationPage( ShuttleGui & S )
       << XO("Features")
       << wxT("</h3>\n<table>");  // start table of features
 
-#ifdef EXPERIMENTAL_DA
-   AddBuildinfoRow(&informationStr, wxT("Theme"), XO("Dark Theme Extras"), enabled);
-#else
    AddBuildinfoRow(&informationStr, wxT("Theme"), XO("Dark Theme Extras"), disabled);
-#endif
 
    # if USE_NYQUIST
    AddBuildinfoRow(&informationStr, wxT("Nyquist"), XO("Plug-in support"),

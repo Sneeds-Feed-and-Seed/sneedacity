@@ -139,12 +139,7 @@ It handles initialization and termination by subclassing wxApp.
 #endif
 #endif
 
-// DA: Logo for Splash Screen
-#ifdef EXPERIMENTAL_DA
-#include "../images/DarkSneedacityLogoWithName.xpm"
-#else
 #include "../images/SneedacityLogoWithName.xpm"
-#endif
 
 #include <thread>
 
@@ -1119,12 +1114,7 @@ bool SneedacityApp::OnInit()
    // Don't use SNEEDACITY_NAME here.
    // We want Sneedacity with a capital 'A'
 
-// DA: App name
-#ifndef EXPERIMENTAL_DA
    wxString appName = wxT("Sneedacity");
-#else
-   wxString appName = wxT("DarkSneedacity");
-#endif
 
    wxTheApp->SetAppName(appName);
    // Explicitly set since OSX will use it for the "Quit" menu item
@@ -1167,12 +1157,7 @@ bool SneedacityApp::OnInit()
          wxT("/var/tmp/sneedacity-%s"), wxGetUserId() ) );
    }
 
-// DA: Path env variable.
-#ifndef EXPERIMENTAL_DA
    wxString pathVar = wxGetenv(wxT("SNEEDACITY_PATH"));
-#else
-   wxString pathVar = wxGetenv(wxT("DARKSNEEDACITY_PATH"));
-#endif
    if (!pathVar.empty())
       FileNames::AddMultiPathsToPathList(pathVar, sneedacityPathList);
    FileNames::AddUniquePathToPathList(::wxGetCwd(), sneedacityPathList);
