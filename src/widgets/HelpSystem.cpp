@@ -243,12 +243,7 @@ void HelpSystem::ShowHelp(wxWindow *parent,
    wxASSERT(parent); // to justify safenew
    wxString HelpMode = wxT("Local");
 
-// DA: Default for DA is manual from internet.
-#ifdef EXPERIMENTAL_DA
-   gPrefs->Read(wxT("/GUI/Help"), &HelpMode, wxT("FromInternet") );
-#else
    gPrefs->Read(wxT("/GUI/Help"), &HelpMode, wxT("Local") );
-#endif
 
    {
       // these next lines are for legacy cfg files (pre 2.0) where we had different modes
@@ -350,16 +345,9 @@ void HelpSystem::ShowHelp(wxWindow *parent,
    }
    else if (releasePageName == L"Quick_Help")
    {
-// DA: No bundled help, by default, and different quick-help URL.
-#ifdef EXPERIMENTAL_DA
-      releasePageName = L"video" + ReleaseSuffix + anchor;
-      localHelpPage = wxFileName(FileNames::HtmlHelpDir(), releasePageName).GetFullPath();
-      webHelpPath = L"http://www.darksneedacity.com/";
-#else
       releasePageName = L"quick_help" + ReleaseSuffix + anchor;
       localHelpPage = wxFileName(FileNames::HtmlHelpDir(), releasePageName).GetFullPath();
       webHelpPath = L"https://" + HelpSystem::HelpHostname + HelpSystem::HelpServerHomeDir;
-#endif
    }
    // not a page name, but rather a full path (e.g. to wiki)
    // in which case do not do any substitutions.

@@ -112,6 +112,7 @@ It handles initialization and termination by subclassing wxApp.
 #include "tracks/ui/Scrubbing.h"
 #include "widgets/FileConfig.h"
 #include "widgets/FileHistory.h"
+#include "Debug.h"
 
 #ifdef EXPERIMENTAL_EASY_CHANGE_KEY_BINDINGS
 #include "prefs/KeyConfigPrefs.h"
@@ -138,12 +139,7 @@ It handles initialization and termination by subclassing wxApp.
 #endif
 #endif
 
-// DA: Logo for Splash Screen
-#ifdef EXPERIMENTAL_DA
-#include "../images/DarkSneedacityLogoWithName.xpm"
-#else
 #include "../images/SneedacityLogoWithName.xpm"
-#endif
 
 #include <thread>
 
@@ -172,7 +168,35 @@ static void wxOnAssert(const wxChar *fileName, int lineNumber, const wxChar *msg
 #endif
 
 namespace {
+#if _WIN32
+#include <Windows.h>
+    // In case it's not system theme is not defined, return 1 for light theme
+    const char* getSystemTheme() {
+        HKEY resultKey;
+        LONG err = RegOpenKeyEx(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", 0, KEY_READ, &resultKey);
+        if (err != ERROR_SUCCESS)
+        {
+            return "light";
+        }
+        DWORD dataType;
+        WCHAR value[255];
+        PVOID pvdata = value;
+        DWORD size = sizeof(value);
+        err = RegGetValue(resultKey, NULL, L"AppsUseLightTheme", RRF_RT_ANY, &dataType, pvdata, &size);
+        if (err != ERROR_SUCCESS)
+        {
+            return "light";
+        }
 
+        if (*(DWORD*)pvdata == 0) {
+            return "dark";
+        }
+        else {
+            return "light";
+        }
+        RegCloseKey(resultKey);
+    }
+#endif // _WIN32
 void PopulatePreferences()
 {
    bool resetPrefs = false;
@@ -370,6 +394,13 @@ void PopulatePreferences()
       gPrefs->Write(wxT("/GUI/Toolbars/Time/Path"),"0,1");
       gPrefs->Write(wxT("/GUI/Toolbars/Time/Show"),1);
    }
+
+#if _WIN32
+   {
+       auto theme = getSystemTheme();
+       gPrefs->Write(wxT("/Gui/Theme"), theme);
+   }
+#endif // _WIN32
 
    // write out the version numbers to the prefs file for future checking
    gPrefs->Write(wxT("/Version/Major"), SNEEDACITY_VERSION);
@@ -694,8 +725,12 @@ IMPLEMENT_WX_THEME_SUPPORT
 
 int main(int argc, char *argv[])
 {
+
+   global_debug_prints_enabled = false;
+
    wxDISABLE_DEBUG_SUPPORT();
 
+   // Proceed to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
    return wxEntry(argc, argv);
 }
 
@@ -792,7 +827,7 @@ BEGIN_EVENT_TABLE(SneedacityApp, wxApp)
 
    // Global ESC key handling
    EVT_KEY_DOWN(SneedacityApp::OnKeyDown)
-   EVT_KEY_DOWN(CatalogListener::CheckForSneed) // setup "sneed" event listener
+   EVT_KEY_DOWN(CatalogListener::CheckForSneed)
 END_EVENT_TABLE()
 
 // backend for OnMRUFile
@@ -1079,12 +1114,7 @@ bool SneedacityApp::OnInit()
    // Don't use SNEEDACITY_NAME here.
    // We want Sneedacity with a capital 'A'
 
-// DA: App name
-#ifndef EXPERIMENTAL_DA
    wxString appName = wxT("Sneedacity");
-#else
-   wxString appName = wxT("DarkSneedacity");
-#endif
 
    wxTheApp->SetAppName(appName);
    // Explicitly set since OSX will use it for the "Quit" menu item
@@ -1127,12 +1157,7 @@ bool SneedacityApp::OnInit()
          wxT("/var/tmp/sneedacity-%s"), wxGetUserId() ) );
    }
 
-// DA: Path env variable.
-#ifndef EXPERIMENTAL_DA
    wxString pathVar = wxGetenv(wxT("SNEEDACITY_PATH"));
-#else
-   wxString pathVar = wxGetenv(wxT("DARKSNEEDACITY_PATH"));
-#endif
    if (!pathVar.empty())
       FileNames::AddMultiPathsToPathList(pathVar, sneedacityPathList);
    FileNames::AddUniquePathToPathList(::wxGetCwd(), sneedacityPathList);
@@ -1343,6 +1368,13 @@ bool SneedacityApp::InitPart2()
       wxPrintf("Sneedacity v%s\n", SNEEDACITY_VERSION_STRING);
       exit(0);
    }
+
+   if (parser->Found(wxT("d")))
+   {
+      global_debug_prints_enabled = true;
+   }
+   dprintf("InitPart2: global_debug_prints_enabled =", global_debug_prints_enabled);
+
 
    long lval;
    if (parser->Found(wxT("b"), &lval))
@@ -2127,6 +2159,9 @@ std::unique_ptr<wxCmdLineParser> SneedacityApp::ParseCommandLine()
    parser->AddParam(_("audio or project file name"),
                     wxCMD_LINE_VAL_STRING,
                     wxCMD_LINE_PARAM_MULTIPLE | wxCMD_LINE_PARAM_OPTIONAL);
+                    
+   // Debug/trace printfs   
+   parser->AddSwitch(wxT("d"), wxT("debug"), _("display debug and trace messages"));
 
    // Run the parser
    if (parser->Parse() == 0)
@@ -2467,4 +2502,3 @@ void SneedacityApp::AssociateFileTypes()
    }
 }
 #endif
-

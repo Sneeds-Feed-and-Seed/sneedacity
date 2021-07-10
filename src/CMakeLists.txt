@@ -133,6 +133,8 @@ list( APPEND SOURCES
       DarkThemeAsCeeCode.h
       DBConnection.cpp
       DBConnection.h
+      Debug.cpp
+      Debug.h
       DeviceChange.cpp
       DeviceChange.h
       DeviceManager.cpp
@@ -967,10 +969,6 @@ list( APPEND SOURCES
       widgets/ReadOnlyText.h
       widgets/Ruler.cpp
       widgets/Ruler.h
-      $<$<BOOL:${${_OPT}has_sentry_reporting}>:
-         widgets/ErrorReportDialog.cpp
-         widgets/ErrorReportDialog.h
-      >
       widgets/Warning.cpp
       widgets/Warning.h
       widgets/WindowAccessible.cpp
