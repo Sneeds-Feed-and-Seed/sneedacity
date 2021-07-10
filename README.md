@@ -40,6 +40,23 @@ Build instructions are available [here](BUILDING.md).
 
 More information for developers is available from [4chan's technology board](https://boards.4channel.org/g/sneed).
 
+## Testimonials
+
+> *"Seems like these teenagers are committing real code out of pure rage. How long can they keep this up?"*
+> -[voov1ce, redditor](https://archive.is/swWHj)
+
+> *"Zero real developers, just edgy kids "participating" by editing the readme files."*
+> -[Latter_Pin9045, redditor](https://archive.is/txQeU)
+
+> *"(took the code from sneedacity PR lol)"*
+> -[ShiningLea, Audacium developer](https://desuarchive.org/g/thread/82467576/#82475508)
+
+> *"They want to infiltrate your mind by using hate as an infiltration technique. Literally."*
+> -[cookiengineer, pinephone user](https://archive.is/eKSLy#selection-4101.0-4101.88)"
+
+> *"Replace eed with uck."*
+> -[emabrey, tenacity maintainer](https://desuarchive.org/g/thread/82428048/#82428141)
+
 ## License
 
 This project is licensed under the GNU General Public License v2 (Cuck Licenses BTFO) and compatible licenses. More info in [LICENSE.txt](https://github.com/Sneeds-Feed-and-Seed/sneedacity/blob/master/LICENSE.txt)
