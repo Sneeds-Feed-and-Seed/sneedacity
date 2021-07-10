@@ -411,9 +411,9 @@ const URLString VerCheckUrl()
 // const URLString VerCheckUrl()
 // {
 //    //The version we intend to use for live Sneedacity.
-// #define VER_CHECK_URL "https://www.audacityteam.org/download/?"
+// #define VER_CHECK_URL "https://www.sneedacity.org/download/?"
 // //For testing of our scriptlet.
-// //#define VER_CHECK_URL "http://www.audacityteam.org/slug/?"
+// //#define VER_CHECK_URL "https://www.sneedacity.org/slug/?"
 // //For testing locally
 // //#define VER_CHECK_URL "http://localhost:63342/WorkingDocs/demos/download.html?"
 
