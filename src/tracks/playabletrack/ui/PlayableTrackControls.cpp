@@ -202,17 +202,8 @@ const TCPLines& PlayableTrackControls::StaticTCPLines()
    std::call_once( flag, []{
       playableTrackTCPLines = CommonTrackControls::StaticTCPLines();
       playableTrackTCPLines.insert( playableTrackTCPLines.end(), {
-   #ifdef EXPERIMENTAL_DA
-         // DA: Has Mute and Solo on separate lines.
-         { TCPLine::kItemMute, kTrackInfoBtnSize + 1, 1,
-           WideMuteDrawFunction },
-         { TCPLine::kItemSolo, kTrackInfoBtnSize + 1, 0,
-           WideSoloDrawFunction },
-   #else
          { TCPLine::kItemMute | TCPLine::kItemSolo, kTrackInfoBtnSize + 1, 0,
            MuteAndSoloDrawFunction },
-   #endif
-
       } );
    } );
    return playableTrackTCPLines;

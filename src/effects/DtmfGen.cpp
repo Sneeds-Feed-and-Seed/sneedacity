@@ -38,12 +38,7 @@ enum
    ID_DutyCycle,
 };
 
-// DA: DTMF for Sneedacity uses a different string.
-#ifdef EXPERIMENTAL_DA
-#define SHORT_APP_NAME "darksneedacity"
-#else
 #define SHORT_APP_NAME "sneedacity"
-#endif
 
 // Define keys, defaults, minimums, and maximums for the effect parameters
 //

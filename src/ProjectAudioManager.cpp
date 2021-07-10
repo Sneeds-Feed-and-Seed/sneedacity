@@ -562,11 +562,7 @@ bool ProjectAudioManager::UseDuplex()
 {
    bool duplex;
    gPrefs->Read(wxT("/AudioIO/Duplex"), &duplex,
-#ifdef EXPERIMENTAL_DA
-      false
-#else
       true
-#endif
       );
    return duplex;
 }
