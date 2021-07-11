@@ -496,13 +496,6 @@ visit our %s.")
             Verbatim("<b>%s<sup>&reg;</sup></b>").Format( ProgramName ),
             wxT("&copy;"),
             ProgramName )
-      << wxT("<br>")
-
-      << wxT("&nbsp; &nbsp; ")
-      /* i18n-hint Sneedacity's name substitutes for %s */
-      << XO("The name %s is not a registered trademark.")
-         .Format( Verbatim("<b>%s</b>").Format( ProgramName ) )
-      << wxT("<br><br>")
 
       << wxT("</center>")
    ;

@@ -30,7 +30,6 @@ BEGIN
             VALUE "FileVersion", SNEEDACITY_FILE_VERSION
             VALUE "InternalName", "Sneedacity"
             VALUE "LegalCopyright", "Copyright © 2018. All rights reserved."
-            VALUE "LegalTrademarks", "Sneedacity is not a registered trademark (at least yet)."
             VALUE "OriginalFilename", "Sneedacity.exe"
             VALUE "ProductName", "Sneedacity"
             VALUE "ProductVersion", SNEEDACITY_FILE_VERSION
