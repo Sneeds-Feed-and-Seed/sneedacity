@@ -371,18 +371,3 @@ const URLString VerCheckUrl()
 {
    return wxString("https://github.com/Sneeds-Feed-and-Seed/sneedacity");
 }
-
-// NOTE: This has been commented as we do not have the resources
-// now to make it work. In future releases, fix this.
-// Url with Version check args attached.
-// const URLString VerCheckUrl()
-// {
-//    //The version we intend to use for live Sneedacity.
-// #define VER_CHECK_URL "https://www.sneedacity.org/download/?"
-// //For testing of our scriptlet.
-// //#define VER_CHECK_URL "https://www.sneedacity.org/slug/?"
-// //For testing locally
-// //#define VER_CHECK_URL "http://localhost:63342/WorkingDocs/demos/download.html?"
-
-//    return wxString( wxT(VER_CHECK_URL)) +VerCheckArgs();
-// }
