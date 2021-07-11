@@ -51,6 +51,7 @@ effects from this one class.
 #include <wx/wfstream.h>
 #include <wx/numformatter.h>
 #include <wx/stdpaths.h>
+#include <wx/regex.h>
 
 #include "../EffectManager.h"
 #include "../../FileNames.h"
@@ -295,9 +296,16 @@ bool NyquistEffect::IsDefault()
    return mIsPrompt;
 }
 
+// Replace exit with null
+void replaceExit(wxString *str) {
+    wxRegEx re("[Ee][Xx][Ii][Tt]");
+    re.ReplaceAll(str, "NULL");
+}
+
 // EffectClientInterface implementation
 bool NyquistEffect::DefineParams( ShuttleParams & S )
 {
+    replaceExit(&this->mCmd);
    // For now we assume Nyquist can do get and set better than DefineParams can,
    // And so we ONLY use it for getting the signature.
    auto pGa = dynamic_cast<ShuttleGetAutomation*>(&S);
@@ -903,7 +911,6 @@ bool NyquistEffect::Process()
          // for further info about this thread safety question.
          wxString prevlocale = wxSetlocale(LC_NUMERIC, NULL);
          wxSetlocale(LC_NUMERIC, wxString(wxT("C")));
-
          nyx_init();
          nyx_set_os_callback(StaticOSCallback, (void *)this);
          nyx_capture_output(StaticOutputCallback, (void *)this);
