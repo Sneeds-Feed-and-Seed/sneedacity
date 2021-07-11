@@ -5,7 +5,8 @@
   ODDecodeTask.h
 
   Created by Michael Chinen (mchinen) on 8/10/08.
-  Sneedacity is copyright (c) 1999-2008 Sneedacity Team.
+  Sneedacity is copyright (c) 1999-2008 Audacity Team,
+                copyright (c) 2021 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 ******************************************************************//**

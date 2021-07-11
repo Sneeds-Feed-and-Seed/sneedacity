@@ -4,7 +4,8 @@ Sneedacity: A Digital Audio Editor
 
 FFmpeg.cpp
 
-Sneedacity is copyright (c) 1999-2009 Sneedacity Team.
+Sneedacity is copyright (c) 1999-2009 Audacity Team,
+              copyright (c) 2021 Sneedacity Team.
 License: GPL v2.  See License.txt.
 
 ******************************************************************//**

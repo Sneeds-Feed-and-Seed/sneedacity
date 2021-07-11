@@ -4,7 +4,8 @@
 
   LV2Effect.h
 
-  Sneedacity is copyright (c) 1999-2013 Sneedacity Team.
+  Sneedacity is copyright (c) 1999-2013 Audacity Team,
+                copyright (c) 2021 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 *********************************************************************/
