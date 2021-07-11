@@ -25,7 +25,7 @@ int gCatalogStepsCompleted = 0;
 
 void CatalogListener::CheckForSneed(wxKeyEvent& kev)
 {
-	bool enabled;
+	bool enabled = false;
 	gPrefs->Read(wxT("/GUI/Catalog"), &enabled);
 	
 	if (enabled) 

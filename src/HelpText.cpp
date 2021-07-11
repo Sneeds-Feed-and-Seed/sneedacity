@@ -236,29 +236,6 @@ static wxString HelpTextBuiltIn( const wxString & Key )
 "You can help us get Sneedacity ready for release by joining our [[https://github.com/Sneeds-Feed-and-Seed/sneedacity|community]].<hr><br><br>")
 #endif
 
-// DA: Support methods text.
-#ifdef EXPERIMENTAL_DA
-         // Deliberately not translated.
-         << wxT("<center><h3>DarkAudacity ")
-         << SNEEDACITY_VERSION_STRING
-         << wxT("</h3></center>")
-         << wxT("<br><br>DarkAudacity is based on Audacity:")
-         << wxT("<ul><li>")
-         << wxT(" [[http://www.darkaudacity.com|www.darkaudacity.com]] - for differences between them.")
-         << wxT("</li><li>")
-         << wxT(
-" email to [[mailto:james@audacityteam.org|james@audacityteam.org]] - for help using DarkAudacity.")
-         << wxT("</li><li>")
-         << wxT(
-" [[http://www.darkaudacity.com/video.html|Tutorials]] - for getting started with DarkAudacity.")
-         << wxT("</li></ul>")
-         << wxT("<br><br>Sneedacity has these support methods:")
-         << wxT("<ul><li>")
-         << wxT(" [[https://wiki.installgentoo.com/wiki/Sneedacity|Manual]] - for comprehensive Sneedacity documentation")
-         << wxT("</li><li>")
-         << wxT(" [[https://github.com/Sneeds-Feed-and-Seed/sneedacity/discussions|Forum]] - for large knowledge base on using Sneedacity.")
-         << wxT("</li></ul>")
-#else
          << wxT("<center><h3>Sneedacity ")
          << SNEEDACITY_VERSION_STRING
          << wxT("</h3><h3>")
@@ -279,7 +256,6 @@ static wxString HelpTextBuiltIn( const wxString & Key )
          << wxT("<b>")
          << XO("More:</b> Visit our [[https://wiki.installgentoo.com/wiki/Sneedacity|Wiki]] for tips, tricks, extra tutorials and effects plug-ins.")
          << wxT("</p>")
-#endif
    ;
 
       auto result = o.GetString();
@@ -321,14 +297,6 @@ audio CDs]].")
       wxTextOutputStream s(o);
       s
 // *URL* will be replaced by whatever URL we are looking for.
-// DA: View the manual on line is expected.
-#ifdef EXPERIMENTAL_DA
-         << XO(
-"The Manual does not appear to be installed. \
-Please [[*URL*|view the Manual online]].<br><br>\
-To always view the Manual online, change \"Location of Manual\" in \
-Interface Preferences to \"From Internet\".")
-#else
          << XO(
 "The Manual does not appear to be installed. \
 Please [[*URL*|view the Manual online]] or \
@@ -336,7 +304,6 @@ Please [[*URL*|view the Manual online]] or \
 download the Manual]].<br><br>\
 To always view the Manual online, change \"Location of Manual\" in \
 Interface Preferences to \"From Internet\".")
-#endif
       ;
       return WrapText( o.GetString() );
    }

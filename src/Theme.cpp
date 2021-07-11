@@ -582,12 +582,7 @@ int SourceOutputStream::OpenFile(const FilePath & Filename)
    bOk = File.Open( Filename, wxFile::write );
    if( bOk )
    {
-// DA: Naming of output sourcery
-#ifdef EXPERIMENTAL_DA
-      File.Write( wxT("///   @file DarkThemeAsCeeCode.h\r\n") );
-#else
       File.Write( wxT("///   @file ThemeAsCeeCode.h\r\n") );
-#endif
       File.Write( wxT("///   @brief This file was Auto-Generated.\r\n") );
       File.Write( wxT("///\r\n") );
       File.Write( wxT("///   It is included by Theme.cpp.\r\n") );
@@ -890,11 +885,7 @@ void ThemeBase::WriteImageDefs( )
 teThemeType ThemeBase::GetFallbackThemeType(){
 // Fallback must be an internally supported type,
 // to guarantee it is found.
-#ifdef EXPERIMENTAL_DA
-   return themeDark;
-#else
    return themeLight;
-#endif
 }
 
 teThemeType ThemeBase::ThemeTypeOfTypeName( const wxString & Name )
@@ -1300,11 +1291,7 @@ void auStaticText::OnPaint(wxPaintEvent & WXUNUSED(evt))
 }
 
 constexpr int defaultTheme =
-#ifdef EXPERIMENTAL_DA
-   2 // "dark"
-#else
    1 // "light"
-#endif
 ;
 
 ChoiceSetting GUITheme{

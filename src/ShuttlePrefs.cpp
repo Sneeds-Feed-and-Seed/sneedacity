@@ -27,6 +27,7 @@
 
 #include "ShuttlePrefs.h"
 
+#include <variant>
 #include <wx/defs.h>
 
 #include "WrappedType.h"
@@ -90,28 +91,25 @@ bool ShuttlePrefs::TransferString( const wxString & Name, wxString & strValue, c
 
 bool ShuttlePrefs::TransferWrappedType( const wxString & Name, WrappedType & W )
 {
-   switch( W.eWrappedType )
-   {
-   case eWrappedString:
-      return TransferString( Name, *W.mpStr, *W.mpStr );
-      break;
-   case eWrappedInt:
-      return TransferInt( Name, *W.mpInt, *W.mpInt );
-      break;
-   case eWrappedDouble:
-      return TransferDouble( Name, *W.mpDouble, *W.mpDouble );
-      break;
-   case eWrappedBool:
-      return TransferBool( Name, *W.mpBool, *W.mpBool );
-      break;
-   case eWrappedEnum:
-      wxASSERT( false );
-      break;
-   default:
-      wxASSERT( false );
-      break;
-   }
-   return false;
+   struct {
+      void operator()(wxString* string) {
+         ret = that->TransferString(Name, *string, *string);
+      }
+      void operator()(int& i) {
+         ret = that->TransferInt(Name, i, i);
+      }
+      void operator()(double& d) {
+         ret = that->TransferDouble(Name, d, d);
+      }
+      void operator()(bool& b) {
+         ret = that->TransferBool(Name, b, b);
+      }
+      const wxString & Name;
+      bool ret;
+      ShuttlePrefs * that;
+   } to_visit{ Name, false, this };
+   std::visit(to_visit, W.mData);
+   return to_visit.ret;
 }
 
 bool ShuttlePrefs::ExchangeWithMaster(const wxString & WXUNUSED(Name))
