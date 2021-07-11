@@ -502,6 +502,7 @@ time warp info and AudioIOListener and whether the playback is looped.
 /*
  Adapt and rename the implementation of PaUtil_GetTime from commit
  c5d2c51bd6fe354d0ee1119ba932bfebd3ebfacc of portaudio
+ This code is by @Paul-Licameli . Please refer to: https://github.com/audacity/audacity/pull/946 for further credit.
  */
 #if defined( __APPLE__ )
 
