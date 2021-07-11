@@ -1,7 +1,7 @@
 /**********************************************************************
 
    Sneedacity: A Digital Audio Editor
-   Sneedacity(R) is copyright (c) 1999-2010 Sneedacity Team.
+   Sneedacity is copyright (c) 1999-2010 Sneedacity Team.
    License: GPL v2.  See License.txt.
 
    ProjectSerializer.h

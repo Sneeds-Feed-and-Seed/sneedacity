@@ -1,7 +1,7 @@
 /**********************************************************************
 
    Sneedacity: A Digital Audio Editor
-   Sneedacity(R) is copyright (c) 1999-2009 Sneedacity Team.
+   Sneedacity is copyright (c) 1999-2009 Sneedacity Team.
    File License: wxwidgets
 
    BatchEvalCommand.h

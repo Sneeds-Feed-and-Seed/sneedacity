@@ -5,7 +5,7 @@
   DeviceManager.h
 
   Created by Michael Chinen (mchinen) on 2/12/11
-  Sneedacity(R) is copyright (c) 1999-2011 Sneedacity Team.
+  Sneedacity is copyright (c) 1999-2011 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 ******************************************************************//**

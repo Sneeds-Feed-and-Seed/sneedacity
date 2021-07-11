@@ -4,7 +4,7 @@
 
   LV2Effect.cpp
 
-  Sneedacity(R) is copyright (c) 1999-2008 Sneedacity Team.
+  Sneedacity is copyright (c) 1999-2008 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 **********************************************************************/

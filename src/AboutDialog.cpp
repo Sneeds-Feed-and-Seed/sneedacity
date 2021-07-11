@@ -149,7 +149,7 @@ void AboutDialog::CreateCreditsList()
    
    AddCredit(wxT("Other anonymous contributors from 4chan technology board /g/"), unformattedFormat, roleSneed);
 
-   // The Sneedacity Team: developers and support
+   // The Audacity Team: developers and support
    AddCredit(wxT("Anton Gerasimov"), developerFormat, roleTeamMember);
    AddCredit(wxT("Paul Licameli"), developerFormat, roleTeamMember);
    AddCredit(wxT("Vitaly Sverchinsky"), developerFormat, roleTeamMember);
@@ -438,7 +438,7 @@ visit our %s.")
 
       << wxT("<p><b>")
       /* i18n-hint: The program's name substitutes for %s */
-      << XO("%s Team Members").Format( ProgramName )
+      << XO("Audacity Team Members").Format( ProgramName )
       << wxT("</b><br>")
       << GetCreditsByRole(roleTeamMember)
 
@@ -446,7 +446,7 @@ visit our %s.")
       << XO("Emeritus:")
       << wxT("</b><br>")
       /* i18n-hint: The program's name substitutes for %s */
-      << XO("Distinguished %s Team members, not currently active")
+      << XO("Distinguished Audacity Team members, not currently active")
          .Format( ProgramName )
       << wxT("<br><br>")
       << GetCreditsByRole(roleEmeritusTeam)
