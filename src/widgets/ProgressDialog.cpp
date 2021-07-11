@@ -1309,7 +1309,7 @@ bool ProgressDialog::Create(const TranslatableString & title,
    // of allowing other tasks to run before this one is complete.
    //
    // Reviewed this code per Proposed Features #1, at
-   // http://wiki.sneedacityteam.org/wiki/Proposal_Timer_Record_Improvements.
+   // http://wiki.audacityteam.org/wiki/Proposal_Timer_Record_Improvements.
    // Note that this causes a problem for Timer Record wait dialog
    // (see TimerRecordDialog::RunWaitDialog()), because it makes it
    // impossible to do any editing, even in other open projects,

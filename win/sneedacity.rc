@@ -26,11 +26,10 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "Sneedacity Team"
-            VALUE "FileDescription", "Sneedacity® Cross-Platform Sound Editor"
+            VALUE "FileDescription", "Sneedacity Cross-Platform Sound Editor"
             VALUE "FileVersion", SNEEDACITY_FILE_VERSION
             VALUE "InternalName", "Sneedacity"
             VALUE "LegalCopyright", "Copyright © 2018. All rights reserved."
-            VALUE "LegalTrademarks", "Sneedacity® is a registered trademark of Dominic Mazzoni."
             VALUE "OriginalFilename", "Sneedacity.exe"
             VALUE "ProductName", "Sneedacity"
             VALUE "ProductVersion", SNEEDACITY_FILE_VERSION

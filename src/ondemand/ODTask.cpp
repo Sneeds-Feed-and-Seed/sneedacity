@@ -5,7 +5,8 @@
   ODTask.cpp
 
   Created by Michael Chinen (mchinen)
-  Sneedacity(R) is copyright (c) 1999-2008 Sneedacity Team.
+  Sneedacity is copyright (c) 1999-2008 Audacity Team,
+                copyright (c) 2021 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 ******************************************************************//**

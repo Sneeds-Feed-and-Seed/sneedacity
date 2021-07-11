@@ -1,7 +1,8 @@
 /**********************************************************************
 
    Sneedacity: A Digital Audio Editor
-   Sneedacity(R) is copyright (c) 1999-2012 Sneedacity Team.
+   Sneedacity is copyright (c) 1999-2012 Audacity Team,
+                 copyright (c) 2021 Sneedacity Team.
    License: GPL v2.  See License.txt.
 
    ODDecodeFFmpegTask.h

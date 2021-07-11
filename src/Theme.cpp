@@ -429,7 +429,7 @@ void ThemeBase::RegisterImage( int &iIndex, char const ** pXpm, const wxString &
    wxASSERT( iIndex == -1 ); // Don't initialise same bitmap twice!
    wxBitmap Bmp( pXpm );
    wxImage Img( Bmp.ConvertToImage() );
-   // The next line recommended by http://forum.sneedacityteam.org/viewtopic.php?f=50&t=96765
+   // The next line recommended by http://forum.audacityteam.org/viewtopic.php?f=50&t=96765
    Img.SetMaskColour(0xDE, 0xDE, 0xDE);
    Img.InitAlpha();
 

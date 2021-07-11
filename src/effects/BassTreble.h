@@ -1,7 +1,8 @@
 /**********************************************************************
 
    Sneedacity: A Digital Audio Editor
-   Sneedacity(R) is copyright (c) 1999-2016 Sneedacity Team.
+   Sneedacity is copyright (c) 1999-2016 Audacity Team,
+                 copyright (c) 2021 Sneedacity Team.
    License: GPL v2.  See License.txt.
 
    BassTreble.h (two shelf filters)

@@ -1,7 +1,7 @@
 /**********************************************************************
 
    Sneedacity - A Digital Audio Editor
-   Copyright 1999-2018 Sneedacity Team
+   Copyright 1999-2018 Audacity Team, 2021 Sneedacity Team
    License: GPL v2 - see LICENSE.txt
 
    Dominic Mazzoni

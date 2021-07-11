@@ -1,7 +1,7 @@
 /**********************************************************************
 
    Sneedacity - A Digital Audio Editor
-   Copyright 1999-2009 Sneedacity Team
+   Copyright 1999-2009 Audacity Team, 2021 Sneedacity Team
    License: wxWidgets
 
    Dan Horgan

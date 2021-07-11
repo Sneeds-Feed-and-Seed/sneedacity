@@ -5,7 +5,8 @@
   ODTaskThread.cpp
 
   Created by Michael Chinen (mchinen) on 6/8/08
-  Sneedacity(R) is copyright (c) 1999-2008 Sneedacity Team.
+  Sneedacity is copyright (c) 1999-2008 Audacity Team,
+                copyright (c) 2021 Sneedacity Team.
   License: GPL v2.  See License.txt.
 
 ******************************************************************//**
