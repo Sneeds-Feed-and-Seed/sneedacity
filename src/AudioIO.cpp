@@ -931,7 +931,7 @@ static double SystemTime(bool usingAlsa)
    static_cast<void>(usingAlsa);//compiler food.
 #endif
 
-   return PaUtil_GetTime() - streamStartTime;
+    return util_GetTime() - streamStartTime;
 }
 #endif
 
