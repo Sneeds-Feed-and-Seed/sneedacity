@@ -171,7 +171,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: Sneedacity_appimage
+          asset_name: Sneedacity_appimage.AppImage
           asset_path: ${{ steps.linux-artifact.outputs.file }}
           asset_content_type: application/x-executable
 
@@ -181,7 +181,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: Sneedacity_Windows_32bit
+          asset_name: Sneedacity_Windows_32bit.zip
           asset_path: ${{ steps.win32-artifact.outputs.file }}
           asset_content_type: application/zip
 
@@ -191,7 +191,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: Sneedacity_Windows_64bit
+          asset_name: Sneedacity_Windows_64bit.zip
           asset_path: ${{ steps.win64-artifact.outputs.file }}
           asset_content_type: application/zip
 
@@ -201,6 +201,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: Sneedacity_macOS
+          asset_name: Sneedacity_macOS.dmg
           asset_path: ${{ steps.mac-artifact.outputs.file }}
           asset_content_type: application/x-bzip2
