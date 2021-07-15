@@ -38,14 +38,17 @@ jobs:
           os: windows-latest
           arch: 32bit # as reported by Windows Settings > System > About
           generator: Ninja
+          cc: cl
+          cxx: cl
 
         - name: Windows_64bit
           os: windows-latest
           arch: 64bit # as reported by Windows Settings > System > About
           generator: Ninja
+          cc: cl
+          cxx: cl
 
     steps:
-
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -59,6 +62,13 @@ jobs:
     - name: Environment
       run: |
         source "scripts/ci/environment.sh"
+
+    - name: "Set up MSVC Developer Command Prompt"
+      if: startswith( matrix.config.os, 'windows' )
+      uses: seanmiddleditch/gha-setup-vsdevenv@v3
+      with:
+        arch: ${{ matrix.config.arch }}
+
     
     #- name: Install Apple codesigning certificates
     #  uses: apple-actions/import-codesign-certs@v1
@@ -77,6 +87,8 @@ jobs:
         APPLE_CODESIGN_IDENTITY: ${{ secrets.APPLE_CODESIGN_IDENTITY }}
         APPLE_NOTARIZATION_USER_NAME: ${{ secrets.APPLE_NOTARIZATION_USER_NAME }}
         APPLE_NOTARIZATION_PASSWORD: ${{ secrets.APPLE_NOTARIZATION_PASSWORD }}
+        CC: ${{ matrix.config.cc }}
+        CXX: ${{ matrix.config.cxx }}
       run: |
         exec bash "scripts/ci/configure.sh"
 
