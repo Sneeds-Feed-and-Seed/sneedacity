@@ -4,7 +4,9 @@
 
 set -euxo pipefail
 
-if [[ "${OSTYPE}" == darwin* ]]; then # macOS
+if [[ "${OSTYPE}" == msys* ]]; then # Windows
+    echo windows, no deps to install
+elif [[ "${OSTYPE}" == darwin* ]]; then # macOS
 
     # Homebrew packages
     brew_packages=(
