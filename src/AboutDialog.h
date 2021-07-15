@@ -24,7 +24,7 @@ struct AboutDialogCreditItem {
       : description{ std::move( str ) }, role{ r }
    {}
    TranslatableString description;
-   int role;
+   int role;  
 };
 
 using AboutDialogCreditItemsList = std::vector<AboutDialogCreditItem>;
