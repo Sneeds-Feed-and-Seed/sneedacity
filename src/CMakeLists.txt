@@ -1372,7 +1372,7 @@ if( "${CMAKE_GENERATOR}" MATCHES "Xcode|Visual Studio*" )
       PATTERN "*.pdb" EXCLUDE
       PATTERN "*.ilk" EXCLUDE
    )
-elseif( ${CMAKE_GENERATOR}" MATCHES "Ninja" AND CMAKE_SYSTEM_NAME MATCHES "Windows" )
+elseif( "${CMAKE_GENERATOR}" MATCHES "Ninja" AND CMAKE_SYSTEM_NAME MATCHES "Windows" )
    install(
       DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
       DESTINATION "."
