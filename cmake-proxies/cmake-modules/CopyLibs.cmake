@@ -110,7 +110,7 @@ function( gather_libs src )
 
       execute_process( COMMAND
               bash "-c" 
-              "cp $(ldd ${src} | sed 's/.*> //g;s/ .*//g') '${WXWIN}'" )
+              "cp $(ldd ${src} | sed 's/.*> //g;s/ .*//g' | grep sneed) '${WXWIN}'" )
 
 
       get_filename_component( libname "${src}" NAME )
