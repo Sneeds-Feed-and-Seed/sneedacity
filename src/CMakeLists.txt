@@ -1139,6 +1139,12 @@ if( CMAKE_SYSTEM_NAME MATCHES "Windows" )
    file( TO_NATIVE_PATH "${_INTDIR}/dlls" dlls )
    file( TO_NATIVE_PATH "${wxWidgets_LIB_DIR}" libdir )
    file( TO_NATIVE_PATH "${_EXEDIR}" exedir )
+   
+   if ( CMAKE_SIZEOF_VOID_P EQUAL 8 )
+    set( ARHITECTURE "x64_" )
+   else()
+    set( ARHITECTURE "" )
+   endif()
 
    # Copy the required wxWidgets libs into the bundle
    add_custom_command(
@@ -1147,19 +1153,22 @@ if( CMAKE_SYSTEM_NAME MATCHES "Windows" )
       COMMAND
          ${CMAKE_COMMAND} -D SRC="${_EXEDIR}/Sneedacity.exe"
                           -D DST="${_EXEDIR}"
-                          -D WXWIN="${_SHARED_PROXY_BASE_PATH}/$<CONFIG>/"
+                          -D WXWIN="${_EXEDIR}/../../lib/vc_${ARHITECTURE}dll"
                           -P ${SNEEDACITY_MODULE_PATH}/CopyLibs.cmake
       POST_BUILD
    )
 
    # Copy the VC runtime libraries as well
-   add_custom_command(
-      TARGET
-         ${TARGET}
-      COMMAND
-         ${CMAKE_COMMAND} -E copy ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} ${_DEST}
-      POST_BUILD
-   )
+   if(NOT "_X${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}" STREQUAL "_X")
+      add_custom_command(
+         TARGET
+            ${TARGET}
+         COMMAND
+            ${CMAKE_COMMAND} -E copy ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} ${_DEST}
+         POST_BUILD
+      )
+   endif()
+
 elseif( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
    # Bug 2400 workaround
    #
