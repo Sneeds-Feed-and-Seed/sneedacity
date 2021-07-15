@@ -27,28 +27,31 @@ jobs:
         - name: Ubuntu_18.04
           os: ubuntu-18.04
           arch: x86_64 # as reported by `arch` or `uname -m`
-          generator: Unix Makefiles
+          generator: Ninja
 
         - name: macOS_Intel
           os: macos-latest
           arch: Intel # as reported by Apple menu > About This Mac
-          generator: Xcode
+          generator: Ninja
 
         - name: Windows_32bit
           os: windows-latest
           arch: 32bit # as reported by Windows Settings > System > About
-          generator: Visual Studio 16 2019
+          generator: Ninja
 
         - name: Windows_64bit
           os: windows-latest
           arch: 64bit # as reported by Windows Settings > System > About
-          generator: Visual Studio 16 2019
+          generator: Ninja
 
     steps:
 
     - name: Checkout
       uses: actions/checkout@v2
 
+    - uses: seanmiddleditch/gha-setup-ninja@master
+    
+    
     - name: Dependencies
       run: |
         exec bash "scripts/ci/dependencies.sh"
