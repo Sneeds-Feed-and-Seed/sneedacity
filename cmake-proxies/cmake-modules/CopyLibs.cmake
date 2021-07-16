@@ -108,11 +108,6 @@ function( gather_libs src )
 
       execute( output sh -c "LD_LIBRARY_PATH='${WXWIN}' ldd ${src}" )
 
-      execute_process( COMMAND
-              bash "-c" 
-              "cp $(ldd ${src} | sed 's/.*> //g;s/ .*//g' | grep sneed) '${WXWIN}'" )
-
-
       get_filename_component( libname "${src}" NAME )
 
       foreach( line ${output} )

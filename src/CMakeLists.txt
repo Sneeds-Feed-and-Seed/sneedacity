@@ -1318,7 +1318,7 @@ else()
       COMMAND
          ${CMAKE_COMMAND} -D SRC="${_EXEDIR}/sneedacity"
                           -D DST="${_DEST}/${_PKGLIB}"
-                          -D WXWIN="${_SHARED_PROXY_BASE_PATH}/$<CONFIG>"
+                          -D WXWIN="${CMAKE_BINARY_DIR}/lib"
                           -P ${SNEEDACITY_MODULE_PATH}/CopyLibs.cmake
       POST_BUILD
    )
