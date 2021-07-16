@@ -28,11 +28,15 @@ jobs:
           os: ubuntu-18.04
           arch: x86_64 # as reported by `arch` or `uname -m`
           generator: Ninja
+          compiler_cache: ccache
+          compiler_cache_path: ~/.ccache
 
         - name: macOS_Intel
           os: macos-latest
           arch: Intel # as reported by Apple menu > About This Mac
           generator: Ninja
+          compiler_cache: ccache
+          compiler_cache_path: ~/Library/Caches/ccache
 
         - name: Windows_32bit
           os: windows-latest
@@ -40,13 +44,17 @@ jobs:
           generator: Ninja
           cc: cl
           cxx: cl
-
+          compiler_cache: sccache
+          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
+        
         - name: Windows_64bit
           os: windows-latest
           arch: amd64 # as reported by Windows Settings > System > About
           generator: Ninja
           cc: cl
           cxx: cl
+          compiler_cache: sccache
+          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
 
     steps:
     - name: Checkout
@@ -68,6 +76,18 @@ jobs:
       uses: seanmiddleditch/gha-setup-vsdevenv@v3
       with:
         arch: ${{ matrix.config.arch }}
+
+    - name: "Install sccache"
+      if: startswith( matrix.config.os, 'windows' )
+      run: choco install sccache
+
+    - name: "Set up compiler cache"
+      uses: actions/cache@v2
+      with:
+        path: ${{ matrix.config.compiler_cache_path }}
+        key: ${{ matrix.config.os }}-${{ matrix.config.arch }}-${{ github.head_ref }}-${{ github.run_number }}
+        restore-keys: |
+          ${{ matrix.config.os }}-${{ matrix.config.arch }}-${{ github.head_ref }}-
 
     
     #- name: Install Apple codesigning certificates

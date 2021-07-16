@@ -11,6 +11,7 @@ elif [[ "${OSTYPE}" == darwin* ]]; then # macOS
     # Homebrew packages
     brew_packages=(
         bash # macOS ships with Bash v3 for licensing reasons so upgrade it now
+        ccache
     )
     brew install "${brew_packages[@]}"
 
@@ -34,10 +35,10 @@ else # Linux & others
             libgtk2.0-dev
             gettext
             python3-pip
+            ccache
         )
         sudo apt-get update -y
         sudo apt-get install -y --no-install-recommends "${apt_packages[@]}"
-        sudo apt-get remove -y ccache
     else
         echo >&2 "$0: Error: You don't have a recognized package manager installed."
         exit 1
