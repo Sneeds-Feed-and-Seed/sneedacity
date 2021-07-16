@@ -5,19 +5,12 @@
 set -euxo pipefail
 
 if [[ "${OSTYPE}" == msys* ]]; then # Windows
-
-    # Python packages
-    pip_packages=(
-        conan
-    )
-    pip3 install "${pip_packages[@]}"
-
+    echo windows, no deps to install
 elif [[ "${OSTYPE}" == darwin* ]]; then # macOS
 
     # Homebrew packages
     brew_packages=(
         bash # macOS ships with Bash v3 for licensing reasons so upgrade it now
-        conan
     )
     brew install "${brew_packages[@]}"
 
@@ -52,12 +45,11 @@ else # Linux & others
 
     # Python packages
     pip_packages=(
-        conan
+        wheel
+        setuptools
     )
 
     which cmake || pip_packages+=( cmake ) # get latest CMake when inside Docker image
-
-    pip3 install wheel setuptools # need these first to install other packages (e.g. conan)
     pip3 install "${pip_packages[@]}"
 
 fi

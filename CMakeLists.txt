@@ -151,8 +151,6 @@ cmd_option( ${_OPT}obey_system_dependencies
             Off
 )
 
-include( SneedacityDependencies )
-
 # Pull all the modules we'll need
 include( CheckCXXCompilerFlag )
 include( CheckIncludeFile )
@@ -257,18 +255,17 @@ if( CMAKE_GENERATOR MATCHES "Visual Studio" )
    include( InstallRequiredSystemLibraries )
 endif()
 
-# Where the final product is stored
-set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
-
 set ( _SHARED_PROXY_BASE "shared" )
 set ( _SHARED_PROXY_BASE_PATH "${CMAKE_BINARY_DIR}/${_SHARED_PROXY_BASE}")
 
 # Define the non-install and executable paths
 if( CMAKE_CONFIGURATION_TYPES )
+    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
    set( _DESTDIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}" )
    set( _SHARED_PROXY_PATH "${_SHARED_PROXY_BASE_PATH}/${CMAKE_CFG_INTDIR}")
 else()
-   set( _DESTDIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}" )
+   set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE} )
+   set( _DESTDIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/" )
    set( _SHARED_PROXY_PATH "${_SHARED_PROXY_BASE_PATH}/${CMAKE_BUILD_TYPE}")
 endif()
 
@@ -456,7 +453,6 @@ find_package( Python3 )
 if( Python3_FOUND )
    set( PYTHON "${Python3_EXECUTABLE}" )
 elseif( CMAKE_SYSTEM_NAME MATCHES "Windows" )
-   # This is an odd case now, as Conan requires Python as well
    nuget_package( pkgdir "python3" "3.7.7" )
    file( TO_NATIVE_PATH "${pkgdir}/tools/python.exe" PYTHON )
 endif()
@@ -467,10 +463,6 @@ include( "src/Experimental.cmake" )
 
 # Add our children
 add_subdirectory( "cmake-proxies" )
-
-# Conan uses find_package and does not set GLOBAL flag
-resolve_conan_dependencies()
-
 add_subdirectory( "help" )
 add_subdirectory( "images" )
 add_subdirectory( "libraries" )

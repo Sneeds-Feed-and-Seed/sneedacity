@@ -10,10 +10,6 @@
 
 #include "MemoryX.h"
 
-// Make the symbol table non-empty
-UTILITY_API void lib_utility_dummy_symbol()
-{}
-
 constexpr auto sizeof_align_val = sizeof(std::align_val_t);
 
 void *NonInterferingBase::operator new(std::size_t count, std::align_val_t al)

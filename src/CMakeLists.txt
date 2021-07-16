@@ -1076,18 +1076,17 @@ list( APPEND LDFLAGS
 list( APPEND LIBRARIES
    PUBLIC
       ${CMAKE_REQUIRED_LIBRARIES}
-      ZLIB::ZLIB
-      wxwidgets::wxwidgets
-      expat::expat
-      libmp3lame::libmp3lame
+      wxWidgets
+      expat
+      lame
       libsndfile
       libsoxr
       portaudio-v19
       sqlite
       $<$<BOOL:${USE_FFMPEG}>:ffmpeg>
-      $<$<BOOL:${USE_LIBID3TAG}>:libid3tag::libid3tag>
+      $<$<BOOL:${USE_LIBID3TAG}>:libid3tag>
       $<$<BOOL:${USE_LIBFLAC}>:libflac>
-      $<$<BOOL:${USE_LIBMAD}>:libmad::libmad>
+      $<$<BOOL:${USE_LIBMAD}>:libmad>
       $<$<BOOL:${USE_LIBOGG}>:libogg>
       $<$<BOOL:${USE_LIBVORBIS}>:libvorbis>
       $<$<BOOL:${USE_LIBTWOLAME}>:twolame>
@@ -1138,6 +1137,22 @@ if( CMAKE_SYSTEM_NAME MATCHES "Windows" )
    )
 
    # Copy over the wxWidgets DLLs
+   if( ${_OPT}use_wxwidgets STREQUAL "system" )
+      set( wxlibs "$ENV{WXWIN}" )
+   else()
+      set( wxlibs "${CMAKE_BINARY_DIR}" )
+   endif()
+
+   # Convert the paths to native
+   file( TO_NATIVE_PATH "${_INTDIR}/dlls" dlls )
+   file( TO_NATIVE_PATH "${wxWidgets_LIB_DIR}" libdir )
+   file( TO_NATIVE_PATH "${_EXEDIR}" exedir )
+   
+   if ( CMAKE_SIZEOF_VOID_P EQUAL 8 )
+    set( ARHITECTURE "x64_" )
+   else()
+    set( ARHITECTURE "" )
+   endif()
 
    # Copy the required wxWidgets libs into the bundle
    add_custom_command(
@@ -1146,19 +1161,22 @@ if( CMAKE_SYSTEM_NAME MATCHES "Windows" )
       COMMAND
          ${CMAKE_COMMAND} -D SRC="${_EXEDIR}/Sneedacity.exe"
                           -D DST="${_EXEDIR}"
-                          -D WXWIN="${_SHARED_PROXY_BASE_PATH}/$<CONFIG>/"
+                          -D WXWIN="${_EXEDIR}/../../lib/vc_${ARHITECTURE}dll"
                           -P ${SNEEDACITY_MODULE_PATH}/CopyLibs.cmake
       POST_BUILD
    )
 
    # Copy the VC runtime libraries as well
-   add_custom_command(
-      TARGET
-         ${TARGET}
-      COMMAND
-         ${CMAKE_COMMAND} -E copy ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} ${_DEST}
-      POST_BUILD
-   )
+   if(NOT "_X${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}" STREQUAL "_X")
+      add_custom_command(
+         TARGET
+            ${TARGET}
+         COMMAND
+            ${CMAKE_COMMAND} -E copy ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} ${_DEST}
+         POST_BUILD
+      )
+   endif()
+
 elseif( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
    # Bug 2400 workaround
    #
@@ -1357,6 +1375,14 @@ endif()
 if( "${CMAKE_GENERATOR}" MATCHES "Xcode|Visual Studio*" )
    install(
       DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIG>/"
+      DESTINATION "."
+      USE_SOURCE_PERMISSIONS
+      PATTERN "*.pdb" EXCLUDE
+      PATTERN "*.ilk" EXCLUDE
+   )
+elseif( "${CMAKE_GENERATOR}" MATCHES "Ninja" AND CMAKE_SYSTEM_NAME MATCHES "Windows" )
+   install(
+      DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
       DESTINATION "."
       USE_SOURCE_PERMISSIONS
       PATTERN "*.pdb" EXCLUDE
