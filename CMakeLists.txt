@@ -123,8 +123,15 @@ set( CMAKE_CXX_STANDARD_REQUIRED ON )
 find_program( CCACHE_PROGRAM ccache )
 mark_as_advanced( FORCE CCACHE_PROGRAM )
 
+find_program( SCCACHE_PROGRAM sccache )
+mark_as_advanced( FORCE SCCACHE_PROGRAM )
+
 if( CCACHE_PROGRAM )
    set_property( GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}" )
+endif()
+
+if( SCCACHE_PROGRAM )
+   set_property( GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${SCCACHE_PROGRAM}" )
 endif()
 
 # Define option() prefix
