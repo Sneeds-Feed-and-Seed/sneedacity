@@ -94,7 +94,7 @@ else()
                               --depth 1
                               --single-branch
                               --recurse-submodules
-                              https://github.com/audacity/wxwidgets
+                              https://github.com/wxwidgets/wxwidgets
                               "${WXWIN}"
       )
    endif()
