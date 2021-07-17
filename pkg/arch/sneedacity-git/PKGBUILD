@@ -37,7 +37,6 @@ build() {
     sneedacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
-  make .
 }
 
 package() {
