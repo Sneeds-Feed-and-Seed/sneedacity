@@ -4,6 +4,7 @@
 <a href="https://github.com/Sneeds-Feed-and-Seed/sneedacity/actions" alt="Build Status"><img src="https://github.com/Sneeds-Feed-and-Seed/sneedacity/actions/workflows/cmake_build.yml/badge.svg?branch=master&event=push"></a>
 <a href="https://web.libera.chat/#sneedacity" alt="Libera.chat channel"><img src="https://img.shields.io/badge/libera.chat-%23sneedacity-brightgreen.svg"></a>
 <a href="xmpp:sneedacity@rooms.swurl.xyz" alt="XMPP room"><img src="https://img.shields.io/badge/xmpp-sneedacity%40rooms.swurl.xyz-brightgreen.svg"></a>
+<a href="https://matrix.to/#/#sneedacitydev:poa.st" alt="Matrix room"><img src="https://img.shields.io/badge/matrix-%23sneedacitydev:poa.st-brightgreen.svg"></a>
 </p>
 
 ---
