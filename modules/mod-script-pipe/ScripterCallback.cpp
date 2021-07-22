@@ -25,14 +25,13 @@ See the example in this file.  It has several cases/options in it.
 #include "ModuleConstants.h"
 
 extern void PipeServer();
-typedef DLL_IMPORT int (*tpExecScriptServerFunc)( wxString * pIn, wxString * pOut);
+typedef SCRIPT_PIPE_DLL_API int (*tpExecScriptServerFunc)( wxString * pIn, wxString * pOut);
 static tpExecScriptServerFunc pScriptServerFn=NULL;
-
 
 extern "C" {
 
 // And here is our special registration function.
-int DLL_API RegScriptServerFunc( tpExecScriptServerFunc pFn )
+    SCRIPT_PIPE_DLL_API int RegScriptServerFunc( tpExecScriptServerFunc pFn )
 {
    if( pFn )
    {
@@ -44,7 +43,7 @@ int DLL_API RegScriptServerFunc( tpExecScriptServerFunc pFn )
 }
 
 DEFINE_VERSION_CHECK
-extern "C" DLL_API int ModuleDispatch(ModuleDispatchTypes type)
+extern "C" SCRIPT_PIPE_DLL_API int ModuleDispatch(ModuleDispatchTypes type)
 {
    switch (type) {
    case ModuleInitialize:
