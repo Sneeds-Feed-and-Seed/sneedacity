@@ -341,16 +341,6 @@ ContrastDialog::ContrastDialog(wxWindow * parent, wxWindowID id,
    }
    S.EndStatic();
    S.AddStandardButtons(eCloseButton |eHelpButton);
-#if 0
-   S.StartMultiColumn(3, wxEXPAND);
-   {
-      S.SetStretchyCol(1);
-      m_pButton_GetURL = S.Id(ID_BUTTON_GETURL).AddButton(XO("&Help"));
-      S.AddFixedText({});   // spacer
-      m_pButton_Close = S.Id(ID_BUTTON_CLOSE).AddButton(XO("&Close"));
-   }
-   S.EndMultiColumn();
-#endif
    Layout();
    Fit();
    SetMinSize(GetSize());

@@ -1313,13 +1313,6 @@ bool LV2Effect::RealtimeProcessStart()
             }
          }
          lv2_atom_forge_pop(&mForge, &seqFrame);
-#if 0
-         LV2_ATOM_SEQUENCE_FOREACH(seq, ev)
-         {
-            LV2_Atom_Object *o = (LV2_Atom_Object *) &ev->body;
-            wxLogDebug(wxT("ev = %lld ev.size %d ev.type %d"), ev->time.frames, ev->body.size, ev->body.type);
-         }
-#endif
       }
       else
       {
@@ -1620,9 +1613,6 @@ bool LV2Effect::ValidateUI()
 
 bool LV2Effect::HideUI()
 {
-#if 0
-   // Nothing to do yet
-#endif
    return true;
 }
 

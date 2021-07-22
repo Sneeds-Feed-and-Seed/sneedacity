@@ -30,16 +30,6 @@
 
 #include "../../widgets/ProgressDialog.h"
 
-#if 0
-#if defined(BUILDING_SNEEDACITY)
-#include "../../PlatformCompatibility.h"
-
-// Make the main function private
-#else
-#define USE_VST 1
-#endif
-#endif
-
 #if USE_VST
 
 #include <limits.h>
@@ -985,12 +975,7 @@ intptr_t VSTEffect::AudioMaster(AEffect * effect,
       // Since we don't do anything with the parameters while the editor is displayed,
       // there's no need for us to do anything.
       case audioMasterUpdateDisplay:
-         if (vst)
-         {
-            vst->UpdateDisplay();
-            return 1;
-         }
-         return 0;
+         return vst;
 
       // Return the current time info.
       case audioMasterGetTime:
@@ -2492,19 +2477,6 @@ void VSTEffect::SizeWindow(int w, int h)
       mParent->GetEventHandler()->AddPendingEvent(sw);
    }
 
-   return;
-}
-
-void VSTEffect::UpdateDisplay()
-{
-#if 0
-   // Tell the dialog to refresh effect information
-   if (mParent)
-   {
-      wxCommandEvent ud(EVT_UPDATEDISPLAY);
-      mParent->GetEventHandler()->AddPendingEvent(ud);
-   }
-#endif
    return;
 }
 

@@ -482,12 +482,6 @@ bool EffectCompressor::TwoBufferProcessPass1
       }
    }
 
-
-#if 0
-   // Copy the envelope over the track data (for debug purposes)
-   memcpy(buffer1, mFollow1, len1*sizeof(float));
-#endif
-
    // Rotate the buffer pointers
    mFollow1.swap(mFollow2);
 

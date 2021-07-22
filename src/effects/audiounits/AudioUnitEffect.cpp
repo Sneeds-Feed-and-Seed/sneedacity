@@ -1783,17 +1783,6 @@ bool AudioUnitEffect::IsGraphicalUI()
 
 bool AudioUnitEffect::ValidateUI()
 {
-#if 0
-   if (!mParent->Validate())
-   {
-      return false;
-   }
-
-   if (GetType() == EffectTypeGenerate)
-   {
-      mHost->SetDuration(mDuration->GetValue());
-   }
-#endif
    return true;
 }
 
@@ -1807,12 +1796,6 @@ bool AudioUnitEffect::CreatePlain(wxWindow *parent)
 
 bool AudioUnitEffect::HideUI()
 {
-#if 0
-   if (GetType() == EffectTypeAnalyze || mNumOutputControls > 0)
-   {
-      return false;
-   }
-#endif
    return true;
 }
 

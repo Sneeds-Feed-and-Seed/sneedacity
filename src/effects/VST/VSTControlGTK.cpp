@@ -13,14 +13,6 @@
 #include <wx/dynlib.h>
 #include <wx/sizer.h>
 
-#if 0
-static int trappedErrorCode = 0;
-static int X11TrapHandler(Display *, XErrorEvent *err)
-{
-    return 0;
-}
-#endif
-
 VSTControl::VSTControl()
 :  VSTControlBase()
 {

@@ -311,18 +311,6 @@ EffectEqualization::EffectEqualization(int Options)
 
    // We expect these Hi and Lo frequencies to be overridden by Init().
    // Don't use inputTracks().  See bug 2321.
-#if 0
-   auto trackList = inputTracks();
-   const auto t = trackList
-      ? *trackList->Any< const WaveTrack >().first
-      : nullptr
-   ;
-   mHiFreq =
-      (t
-         ? t->GetRate()
-         : mProjectRate)
-      / 2.0;
-#endif
    mHiFreq = mProjectRate / 2.0;
    mLoFreq = loFreqI;
 }
@@ -3661,50 +3649,6 @@ void EditCurvesDialog::OnDelete(wxCommandEvent & WXUNUSED(event))
    // We could count them here
    // And then put in a 'Delete N items?' prompt.
 
-#if 0 // 'one at a time' prompt code
-   // Get the first one to be deleted
-   long item = mList->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-   // Take care, mList and mEditCurves will get out of sync as curves are deleted
-   int deleted = 0;
-   long highlight = -1;
-
-   while(item >= 0)
-   {
-      if(item == mList->GetItemCount()-1)   //unnamed
-      {
-         mEffect->Effect::MessageBox(
-            XO("You cannot delete the 'unnamed' curve."),
-            wxOK | wxCENTRE,
-            XO("Can't delete 'unnamed'") );
-      }
-      else
-      {
-         // Create the prompt
-         auto quest = XO("Delete '%s'?")
-            .Format(mEditCurves[ item-deleted ].Name));
-
-         // Ask for confirmation before removal
-         int ans = mEffect->Effect::MessageBox(
-            quest,
-            wxYES_NO | wxCENTRE,
-            XO("Confirm Deletion") );
-         if( ans == wxYES )
-         {  // Remove the curve from the array
-            mEditCurves.RemoveAt( item-deleted );
-            deleted++;
-         }
-         else
-            highlight = item-deleted;  // if user presses 'No', select that curve
-      }
-      // get next selected item
-      item = mList->GetNextItem(item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-   }
-
-   if(highlight == -1)
-      PopulateList(mEditCurves.size()-1);   // set 'unnamed' as the selected curve
-   else
-      PopulateList(highlight);   // user said 'No' to deletion
-#else // 'DELETE all N' code
    int count = mList->GetSelectedItemCount();
    long item = mList->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
    // Create the prompt
@@ -3744,7 +3688,6 @@ void EditCurvesDialog::OnDelete(wxCommandEvent & WXUNUSED(event))
       }
       PopulateList(mEditCurves.size() - 1);   // set 'unnamed' as the selected curve
    }
-#endif
 }
 
 static const FileNames::FileTypes &XMLtypes()
