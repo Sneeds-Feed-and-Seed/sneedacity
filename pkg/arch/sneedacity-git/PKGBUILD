@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://github.com/Sneeds-Feed-and-Seed/sneedacity"
 license=(GPL2 CCPL)
 groups=(sneed-suite)
-depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile
+depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile jack
          libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
 makedepends=(git cmake sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg jack nasm)

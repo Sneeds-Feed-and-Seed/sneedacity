@@ -25,6 +25,7 @@ pkgbase = sneedacity-git
 	depends = libid3tag
 	depends = libogg
 	depends = libsndfile
+	depends = jack
 	depends = libvorbis
 	depends = lilv
 	depends = lv2
