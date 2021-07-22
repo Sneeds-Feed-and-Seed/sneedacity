@@ -1,6 +1,6 @@
 pkgbase = sneedacity-git
 	pkgdesc = Audacity fork without any telemetry (git-version)
-	pkgver = 3.0.2.r18.g9e6196510
+	pkgver = 3.0.2.r146.ged6e58c13
 	pkgrel = 1
 	url = https://github.com/Sneeds-Feed-and-Seed/sneedacity
 	arch = i686
@@ -18,7 +18,6 @@ pkgbase = sneedacity-git
 	makedepends = ffmpeg
 	makedepends = jack
 	makedepends = nasm
-	makedepends = conan
 	depends = alsa-lib
 	depends = libx11
 	depends = gtk3

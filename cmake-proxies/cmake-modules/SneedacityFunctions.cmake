@@ -389,7 +389,7 @@ function( sneedacity_module_fn NAME SOURCES IMPORT_TARGETS
       )
    endif()
 
-   if( "wxBase" IN_LIST IMPORT_TARGETS OR "wxwidgets::base" IN_LIST IMPORT_TARGETS )
+   if( "wxBase" IN_LIST IMPORT_TARGETS )
       string( APPEND ATTRIBUTES " style=filled" )
    endif()
 

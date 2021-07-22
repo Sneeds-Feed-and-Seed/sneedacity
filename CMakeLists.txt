@@ -123,8 +123,20 @@ set( CMAKE_CXX_STANDARD_REQUIRED ON )
 find_program( CCACHE_PROGRAM ccache )
 mark_as_advanced( FORCE CCACHE_PROGRAM )
 
+# use sccache if available
+find_program( SCCACHE_PROGRAM sccache )
+mark_as_advanced( FORCE SCCACHE_PROGRAM )
+
 if( CCACHE_PROGRAM )
-   set_property( GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}" )
+   message( STATUS "Using ccache" )
+   set( CMAKE_C_COMPILER_LAUNCHER "${CCACHE_PROGRAM}" )
+   set( CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_PROGRAM}" )
+endif()
+
+if( SCCACHE_PROGRAM )
+   message( STATUS "Using ${SCCACHE_PROGRAM} for source code cache" )
+   set( CMAKE_C_COMPILER_LAUNCHER "${SCCACHE_PROGRAM}" )
+   set( CMAKE_CXX_COMPILER_LAUNCHER "${SCCACHE_PROGRAM}" )
 endif()
 
 # Define option() prefix
@@ -150,8 +162,6 @@ cmd_option( ${_OPT}obey_system_dependencies
             "Use system packages to satisfy dependencies"
             Off
 )
-
-include( SneedacityDependencies )
 
 # Pull all the modules we'll need
 include( CheckCXXCompilerFlag )
@@ -257,18 +267,17 @@ if( CMAKE_GENERATOR MATCHES "Visual Studio" )
    include( InstallRequiredSystemLibraries )
 endif()
 
-# Where the final product is stored
-set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
-
 set ( _SHARED_PROXY_BASE "shared" )
 set ( _SHARED_PROXY_BASE_PATH "${CMAKE_BINARY_DIR}/${_SHARED_PROXY_BASE}")
 
 # Define the non-install and executable paths
 if( CMAKE_CONFIGURATION_TYPES )
+    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
    set( _DESTDIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}" )
    set( _SHARED_PROXY_PATH "${_SHARED_PROXY_BASE_PATH}/${CMAKE_CFG_INTDIR}")
 else()
-   set( _DESTDIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}" )
+   set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE} )
+   set( _DESTDIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/" )
    set( _SHARED_PROXY_PATH "${_SHARED_PROXY_BASE_PATH}/${CMAKE_BUILD_TYPE}")
 endif()
 
@@ -344,6 +353,17 @@ elseif( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
    if( NOT IS_64BIT )
       set( SSE_FLAG "/arch:SSE2" )
    endif()
+      # required for sccache
+   if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+      string(REPLACE "/Zi" "/Z7" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+      string(REPLACE "/Zi" "/Z7" CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
+   elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+      string(REPLACE "/Zi" "/Z7" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+      string(REPLACE "/Zi" "/Z7" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+   elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+      string(REPLACE "/Zi" "/Z7" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+      string(REPLACE "/Zi" "/Z7" CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+    endif()
 endif()
 
 check_include_files( "float.h;stdarg.h;stdlib.h;string.h" STDC_HEADERS )
@@ -456,7 +476,6 @@ find_package( Python3 )
 if( Python3_FOUND )
    set( PYTHON "${Python3_EXECUTABLE}" )
 elseif( CMAKE_SYSTEM_NAME MATCHES "Windows" )
-   # This is an odd case now, as Conan requires Python as well
    nuget_package( pkgdir "python3" "3.7.7" )
    file( TO_NATIVE_PATH "${pkgdir}/tools/python.exe" PYTHON )
 endif()
@@ -467,10 +486,6 @@ include( "src/Experimental.cmake" )
 
 # Add our children
 add_subdirectory( "cmake-proxies" )
-
-# Conan uses find_package and does not set GLOBAL flag
-resolve_conan_dependencies()
-
 add_subdirectory( "help" )
 add_subdirectory( "images" )
 add_subdirectory( "libraries" )

@@ -21,7 +21,8 @@ set(SOURCES
 
 set( LIBRARIES
    PRIVATE
-   wxwidgets::base
+   wxWidgets
+   wxBase
 )
 
 sneedacity_library( ${TARGET} "${SOURCES}" "${LIBRARIES}" "" "" )

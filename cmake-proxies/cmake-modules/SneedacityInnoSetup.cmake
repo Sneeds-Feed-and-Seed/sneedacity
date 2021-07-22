@@ -11,7 +11,6 @@ find_program(
 
 if( INNO_SETUP_COMPILER )
     message(STATUS "Creating target innosetup...")
-
     set( TEMP_PACKAGE_PATH "${CMAKE_BINARY_DIR}/innosetup" )
 
     add_custom_target(

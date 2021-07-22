@@ -13,5 +13,4 @@ set( DEFINES
       # debug versions of wxWidgets...even if the build is for Release.
       wxDEBUG_LEVEL=0
 )
-sneedacity_module( mod-script-pipe "${SOURCES}" "Sneedacity"
-   "${DEFINES}" "" )
+sneedacity_module( mod-script-pipe "${SOURCES}" "Sneedacity" "${DEFINES}" "" )
