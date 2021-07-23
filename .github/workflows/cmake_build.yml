@@ -86,7 +86,7 @@ jobs:
         cd C:/sccache
         curl.exe -LO "$LINK"
         unzip.exe *
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        echo "C:/sccache" >> $GITHUB_PATH
 
     - name: "Set up compiler cache"
       uses: actions/cache@v2
