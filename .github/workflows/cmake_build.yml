@@ -79,7 +79,14 @@ jobs:
 
     - name: "Install sccache"
       if: startswith( matrix.config.os, 'windows' )
-      run: choco install sccache
+      env:
+          LINK: https://nightly.link/mozilla/sccache/actions/runs/814676514/sccache-0f90d53a991ea8e4867667a06006169617354a5e-x86_64-pc-windows-msvc.zip
+      run: |
+        mkdir C:/sccache
+        cd C:/sccache
+        curl.exe -LO "$LINK"
+        unzip.exe *
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: "Set up compiler cache"
       uses: actions/cache@v2
