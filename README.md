@@ -32,7 +32,8 @@ Binaries for the latest known to work build of Sneedacity are available [here](h
 - https://codeberg.org/Sneeds-Feed-and-Seed/sneedacity
 - https://git.swurl.xyz/Sneeds-Feed-and-Seed/sneedacity
 - https://git.vixfwis.dev/Sneeds-Feed-and-Seed/sneedacity
-- https://git.z6d5jm2owmfzf67e5ow77rqvutf2rfclur353w5v4sni4frbx7asqdid.onion/Sneeds-Feed-and-Seed/sneedacity
+- http://git.swurlifbkce7rxysipldxvj7avd53gf55rb4gomjcsciz7byz5fjo6id.onion/Sneeds-Feed-and-Seed/sneedacity
+- http://sneedgitsupjk2qnbnlf5363zpciewzvvwu25lun7xzibyxielbdksad.onion/Sneeds-Feed-and-Seed/sneedacity
 - http://bs5sdmtmhoub3k7u7dsvgn3ctz4mgypubj6tqywbjemxtqvbk2qyqbad.onion/Sneeds-Feed-and-Seed/sneedacity
 
 ## Getting Started
