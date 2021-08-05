@@ -41,8 +41,6 @@ STRINGS_API const wxString& GetCustomSubstitution(const wxString& str1)
    return str1 ;
 }
 
-// In any translated string, we can replace the name 'Sneedacity' by 'DarkSneedacity'
-// without requiring translators to see extra strings for the two versions.
 STRINGS_API const wxString& GetCustomTranslation(const wxString& str1)
 {
    const wxString& str2 = wxGetTranslation( str1 );
