@@ -176,6 +176,17 @@ include( CMakePushCheckState )
 include( GNUInstallDirs )
 include( TestBigEndian )
 
+# uninstall target, adding this before anything stupid (wxwidgets) does
+if(NOT TARGET uninstall)
+  configure_file(
+    "${SNEEDACITY_MODULE_PATH}/uninstall.cmake.in"
+    "${CMAKE_BINARY_DIR}/uninstall.cmake"
+    IMMEDIATE @ONLY)
+
+  add_custom_target(uninstall
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}/uninstall.cmake)
+endif()
+
 # Determine 32-bit or 64-bit target
 if( CMAKE_C_COMPILER_ID MATCHES "MSVC" AND CMAKE_VS_PLATFORM_NAME MATCHES "Win64|x64" )
    set( IS_64BIT ON )
