@@ -80,12 +80,12 @@ jobs:
     - name: "Install sccache"
       if: startswith( matrix.config.os, 'windows' )
       env:
-          LINK: https://nightly.link/mozilla/sccache/actions/runs/1093829431/sccache-e1dc58bc713bf2610375b4a50b423a555cd60dd8-x86_64-pc-windows-msvc.zip
+          LINK: https://github.com/mozilla/sccache/releases/download/v0.2.15/sccache-v0.2.15-x86_64-pc-windows-msvc.tar.gz
       run: |
         mkdir C:/sccache
         cd C:/sccache
         curl.exe -LO "$LINK"
-        unzip.exe *
+        tar.exe -xf *
         echo "C:/sccache" >> $GITHUB_PATH
 
     - name: "Set up compiler cache"
