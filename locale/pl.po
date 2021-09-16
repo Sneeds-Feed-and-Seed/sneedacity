@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2021-08-15 00:00+0000\n"
+"PO-Revision-Date: 2021-09-16 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -170,7 +170,7 @@ msgstr "Dziennik zmian"
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
 msgid "Read more on GitHub"
-msgstr "Czytaj więcej na GitHubie"
+msgstr "Przeczytaj więcej na GitHubie"
 
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
@@ -185,7 +185,7 @@ msgstr "Nie można połączyć się z serwerem aktualizacji Sneedacity."
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
 msgid "Update data was corrupted."
-msgstr "Dane aktualizacji były uszkodzone."
+msgstr "Dane aktualizacji zostały uszkodzone."
 
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
