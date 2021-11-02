@@ -16,7 +16,6 @@ pkgbase = sneedacity-git
 	makedepends = gstreamer
 	makedepends = gst-plugins-bad-libs
 	makedepends = ffmpeg
-	makedepends = jack
 	makedepends = nasm
 	depends = alsa-lib
 	depends = libx11
