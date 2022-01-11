@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2021-06-09 11:26+0000\n"
+"PO-Revision-Date: 2021-11-01 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -170,7 +170,7 @@ msgstr "Dziennik zmian"
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
 msgid "Read more on GitHub"
-msgstr "Czytaj więcej na GitHubie"
+msgstr "Przeczytaj więcej na GitHubie"
 
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
@@ -185,7 +185,7 @@ msgstr "Nie można połączyć się z serwerem aktualizacji Sneedacity."
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
 msgid "Update data was corrupted."
-msgstr "Dane aktualizacji były uszkodzone."
+msgstr "Dane aktualizacji zostały uszkodzone."
 
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "update dialog"
@@ -658,7 +658,7 @@ msgstr "%s, wtyczki Nyquista"
 #: src/AboutDialog.cpp
 #, c-format
 msgid "%s, web developer"
-msgstr "%s, twórca stron internetowych"
+msgstr "%s, twórca strony internetowej"
 
 #. i18n-hint: For "About Sneedacity..." credits, substituting a person's proper
 #. name
@@ -736,7 +736,7 @@ msgstr "forum"
 #. *  For example:  "English translation by Dominic Mazzoni."
 #: src/AboutDialog.cpp
 msgid "translator_credits"
-msgstr "Polskie tłumaczenie Sneedacity: Grzegorz \"Gootector\" Pruchniakowski.\nPozostali tłumacze (nieaktywni): Michał Trzebiatowski, Patryk Małachowski, Aron Płotnikowski i Łukasz Wojniłowicz."
+msgstr "Polskie tłumaczenie Sneedacity: Grzegorz \"Gootector\" Pruchniakowski."
 
 #: src/AboutDialog.cpp
 msgid "<h3>"
@@ -784,7 +784,7 @@ msgstr "Strona internetowa i grafiki"
 
 #: src/AboutDialog.cpp
 msgid "Translators"
-msgstr "Tłumacze"
+msgstr "Tłumaczenie"
 
 #: src/AboutDialog.cpp src/prefs/LibraryPrefs.cpp
 msgid "Libraries"
@@ -3001,11 +3001,11 @@ msgstr "Działanie"
 
 #: src/HistoryWindow.cpp
 msgid "Used Space"
-msgstr "Używane miejsce na dysku"
+msgstr "Zajęte miejsce"
 
 #: src/HistoryWindow.cpp
 msgid "&Total space used"
-msgstr "&Całkowite używane miejsce"
+msgstr "&Całkowite zajęte miejsce"
 
 #: src/HistoryWindow.cpp
 msgid "&Undo levels available"
@@ -4392,7 +4392,7 @@ msgid ""
 "To save any previously open tracks:\n"
 "Cancel, Edit > Undo until all tracks\n"
 "are open, then File > Save Project."
-msgstr "\n\nJeśli teraz zapiszesz, to projekt nie będzie miał ścieżek.\n\nAby zapisać ścieżki, które były poprzednio\notwarte, kliknij 'Anuluj', 'Edycja > Cofnij', aż wszystkie\nścieżki będą otwarte i wybierz 'Plik > Zapisz projekt'."
+msgstr "\nJeśli teraz zapiszesz, to projekt nie będzie miał ścieżek.\n\nAby zapisać ścieżki, które były poprzednio otwarte,\nkliknij 'Anuluj', 'Edycja > Cofnij', aż wszystkie ścieżki\nbędą otwarte i wybierz 'Plik > Zapisz projekt'."
 
 #: src/ProjectManager.cpp
 #, c-format
@@ -4410,7 +4410,7 @@ msgid_plural "%d hours"
 msgstr[0] "%d godzina"
 msgstr[1] "%d godziny"
 msgstr[2] "%d godzin"
-msgstr[3] "%d godzin"
+msgstr[3] "%d godziny"
 
 #: src/ProjectManager.cpp
 #, c-format
@@ -4419,7 +4419,7 @@ msgid_plural "%d minutes"
 msgstr[0] "%d minuta"
 msgstr[1] "%d minuty"
 msgstr[2] "%d minut"
-msgstr[3] "%d minut"
+msgstr[3] "%d minuty"
 
 #. i18n-hint: A time in hours and minutes. Only translate the "and".
 #: src/ProjectManager.cpp
@@ -5066,7 +5066,7 @@ msgid ""
 "The selected file name could not be used\n"
 "for Timer Recording because it would overwrite another project.\n"
 "Please try again and select an original name."
-msgstr "Wybrana nazwa pliku nie może być użyta\ndla nagrywania czasowego, ponieważ zastąpiłaby ona inny projekt.\n\nSpróbuj ponownie i wybierz niepowtarzalną nazwę."
+msgstr "Wybrana nazwa pliku nie może być użyta\ndla nagrywania czasowego, ponieważ zastąpiłaby ona inny projekt.\nSpróbuj ponownie i wybierz niepowtarzalną nazwę."
 
 #: src/TimerRecordDialog.cpp
 msgid "Error Saving Timer Recording Project"
@@ -5138,7 +5138,7 @@ msgstr "Automatyczny eksport włączony:"
 
 #: src/TimerRecordDialog.cpp
 msgid "Action after Timer Recording:"
-msgstr "Działanie po nagrywaniu czasowym"
+msgstr "Działanie po nagrywaniu czasowym:"
 
 #: src/TimerRecordDialog.cpp
 msgid "Sneedacity Timer Record Progress"
@@ -5282,7 +5282,7 @@ msgstr "Nic nie rób"
 
 #: src/TimerRecordDialog.cpp
 msgid "Exit Sneedacity"
-msgstr "Opuść Sneedacity"
+msgstr "Zakończ Sneedacity"
 
 #: src/TimerRecordDialog.cpp
 msgid "Restart system"
@@ -6867,7 +6867,7 @@ msgstr "Możesz pomierzyć tylko jedną ścieżkę na raz."
 
 #: src/effects/Contrast.cpp
 msgid "Please select an audio track."
-msgstr "Zaznacz ścieżkę dźwiękową"
+msgstr "Zaznacz ścieżkę dźwiękową."
 
 #: src/effects/Contrast.cpp
 msgid ""
@@ -7343,7 +7343,7 @@ msgstr "Poziom rezydualny"
 
 #: src/effects/Distortion.cpp
 msgid "(Not Used):"
-msgstr "(Nieużywany):"
+msgstr "(nieużywane):"
 
 #. i18n-hint: Control range.
 #: src/effects/Distortion.cpp
@@ -8840,7 +8840,7 @@ msgstr "Nowa długość zaznaczenia: %s"
 
 #: src/effects/Repeat.cpp
 msgid "Warning: No repeats."
-msgstr "Ostrzeżenie - Brak powtórek"
+msgstr "Ostrzeżenie - Brak powtórek."
 
 #: src/effects/Reverb.cpp
 msgid "Vocal I"
@@ -11016,7 +11016,7 @@ msgstr "Średnia, 145-185 kbps"
 #. i18n-hint: Slightly humorous - as in use an insane precision with MP3.
 #: src/export/ExportMP3.cpp
 msgid "Insane"
-msgstr "Obłąkana"
+msgstr "Najlepsza"
 
 #: src/export/ExportMP3.cpp
 msgid "Extreme"
@@ -11874,7 +11874,7 @@ msgstr "Importowano MIDI z '%s'"
 
 #: src/import/ImportMIDI.cpp
 msgid "Import MIDI"
-msgstr "Importuj MIDI..."
+msgstr "Importuj MIDI"
 
 #: src/import/ImportMIDI.cpp
 #, c-format
@@ -12251,9 +12251,9 @@ msgstr "%s prawo"
 msgid "%s %d of %d clip %s"
 msgid_plural "%s %d of %d clips %s"
 msgstr[0] "%s %d z %d klip %s"
-msgstr[1] "%s %d z %d klip %s"
-msgstr[2] "%s %d z %d klip %s"
-msgstr[3] "%s %d z %d klipów %s"
+msgstr[1] "%s %d z %d klipy %s"
+msgstr[2] "%s %d z %d klipów %s"
+msgstr[3] "%s %d z %d klipy %s"
 
 #: src/menus/ClipMenus.cpp
 msgid "start"
@@ -12276,9 +12276,9 @@ msgstr "koniec"
 msgid "%s %d and %s %d of %d clip %s"
 msgid_plural "%s %d and %s %d of %d clips %s"
 msgstr[0] "%s %d i %s %d z %d klip %s"
-msgstr[1] "%s %d i %s %d z %d klip %s"
-msgstr[2] "%s %d i %s %d z %d klip %s"
-msgstr[3] "%s %d i %s %d z %d klipów %s"
+msgstr[1] "%s %d i %s %d z %d klipy %s"
+msgstr[2] "%s %d i %s %d z %d klipów %s"
+msgstr[3] "%s %d i %s %d z %d klipy %s"
 
 #. i18n-hint:
 #. first number identifies one of a sequence of clips,
@@ -12289,9 +12289,9 @@ msgstr[3] "%s %d i %s %d z %d klipów %s"
 msgid "%d of %d clip %s"
 msgid_plural "%d of %d clips %s"
 msgstr[0] "%d z %d klip %s"
-msgstr[1] "%d z %d klip %s"
-msgstr[2] "%d z %d klip %s"
-msgstr[3] "%d z %d klipów %s"
+msgstr[1] "%d z %d klipy %s"
+msgstr[2] "%d z %d klipów %s"
+msgstr[3] "%d z %d klipy %s"
 
 #: src/menus/ClipMenus.cpp
 msgid "Time shifted clips to the right"
@@ -12782,7 +12782,7 @@ msgstr "&Drukuj..."
 #. i18n-hint: (verb) It's item on a menu.
 #: src/menus/FileMenus.cpp
 msgid "E&xit"
-msgstr "&Wyjście"
+msgstr "&Zakończ"
 
 #: src/menus/FileMenus.cpp
 msgid "Hidden File Menu"
@@ -13802,7 +13802,7 @@ msgstr "Ta wersja Sneedacity pozwala tylko na jedną ścieżkę czasową dla ka�
 
 #: src/menus/TrackMenus.cpp
 msgid "Created new time track"
-msgstr "Utworzono nową ścieżkę"
+msgstr "Utworzono nową ścieżkę czasową"
 
 #: src/menus/TrackMenus.cpp
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
@@ -14199,7 +14199,7 @@ msgstr "&Opcje transportu"
 
 #: src/menus/TransportMenus.cpp
 msgid "Sound Activation Le&vel..."
-msgstr "Po&ziom aktywacji dźwięku"
+msgstr "Po&ziom aktywacji dźwięku..."
 
 #: src/menus/TransportMenus.cpp
 msgid "Sound A&ctivated Recording (on/off)"
@@ -14632,7 +14632,7 @@ msgstr "Zmiana katalogu tymczasowego będzie nieaktywna aż do zrestartowania pr
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "Temp Directory Update"
-msgstr "Uaktualnienie katalogu tymczasowego"
+msgstr "Aktualizacja katalogu tymczasowego"
 
 #: src/prefs/EffectsPrefs.cpp
 msgid "Preferences for Effects"
@@ -14737,7 +14737,7 @@ msgstr "Rozszerzony import"
 
 #: src/prefs/ExtImportPrefs.cpp
 msgid "Preferences for ExtImport"
-msgstr "Ustawienia eksport/import"
+msgstr "Ustawienia rozsz. importu"
 
 #: src/prefs/ExtImportPrefs.cpp
 msgid "A&ttempt to use filter in OpenFile dialog first"
@@ -14809,7 +14809,7 @@ msgstr "Zasada potwierdzania przy usuwaniu"
 
 #: src/prefs/ExtImportPrefs.h
 msgid "Ext Import"
-msgstr "Eksport Import"
+msgstr "Rozsz. import"
 
 #. i18n-hint: refers to Sneedacity's user interface settings
 #: src/prefs/GUIPrefs.cpp
@@ -14938,7 +14938,7 @@ msgstr "Import/eksport"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "Preferences for ImportExport"
-msgstr "Ustawienia import/eksport"
+msgstr "Ustawienia importu/eksportu"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "&Mix down to Stereo or Mono"
@@ -15575,7 +15575,7 @@ msgstr "%i Hz"
 
 #: src/prefs/QualityPrefs.cpp
 msgid "Other..."
-msgstr "Inne..."
+msgstr "Inna..."
 
 #: src/prefs/QualityPrefs.cpp
 msgid "Sampling"
@@ -15915,7 +15915,7 @@ msgstr "&Kwantyzacja nut"
 
 #: src/prefs/SpectrumPrefs.cpp
 msgid "Global settings"
-msgstr "Ustawienia ogólne:"
+msgstr "Ustawienia ogólne"
 
 #: src/prefs/SpectrumPrefs.cpp
 msgid "Ena&ble spectral selection"
@@ -15981,7 +15981,7 @@ msgid ""
 "\n"
 "(Only the Transport Toolbar and the colors on the wavetrack are currently affected, even\n"
 "though the image file shows other icons too.)"
-msgstr "Ubieranie w motywy jest funkcją eksperymentalną.\n\nWypróbuj ją przez kliknięcie na \"Zapisz pamięć podręczną motywu\", a następnie znajdź i zmodyfikuj obrazy i kolory w\nImageCacheVxx.png, wykorzystując edytor obrazów, np. Gimpa.\n\nKliknij \"Wczytaj pamięć podręczną motywu\", aby wczytać zmienione obrazy i kolory z powrotem do Sneedacity.\n\n(Na razie tylko pasek narzędzi transportu i kolory na ścieżce fali są zmieniane, nawet\nw przypadku, gdy plik obrazu pokazuje także inne ikony.)"
+msgstr "Ubieranie w motywy jest funkcją eksperymentalną.\n\nAby ją wypróbować, kliknij \"Zapisz pamięć podręczną motywu\", a następnie znajdź i zmodyfikuj obrazy i kolory w\nImageCacheVxx.png, wykorzystując edytor obrazów, np. Gimpa.\n\nKliknij \"Wczytaj pamięć podręczną motywu\", aby wczytać zmienione obrazy i kolory z powrotem do Sneedacity.\n\n(Na razie tylko pasek narzędzi transportu i kolory na ścieżce fali są zmieniane, nawet\nw przypadku, gdy plik obrazu pokazuje także inne ikony.)"
 
 #: src/prefs/ThemePrefs.cpp
 msgid ""
@@ -16384,7 +16384,7 @@ msgstr "Kopiuj zaznaczenie"
 
 #: src/toolbars/EditToolBar.cpp
 msgid "Trim audio outside selection"
-msgstr "Wytnij dźwięk poza zaznaczeniem"
+msgstr "Przytnij dźwięk poza zaznaczeniem"
 
 #: src/toolbars/EditToolBar.cpp
 msgid "Silence audio selection"
@@ -17047,7 +17047,7 @@ msgstr "384000 Hz"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 msgid "&Other..."
-msgstr "&Inne..."
+msgstr "&Inna..."
 
 #. i18n-hint: The string names a track
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
@@ -17251,7 +17251,7 @@ msgstr "Ustaw zakres"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "Set time track display to linear"
-msgstr "Ustaw wyświetlanie ścieżki czasu na liniową"
+msgstr "Ustaw wyświetlanie ścieżki czasowej na liniową"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "Set Display"
@@ -17259,11 +17259,11 @@ msgstr "Ustaw wyświetlanie"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "Set time track display to logarithmic"
-msgstr "Ustaw wyświetlanie ścieżki czasu na logarytmiczną"
+msgstr "Ustaw wyświetlanie ścieżki czasowej na logarytmiczną"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "Set time track interpolation to linear"
-msgstr "Ustaw interpolację ścieżki czasu na liniową"
+msgstr "Ustaw interpolację ścieżki czasowej na liniową"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "Set Interpolation"
@@ -17271,7 +17271,7 @@ msgstr "Ustaw interpolację"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "Set time track interpolation to logarithmic"
-msgstr "Ustaw interpolację ścieżki czasu na logarytmiczną"
+msgstr "Ustaw interpolację ścieżki czasowej na logarytmiczną"
 
 #: src/tracks/timetrack/ui/TimeTrackControls.cpp
 msgid "&Linear scale"
@@ -19365,7 +19365,7 @@ msgstr "Amplituda (0-1)"
 
 #: plug-ins/sample-data-export.ny
 msgid "Sample Data Export"
-msgstr "Eksport przykładowych danych"
+msgstr "Eksportuj przykładowe dane"
 
 #: plug-ins/sample-data-export.ny
 msgid "Analyzing..."
@@ -19642,7 +19642,7 @@ msgstr "Błąd.~%\"~a\" nie może zostać zapisany."
 
 #: plug-ins/sample-data-import.ny
 msgid "Sample Data Import"
-msgstr "Import przykładowych danych"
+msgstr "Importuj przykładowe dane"
 
 #: plug-ins/sample-data-import.ny
 msgid "Reading and rendering samples..."

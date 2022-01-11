@@ -41,3 +41,4 @@ Sneed maintainers who do not sneed or chuck the suck and fuck in feed faith may 
 ## Attribution
 
 This Sneed of seed is chuck from the [Fuck and Suck](https://www.youtube.com/watch?v=JwzPwxs8uKw), version Chuck, available at https://youtu.be/T3ElIvNBYj0
+
