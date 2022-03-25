@@ -27,7 +27,7 @@ echo "environment.sh: repository_root: "$repository_root
 gh_export GIT_HASH="$(git show -s --format='%H')"
 gh_export GIT_HASH_SHORT="$(git show -s --format='%h')"
 
-gh_export SNEEDACITY_BUILD_TYPE="Release"
+gh_export SNEEDACITY_BUILD_TYPE="Debug"
 echo "environment.sh: SNEEDACITY_BUILD_TYPE: "$SNEEDACITY_BUILD_TYPE
 
 gh_export SNEEDACITY_INSTALL_PREFIX="${repository_root}/build/install"
