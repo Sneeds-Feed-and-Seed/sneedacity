@@ -15,10 +15,7 @@ It handles initialization and termination by subclassing wxApp.
 
 *//*******************************************************************/
 
-
 #include "SneedacityApp.h"
-
-
 
 #if 0
 // This may be used to debug memory leaks.
@@ -113,6 +110,7 @@ It handles initialization and termination by subclassing wxApp.
 #include "widgets/FileConfig.h"
 #include "widgets/FileHistory.h"
 #include "Debug.h"
+
 
 #ifdef EXPERIMENTAL_EASY_CHANGE_KEY_BINDINGS
 #include "prefs/KeyConfigPrefs.h"
@@ -725,6 +723,7 @@ IMPLEMENT_WX_THEME_SUPPORT
 
 int main(int argc, char *argv[])
 {
+   dprintf("main()");
 
    global_debug_prints_enabled = false;
 
@@ -1045,6 +1044,7 @@ SneedacityApp::~SneedacityApp()
 // main frame
 bool SneedacityApp::OnInit()
 {
+   dprintf("SneedacityApp::OnInit()");
    // JKC: ANSWER-ME: Who actually added the event loop guarantor?
    // Although 'blame' says Leland, I think it came from a donated patch.
 
@@ -1273,6 +1273,7 @@ bool SneedacityApp::OnInit()
 
    // Initialize preferences and language
    {
+      dprintf("Initialize preferences and language");
       wxFileName configFileName(FileNames::ConfigDir(), wxT("sneedacity.cfg"));
       auto appName = wxTheApp->GetAppName();
       InitPreferences( SneedacityFileConfig::Create(
@@ -1280,6 +1281,7 @@ bool SneedacityApp::OnInit()
          configFileName.GetFullPath(),
          wxEmptyString, wxCONFIG_USE_LOCAL_FILE) );
       PopulatePreferences();
+      dprintf("Initialize preferences and language: done");
    }
 
 #if defined(__WXMSW__) && !defined(__WXUNIVERSAL__) && !defined(__CYGWIN__)
@@ -1324,6 +1326,7 @@ bool SneedacityApp::OnInit()
 
 bool SneedacityApp::InitPart2()
 {
+   dprintf("SneedacityApp::InitPart2()");
 #if defined(__WXMAC__)
    SetExitOnFrameDelete(false);
 #endif
@@ -1345,12 +1348,15 @@ bool SneedacityApp::InitPart2()
    // start multiple instances, defeating the single instance checker.
 
    // Initialize the CommandHandler
+   dprintf("Initialize the CommandHandler");
    InitCommandHandler();
 
    // Initialize the ModuleManager, including loading found modules
+   dprintf("Initialize the ModuleManager, including loading found modules");
    ModuleManager::Get().Initialize();
 
    // Initialize the PluginManager
+   dprintf("Initialize the PluginManager");
    PluginManager::Get().Initialize();
 
    // Parse command line and handle options that might require
@@ -1397,6 +1403,7 @@ bool SneedacityApp::InitPart2()
 
    SneedacityProject *project;
    {
+      dprintf("SneedacityProject *project;");
       // Bug 718: Position splash screen on same screen 
       // as where Sneedacity project will appear.
       wxRect wndRect;
@@ -1435,10 +1442,18 @@ bool SneedacityApp::InitPart2()
 
       //JKC: Would like to put module loading here.
 
-      // More initialization
+      #ifdef USE_FFMPEG
+      dprintf("SneedacityApp.cpp: Calling FFmpegStartup()");
+      FFmpegStartup();
+      dprintf("SneedacityApp.cpp: FFmpegStartup() returned");
+      #endif
 
+      // More initialization
+      dprintf("More initialization");
       InitDitherers();
+      dprintf("AudioIO::Init();");
       AudioIO::Init();
+      dprintf("AudioIO::Init(); done");
 
 #ifdef __WXMAC__
 
@@ -1489,10 +1504,6 @@ bool SneedacityApp::InitPart2()
       // project->MayCheckForUpdates();
       SplashDialog::DoHelpWelcome(*project);
    }
-
-   #ifdef USE_FFMPEG
-   FFmpegStartup();
-   #endif
 
    Importer::Get().Initialize();
 
@@ -1596,6 +1607,7 @@ bool SneedacityApp::InitPart2()
 
 void SneedacityApp::InitCommandHandler()
 {
+   dprintf("SneedacityApp::InitCommandHandler()");
    mCmdHandler = std::make_unique<CommandHandler>();
    //SetNextHandler(mCmdHandler);
 }
@@ -1603,12 +1615,14 @@ void SneedacityApp::InitCommandHandler()
 // AppCommandEvent callback - just pass the event on to the CommandHandler
 void SneedacityApp::OnReceiveCommand(AppCommandEvent &event)
 {
+   dprintf("SneedacityApp::OnReceiveCommand()");
    wxASSERT(NULL != mCmdHandler);
    mCmdHandler->OnReceiveCommand(event);
 }
 
 void SneedacityApp::OnKeyDown(wxKeyEvent &event)
 {
+   dprintf("SneedacityApp::OnKeyDown()");
    if(event.GetKeyCode() == WXK_ESCAPE) {
       // Stop play, including scrub, but not record
       auto project = ::GetActiveProject();
@@ -1651,6 +1665,7 @@ void SetToExtantDirectory( wxString & result, const wxString & dir ){
 
 bool SneedacityApp::InitTempDir()
 {
+   dprintf("SneedacityApp::InitTempDir()");
    // We need to find a temp directory location.
    auto tempFromPrefs = TempDirectory::TempDir();
    auto tempDefaultLoc = TempDirectory::DefaultTempDir();
@@ -1728,6 +1743,7 @@ bool SneedacityApp::InitTempDir()
 
 bool SneedacityApp::CreateSingleInstanceChecker(const wxString &dir)
 {
+   dprintf("SneedacityApp::CreateSingleInstanceChecker()");
    wxString name = wxString::Format(wxT("sneedacity-lock-%s"), wxGetUserId());
    mChecker.reset();
    auto checker = std::make_unique<wxSingleInstanceChecker>();
@@ -1843,6 +1859,7 @@ bool SneedacityApp::CreateSingleInstanceChecker(const wxString &dir)
 
 bool SneedacityApp::CreateSingleInstanceChecker(const wxString &dir)
 {
+   dprintf("SneedacityApp::CreateSingleInstanceChecker(const wxString &dir)");
    mIPCServ.reset();
 
    bool isServer = false;
@@ -2092,6 +2109,7 @@ bool SneedacityApp::CreateSingleInstanceChecker(const wxString &dir)
 
 void SneedacityApp::OnServerEvent(wxSocketEvent & /* evt */)
 {
+   dprintf("SneedacityApp::OnServerEvent()");
    wxSocketBase *sock;
 
    // Accept all pending connection requests
@@ -2110,6 +2128,7 @@ void SneedacityApp::OnServerEvent(wxSocketEvent & /* evt */)
 
 void SneedacityApp::OnSocketEvent(wxSocketEvent & evt)
 {
+   dprintf("SneedacityApp::OnSocketEvent()");
    wxSocketBase *sock = evt.GetSocket();
 
    if (evt.GetSocketEvent() == wxSOCKET_LOST)
