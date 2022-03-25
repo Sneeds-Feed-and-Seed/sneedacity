@@ -31,21 +31,23 @@ jobs:
           compiler_cache: ccache
           compiler_cache_path: ~/.ccache
 
-        - name: macOS_Intel
-          os: macos-latest
-          arch: Intel # as reported by Apple menu > About This Mac
-          generator: Ninja
-          compiler_cache: ccache
-          compiler_cache_path: ~/Library/Caches/ccache
+#        Mac OS disabled because there is not maintainer for Mac.
+#        - name: macOS_Intel
+#          os: macos-latest
+#          arch: Intel # as reported by Apple menu > About This Mac
+#          generator: Ninja
+#          compiler_cache: ccache
+#          compiler_cache_path: ~/Library/Caches/ccache
 
-        - name: Windows_32bit
-          os: windows-latest
-          arch: x86 # as reported by Windows Settings > System > About
-          generator: Ninja
-          cc: cl
-          cxx: cl
-          compiler_cache: sccache
-          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
+#      32 bits x86 disabled temporarily
+#      - name: Windows_32bit
+#          os: windows-latest
+#          arch: x86 # as reported by Windows Settings > System > About
+#          generator: Ninja
+#          cc: cl
+#          cxx: cl
+#          compiler_cache: sccache
+#          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
         
         - name: Windows_64bit
           os: windows-latest
