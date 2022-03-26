@@ -96,10 +96,12 @@ cmake -GXCode -T buildsystem=1 -Dsneedacity_use_mad="off" -Dsneedacity_use_id3ta
 
 ## Linux & Other OS
 
+Note: only Debian and Ubuntu are officially supported.
+
 1. Clone Sneedacity from the Sneedacity GitHub project. 
   
     ```
-    $ git clone https://github.com/formerlychuck/sneedacity/
+    $ git clone https://github.com/Sneeds-Feed-and-Seed/sneedacity/
     ```
 
 2. Configure Sneedacity using CMake:
