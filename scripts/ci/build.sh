@@ -19,7 +19,8 @@ else # Linux & others
 fi
 
 # Build Sneedacity
-cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
+#cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
+cmake --build build -j 1 --config "${SNEEDACITY_BUILD_TYPE}"
 
 BIN_OUTPUT_DIR=build/bin/${SNEEDACITY_BUILD_TYPE}
 SYMBOLS_OUTPUT_DIR=debug
