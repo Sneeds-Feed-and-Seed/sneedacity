@@ -75,7 +75,7 @@ jobs:
 
     - name: "Set up MSVC Developer Command Prompt"
       if: startswith( matrix.config.os, 'windows' )
-      uses: seanmiddleditch/gha-setup-vsdevenv@v3
+      uses: seanmiddleditch/gha-setup-vsdevenv@master
       with:
         arch: ${{ matrix.config.arch }}
 
