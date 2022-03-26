@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+echo "Begin configure.sh"
+
+echo "configure.sh: checking bash version"
 ((${BASH_VERSION%%.*} >= 4)) || { echo >&2 "$0: Error: Please upgrade Bash."; exit 1; }
 
 set -euxo pipefail
 
+echo "configure.sh: setting cmake_args"
 cmake_args=(
     -S .
     -B build
@@ -12,6 +16,9 @@ cmake_args=(
     -D CMAKE_BUILD_TYPE="${SNEEDACITY_BUILD_TYPE}"
     -D CMAKE_INSTALL_PREFIX="${SNEEDACITY_INSTALL_PREFIX}"
 )
+
+echo "configure.sh: cmake_args: $cmake_args"
+echo "configure.sh: SNEEDACITY_CMAKE_GENERATOR: ${SNEEDACITY_CMAKE_GENERATOR}"
 
 if [[ "${SNEEDACITY_CMAKE_GENERATOR}" == "Visual Studio"* ]]; then
     cmake_args+=(
@@ -44,12 +51,15 @@ if [[ -n "${APPLE_CODESIGN_IDENTITY}" && "${OSTYPE}" == darwin* ]]; then
             -D sneedacity_perform_notarization=yes
         )
     fi
+echo "configure.sh: OSTYPE: ${OSTYPE}"
 elif [[ -n "${WINDOWS_CERTIFICATE}" && "${OSTYPE}" == msys* ]]; then
     # Windows certificate will be used from the environment
     cmake_args+=(
         -D sneedacity_perform_codesign=yes
     )
 fi
+
+echo "configure.sh: GIT_BRANCH: "${GIT_BRANCH}
 
 if [[ ${GIT_BRANCH} == release* ]]; then
     cmake_args+=(
@@ -58,4 +68,5 @@ if [[ ${GIT_BRANCH} == release* ]]; then
 fi
 
 # Configure Sneedacity
+echo "configure.sh: running cmake with args: ${cmake_args[@]}"
 cmake "${cmake_args[@]}"
