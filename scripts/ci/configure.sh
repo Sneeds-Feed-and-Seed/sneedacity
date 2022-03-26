@@ -15,8 +15,6 @@ cmake_args=(
     -D sneedacity_use_pch=no
     -D CMAKE_BUILD_TYPE="${SNEEDACITY_BUILD_TYPE}"
     -D CMAKE_INSTALL_PREFIX="${SNEEDACITY_INSTALL_PREFIX}"
-    -D ENABLE_PRECOMPILED_HEADERS="OFF"
-    -D CMAKE_SYSTEM_VERSION="10.0.10011.16384"
 )
 
 echo "configure.sh: cmake_args: $cmake_args"
