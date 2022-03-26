@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echo "Begin build.sh"
+
+echo "build.sh: checking bash version"
+
 ((${BASH_VERSION%%.*} >= 4)) || { echo >&2 "$0: Error: Please upgrade Bash."; exit 1; }
 
 set -euxo pipefail
@@ -18,15 +22,20 @@ else # Linux & others
 
 fi
 
+echo "build.sh: building using $cpus cpus"
+
 # Build Sneedacity
-#cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
-cmake --build build -j 1 --config "${SNEEDACITY_BUILD_TYPE}"
+cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
+
+#Use this instead for debugging the build process:
+#cmake --build build -j 1 --config "${SNEEDACITY_BUILD_TYPE}"
 
 BIN_OUTPUT_DIR=build/bin/${SNEEDACITY_BUILD_TYPE}
 SYMBOLS_OUTPUT_DIR=debug
 
 mkdir ${SYMBOLS_OUTPUT_DIR}
 
+echo "build.sh: removing debug symbols"
 if [[ "${OSTYPE}" == msys* ]]; then # Windows
     # copy PDBs to debug folder...
     find ${BIN_OUTPUT_DIR} -name '*.pdb' | xargs -I % cp % ${SYMBOLS_OUTPUT_DIR}
