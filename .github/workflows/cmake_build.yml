@@ -50,7 +50,7 @@ jobs:
 #          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
         
         - name: Windows_64bit
-          os: windows-latest
+          os: windows-2016
           arch: amd64 # as reported by Windows Settings > System > About
           generator: Ninja
           cc: cl
