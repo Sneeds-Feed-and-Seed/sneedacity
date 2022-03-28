@@ -72,7 +72,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-#    - uses: seanmiddleditch/gha-setup-ninja@v3
+#installs ninja, which is then called from /usr/local/share/cmake-3.22/Modules/CMakeNinjaFindMake.cmake
+    - uses: seanmiddleditch/gha-setup-ninja@v3
     
     
     - name: Dependencies
