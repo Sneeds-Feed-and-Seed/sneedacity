@@ -19,7 +19,7 @@ endif ()
 # still link to the alpha manual online.
 
 # Set this value to 0 for alpha, 1 for beta, 2 for release builds
-set( SNEEDACITY_BUILD_LEVEL 0 )
+set( SNEEDACITY_BUILD_LEVEL 2 )
 
 # The Sneedacity version
 # Increment as appropriate after release of a new version, and set back
