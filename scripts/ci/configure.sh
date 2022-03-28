@@ -9,6 +9,9 @@ set -euxo pipefail
 
 echo "configure.sh: setting cmake_args"
 cmake_args=(
+    --trace
+    --debug-output
+    -Wdev
     -S .
     -B build
     -G "${SNEEDACITY_CMAKE_GENERATOR}"
