@@ -44,7 +44,7 @@ jobs:
           #os: windows-latest
           os: windows-2019
           arch: x86 # as reported by Windows Settings > System > About
-          generator: Ninja
+#          generator: Ninja
           cc: cl
           cxx: cl
           compiler_cache: sccache
@@ -72,7 +72,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - uses: seanmiddleditch/gha-setup-ninja@v3
+#    - uses: seanmiddleditch/gha-setup-ninja@v3
     
     
     - name: Dependencies
