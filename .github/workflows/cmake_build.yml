@@ -39,34 +39,32 @@ jobs:
 #          compiler_cache: ccache
 #          compiler_cache_path: ~/Library/Caches/ccache
 
-        - name: Windows_32bit
-          #same as below
-          #os: windows-latest
-          os: windows-2016
-          arch: x86 # as reported by Windows Settings > System > About
-          generator: Ninja
-          cc: cl
-          cxx: cl
-          compiler_cache: sccache
-          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
+#        Disable Windows builds because of the error mentioned below.
+#        - name: Windows_32bit
+#          same as below
+#          os: windows-2019
+#          arch: x86 # as reported by Windows Settings > System > About
+#          generator: Ninja
+#          cc: cl
+#          cxx: cl
+#          compiler_cache: sccache
+#          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
         
-        - name: Windows_64bit
-          #This wsas:
-          #os: windows-latest
-          #but at some point pressumably due to a Windows/MSVC update the Windows builds broke with this message:
-          #C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\um\winnt.h(253): fatal error C1189: #error:  Must define a target architecture.
-          #According to https://stackoverflow.com/questions/65402366/c5105-and-other-compiler-warnings-when-building-with-github-actions-winsdk-10
-          #this error happens because there are many Windows SDK versions installed that conflict with each other. This idea is supported by the fact that there were
-          #two different version numbers mentioned in the compilation logs, 10.0.10011.16384 and 10.0.22000.0, unless they're versions of different things.
-          #He solved by giving the -DCMAKE_SYSTEM_VERSION option to CMake but I couldn't solve it that way.
-          #So we switch to the Windows Server 2016 version of the Actions VM image.
-          os: windows-2016
-          arch: amd64 # as reported by Windows Settings > System > About
-          generator: Ninja
-          cc: cl
-          cxx: cl
-          compiler_cache: sccache
-          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
+#        - name: Windows_64bit
+#          os: windows-2019
+#          At some point pressumably due to a Windows/MSVC update the Windows builds broke with this message:
+#          C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\um\winnt.h(253): fatal error C1189: #error:  Must define a target architecture.
+#          According to https://stackoverflow.com/questions/65402366/c5105-and-other-compiler-warnings-when-building-with-github-actions-winsdk-10
+#          this error might happen because there are many Windows SDK versions installed that conflict with each other. This idea is supported by the fact that there were
+#          two different version numbers mentioned in the compilation logs, 10.0.10011.16384 and 10.0.22000.0, unless they're versions of different things.
+#          He solved by giving the -DCMAKE_SYSTEM_VERSION option to CMake but I couldn't solve it that way.
+#          It works in the Windows Server 2016 version of the Actions VM image but that one is phased out in March 2022.
+#          arch: amd64 # as reported by Windows Settings > System > About
+#          generator: Ninja
+#          cc: cl
+#          cxx: cl
+#          compiler_cache: sccache
+#          compiler_cache_path: C:\Users\runneradmin\AppData\Local\Mozilla\sccache\cache
 
     steps:
     - name: Checkout
