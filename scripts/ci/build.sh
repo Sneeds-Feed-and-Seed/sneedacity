@@ -28,7 +28,7 @@ echo "build.sh: building using $cpus cpus"
 cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
 
 #Use this instead for debugging the build process:
-#cmake --build build -j 1 --config "${SNEEDACITY_BUILD_TYPE}"
+#cmake --build build -v -j 1 --config "${SNEEDACITY_BUILD_TYPE}"
 
 BIN_OUTPUT_DIR=build/bin/${SNEEDACITY_BUILD_TYPE}
 SYMBOLS_OUTPUT_DIR=debug

@@ -1,0 +1,1 @@
+export SNEEDACITY_BUILD_TYPE="Debug"
