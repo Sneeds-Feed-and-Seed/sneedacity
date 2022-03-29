@@ -70,7 +70,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - uses: seanmiddleditch/gha-setup-ninja@v3
+#    Disabled Ninja because it breaks the Windows builds.
+#    - uses: seanmiddleditch/gha-setup-ninja@v3
     
     
     - name: Dependencies
