@@ -24,7 +24,7 @@
 
 ## Pre-built binaries
 
-Binaries for the latest known to work build of Sneedacity are available [here](https://nightly.link/Sneeds-Feed-and-Seed/sneedacity/workflows/cmake_build/master) and from the [sneed arch repos](https://github.com/Sneeds-Feed-and-Seed/sneed-arch-repo).
+Binaries for the latest known to work build of Sneedacity are available [here](https://github.com/Sneeds-Feed-and-Seed/sneedacity/releases/tag/Sneedacity) and from the [sneed arch repos](https://github.com/Sneeds-Feed-and-Seed/sneed-arch-repo).
 
 ## Mirrors
 

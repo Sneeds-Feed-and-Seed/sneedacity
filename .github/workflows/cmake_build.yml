@@ -45,7 +45,7 @@ jobs:
           os: windows-2019
           arch: x86 # as reported by Windows Settings > System > About
           #sets the parameter to the -G option that will be given to cmake in the configure.sh script
-          generator: Ninja
+#          generator: Ninja
           cc: cl
           cxx: cl
           compiler_cache: sccache
@@ -61,9 +61,10 @@ jobs:
           #two different version numbers mentioned in the compilation logs, 10.0.10011.16384 and 10.0.22000.0, unless they're versions of different things.
           #He solved by giving the -DCMAKE_SYSTEM_VERSION option to CMake but I couldn't solve it that way.
           #So we switch to the Windows Server 2019 version of the Actions VM image.
+          #This is fixed by disabling Ninja.
           os: windows-2019
           arch: amd64 # as reported by Windows Settings > System > About
-          generator: Ninja
+#          generator: Ninja
           cc: cl
           cxx: cl
           compiler_cache: sccache
@@ -73,9 +74,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-#installs ninja, which is then called from /usr/local/share/cmake-3.22/Modules/CMakeNinjaFindMake.cmake
-    - uses: seanmiddleditch/gha-setup-ninja@v3
-    
+#    Installs ninja, which is then called from /usr/local/share/cmake-3.22/Modules/CMakeNinjaFindMake.cmake
+#    Disabled because it breaks the Windows builds.
+#    - uses: seanmiddleditch/gha-setup-ninja@v3
     
     - name: Dependencies
       run: |
