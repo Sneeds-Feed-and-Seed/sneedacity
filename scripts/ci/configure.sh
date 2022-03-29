@@ -73,6 +73,10 @@ echo "configure.sh: cmake_args: $cmake_args"
 # Configure Sneedacity
 echo "configure.sh: running cmake with args: ${cmake_args[@]}"
 
-$project_dir="${project_dir:-.}" #if not set, set "." as the default value
+#if not set, set "." as the default value
+if [ -z "$project_dir" ]
+	then $project_dir = "."
+fi
+echo "configure.sh: project_dir: $project_dir"
 
 cmake "${cmake_args[@]}" "$project_dir"
