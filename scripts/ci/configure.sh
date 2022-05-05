@@ -20,22 +20,27 @@ inst_pref_str="-D CMAKE_INSTALL_PREFIX=""$2"
 else
 inst_pref_str="-D CMAKE_INSTALL_PREFIX=""${SNEEDACITY_INSTALL_PREFIX}"
 fi
-if [ -z ${project_dir+x}]; then
-project_dir="$1"
-fi
+#if [ -z ${project_dir+x}] and [ -z "$1" ]; then
+#echo "configure.sh: setting project_dir to $1"
+#project_dir="$1"
+#else
+#echo "configure.sh: setting project_dir to empty string"
+#project_dir=""
+#fi
 
 echo "configure.sh: setting cmake_args"
 cmake_args=(
     --trace
     --debug-output
     -Wdev
-    -S .
+#    -S .
     -B build
 #    -G "${SNEEDACITY_CMAKE_GENERATOR}"
     -D sneedacity_use_pch=no
     -D CMAKE_BUILD_TYPE="${SNEEDACITY_BUILD_TYPE}"
     "${inst_pref_str}"
     -G "Unix Makefiles"
+    -S "${1:-.}"
 )
 
 echo "configure.sh: cmake_args: $cmake_args"
@@ -91,4 +96,4 @@ echo "configure.sh: cmake_args: $cmake_args"
 # Configure Sneedacity
 echo "configure.sh: running cmake with args: ${cmake_args[@]}"
 
-cmake "${cmake_args[@]}" "${project_dir:-.}"
+cmake "${cmake_args[@]}"
