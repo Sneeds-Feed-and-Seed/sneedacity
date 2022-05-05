@@ -24,8 +24,13 @@ fi
 
 echo "build.sh: building using $cpus cpus"
 
+if [ -z ${SNEEDACITY_BUILD_TYPE+x} ]; then
+SNEEDACITY_BUILD_TYPE="debug"
+fi
+
 # Build Sneedacity
-cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
+VERBOSE=1 cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
+#make -j "${cpus}"
 
 #Use this instead for debugging the build process:
 #cmake --build build -v -j 1 --config "${SNEEDACITY_BUILD_TYPE}"
@@ -33,18 +38,18 @@ cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}"
 BIN_OUTPUT_DIR=build/bin/${SNEEDACITY_BUILD_TYPE}
 SYMBOLS_OUTPUT_DIR=debug
 
-mkdir ${SYMBOLS_OUTPUT_DIR}
-
-echo "build.sh: removing debug symbols"
-if [[ "${OSTYPE}" == msys* ]]; then # Windows
+#What's the point of removing debug symbols?
+#mkdir ${SYMBOLS_OUTPUT_DIR}
+#echo "build.sh: removing debug symbols"
+#if [[ "${OSTYPE}" == msys* ]]; then # Windows
     # copy PDBs to debug folder...
-    find ${BIN_OUTPUT_DIR} -name '*.pdb' | xargs -I % cp % ${SYMBOLS_OUTPUT_DIR}
+#    find ${BIN_OUTPUT_DIR} -name '*.pdb' | xargs -I % cp % ${SYMBOLS_OUTPUT_DIR}
     # and remove debug symbol files from the file tree before archieving
-    find ${BIN_OUTPUT_DIR} -name '*.iobj' -o -name '*.ipdb' -o -name '*.pdb' -o -name '*.ilk' | xargs rm -f
-elif [[ "${OSTYPE}" == darwin* ]]; then # macOS
-    find ${BIN_OUTPUT_DIR} -name '*.dSYM' | xargs -J % mv % ${SYMBOLS_OUTPUT_DIR}
-else # Linux & others
-    chmod +x scripts/ci/linux/split_debug_symbols.sh
-    find ${BIN_OUTPUT_DIR} -type f -executable -o -name '*.so' | xargs -n 1 scripts/ci/linux/split_debug_symbols.sh
-    find ${BIN_OUTPUT_DIR} -name '*.debug' | xargs -I % mv % ${SYMBOLS_OUTPUT_DIR}
-fi
+#    find ${BIN_OUTPUT_DIR} -name '*.iobj' -o -name '*.ipdb' -o -name '*.pdb' -o -name '*.ilk' | xargs rm -f
+#elif [[ "${OSTYPE}" == darwin* ]]; then # macOS
+#    find ${BIN_OUTPUT_DIR} -name '*.dSYM' | xargs -J % mv % ${SYMBOLS_OUTPUT_DIR}
+#else # Linux & others
+#    chmod +x scripts/ci/linux/split_debug_symbols.sh
+#    find ${BIN_OUTPUT_DIR} -type f -executable -o -name '*.so' | xargs -n 1 scripts/ci/linux/split_debug_symbols.sh
+#    find ${BIN_OUTPUT_DIR} -name '*.debug' | xargs -I % mv % ${SYMBOLS_OUTPUT_DIR}
+#fi

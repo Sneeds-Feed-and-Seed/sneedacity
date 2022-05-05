@@ -4,5 +4,9 @@
 
 set -euxo pipefail
 
+if [ -z ${SNEEDACITY_BUILD_TYPE+x} ]; then
+SNEEDACITY_BUILD_TYPE="debug"
+fi
+
 # Install Sneedacity
 cmake --install build --config "${SNEEDACITY_BUILD_TYPE}" --verbose

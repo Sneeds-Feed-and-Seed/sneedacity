@@ -1,11 +1,28 @@
 #!/usr/bin/env bash
 
+#USAGE:
+#From build directory:
+#configure.sh source_directory install_prefix
+
 echo "Begin configure.sh"
 
 echo "configure.sh: checking bash version"
 ((${BASH_VERSION%%.*} >= 4)) || { echo >&2 "$0: Error: Please upgrade Bash."; exit 1; }
 
 set -euxo pipefail
+
+echo "configure.sh: setting default parameters"
+if [ -z ${SNEEDACITY_BUILD_TYPE+x} ]; then
+SNEEDACITY_BUILD_TYPE="debug"
+fi
+if [ -z ${SNEEDACITY_INSTALL_PREFIX+x} ]; then
+inst_pref_str="-D CMAKE_INSTALL_PREFIX=""$2"
+else
+inst_pref_str="-D CMAKE_INSTALL_PREFIX=""${SNEEDACITY_INSTALL_PREFIX}"
+fi
+if [ -z ${project_dir+x}]; then
+project_dir="$1"
+fi
 
 echo "configure.sh: setting cmake_args"
 cmake_args=(
@@ -17,7 +34,8 @@ cmake_args=(
 #    -G "${SNEEDACITY_CMAKE_GENERATOR}"
     -D sneedacity_use_pch=no
     -D CMAKE_BUILD_TYPE="${SNEEDACITY_BUILD_TYPE}"
-    -D CMAKE_INSTALL_PREFIX="${SNEEDACITY_INSTALL_PREFIX}"
+    "${inst_pref_str}"
+    -G "Unix Makefiles"
 )
 
 echo "configure.sh: cmake_args: $cmake_args"
