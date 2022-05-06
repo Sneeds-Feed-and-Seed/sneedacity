@@ -167,3 +167,26 @@ $ docker run --rm -v ${pwd}:/sneedacity/sneedacity/ -v ${pwd}/../build/linux-sys
 ```
 
 To find system packages, we rely on `pkg-config`. There are several packages that have broken `*.pc` or do not use `pkg-config` at all. For the docker image - we handle this issue by installing the correct [`pc` files](linux/build-environment/pkgconfig/).
+
+###Alternative build method on Linux
+
+How to build:
+```
+#Install the required packages
+apt-get install libxss-dev libxxf86vm-dev libxkbfile-dev libxv-dev pkg-config libgtk2.0-dev libgtk2.0-dev libasound2-dev libavformat-dev libjack-jackd2-dev uuid-dev build-essential cmake git python3-pip
+#Note that you might need to remove the cmake package and install it from the cmake webpage because the build process requires a quite recent version.
+cd ~
+git clone https://github.com/Sneeds-Feed-and-Seed/sneedacity
+mkdir sneedacity_build
+mkdir sneedacity_install
+cd sneedacity_build
+~/sneedacity/scripts/build/configure.sh ~/sneedacity_install
+~/sneedacity/scripts/build/build.sh
+~/sneedacity/scripts/build/install.sh
+```
+
+How to debug the build process:
+Add
+> out.txt 2>&1
+to the end of the failing command.
+Then grep the out.txt file for "CMake Error" or "error:".
