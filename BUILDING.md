@@ -168,9 +168,12 @@ $ docker run --rm -v ${pwd}:/sneedacity/sneedacity/ -v ${pwd}/../build/linux-sys
 
 To find system packages, we rely on `pkg-config`. There are several packages that have broken `*.pc` or do not use `pkg-config` at all. For the docker image - we handle this issue by installing the correct [`pc` files](linux/build-environment/pkgconfig/).
 
-###Alternative build method on Linux
+### Alternative build method on Linux (experimental)
+
+This is an alternative build method meant to, in the future, unify the build process on all the supported platforms and the CI/CD pipeline on Github. At the moment though, it only works/was tested on Linux, and might cause a bug that prevents Sneedacity from detecting audio devices, so more testing is needed before this becomes the official method of building.
 
 How to build:
+
 ```
 #Install the required packages
 apt-get install libxss-dev libxxf86vm-dev libxkbfile-dev libxv-dev pkg-config libgtk2.0-dev libgtk2.0-dev libasound2-dev libavformat-dev libjack-jackd2-dev uuid-dev build-essential cmake git python3-pip
@@ -186,7 +189,13 @@ cd sneedacity_build
 ```
 
 How to debug the build process:
+
 Add
+
+```
 > out.txt 2>&1
+```
+
 to the end of the failing command.
+
 Then grep the out.txt file for "CMake Error" or "error:".
