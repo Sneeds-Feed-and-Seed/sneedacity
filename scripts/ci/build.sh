@@ -25,7 +25,7 @@ fi
 echo "build.sh: building using $cpus cpus"
 
 # Build Sneedacity
-cmake --build build -j "${cpus}"
+cmake --build build -j "${cpus}" --config "${SNEEDACITY_BUILD_TYPE}
 
 #Use this instead for debugging the build process:
 #cmake --build build -v -j 1 --config "Debug"
