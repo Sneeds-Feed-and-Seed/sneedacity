@@ -17,7 +17,7 @@ cmake_args=(
 #    -G "${SNEEDACITY_CMAKE_GENERATOR}"
     -D sneedacity_use_pch=no
     -D sneedacity_use_ffmpeg=loaded
-    -D CMAKE_BUILD_TYPE="${SNEEDACITY_BUILD_TYPE}"
+    -D CMAKE_BUILD_TYPE="${SNEEDACITY_BUILD_TYPE:-release}"
     -D CMAKE_INSTALL_PREFIX="${SNEEDACITY_INSTALL_PREFIX}"
 )
 

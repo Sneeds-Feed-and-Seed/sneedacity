@@ -1,1 +1,1 @@
-#export SNEEDACITY_BUILD_TYPE="release"
+export SNEEDACITY_BUILD_TYPE="release"

@@ -5,4 +5,9 @@
 set -euxo pipefail
 
 # Install Sneedacity
-cmake --install build --verbose
+if [ -z ${SNEEDACITY_BUILD_TYPE+x} ]
+then
+  cmake --install build --verbose
+else
+ cmake --install build --verbose --config "${SNEEDACITY_BUILD_TYPE}"
+fi
