@@ -53,47 +53,56 @@
 #endif
 
 /*
-*  Initialize the Sine table and Twiddle pointers (bit-reversed pointers)
-*  for the FFT routine.
+Initialize the Sine table and Twiddle pointers (bit-reversed pointers)
+for the FFT routine.
+HFFT is an alias declaration for std::unique_ptr<FFTParam, FFTDeleter>;
+
+FFTParam is:
+struct FFTParam {
+   ArrayOf<int> BitReversed;
+   ArrayOf<fft_type> SinTable;
+   size_t Points;
+#ifdef EXPERIMENTAL_EQ_SSE_THREADED
+   int pow2Bits;
+#endif
+};
+
 */
 HFFT InitializeFFT(size_t fftlen)
 {
    int temp;
+   //create teh returned struct
    HFFT h{ safenew FFTParam };
-
    /*
    *  FFT size is only half the number of data points
    *  The full FFT output can be reconstructed from this FFT's output.
    *  (This optimization can be made since the data is real.)
    */
    h->Points = fftlen / 2;
-
+   //.reinit is implemented by MemoryX
+   //discard whatever was in the array managed by unique_ptr and create a new array of size n
    h->SinTable.reinit(2*h->Points);
-
    h->BitReversed.reinit(h->Points);
-
+   //iterate over all the points
    for(size_t i = 0; i < h->Points; i++)
    {
       temp = 0;
+      
       for(size_t mask = h->Points / 2; mask > 0; mask >>= 1)
          temp = (temp >> 1) + (i & mask ? h->Points : 0);
-
       h->BitReversed[i] = temp;
    }
-
    for(size_t i = 0; i < h->Points; i++)
    {
       h->SinTable[h->BitReversed[i]  ]=(fft_type)-sin(2*M_PI*i/(2*h->Points));
       h->SinTable[h->BitReversed[i]+1]=(fft_type)-cos(2*M_PI*i/(2*h->Points));
    }
-
 #ifdef EXPERIMENTAL_EQ_SSE_THREADED
    // NEW SSE FFT routines work on live data
    for(size_t i = 0; i < 32; i++)
       if((1 << i) & fftlen)
          h->pow2Bits = i;
 #endif
-
    return h;
 }
 

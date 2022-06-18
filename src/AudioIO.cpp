@@ -915,7 +915,7 @@ class MidiThread final : public AudioThread {
 //
 //////////////////////////////////////////////////////////////////////
 
-AudioIO::Init()
+void AudioIO::Init()
 {
    ugAudioIO.reset(safenew AudioIO());
    Get()->mThread->Run();
@@ -961,7 +961,7 @@ bool AudioIO::ValidateDeviceNames(const wxString &play, const wxString &rec)
    return pInfo != nullptr && rInfo != nullptr && pInfo->hostApi == rInfo->hostApi;
 }
 
-void AudioIO::AudioIO()
+AudioIO::AudioIO()
 {
    if (!std::atomic<double>{}.is_lock_free()) {
       // If this check fails, then the atomic<double> members in AudioIO.h
