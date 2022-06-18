@@ -83,17 +83,30 @@ HFFT InitializeFFT(size_t fftlen)
    //discard whatever was in the array managed by unique_ptr and create a new array of size n
    h->SinTable.reinit(2*h->Points);
    h->BitReversed.reinit(h->Points);
-   //iterate over all the points
+   //iterate over all the points setting
+   //the initial values of the h->BitReversed array elements
    for(size_t i = 0; i < h->Points; i++)
    {
       temp = 0;
-      
+      //divide h->Points/2 by 2 until it reaches 0
       for(size_t mask = h->Points / 2; mask > 0; mask >>= 1)
+         //temp = (temp/2) + either h->Points or 0
          temp = (temp >> 1) + (i & mask ? h->Points : 0);
+      // set the h->BitReversed to the value we just calculated
       h->BitReversed[i] = temp;
    }
+   //iterate over h->Points
    for(size_t i = 0; i < h->Points; i++)
    {
+      /*
+                              2Pi*i
+      SinTable[n]   = -sin( ---------- )
+                             2*points
+
+                              2Pi*i
+      SinTable[n+1] = -cos( ---------- )
+                             2*points
+      */
       h->SinTable[h->BitReversed[i]  ]=(fft_type)-sin(2*M_PI*i/(2*h->Points));
       h->SinTable[h->BitReversed[i]+1]=(fft_type)-cos(2*M_PI*i/(2*h->Points));
    }
@@ -170,6 +183,11 @@ void FFTDeleter::operator() (FFTParam *hFFT) const
 *        (Older revisions would progressively scale the input, so the output
 *        values would be similar in amplitude to the input values, which is
 *        good when using fixed point arithmetic)
+
+https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
+https://en.wikipedia.org/wiki/Butterfly_diagram
+https://en.wikipedia.org/wiki/Twiddle_factor
+
 */
 void RealFFTf(fft_type *buffer, const FFTParam *h)
 {
