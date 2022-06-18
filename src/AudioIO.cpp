@@ -915,7 +915,7 @@ class MidiThread final : public AudioThread {
 //
 //////////////////////////////////////////////////////////////////////
 
-void AudioIO::Init()
+AudioIO::Init()
 {
    ugAudioIO.reset(safenew AudioIO());
    Get()->mThread->Run();
