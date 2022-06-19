@@ -200,19 +200,16 @@ void PopulatePreferences()
    bool resetPrefs = false;
    wxString langCode = gPrefs->Read(wxT("/Locale/Language"), wxEmptyString);
    bool writeLang = false;
-
    const wxFileName fn(
       FileNames::ResourcesDir(), 
       wxT("FirstTime.ini"));
    if (fn.FileExists())   // it will exist if the (win) installer put it there
    {
       const wxString fullPath{fn.GetFullPath()};
-
       auto pIni =
          SneedacityFileConfig::Create({}, {}, fullPath, {},
             wxCONFIG_USE_LOCAL_FILE);
       auto &ini = *pIni;
-
       wxString lang;
       if (ini.Read(wxT("/FromInno/Language"), &lang) && !lang.empty())
       {
@@ -224,9 +221,7 @@ void PopulatePreferences()
          // to represent the "@" character.
          langCode.Replace(wxT("0"), wxT("@"));
       }
-
       ini.Read(wxT("/FromInno/ResetPrefs"), &resetPrefs, false);
-
       bool gone = wxRemoveFile(fullPath);  // remove FirstTime.ini
       if (!gone)
       {
@@ -235,7 +230,6 @@ void PopulatePreferences()
             XO("Failed!"));
       }
    }
-
    // Use the system default language if one wasn't specified or if the user selected System.
    if (langCode.empty())
       langCode =
@@ -259,13 +253,11 @@ void PopulatePreferences()
          writeLang = true;
       }
    }
-
    // Save the specified language
    if (writeLang)
    {
       gPrefs->Write(wxT("/Locale/Language"), langCode);
    }
-
    // In AUdacity 2.1.0 support for the legacy 1.2.x preferences (depreciated since Sneedacity
    // 1.3.1) is dropped. As a result we can drop the import flag
    // first time this version of Sneedacity is run we try to migrate
@@ -275,11 +267,9 @@ void PopulatePreferences()
    if (newPrefsInitialized) {
       gPrefs->DeleteEntry(wxT("/NewPrefsInitialized"), true);  // take group as well if empty
    }
-
    // record the Prefs version for future checking (this has not been used for a very
    // long time).
    gPrefs->Write(wxT("/PrefsVersion"), wxString(wxT(SNEEDACITY_PREFS_VERSION_STRING)));
-
    // Check if some prefs updates need to happen based on sneedacity version.
    // Unfortunately we can't use the PrefsVersion prefs key because that resets things.
    // In the future we may want to integrate that better.
@@ -288,22 +278,17 @@ void PopulatePreferences()
    int vMajor = gPrefs->Read(wxT("/Version/Major"), (long) 0);
    int vMinor = gPrefs->Read(wxT("/Version/Minor"), (long) 0);
    int vMicro = gPrefs->Read(wxT("/Version/Micro"), (long) 0);
-
    gPrefs->SetVersionKeysInit(vMajor, vMinor, vMicro);   // make a note of these initial values
                                                             // for use by ToolManager::ReadConfig()
-
    // These integer version keys were introduced april 4 2011 for 1.3.13
    // The device toolbar needs to be enabled due to removal of source selection features in
    // the mixer toolbar.
    if ((vMajor < 1) ||
        (vMajor == 1 && vMinor < 3) ||
        (vMajor == 1 && vMinor == 3 && vMicro < 13)) {
-
-
       // Do a full reset of the Device Toolbar to get it on the screen.
       if (gPrefs->Exists(wxT("/GUI/ToolBars/Device")))
          gPrefs->DeleteGroup(wxT("/GUI/ToolBars/Device"));
-
       // We keep the mixer toolbar prefs (shown/not shown)
       // the width of the mixer toolbar may have shrunk, the prefs will keep the larger value
       // if the user had a device that had more than one source.
@@ -312,13 +297,11 @@ void PopulatePreferences()
          gPrefs->Write(wxT("/GUI/ToolBars/Mixer/W"), -1);
       }
    }
-
    // In 2.1.0, the Meter toolbar was split and lengthened, but strange arrangements happen
    // if upgrading due to the extra length.  So, if a user is upgrading, use the pre-2.1.0
    // lengths, but still use the NEW split versions.
    if (gPrefs->Exists(wxT("/GUI/ToolBars/Meter")) &&
       !gPrefs->Exists(wxT("/GUI/ToolBars/CombinedMeter"))) {
-
       // Read in all of the existing values
       long dock, order, show, x, y, w, h;
       gPrefs->Read(wxT("/GUI/ToolBars/Meter/Dock"), &dock, -1);
@@ -328,12 +311,10 @@ void PopulatePreferences()
       gPrefs->Read(wxT("/GUI/ToolBars/Meter/Y"), &y, -1);
       gPrefs->Read(wxT("/GUI/ToolBars/Meter/W"), &w, -1);
       gPrefs->Read(wxT("/GUI/ToolBars/Meter/H"), &h, -1);
-
       // "Order" must be adjusted since we're inserting two NEW toolbars
       if (dock > 0) {
          wxString oldPath = gPrefs->GetPath();
          gPrefs->SetPath(wxT("/GUI/ToolBars"));
-
          wxString bar;
          long ndx = 0;
          bool cont = gPrefs->GetFirstGroup(bar, ndx);
@@ -345,11 +326,9 @@ void PopulatePreferences()
             cont = gPrefs->GetNextGroup(bar, ndx);
          }
          gPrefs->SetPath(oldPath);
-
          // And override the height
          h = 27;
       }
-
       // Write the split meter bar values
       gPrefs->Write(wxT("/GUI/ToolBars/RecordMeter/Dock"), dock);
       gPrefs->Write(wxT("/GUI/ToolBars/RecordMeter/Order"), order);
@@ -365,18 +344,15 @@ void PopulatePreferences()
       gPrefs->Write(wxT("/GUI/ToolBars/PlayMeter/Y"), -1);
       gPrefs->Write(wxT("/GUI/ToolBars/PlayMeter/W"), w);
       gPrefs->Write(wxT("/GUI/ToolBars/PlayMeter/H"), h);
-
       // And hide the old combined meter bar
       gPrefs->Write(wxT("/GUI/ToolBars/Meter/Dock"), -1);
    }
-
    // Upgrading pre 2.2.0 configs we assume extended set of defaults.
    if ((0<vMajor && vMajor < 2) ||
        (vMajor == 2 && vMinor < 2))
    {
       gPrefs->Write(wxT("/GUI/Shortcuts/FullDefaults"),1);
    }
-
    // Upgrading pre 2.4.0 configs, the selection toolbar is now split.
    if ((0<vMajor && vMajor < 2) ||
        (vMajor == 2 && vMinor < 4))
@@ -392,19 +368,16 @@ void PopulatePreferences()
       gPrefs->Write(wxT("/GUI/Toolbars/Time/Path"),"0,1");
       gPrefs->Write(wxT("/GUI/Toolbars/Time/Show"),1);
    }
-
 #if _WIN32
    {
        auto theme = getSystemTheme();
        gPrefs->Write(wxT("/Gui/Theme"), theme);
    }
 #endif // _WIN32
-
    // write out the version numbers to the prefs file for future checking
    gPrefs->Write(wxT("/Version/Major"), SNEEDACITY_VERSION);
    gPrefs->Write(wxT("/Version/Minor"), SNEEDACITY_RELEASE);
    gPrefs->Write(wxT("/Version/Micro"), SNEEDACITY_REVISION);
-
    gPrefs->Flush();
 }
 }
@@ -417,15 +390,11 @@ static void QuitSneedacity(bool bForce)
    // guard against recursion
    if (gIsQuitting)
       return;
-
    gIsQuitting = true;
-
    wxTheApp->SetExitOnFrameDelete(true);
-
    // Try to close each open window.  If the user hits Cancel
    // in a Save Changes dialog, don't continue.
    // BG: unless force is true
-
    // BG: Are there any projects open?
    //-   if (!AllProjects{}.empty())
 /*start+*/
@@ -449,18 +418,14 @@ static void QuitSneedacity(bool bForce)
          return;
       }
    }
-
    ModuleManager::Get().Dispatch(AppQuiting);
-
 #ifdef EXPERIMENTAL_SCOREALIGN
    CloseScoreAlignDialog();
 #endif
    CloseScreenshotTools();
-
    //print out profile if we have one by deleting it
    //temporarily commented out till it is added to all projects
    //DELETE Profiler::Instance();
-
    // Save last log for diagnosis
    auto logger = SneedacityLogger::Get();
    if (logger)
@@ -468,10 +433,8 @@ static void QuitSneedacity(bool bForce)
       wxFileName logFile(FileNames::DataDir(), wxT("lastlog.txt"));
       logger->SaveLog(logFile.GetFullPath());
    }
-
    //remove our logger
    std::unique_ptr<wxLog>{ wxLog::SetActiveTarget(NULL) }; // DELETE
-
    if (bForce)
    {
       wxExit();
@@ -720,28 +683,21 @@ public:
 
 IMPLEMENT_APP_NO_MAIN(SneedacityApp)
 IMPLEMENT_WX_THEME_SUPPORT
-
 int main(int argc, char *argv[])
 {
    dprintf("main()");
-
    global_debug_prints_enabled = false;
-
    wxDISABLE_DEBUG_SUPPORT();
-
    // Proceed to SneedacityApp::OnInit() and then to SneedacityApp::InitPart2()
    return wxEntry(argc, argv);
 }
 
 #elif defined(__WXGTK__) && defined(NDEBUG)
-
 IMPLEMENT_APP_NO_MAIN(SneedacityApp)
 IMPLEMENT_WX_THEME_SUPPORT
-
 int main(int argc, char *argv[])
 {
    wxDISABLE_DEBUG_SUPPORT();
-
    // Bug #1986 workaround - This doesn't actually reduce the number of 
    // messages, it simply hides them in Release builds. We'll probably
    // never be able to get rid of the messages entirely, but we should
@@ -749,10 +705,8 @@ int main(int argc, char *argv[])
    // builds.
    stdout = freopen("/dev/null", "w", stdout);
    stderr = freopen("/dev/null", "w", stderr);
-
    return wxEntry(argc, argv);
 }
-
 #else
 IMPLEMENT_APP(SneedacityApp)
 #endif
@@ -885,7 +839,6 @@ void SneedacityApp::OnMRUFile(wxCommandEvent& event) {
    int n = event.GetId() - FileHistory::ID_RECENT_FIRST;
    auto &history = FileHistory::Global();
    const auto &fullPathStr = history[ n ];
-
    // Try to open only if not already open.
    // Test IsAlreadyOpen() here even though SneedacityProject::MRUOpen() also now checks,
    // because we don't want to Remove() just because it already exists,
@@ -923,7 +876,6 @@ void SneedacityApp::OnTimer(wxTimerEvent& WXUNUSED(event))
                }
                continue;
             }
-
             // TODO: Handle failures better.
             // Some failures are OK, e.g. file not found, just would-be-nices to do better,
             // so FAIL_MSG is more a case of an enhancement request than an actual  problem.
@@ -1047,17 +999,14 @@ bool SneedacityApp::OnInit()
    dprintf("SneedacityApp::OnInit()");
    // JKC: ANSWER-ME: Who actually added the event loop guarantor?
    // Although 'blame' says Leland, I think it came from a donated patch.
-
    // PRL:  It was added by LL at 54676a72285ba7ee3a69920e91fa390a71ef10c9 :
    // "   Ensure OnInit() has an event loop
    //     And allow events to flow so the splash window updates under GTK"
    // then mistakenly lost in the merge at
    // 37168ebbf67ae869ab71a3b5cbbf1d2a48e824aa
    // then restored at 7687972aa4b2199f0717165235f3ef68ade71e08
-
    // Ensure we have an event loop during initialization
    wxEventLoopGuarantor eventLoop;
-
    // Fire up SQLite
    if ( !ProjectFileIO::InitializeSQL() )
       this->CallAfter([]{
@@ -1065,16 +1014,12 @@ bool SneedacityApp::OnInit()
             XO("SQLite library failed to initialize.  Sneedacity cannot continue.") );
          QuitSneedacity( true );
       });
-
-
    // cause initialization of wxWidgets' global logger target
    (void) SneedacityLogger::Get();
-
 #if defined(__WXMAC__)
    // Disable window animation
    wxSystemOptions::SetOption(wxMAC_WINDOW_PLAIN_TRANSITION, 1);
 #endif
-
    // Some GTK themes produce larger combo boxes that make them taller
    // than our single toolbar height restriction.  This will remove some
    // of the extra space themes add.
@@ -1113,30 +1058,23 @@ bool SneedacityApp::OnInit()
 
    // Don't use SNEEDACITY_NAME here.
    // We want Sneedacity with a capital 'A'
-
    wxString appName = wxT("Sneedacity");
-
    wxTheApp->SetAppName(appName);
    // Explicitly set since OSX will use it for the "Quit" menu item
    wxTheApp->SetAppDisplayName(appName);
    wxTheApp->SetVendorName(appName);
-
    ::wxInitAllImageHandlers();
-
    // AddHandler takes ownership
    wxFileSystem::AddHandler(safenew wxZipFSHandler);
-   
    // by wxwidgets standard 
    wxStandardPaths::Get().SetFileLayout(wxStandardPaths::FileLayout::FileLayout_XDG);
    //
    // Paths: set search path and temp dir path
    //
    FilePaths sneedacityPathList;
-
 #ifdef __WXGTK__
    // Make sure install prefix is set so wxStandardPath resolves paths properly
    wxStandardPaths::Get().SetInstallPrefix(wxT(INSTALL_PREFIX));
-
    /* Search path (for plug-ins, translations etc) is (in this order):
       * The SNEEDACITY_PATH environment variable
       * The current directory
@@ -1144,7 +1082,6 @@ bool SneedacityApp::OnInit()
       * The user's "~/.sneedacity-files" directory
       * The "share" and "share/doc" directories in their install path */
    wxString home = wxGetHomeDir();
-
    wxString envTempDir = wxGetenv(wxT("TMPDIR"));
    if (!envTempDir.empty()) {
       /* On Unix systems, the environment variable TMPDIR may point to
@@ -1156,19 +1093,15 @@ bool SneedacityApp::OnInit()
       TempDirectory::SetDefaultTempDir( wxString::Format(
          wxT("/var/tmp/sneedacity-%s"), wxGetUserId() ) );
    }
-
    wxString pathVar = wxGetenv(wxT("SNEEDACITY_PATH"));
    if (!pathVar.empty())
       FileNames::AddMultiPathsToPathList(pathVar, sneedacityPathList);
    FileNames::AddUniquePathToPathList(::wxGetCwd(), sneedacityPathList);
-
    wxString progPath = wxPathOnly(argv[0]);
    FileNames::AddUniquePathToPathList(progPath, sneedacityPathList);
    // Add the path to modules:
    FileNames::AddUniquePathToPathList(progPath + L"/lib/sneedacity", sneedacityPathList);
-
    FileNames::AddUniquePathToPathList(FileNames::DataDir(), sneedacityPathList);
-
 #ifdef SNEEDACITY_NAME
    FileNames::AddUniquePathToPathList(wxString::Format(wxT("%s/.%s-files"),
       home, wxT(SNEEDACITY_NAME)),
@@ -1194,16 +1127,13 @@ bool SneedacityApp::OnInit()
       wxT(INSTALL_PREFIX)),
       sneedacityPathList);
 #endif //SNEEDACITY_NAME
-
    FileNames::AddUniquePathToPathList(wxString::Format(wxT("%s/share/locale"),
       wxT(INSTALL_PREFIX)),
       sneedacityPathList);
 
    FileNames::AddUniquePathToPathList(wxString::Format(wxT("./locale")),
       sneedacityPathList);
-
 #endif //__WXGTK__
-
 // JKC Bug 1220: Use path based on home directory on WXMAC
 #ifdef __WXMAC__
    wxFileName tmpFile;
@@ -1215,9 +1145,6 @@ bool SneedacityApp::OnInit()
    wxString tmpDirLoc = tmpFile.GetPath(wxPATH_GET_VOLUME);
    ::wxRemoveFile(tmpFile.GetFullPath());
 #endif
-
-
-
    // On Mac and Windows systems, use the directory which contains Sneedacity.
 #ifdef __WXMSW__
    // On Windows, the path to the Sneedacity program is in argv[0]
@@ -1230,35 +1157,28 @@ bool SneedacityApp::OnInit()
    TempDirectory::SetDefaultTempDir( wxString::Format(
       wxT("%s\\SessionData"), tmpDirLoc ) );
 #endif //__WXWSW__
-
 #ifdef __WXMAC__
    // On Mac OS X, the path to the Sneedacity program is in argv[0]
    wxString progPath = wxPathOnly(argv[0]);
-
    FileNames::AddUniquePathToPathList(progPath, sneedacityPathList);
    // If Sneedacity is a "bundle" package, then the root directory is
    // the great-great-grandparent of the directory containing the executable.
    //FileNames::AddUniquePathToPathList(progPath + wxT("/../../../"), sneedacityPathList);
-
    // These allow for searching the "bundle"
    FileNames::AddUniquePathToPathList(
       progPath + wxT("/../"), sneedacityPathList);
    FileNames::AddUniquePathToPathList(
       progPath + wxT("/../Resources"), sneedacityPathList);
-
    // JKC Bug 1220: Using an actual temp directory for session data on Mac was
    // wrong because it would get cleared out on a reboot.
    TempDirectory::SetDefaultTempDir( wxString::Format(
       wxT("%s/Library/Application Support/sneedacity/SessionData"), tmpDirLoc) );
-
    //TempDirectory::SetDefaultTempDir( wxString::Format(
    //   wxT("%s/sneedacity-%s"),
    //   tmpDirLoc,
    //   wxGetUserId() ) );
 #endif //__WXMAC__
-
    FileNames::SetSneedacityPathList( std::move( sneedacityPathList ) );
-
    // Define languages for which we have translations, but that are not yet
    // supported by wxWidgets.
    //
@@ -1270,7 +1190,6 @@ bool SneedacityApp::OnInit()
       wxLocale::AddLanguage(userLangs[i]);
    }
 #endif
-
    // Initialize preferences and language
    {
       dprintf("Initialize preferences and language");
@@ -1283,22 +1202,17 @@ bool SneedacityApp::OnInit()
       PopulatePreferences();
       dprintf("Initialize preferences and language: done");
    }
-
 #if defined(__WXMSW__) && !defined(__WXUNIVERSAL__) && !defined(__CYGWIN__)
    this->AssociateFileTypes();
 #endif
-
    theTheme.EnsureInitialised();
-
    // AColor depends on theTheme.
    AColor::Init();
-
    // If this fails, we must exit the program.
    if (!InitTempDir()) {
       FinishPreferences();
       return false;
    }
-
 #ifdef __WXMAC__
    // Bug2437:  When files are opened from Finder and another instance of
    // Sneedacity is running, we must return from OnInit() to wxWidgets before
@@ -1306,10 +1220,8 @@ bool SneedacityApp::OnInit()
    // opened.  So use CallAfter() to delay the rest of initialization.
    // See CreateSingleInstanceChecker() where we send those paths over a
    // socket to the prior instance.
-
    // This call is what probably makes the sleep unnecessary:
    MacFinishLaunching();
-
    using namespace std::chrono;
    // This sleep may be unnecessary, but it is harmless.  It less NS framework
    // events arrive on another thread, but it might not always be long enough.
@@ -1330,7 +1242,6 @@ bool SneedacityApp::InitPart2()
 #if defined(__WXMAC__)
    SetExitOnFrameDelete(false);
 #endif
-
    // Make sure the temp dir isn't locked by another process.
    {
       auto key =
@@ -1341,7 +1252,6 @@ bool SneedacityApp::InitPart2()
          return false;
       }
    }
-
    //<<<< Try to avoid dialogs before this point.
    // The reason is that InitTempDir starts the single instance checker.
    // If we're waiitng in a dialog before then we can very easily
@@ -1350,15 +1260,12 @@ bool SneedacityApp::InitPart2()
    // Initialize the CommandHandler
    dprintf("Initialize the CommandHandler");
    InitCommandHandler();
-
    // Initialize the ModuleManager, including loading found modules
    dprintf("Initialize the ModuleManager, including loading found modules");
    ModuleManager::Get().Initialize();
-
    // Initialize the PluginManager
    dprintf("Initialize the PluginManager");
    PluginManager::Get().Initialize();
-
    // Parse command line and handle options that might require
    // immediate exit...no need to initialize all of the audio
    // stuff to display the version string.
@@ -1368,20 +1275,16 @@ bool SneedacityApp::InitPart2()
       // Either user requested help or a parsing error occurred
       exit(1);
    }
-
    if (parser->Found(wxT("v")))
    {
       wxPrintf("Sneedacity v%s\n", SNEEDACITY_VERSION_STRING);
       exit(0);
    }
-
    if (parser->Found(wxT("d")))
    {
       global_debug_prints_enabled = true;
    }
    dprintf("InitPart2: global_debug_prints_enabled =", global_debug_prints_enabled);
-
-
    long lval;
    if (parser->Found(wxT("b"), &lval))
    {
@@ -1390,17 +1293,14 @@ bool SneedacityApp::InitPart2()
          wxPrintf(_("Block size must be within 256 to 100000000\n"));
          exit(1);
       }
-
       Sequence::SetMaxDiskBlockSize(lval);
    }
-
    // BG: Create a temporary window to set as the top window
    wxImage logoimage((const char **)SneedacityLogoWithName_xpm);
    logoimage.Rescale(logoimage.GetWidth() / 2, logoimage.GetHeight() / 2);
    if( GetLayoutDirection() == wxLayout_RightToLeft)
       logoimage = logoimage.Mirror();
    wxBitmap logo(logoimage);
-
    SneedacityProject *project;
    {
       dprintf("SneedacityProject *project;");
@@ -1410,7 +1310,6 @@ bool SneedacityApp::InitPart2()
       bool bMaximized = false;
       bool bIconized = false;
       GetNextWindowPlacement(&wndRect, &bMaximized, &bIconized);
-
       wxSplashScreen temporarywindow(
          logo,
          wxSPLASH_CENTRE_ON_SCREEN | wxSPLASH_NO_TIMEOUT,
@@ -1420,46 +1319,41 @@ bool SneedacityApp::InitPart2()
          wndRect.GetTopLeft(),
          wxDefaultSize,
          wxSTAY_ON_TOP);
-
       // Unfortunately with the Windows 10 Creators update, the splash screen 
       // now appears before setting its position.
       // On a dual monitor screen it will appear on one screen and then 
       // possibly jump to the second.
       // We could fix this by writing our own splash screen and using Hide() 
       // until the splash scren was correctly positioned, then Show()
-
       // Possibly move it on to the second screen...
       temporarywindow.SetPosition( wndRect.GetTopLeft() );
+      // Shows the startup window.
       // Centered on whichever screen it is on.
       temporarywindow.Center();
+      // sets the title
       temporarywindow.SetTitle(_("Sneedacity is starting up..."));
       SetTopWindow(&temporarywindow);
       temporarywindow.Raise();
-
       // ANSWER-ME: Why is YieldFor needed at all?
       //wxEventLoopBase::GetActive()->YieldFor(wxEVT_CATEGORY_UI|wxEVT_CATEGORY_USER_INPUT|wxEVT_CATEGORY_UNKNOWN);
+      //Loads the image for the init window.
       wxEventLoopBase::GetActive()->YieldFor(wxEVT_CATEGORY_UI);
-
       //JKC: Would like to put module loading here.
-
       #ifdef USE_FFMPEG
       dprintf("SneedacityApp.cpp: Calling FFmpegStartup()");
       FFmpegStartup();
       dprintf("SneedacityApp.cpp: FFmpegStartup() returned");
       #endif
-
       // More initialization
       dprintf("More initialization");
       InitDitherers();
       dprintf("AudioIO::Init();");
+      //creates a bunch of threads
       AudioIO::Init();
       dprintf("AudioIO::Init(); done");
-
 #ifdef __WXMAC__
-
       // On the Mac, users don't expect a program to quit when you close the last window.
       // Create a menubar that will show when all project windows are closed.
-
       auto fileMenu = std::make_unique<wxMenu>();
       auto urecentMenu = std::make_unique<wxMenu>();
       auto recentMenu = urecentMenu.get();
@@ -1468,23 +1362,19 @@ bool SneedacityApp::InitPart2()
       fileMenu->AppendSubMenu(urecentMenu.release(), _("Open &Recent..."));
       fileMenu->Append(wxID_ABOUT, _("&About Sneedacity..."));
       fileMenu->Append(wxID_PREFERENCES, wxString(_("&Preferences...")) + wxT("\tCtrl+,"));
-
       {
          auto menuBar = std::make_unique<wxMenuBar>();
          menuBar->Append(fileMenu.release(), _("&File"));
-
          // PRL:  Are we sure wxWindows will not leak this menuBar?
          // The online documentation is not explicit.
          wxMenuBar::MacSetCommonMenuBar(menuBar.release());
       }
-
       auto &recentFiles = FileHistory::Global();
       recentFiles.UseMenu(recentMenu);
-
 #endif //__WXMAC__
+      //clears the temp window
       temporarywindow.Show(false);
    }
-
    // Workaround Bug 1377 - Crash after Sneedacity starts and low disk space warning appears
    // The temporary splash window is closed AND cleaned up, before attempting to create
    // a project and possibly creating a modal warning dialog by doing so.
@@ -1494,9 +1384,9 @@ bool SneedacityApp::InitPart2()
    // Root cause is problem with wxSplashScreen and other dialogs co-existing, that
    // seemed to arrive with wx3.
    {
+      //create a project manager
       project = ProjectManager::New();
    }
-
    if( ProjectSettings::Get( *project ).GetShowSplashScreen() ){
       // This may do a check-for-updates at every start up.
       // Mainly this is to tell users of ALPHAS who don't know that they have an ALPHA.
@@ -1504,9 +1394,7 @@ bool SneedacityApp::InitPart2()
       // project->MayCheckForUpdates();
       SplashDialog::DoHelpWelcome(*project);
    }
-
    Importer::Get().Initialize();
-
    // Bug1561: delay the recovery dialog, to avoid crashes.
    CallAfter( [=] () mutable {
       // Remove duplicate shortcuts when there's a change of version
@@ -1525,7 +1413,6 @@ bool SneedacityApp::InitPart2()
       {
          QuitSneedacity(true);
       }
-
       //
       // Remainder of command line parsing, but only if we didn't recover
       //
@@ -1536,7 +1423,6 @@ bool SneedacityApp::InitPart2()
             RunBenchmark( nullptr, *project);
             QuitSneedacity(true);
          }
-
          for (size_t i = 0, cnt = parser->GetParamCount(); i < cnt; i++)
          {
             // PRL: Catch any exceptions, don't try this file again, continue to
@@ -1545,14 +1431,10 @@ bool SneedacityApp::InitPart2()
          }
       }
    } );
-
    gInited = true;
-
    ModuleManager::Get().Dispatch(AppInitialized);
-
    mTimer.SetOwner(this, kSneedacityAppTimerID);
    mTimer.Start(200);
-
 #ifdef EXPERIMENTAL_EASY_CHANGE_KEY_BINDINGS
    CommandManager::SetMenuHook( [](const CommandID &id){
       if (::wxGetMouseState().ShiftDown()) {
@@ -1570,7 +1452,6 @@ bool SneedacityApp::InitPart2()
          return false;
    } );
 #endif
-
 #if defined(__WXMAC__)
    // The first time this version of Sneedacity is run or when the preferences
    // are reset, execute the "tccutil" command to reset the microphone permissions
@@ -1586,7 +1467,6 @@ bool SneedacityApp::InitPart2()
       gPrefs->Write(wxT("/MicrophonePermissionsReset"), true);
    }
 #endif
-
 #if defined(__WXMAC__)
    // Bug 2709: Workaround CoreSVG locale issue
    Bind(wxEVT_MENU_OPEN, [=](wxMenuEvent &event)
@@ -1601,7 +1481,6 @@ bool SneedacityApp::InitPart2()
       event.Skip();
    });
 #endif
-
    return TRUE;
 }
 

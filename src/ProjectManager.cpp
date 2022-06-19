@@ -104,6 +104,7 @@ END_EVENT_TABLE()
 bool ProjectManager::sbWindowRectAlreadySaved = false;
 bool ProjectManager::sbSkipPromptingForSave = false;
 
+/* Save the window size to the settings files or Registry on Windows. */
 void ProjectManager::SaveWindowSize()
 {
    if (sbWindowRectAlreadySaved)
@@ -209,6 +210,7 @@ public:
    }
 };
 
+/* Handle files dropped on the application? */
 class DropTarget final : public wxFileDropTarget
 {
 public:
@@ -599,6 +601,7 @@ void ProjectManager::OnReconnectionFailure(wxCommandEvent & event)
    });
 }
 
+/* Handle the application being closed? */
 void ProjectManager::OnCloseWindow(wxCloseEvent & event)
 {
    auto &project = mProject;
@@ -846,6 +849,7 @@ void ProjectManager::OnOpenAudioFile(wxCommandEvent & event)
    }
 }
 
+/* Show file picker to open a file and open it as a new project. */
 // static method, can be called outside of a project
 void ProjectManager::OpenFiles(SneedacityProject *proj)
 {

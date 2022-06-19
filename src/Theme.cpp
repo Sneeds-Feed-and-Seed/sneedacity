@@ -628,27 +628,21 @@ void ThemeBase::CreateImageCache( bool bBinarySave )
 {
    EnsureInitialised();
    wxBusyCursor busy;
-
    wxImage ImageCache( ImageCacheWidth, ImageCacheHeight );
    ImageCache.SetRGB( wxRect( 0,0,ImageCacheWidth, ImageCacheHeight), 1,1,1);//Not-quite black.
-
    // Ensure we have an alpha channel...
    if( !ImageCache.HasAlpha() )
    {
       ImageCache.InitAlpha();
    }
-
    int i;
-
    mFlow.Init( ImageCacheWidth );
    mFlow.mBorderWidth =1;
-
 //#define IMAGE_MAP
 #ifdef IMAGE_MAP
    wxLogDebug( wxT("<img src=\"ImageCache.png\" usemap=\"#map1\">" ));
    wxLogDebug( wxT("<map name=\"map1\">") );
 #endif
-
    // Save the bitmaps
    for(i = 0;i < (int)mImages.size();i++)
    {
@@ -673,10 +667,8 @@ void ThemeBase::CreateImageCache( bool bBinarySave )
 #endif
       }
    }
-
    // Now save the colours.
    int x,y;
-
    mFlow.SetColourGroup();
    const int iColSize = 10;
    for(i = 0; i < (int)mColours.size(); i++)
@@ -685,7 +677,6 @@ void ThemeBase::CreateImageCache( bool bBinarySave )
       wxColour c = mColours[i];
       ImageCache.SetRGB( mFlow.Rect() , 0xf2, 0xb0, 0x27 );
       ImageCache.SetRGB( mFlow.RectInner() , c.Red(), c.Green(), c.Blue() );
-
       // YUCK!  No function in wxWidgets to set a rectangle of alpha...
       for(x=0;x<iColSize;x++)
       {
@@ -714,16 +705,13 @@ void ThemeBase::CreateImageCache( bool bBinarySave )
          ImageCache.SetAlpha( i,j, 255);
    }
 #endif
-
 #ifdef IMAGE_MAP
    wxLogDebug( "</map>" );
 #endif
-
    // IF bBinarySave, THEN saving to a normal PNG file.
    if( bBinarySave )
    {
       const auto &FileName = FileNames::ThemeCachePng();
-
       // Perhaps we should prompt the user if they are overwriting
       // an existing theme cache?
 #if 0
@@ -793,21 +781,17 @@ void ThemeBase::WriteImageMap( )
 {
    EnsureInitialised();
    wxBusyCursor busy;
-
    int i;
    mFlow.Init( ImageCacheWidth );
    mFlow.mBorderWidth = 1;
-
    wxFFile File( FileNames::ThemeCacheHtm(), wxT("wb") );// I'll put in NEW lines explicitly.
    if( !File.IsOpened() )
       return;
-
    File.Write( wxT("<html>\r\n"));
    File.Write( wxT("<body bgcolor=\"303030\">\r\n"));
    wxString Temp = wxString::Format( wxT("<img src=\"ImageCache.png\" width=\"%i\" usemap=\"#map1\">\r\n" ), ImageCacheWidth );
    File.Write( Temp );
    File.Write( wxT("<map name=\"map1\">\r\n") );
-
    for(i = 0; i < (int)mImages.size(); i++)
    {
       wxImage &SrcImage = mImages[i];
@@ -846,7 +830,6 @@ void ThemeBase::WriteImageDefs( )
 {
    EnsureInitialised();
    wxBusyCursor busy;
-
    int i;
    wxFFile File( FileNames::ThemeImageDefsAsCee(), wxT("wb") );
    if( !File.IsOpened() )
@@ -867,7 +850,6 @@ void ThemeBase::WriteImageDefs( )
          if( t & resFlagNewLine )  Temp += wxT(" resFlagNewLine ");
          if( t & resFlagInternal ) Temp += wxT(" resFlagInternal ");
          Temp.Replace( wxT("  "), wxT(" | ") );
-
          File.Write( wxString::Format( wxT("\r\n   SET_THEME_FLAGS( %s );\r\n"),
             Temp ));
       }
@@ -880,7 +862,6 @@ void ThemeBase::WriteImageDefs( )
          ));
    }
 }
-
 
 teThemeType ThemeBase::GetFallbackThemeType(){
 // Fallback must be an internally supported type,
@@ -903,8 +884,6 @@ teThemeType ThemeBase::ThemeTypeOfTypeName( const wxString & Name )
    return (teThemeType)themeIx;
 }
 
-
-
 /// Reads an image cache including images, cursors and colours.
 /// @param bBinaryRead if true means read from an external binary file.
 ///   otherwise the data is taken from a compiled in block of memory.
@@ -915,15 +894,12 @@ bool ThemeBase::ReadImageCache( teThemeType type, bool bOkIfNotFound)
    EnsureInitialised();
    wxImage ImageCache;
    wxBusyCursor busy;
-
    // Ensure we have an alpha channel...
 //   if( !ImageCache.HasAlpha() )
 //   {
 //      ImageCache.InitAlpha();
 //   }
-
    gPrefs->Read(wxT("/GUI/BlendThemes"), &bRecolourOnLoad, true);
-
    if(  type == themeFromFile )
    {
       const auto &FileName = FileNames::ThemeCachePng();
@@ -971,7 +947,6 @@ bool ThemeBase::ReadImageCache( teThemeType type, bool bOkIfNotFound)
       }
       //wxLogDebug("Reading ImageCache %p size %i", pImage, ImageSize );
       wxMemoryInputStream InternalStream( pImage, ImageSize );
-
       if( !ImageCache.LoadFile( InternalStream, wxBITMAP_TYPE_PNG ))
       {
          // If we get this message, it means that the data in file
@@ -985,7 +960,6 @@ bool ThemeBase::ReadImageCache( teThemeType type, bool bOkIfNotFound)
       }
       //wxLogDebug("Read %i by %i", ImageCache.GetWidth(), ImageCache.GetHeight() );
    }
-
    // Resize a large image down.
    if( ImageCache.GetWidth() > ImageCacheWidth ){
       int h = ImageCache.GetHeight() * ((1.0*ImageCacheWidth)/ImageCache.GetWidth());
@@ -1010,7 +984,6 @@ bool ThemeBase::ReadImageCache( teThemeType type, bool bOkIfNotFound)
    }
    if( !ImageCache.HasAlpha() )
       ImageCache.InitAlpha();
-
 //   return true; //To not load colours..
    // Now load the colours.
    int x,y;
@@ -1047,14 +1020,12 @@ void ThemeBase::LoadComponents( bool bOkIfNotFound )
    // IF directory doesn't exist THEN return early.
    if( !wxDirExists( FileNames::ThemeComponentsDir() ))
       return;
-
    wxBusyCursor busy;
    int i;
    int n=0;
    FilePath FileName;
    for(i = 0; i < (int)mImages.size(); i++)
    {
-
       if( (mBitmapFlags[i] & resFlagInternal)==0)
       {
          FileName = FileNames::ThemeComponent( mBitmapNames[i] );
@@ -1117,7 +1088,6 @@ void ThemeBase::SaveComponents()
          return;
       }
    }
-
    wxBusyCursor busy;
    int i;
    int n=0;
@@ -1134,7 +1104,6 @@ void ThemeBase::SaveComponents()
          }
       }
    }
-
    if (n > 0)
    {
       auto result =
@@ -1147,7 +1116,6 @@ void ThemeBase::SaveComponents()
       if(result == wxNO)
          return;
    }
-
    for(i = 0; i < (int)mImages.size(); i++)
    {
       if( (mBitmapFlags[i] & resFlagInternal)==0)
@@ -1166,7 +1134,6 @@ void ThemeBase::SaveComponents()
       XO("Theme written to:\n  %s.")
          .Format( FileNames::ThemeComponentsDir() ) );
 }
-
 
 void ThemeBase::SaveThemeAsCode()
 {
@@ -1213,6 +1180,7 @@ wxImage  & ThemeBase::Image( int iIndex )
    EnsureInitialised();
    return mImages[iIndex];
 }
+
 wxSize  ThemeBase::ImageSize( int iIndex )
 {
    wxASSERT( iIndex >= 0 );
@@ -1261,12 +1229,10 @@ BEGIN_EVENT_TABLE(auStaticText, wxWindow)
     EVT_ERASE_BACKGROUND(auStaticText::OnErase)
 END_EVENT_TABLE()
 
- 
 auStaticText::auStaticText(wxWindow* parent, wxString textIn) :
  wxWindow(parent, wxID_ANY)
 {
    int textWidth, textHeight;
-
    int fontSize = 11;
    #ifdef __WXMSW__
       fontSize = 9;
@@ -1321,4 +1287,3 @@ ChoiceSetting GUITheme{
    },
    defaultTheme
 };
-
