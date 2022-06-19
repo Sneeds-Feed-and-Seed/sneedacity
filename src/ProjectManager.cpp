@@ -10,8 +10,6 @@ Paul Licameli split from SneedacityProject.cpp
 
 #include "ProjectManager.h"
 
-
-
 #include "AdornedRulerPanel.h"
 #include "AudioIO.h"
 #include "Clipboard.h"
@@ -46,6 +44,7 @@ Paul Licameli split from SneedacityProject.cpp
 #include "widgets/FileHistory.h"
 #include "widgets/ErrorDialog.h"
 #include "widgets/WindowAccessible.h"
+#include "Debug.h"
 
 #include <wx/dataobj.h>
 #include <wx/dnd.h>
@@ -66,11 +65,13 @@ static SneedacityProject::AttachedObjects::RegisteredFactory sProjectManagerKey 
 
 ProjectManager &ProjectManager::Get( SneedacityProject &project )
 {
+   dprintf("ProjectManager.cpp: ProjectManager &ProjectManager::Get( SneedacityProject &project )");
    return project.AttachedObjects::Get< ProjectManager >( sProjectManagerKey );
 }
 
 const ProjectManager &ProjectManager::Get( const SneedacityProject &project )
 {
+   dprintf("ProjectManager.cpp: const ProjectManager &ProjectManager::Get( const SneedacityProject &project )");
    return Get( const_cast< SneedacityProject & >( project ) );
 }
 
@@ -78,6 +79,7 @@ ProjectManager::ProjectManager( SneedacityProject &project )
    : mProject{ project }
    , mTimer{ std::make_unique<wxTimer>(this, SneedacityProjectTimerID) }
 {
+   dprintf("ProjectManager.cpp: ProjectManager::ProjectManager( SneedacityProject &project )");
    auto &window = ProjectWindow::Get( mProject );
    window.Bind( wxEVT_CLOSE_WINDOW, &ProjectManager::OnCloseWindow, this );
    mProject.Bind(EVT_PROJECT_STATUS_UPDATE,
@@ -107,6 +109,7 @@ bool ProjectManager::sbSkipPromptingForSave = false;
 /* Save the window size to the settings files or Registry on Windows. */
 void ProjectManager::SaveWindowSize()
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::SaveWindowSize()");
    if (sbWindowRectAlreadySaved)
    {
       return;
@@ -124,7 +127,6 @@ void ProjectManager::SaveWindowSize()
       }
       else
          foundIconizedProject =  TRUE;
-
    }
    if (validWindowForSaveWindowSize)
    {
@@ -190,14 +192,13 @@ public:
    FileObject()
    {
    }
-
    bool IsSupportedFormat(const wxDataFormat & format, Direction WXUNUSED(dir = Get)) const
       // PRL:  This function does NOT override any inherited virtual!  What does it do?
    {
+      dprintf("ProjectManager.cpp: bool IsSupportedFormat(const wxDataFormat & format, Direction WXUNUSED(dir = Get)) const");
       if (format.GetType() == wxDF_FILENAME) {
          return true;
       }
-
 #if defined(__WXMAC__)
 #if !wxCHECK_VERSION(3, 0, 0)
       if (format.GetFormatId() == kDragPromisedFlavorFindFile) {
@@ -205,7 +206,6 @@ public:
       }
 #endif
 #endif
-
       return false;
    }
 };
@@ -216,50 +216,41 @@ class DropTarget final : public wxFileDropTarget
 public:
    DropTarget(SneedacityProject *proj)
    {
+      dprintf("ProjectManager.cpp: DropTarget(SneedacityProject *proj)");
       mProject = proj;
 
       // SetDataObject takes ownership
       SetDataObject(safenew FileObject());
    }
-
    ~DropTarget()
    {
    }
-
 #if defined(__WXMAC__)
 #if !wxCHECK_VERSION(3, 0, 0)
    bool GetData() override
    {
+      dprintf("ProjectManager.cpp: bool GetData() override");
       bool foundSupported = false;
       bool firstFileAdded = false;
       OSErr result;
-
       UInt16 items = 0;
       CountDragItems((DragReference)m_currentDrag, &items);
-
       for (UInt16 index = 1; index <= items; index++) {
-
          DragItemRef theItem = 0;
          GetDragItemReferenceNumber((DragReference)m_currentDrag, index, &theItem);
-
          UInt16 flavors = 0;
          CountDragItemFlavors((DragReference)m_currentDrag, theItem , &flavors ) ;
-
          for (UInt16 flavor = 1 ;flavor <= flavors; flavor++) {
-
             FlavorType theType = 0;
             result = GetFlavorType((DragReference)m_currentDrag, theItem, flavor, &theType);
             if (theType != kDragPromisedFlavorFindFile && theType != kDragFlavorTypeHFS) {
                continue;
             }
             foundSupported = true;
-
             Size dataSize = 0;
             GetFlavorDataSize((DragReference)m_currentDrag, theItem, theType, &dataSize);
-
             ArrayOf<char> theData{ dataSize };
             GetFlavorData((DragReference)m_currentDrag, theItem, theType, (void*) theData.get(), &dataSize, 0L);
-
             wxString name;
             if (theType == kDragPromisedFlavorFindFile) {
                name = wxMacFSSpec2MacFilename((FSSpec *)theData.get());
@@ -267,13 +258,11 @@ public:
             else if (theType == kDragFlavorTypeHFS) {
                name = wxMacFSSpec2MacFilename(&((HFSFlavor *)theData.get())->fileSpec);
             }
-
             if (!firstFileAdded) {
                // reset file list
                ((wxFileDataObject*)GetDataObject())->SetData(0, "");
                firstFileAdded = true;
             }
-
             ((wxFileDataObject*)GetDataObject())->AddFile(name);
 
             // We only want to process one flavor
@@ -286,24 +275,19 @@ public:
 
    bool OnDrop(wxCoord x, wxCoord y) override
    {
+      dprintf("ProjectManager.cpp: bool OnDrop(wxCoord x, wxCoord y) override");
       // bool foundSupported = false;
 #if !wxCHECK_VERSION(3, 0, 0)
       bool firstFileAdded = false;
       OSErr result;
-
       UInt16 items = 0;
       CountDragItems((DragReference)m_currentDrag, &items);
-
       for (UInt16 index = 1; index <= items; index++) {
-
          DragItemRef theItem = 0;
          GetDragItemReferenceNumber((DragReference)m_currentDrag, index, &theItem);
-
          UInt16 flavors = 0;
          CountDragItemFlavors((DragReference)m_currentDrag, theItem , &flavors ) ;
-
          for (UInt16 flavor = 1 ;flavor <= flavors; flavor++) {
-
             FlavorType theType = 0;
             result = GetFlavorType((DragReference)m_currentDrag, theItem, flavor, &theType);
             if (theType != kDragPromisedFlavorFindFile && theType != kDragFlavorTypeHFS) {
@@ -315,21 +299,19 @@ public:
 #endif
       return CurrentDragHasSupportedFormat();
    }
-
 #endif
 
    bool OnDropFiles(wxCoord WXUNUSED(x), wxCoord WXUNUSED(y), const wxArrayString& filenames) override
    {
+      dprintf("ProjectManager.cpp: bool OnDropFiles(wxCoord WXUNUSED(x), wxCoord WXUNUSED(y), const wxArrayString& filenames) override");
       // Experiment shows that this function can be reached while there is no
       // catch block above in wxWidgets.  So stop all exceptions here.
       return GuardedCall< bool > ( [&] {
          wxArrayString sortednames(filenames);
          sortednames.Sort(FileNames::CompareNoCase);
-
          auto cleanup = finally( [&] {
             ProjectWindow::Get( *mProject ).HandleResize(); // Adjust scrollers for NEW track sizes.
          } );
-
          for (const auto &name : sortednames) {
 #ifdef USE_MIDI
             if (FileNames::IsMidi(name))
@@ -338,14 +320,11 @@ public:
 #endif
                ProjectFileManager::Get( *mProject ).Import(name);
          }
-
          auto &window = ProjectWindow::Get( *mProject );
          window.ZoomAfterImport(nullptr);
-
          return true;
       } );
    }
-
 private:
    SneedacityProject *mProject;
 };
@@ -358,8 +337,8 @@ private:
 
 void InitProjectWindow( ProjectWindow &window )
 {
+   dprintf("ProjectManager.cpp: void InitProjectWindow( ProjectWindow &window )");
    auto &project = window.GetProject();
-
    // Note that the first field of the status bar is a dummy, and its width is set
    // to zero latter in the code. This field is needed for wxWidgets 2.8.12 because
    // if you move to the menu bar, the first field of the menu bar is cleared, which
@@ -373,9 +352,7 @@ void InitProjectWindow( ProjectWindow &window )
    statusBar->SetAccessible(safenew WindowAccessible(statusBar));
 #endif
    statusBar->SetName(wxT("status_line"));     // not localized
-
    auto &viewInfo = ViewInfo::Get( project );
-
    // LLL:  Read this!!!
    //
    // Until the time (and cpu) required to refresh the track panel is
@@ -385,38 +362,29 @@ void InitProjectWindow( ProjectWindow &window )
    //
    // Near as I can tell, this is only a problem under Windows.
    //
-
-
    //
    // Create the ToolDock
    //
    ToolManager::Get( project ).CreateWindows();
    ToolManager::Get( project ).LayoutToolBars();
-
    //
    // Create the horizontal ruler
    //
    auto &ruler = AdornedRulerPanel::Get( project );
-
    //
    // Create the TrackPanel and the scrollbars
    //
-
    auto topPanel = window.GetTopPanel();
-
    {
       auto ubs = std::make_unique<wxBoxSizer>(wxVERTICAL);
       ubs->Add( ToolManager::Get( project ).GetTopDock(), 0, wxEXPAND | wxALIGN_TOP );
       ubs->Add(&ruler, 0, wxEXPAND);
       topPanel->SetSizer(ubs.release());
    }
-
    // Ensure that the topdock comes before the ruler in the tab order,
    // irrespective of the order in which they were created.
    ToolManager::Get(project).GetTopDock()->MoveBeforeInTabOrder(&ruler);
-
    const auto pPage = window.GetMainPage();
-
    wxBoxSizer *bs;
    {
       auto ubs = std::make_unique<wxBoxSizer>(wxVERTICAL);
@@ -428,75 +396,55 @@ void InitProjectWindow( ProjectWindow &window )
       window.SetSizer(ubs.release());
    }
    bs->Layout();
-
    auto &trackPanel = TrackPanel::Get( project );
-
    // LLL: When Sneedacity starts or becomes active after returning from
    //      another application, the first window that can accept focus
    //      will be given the focus even if we try to SetFocus().  By
    //      making the TrackPanel that first window, we resolve several
    //      keyboard focus problems.
    pPage->MoveBeforeInTabOrder(topPanel);
-
    bs = (wxBoxSizer *)pPage->GetSizer();
-
    auto vsBar = &window.GetVerticalScrollBar();
    auto hsBar = &window.GetHorizontalScrollBar();
-
    {
       // Top horizontal grouping
       auto hs = std::make_unique<wxBoxSizer>(wxHORIZONTAL);
-
       // Track panel
       hs->Add(&trackPanel, 1, wxEXPAND | wxALIGN_LEFT | wxALIGN_TOP);
-
       {
          // Vertical grouping
          auto vs = std::make_unique<wxBoxSizer>(wxVERTICAL);
-
          // Vertical scroll bar
          vs->Add(vsBar, 1, wxEXPAND | wxALIGN_TOP);
          hs->Add(vs.release(), 0, wxEXPAND | wxALIGN_TOP);
       }
-
       bs->Add(hs.release(), 1, wxEXPAND | wxALIGN_LEFT | wxALIGN_TOP);
    }
-
    {
       // Bottom horizontal grouping
       auto hs = std::make_unique<wxBoxSizer>(wxHORIZONTAL);
-
       // Bottom scrollbar
       hs->Add(viewInfo.GetLeftOffset() - 1, 0);
       hs->Add(hsBar, 1, wxALIGN_BOTTOM);
       hs->Add(vsBar->GetSize().GetWidth(), 0);
       bs->Add(hs.release(), 0, wxEXPAND | wxALIGN_LEFT);
    }
-
    // Lay it out
    pPage->SetAutoLayout(true);
    pPage->Layout();
-
 #ifdef EXPERIMENTAL_NOTEBOOK
    AddPages(this, Factory, pNotebook);
 #endif
-
    auto mainPanel = window.GetMainPanel();
-
    mainPanel->Layout();
-
    wxASSERT( trackPanel.GetProject() == &project );
-
    // MM: Give track panel the focus to ensure keyboard commands work
    trackPanel.SetFocus();
-
    window.FixScrollbars();
    ruler.SetLeftOffset(viewInfo.GetLeftOffset());  // bevel on AdornedRuler
-
    //
    // Set the Icon
    //
-
    // loads either the XPM or the windows resource, depending on the platform
 #if !defined(__WXMAC__) && !defined(__WXX11__)
    {
@@ -511,21 +459,19 @@ void InitProjectWindow( ProjectWindow &window )
       window.SetIcon(ic);
    }
 #endif
-
    window.UpdateStatusWidths();
    auto msg = XO("Welcome to Sneedacity version %s")
       .Format( SNEEDACITY_VERSION_STRING );
    ProjectManager::Get( project ).SetStatusText( msg, mainStatusBarField );
-
 }
 
 SneedacityProject *ProjectManager::New()
 {
+   dprintf("ProjectManager.cpp: SneedacityProject *ProjectManager::New()");
    wxRect wndRect;
    bool bMaximized = false;
    bool bIconized = false;
    GetNextWindowPlacement(&wndRect, &bMaximized, &bIconized);
-   
    // Create and show a NEW project
    // Use a non-default deleter in the smart pointer!
    auto sp = std::make_shared< SneedacityProject >();
@@ -536,21 +482,15 @@ SneedacityProject *ProjectManager::New()
    auto &projectManager = Get( project );
    auto &window = ProjectWindow::Get( *p );
    InitProjectWindow( window );
-
    // wxGTK3 seems to need to require creating the window using default position
    // and then manually positioning it.
    window.SetPosition(wndRect.GetPosition());
-
    auto &projectFileManager = ProjectFileManager::Get( *p );
-
    // This may report an error.
    projectFileManager.OpenNewProject();
-
    MenuManager::Get( project ).CreateMenusAndCommands( project );
-   
    projectHistory.InitialState();
    projectManager.RestartTimer();
-   
    if(bMaximized) {
       window.Maximize(true);
    }
@@ -558,7 +498,6 @@ SneedacityProject *ProjectManager::New()
       // if the user close down and iconized state we could start back up and iconized state
       // window.Iconize(TRUE);
    }
-   
    //Initialise the Listeners
    auto gAudioIO = AudioIO::Get();
    gAudioIO->SetListener(
@@ -578,23 +517,19 @@ SneedacityProject *ProjectManager::New()
    // SetDropTarget takes ownership
    TrackPanel::Get( project ).SetDropTarget( safenew DropTarget( &project ) );
 #endif
-   
    //Set the NEW project as active:
    SetActiveProject(p);
-   
    // Okay, GetActiveProject() is ready. Now we can get its CommandManager,
    // and add the shortcut keys to the tooltips.
    ToolManager::Get( *p ).RegenerateTooltips();
-   
    ModuleManager::Get().Dispatch(ProjectInitialized);
-   
    window.Show(true);
-   
    return p;
 }
 
 void ProjectManager::OnReconnectionFailure(wxCommandEvent & event)
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::OnReconnectionFailure(wxCommandEvent & event)");
    event.Skip();
    wxTheApp->CallAfter([this]{
       ProjectWindow::Get(mProject).Close(true);
@@ -604,6 +539,7 @@ void ProjectManager::OnReconnectionFailure(wxCommandEvent & event)
 /* Handle the application being closed? */
 void ProjectManager::OnCloseWindow(wxCloseEvent & event)
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::OnCloseWindow(wxCloseEvent & event)");
    auto &project = mProject;
    auto &projectFileIO = ProjectFileIO::Get( project );
    auto &projectFileManager = ProjectFileManager::Get( project );
@@ -612,7 +548,6 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
    auto &tracks = TrackList::Get( project );
    auto &window = ProjectWindow::Get( project );
    auto gAudioIO = AudioIO::Get();
-
    // We are called for the wxEVT_CLOSE_WINDOW, wxEVT_END_SESSION, and
    // wxEVT_QUERY_END_SESSION, so we have to protect against multiple
    // entries.  This is a hack until the whole application termination
@@ -623,13 +558,11 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
       event.Skip();
       return;
    }
-
    if (event.CanVeto() && (::wxIsBusy() || project.mbBusyImporting))
    {
       event.Veto();
       return;
    }
-
    // Check to see if we were playing or recording
    // audio, and if so, make sure Audio I/O is completely finished.
    // The main point of this is to properly push the state
@@ -639,20 +572,16 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
    // SneedacityProject::~SneedacityProject() and TrackPanel::OnTimer().
    if (projectAudioIO.GetAudioIOToken()>0 &&
        gAudioIO->IsStreamActive(projectAudioIO.GetAudioIOToken())) {
-
       // We were playing or recording audio, but we've stopped the stream.
       ProjectAudioManager::Get( project ).Stop();
-
       projectAudioIO.SetAudioIOToken(0);
       window.RedrawProject();
    }
    else if (gAudioIO->IsMonitoring()) {
       gAudioIO->StopStream();
    }
-
    // MY: Use routine here so other processes can make same check
    bool bHasTracks = !tracks.empty();
-
    // We may not bother to prompt the user to save, if the
    // project is now empty.
    if (!sbSkipPromptingForSave 
@@ -693,20 +622,15 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
    //  momentary blackness.)
    window.ShowFullScreen(false);
 #endif
-
    ModuleManager::Get().Dispatch(ProjectClosing);
-
    // Stop the timer since there's no need to update anything anymore
    mTimer.reset();
-
    // DMM: Save the size of the last window the user closes
    //
    // LL: Save before doing anything else to the window that might make
    //     its size change.
    SaveWindowSize();
-
    window.SetIsBeingDeleted();
-
    // Mac: we never quit as the result of a close.
    // Other systems: we quit only when the close is the result of an external
    // command (on Windows, those are taskbar closes, "X" box, Alt+F4, etc.)
@@ -716,7 +640,6 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
 #else
    quitOnClose = !projectFileManager.GetMenuClose();
 #endif
-
    // DanH: If we're definitely about to quit, clear the clipboard.
    auto &clipboard = Clipboard::Get();
    if ((AllProjects{}.size() == 1) &&
@@ -739,33 +662,26 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
          clipboard.Clear();
       }
    }
-
    // JKC: For Win98 and Linux do not detach the menu bar.
    // We want wxWidgets to clean it up for us.
    // TODO: Is there a Mac issue here??
    // SetMenuBar(NULL);
-
    // Compact the project.
    projectFileManager.CompactProjectOnClose();
-
    // Set (or not) the bypass flag to indicate that deletes that would happen during
    // the UndoManager::ClearStates() below are not necessary.
    projectFileIO.SetBypass();
-
    {
       // This can reduce reference counts of sample blocks in the project's
       // tracks.
       UndoManager::Get( project ).ClearStates();
-
       // Delete all the tracks to free up memory
       tracks.Clear();
    }
-
    // Some of the AdornedRulerPanel functions refer to the TrackPanel, so destroy this
    // before the TrackPanel is destroyed. This change was needed to stop Sneedacity
    // crashing when running with Jaws on Windows 10 1703.
    AdornedRulerPanel::Destroy( project );
-
    // Destroy the TrackPanel early so it's not around once we start
    // deleting things like tracks and such out from underneath it.
    // Check validity of mTrackPanel per bug 584 Comment 1.
@@ -774,20 +690,15 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
    // Finalize the tool manager before the children since it needs
    // to save the state of the toolbars.
    ToolManager::Get( project ).Destroy();
-
    window.DestroyChildren();
-
    // Close project only now, because TrackPanel might have been holding
    // some shared_ptr to WaveTracks keeping SampleBlocks alive.
    // We're all done with the project file, so close it now
    projectFileManager.CloseProject();
-
    WaveTrackFactory::Destroy( project );
-
    // Remove self from the global array, but defer destruction of self
    auto pSelf = AllProjects{}.Remove( project );
    wxASSERT( pSelf );
-
    if (GetActiveProject() == &project) {
       // Find a NEW active project
       if ( !AllProjects{}.empty() ) {
@@ -797,7 +708,6 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
          SetActiveProject(NULL);
       }
    }
-
    // Since we're going to be destroyed, make sure we're not to
    // receive audio notifications anymore.
    // PRL:  Maybe all this is unnecessary now that the listener is managed
@@ -810,9 +720,7 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
             : nullptr
       );
    }
-
    if (AllProjects{}.empty() && !AllProjects::Closing()) {
-
 #if !defined(__WXMAC__)
       if (quitOnClose) {
          // Simulate the application Exit menu item
@@ -826,9 +734,7 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
       }
 #endif
    }
-
    window.Destroy();
-
    // Destroys this
    pSelf.reset();
 }
@@ -837,6 +743,7 @@ void ProjectManager::OnCloseWindow(wxCloseEvent & event)
 // I don't know the intention.
 void ProjectManager::OnOpenAudioFile(wxCommandEvent & event)
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::OnOpenAudioFile(wxCommandEvent & event)");
    const wxString &cmd = event.GetString();
    if (!cmd.empty()) {
       ProjectChooser chooser{ &mProject, true };
@@ -853,20 +760,18 @@ void ProjectManager::OnOpenAudioFile(wxCommandEvent & event)
 // static method, can be called outside of a project
 void ProjectManager::OpenFiles(SneedacityProject *proj)
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::OpenFiles(SneedacityProject *proj)");
    auto selectedFiles =
       ProjectFileManager::ShowOpenDialog(FileNames::Operation::Open);
    if (selectedFiles.size() == 0) {
       Importer::SetLastOpenType({});
       return;
    }
-
    //first sort selectedFiles.
    selectedFiles.Sort(FileNames::CompareNoCase);
-
    auto cleanup = finally( [] {
       Importer::SetLastOpenType({});
    } );
-
    for (const auto &fileName : selectedFiles) {
       // Make sure it isn't already open.
       if (ProjectFileManager::IsAlreadyOpen(fileName))
@@ -879,6 +784,7 @@ void ProjectManager::OpenFiles(SneedacityProject *proj)
 
 bool ProjectManager::SafeToOpenProjectInto(SneedacityProject &proj)
 {
+   dprintf("ProjectManager.cpp: bool ProjectManager::SafeToOpenProjectInto(SneedacityProject &proj)");
    // DMM: If the project is dirty, that means it's been touched at
    // all, and it's not safe to open a fresh project directly in its
    // place.  Only if the project is brandnew clean and the user
@@ -902,6 +808,7 @@ bool ProjectManager::SafeToOpenProjectInto(SneedacityProject &proj)
 
 ProjectManager::ProjectChooser::~ProjectChooser()
 {
+   dprintf("ProjectManager.cpp: ProjectManager::ProjectChooser::~ProjectChooser()");
    if (mpUsedProject) {
       if (mpUsedProject == mpGivenProject) {
          // Ensure that it happens here: don't wait for the application level
@@ -917,6 +824,7 @@ ProjectManager::ProjectChooser::~ProjectChooser()
 SneedacityProject &
 ProjectManager::ProjectChooser::operator() ( bool openingProjectFile )
 {
+   dprintf("ProjectManager.cpp: ProjectManager::ProjectChooser::operator() ( bool openingProjectFile )");
    if (mpGivenProject) {
       // Always check before opening a project file (for safety);
       // May check even when opening other files
@@ -931,6 +839,7 @@ ProjectManager::ProjectChooser::operator() ( bool openingProjectFile )
 
 void ProjectManager::ProjectChooser::Commit()
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::ProjectChooser::Commit()");
    mpUsedProject = nullptr;
 }
 
@@ -938,11 +847,11 @@ SneedacityProject *ProjectManager::OpenProject(
    SneedacityProject *pGivenProject, const FilePath &fileNameArg,
    bool addtohistory, bool reuseNonemptyProject)
 {
+   dprintf("ProjectManager.cpp: SneedacityProject *ProjectManager::OpenProject(");
    ProjectManager::ProjectChooser chooser{ pGivenProject, reuseNonemptyProject };
    if (auto pProject = ProjectFileManager::OpenFile(
       std::ref(chooser), fileNameArg, addtohistory )) {
       chooser.Commit();
-
       auto &projectFileIO = ProjectFileIO::Get( *pProject );
       if( projectFileIO.IsRecovered() ) {
          auto &window = ProjectWindow::Get( *pProject );
@@ -958,27 +867,25 @@ SneedacityProject *ProjectManager::OpenProject(
 
 // This is done to empty out the tracks, but without creating a new project.
 void ProjectManager::ResetProjectToEmpty() {
+   dprintf("ProjectManager.cpp: void ProjectManager::ResetProjectToEmpty()");
    auto &project = mProject;
    auto &projectFileIO = ProjectFileIO::Get( project );
    auto &projectFileManager = ProjectFileManager::Get( project );
    auto &projectHistory = ProjectHistory::Get( project );
    auto &viewInfo = ViewInfo::Get( project );
-
    SelectUtilities::DoSelectAll( project );
    TrackUtilities::DoRemoveTracks( project );
-
    WaveTrackFactory::Reset( project );
-
    projectHistory.SetDirty( false );
    auto &undoManager = UndoManager::Get( project );
    undoManager.ClearStates();
-
    projectFileManager.CloseProject();
    projectFileManager.OpenProject();
 }
 
 void ProjectManager::RestartTimer()
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::RestartTimer()");
    if (mTimer) {
       // mTimer->Stop(); // not really needed
       mTimer->Start( 3000 ); // Update messages as needed once every 3 s.
@@ -987,27 +894,24 @@ void ProjectManager::RestartTimer()
 
 void ProjectManager::OnTimer(wxTimerEvent& WXUNUSED(event))
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::OnTimer(wxTimerEvent& WXUNUSED(event))");
    auto &project = mProject;
    auto &projectAudioIO = ProjectAudioIO::Get( project );
    auto mixerToolBar = &MixerToolBar::Get( project );
    mixerToolBar->UpdateControls();
-   
    auto gAudioIO = AudioIO::Get();
    // gAudioIO->GetNumCaptureChannels() should only be positive
    // when we are recording.
    if (projectAudioIO.GetAudioIOToken() > 0 && gAudioIO->GetNumCaptureChannels() > 0) {
       wxLongLong freeSpace = ProjectFileIO::Get(project).GetFreeDiskSpace();
       if (freeSpace >= 0) {
-
          int iRecordingMins = GetEstimatedRecordingMinsLeftOnDisk(gAudioIO->GetNumCaptureChannels());
          auto sMessage = XO("Disk space remaining for recording: %s")
             .Format( GetHoursMinsString(iRecordingMins) );
-
          // Do not change mLastMainStatusMessage
          SetStatusText(sMessage, mainStatusBarField);
       }
    }
-
    // As also with the TrackPanel timer:  wxTimer may be unreliable without
    // some restarts
    RestartTimer();
@@ -1015,10 +919,9 @@ void ProjectManager::OnTimer(wxTimerEvent& WXUNUSED(event))
 
 void ProjectManager::OnStatusChange( wxCommandEvent &evt )
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::OnStatusChange( wxCommandEvent &evt )");
    evt.Skip();
-
    auto &project = mProject;
-
    // Be careful to null-check the window.  We might get to this function
    // during shut-down, but a timer hasn't been told to stop sending its
    // messages yet.
@@ -1026,13 +929,10 @@ void ProjectManager::OnStatusChange( wxCommandEvent &evt )
    if ( !pWindow )
       return;
    auto &window = *pWindow;
-
    window.UpdateStatusWidths();
-
    auto field = static_cast<StatusBarField>( evt.GetInt() );
    const auto &msg = ProjectStatus::Get( project ).Get( field );
-   SetStatusText( msg, field );
-   
+   SetStatusText( msg, field );  
    if ( field == mainStatusBarField )
       // When recording, let the NEW status message stay at least as long as
       // the timer interval (if it is not replaced again by this function),
@@ -1042,6 +942,7 @@ void ProjectManager::OnStatusChange( wxCommandEvent &evt )
 
 void ProjectManager::SetStatusText( const TranslatableString &text, int number )
 {
+   dprintf("ProjectManager.cpp: void ProjectManager::SetStatusText( const TranslatableString &text, int number )");
    auto &project = mProject;
    auto pWindow = ProjectWindow::Find( &project );
    if ( !pWindow )
@@ -1052,18 +953,15 @@ void ProjectManager::SetStatusText( const TranslatableString &text, int number )
 
 TranslatableString ProjectManager::GetHoursMinsString(int iMinutes)
 {
+   dprintf("ProjectManager.cpp: TranslatableString ProjectManager::GetHoursMinsString(int iMinutes)");
    if (iMinutes < 1)
       // Less than a minute...
       return XO("Less than 1 minute");
-
    // Calculate
    int iHours = iMinutes / 60;
    int iMins = iMinutes % 60;
-
    auto sHours = XP( "%d hour", "%d hours", 0 )( iHours );
-
    auto sMins = XP( "%d minute", "%d minutes", 0 )( iMins );
-
    /* i18n-hint: A time in hours and minutes. Only translate the "and". */
    return XO("%s and %s.").Format( sHours, sMins );
 }
@@ -1073,19 +971,17 @@ TranslatableString ProjectManager::GetHoursMinsString(int iMinutes)
 // The calculations made are based on the user's current
 // preferences.
 int ProjectManager::GetEstimatedRecordingMinsLeftOnDisk(long lCaptureChannels) {
+   dprintf("ProjectManager.cpp: int ProjectManager::GetEstimatedRecordingMinsLeftOnDisk(long lCaptureChannels)");
    auto &project = mProject;
-
    // Obtain the current settings
    auto oCaptureFormat = QualitySettings::SampleFormatChoice();
    if (lCaptureChannels == 0)
       lCaptureChannels = AudioIORecordChannels.Read();
-
    // Find out how much free space we have on disk
    wxLongLong lFreeSpace = ProjectFileIO::Get( project ).GetFreeDiskSpace();
    if (lFreeSpace < 0) {
       return 0;
    }
-
    // Calculate the remaining time
    double dRecTime = 0.0;
    double bytesOnDiskPerSample = SAMPLE_SIZE_DISK(oCaptureFormat);
@@ -1093,7 +989,6 @@ int ProjectManager::GetEstimatedRecordingMinsLeftOnDisk(long lCaptureChannels) {
    dRecTime /= bytesOnDiskPerSample;   
    dRecTime /= lCaptureChannels;
    dRecTime /= ProjectSettings::Get( project ).GetRate();
-
    // Convert to minutes before returning
    int iRecMins = (int)round(dRecTime / 60.0);
    return iRecMins;
