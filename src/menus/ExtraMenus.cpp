@@ -6,6 +6,7 @@
 #include "../commands/CommandManager.h"
 #include "../toolbars/MixerToolBar.h"
 #include "../toolbars/DeviceToolBar.h"
+#include "../Debug.h"
 
 #include <wx/frame.h>
 
@@ -25,9 +26,9 @@ struct Handler : CommandHandlerObject {
 
 void OnOutputGain(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnOutputGain(const CommandContext &context)");
    auto &project = context.project;
    auto tb = &MixerToolBar::Get( project );
-
    if (tb) {
       tb->ShowOutputGainDialog();
    }
@@ -35,6 +36,7 @@ void OnOutputGain(const CommandContext &context)
 
 void OnOutputGainInc(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnOutputGainInc(const CommandContext &context)");
    auto &project = context.project;
    auto tb = &MixerToolBar::Get( project );
 
@@ -45,6 +47,7 @@ void OnOutputGainInc(const CommandContext &context)
 
 void OnOutputGainDec(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnOutputGainDec(const CommandContext &context)");
    auto &project = context.project;
    auto tb = &MixerToolBar::Get( project );
 
@@ -55,6 +58,7 @@ void OnOutputGainDec(const CommandContext &context)
 
 void OnInputGain(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnInputGain(const CommandContext &context)");
    auto &project = context.project;
    auto tb = &MixerToolBar::Get( project );
 
@@ -65,6 +69,7 @@ void OnInputGain(const CommandContext &context)
 
 void OnInputGainInc(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnInputGainInc(const CommandContext &context)");
    auto &project = context.project;
    auto tb = &MixerToolBar::Get( project );
 
@@ -75,6 +80,7 @@ void OnInputGainInc(const CommandContext &context)
 
 void OnInputGainDec(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnInputGainDec(const CommandContext &context)");
    auto &project = context.project;
    auto tb = &MixerToolBar::Get( project );
 
@@ -85,6 +91,7 @@ void OnInputGainDec(const CommandContext &context)
 
 void OnInputDevice(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnInputDevice(const CommandContext &context)");
    auto &project = context.project;
    auto &tb = DeviceToolBar::Get( project );
    tb.ShowInputDialog();
@@ -92,6 +99,7 @@ void OnInputDevice(const CommandContext &context)
 
 void OnOutputDevice(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnOutputDevice(const CommandContext &context)");
    auto &project = context.project;
    auto &tb = DeviceToolBar::Get( project );
    tb.ShowOutputDialog();
@@ -99,6 +107,7 @@ void OnOutputDevice(const CommandContext &context)
 
 void OnInputChannels(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnInputChannels(const CommandContext &context)");
    auto &project = context.project;
    auto &tb = DeviceToolBar::Get( project );
    tb.ShowChannelsDialog();
@@ -106,6 +115,7 @@ void OnInputChannels(const CommandContext &context)
 
 void OnAudioHost(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnAudioHost(const CommandContext &context)");
    auto &project = context.project;
    auto &tb = DeviceToolBar::Get( project );
    tb.ShowHostDialog();
@@ -113,20 +123,19 @@ void OnAudioHost(const CommandContext &context)
 
 void OnFullScreen(const CommandContext &context)
 {
+   dprintf("menus/ExtraMenus.cpp: void OnFullScreen(const CommandContext &context)");
    auto &project = context.project;
    auto &window = GetProjectFrame( project );
-
    bool bChecked = !window.wxTopLevelWindow::IsFullScreen();
    window.wxTopLevelWindow::ShowFullScreen(bChecked);
-
    MenuManager::Get(project).ModifyToolbarMenus(project);
 }
-
 }; // struct Handler
 
 } // namespace
 
 static CommandHandlerObject &findCommandHandler(SneedacityProject &) {
+   dprintf("menus/ExtraMenus.cpp: static CommandHandlerObject &findCommandHandler(SneedacityProject &)");
    // Handler is not stateful.  Doesn't need a factory registered with
    // SneedacityProject.
    static ExtraActions::Handler instance;
@@ -145,6 +154,7 @@ BaseItemSharedPtr ExtraDeviceMenu();
 
 BaseItemSharedPtr ExtraMenu()
 {
+   dprintf("menus/ExtraMenus.cpp: BaseItemSharedPtr ExtraMenu()");
    // Table of menu factories.
    // TODO:  devise a registration system instead.
    static BaseItemSharedPtr extraItems{ Items( wxEmptyString,
@@ -152,10 +162,8 @@ BaseItemSharedPtr ExtraMenu()
            ExtraMixerMenu()
          , ExtraDeviceMenu()
       ),
-
       Section( "Part2" )
    ) };
-
    static const auto pred =
       []{ return gPrefs->ReadBool(wxT("/GUI/ShowExtraMenus"), false); };
    static BaseItemSharedPtr menu{
@@ -173,6 +181,7 @@ AttachedItem sAttachment1{
 // Under /MenuBar/Optional/Extra/Part1
 BaseItemSharedPtr ExtraMixerMenu()
 {
+   dprintf("menus/ExtraMenus.cpp: BaseItemSharedPtr ExtraMixerMenu()");
    static BaseItemSharedPtr menu{
    ( FinderScope{ findCommandHandler },
    Menu( wxT("Mixer"), XXO("Mi&xer"),
@@ -195,6 +204,7 @@ BaseItemSharedPtr ExtraMixerMenu()
 // Under /MenuBar/Optional/Extra/Part1
 BaseItemSharedPtr ExtraDeviceMenu()
 {
+   dprintf("menus/ExtraMenus.cpp: BaseItemSharedPtr ExtraDeviceMenu()");
    static BaseItemSharedPtr menu{
    ( FinderScope{ findCommandHandler },
    Menu( wxT("Device"), XXO("De&vice"),
@@ -216,8 +226,8 @@ BaseItemSharedPtr ExtraDeviceMenu()
 // Under /MenuBar/Optional/Extra/Part2
 BaseItemSharedPtr ExtraMiscItems()
 {
+   dprintf("menus/ExtraMenus.cpp: BaseItemSharedPtr ExtraMiscItems()");
    using Options = CommandManager::Options;
-
    // Not a menu.
    static BaseItemSharedPtr items{
    Items( wxT("Misc"),
@@ -231,7 +241,6 @@ BaseItemSharedPtr ExtraMiscItems()
       wxT("F11")
 #endif
    ;
-
          return (
          FinderScope{ findCommandHandler },
          // Accel key is not bindable.
