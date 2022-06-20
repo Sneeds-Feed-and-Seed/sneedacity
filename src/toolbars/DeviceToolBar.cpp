@@ -111,12 +111,22 @@ void DeviceToolBar::DeinitChildren()
    mHost          = NULL;
 }
 
+/*
+ Populate the widgets in the device toolbar.
+ On my machine the default values are
+ 'ALSA', 'default', '2 (Stereo) Recording Channels', 'default'
+ The combo boxes on this toolbar can't be set
+ to a dark background color when using the dark theme
+ because wxChoice doesn't allow it.
+ We need to find a suitable alternative.
+ Possibly wxComboBox	
+*/
 void DeviceToolBar::Populate()
 {
    SetBackgroundColour( theTheme.Colour( clrMedium  ) );
    DeinitChildren();
-
-   // Hosts
+   // Hosts ('ALSA' etc.)
+   // Hovering over it shows 'Audio Host - ALSA'
    mHost = safenew wxChoice(this,
                             wxID_ANY,
                             wxDefaultPosition,
@@ -126,7 +136,6 @@ void DeviceToolBar::Populate()
    mHost->SetAccessible(safenew WindowAccessible(mHost));
 #endif
    Add(mHost, 15, wxALIGN_CENTER_VERTICAL | wxLEFT | wxRIGHT, 1);
-
    // Input device
    Add(safenew AStaticBitmap(this,
                              wxID_ANY,
@@ -140,7 +149,6 @@ void DeviceToolBar::Populate()
    mInput->SetAccessible(safenew WindowAccessible(mInput));
 #endif
    Add(mInput, 30, wxALIGN_CENTER_VERTICAL | wxLEFT | wxRIGHT, 1);
-
    // Input channels
    mInputChannels = safenew wxChoice(this,
                                      wxID_ANY,
@@ -151,7 +159,6 @@ void DeviceToolBar::Populate()
    mInputChannels->SetAccessible(safenew WindowAccessible(mInputChannels));
 #endif
    Add(mInputChannels, 20, wxALIGN_CENTER_VERTICAL | wxLEFT | wxRIGHT, 1);
-
    // Output device
    Add(safenew AStaticBitmap(this,
                              wxID_ANY,
@@ -165,21 +172,18 @@ void DeviceToolBar::Populate()
    mOutput->SetAccessible(safenew WindowAccessible(mOutput));
 #endif
    Add(mOutput, 30, wxALIGN_CENTER_VERTICAL | wxLEFT | wxRIGHT, 1);
-
 #if defined(__WXGTK3__)
    // Nothing special
 #elif defined(__WXGTK__)
    // Scale the font to fit inside (hopefully)
    wxFont font = mHost->GetFont();
    font.Scale((double) toolbarSingle / mHost->GetSize().GetHeight());
-
    // Set it
    mHost->SetFont(font);
    mInput->SetFont(font);
    mInputChannels->SetFont(font);
    mOutput->SetFont(font);
 #endif
-
    mHost->Bind(wxEVT_SET_FOCUS,
                &DeviceToolBar::OnFocus,
                this);
@@ -204,9 +208,7 @@ void DeviceToolBar::Populate()
    mInputChannels->Bind(wxEVT_KILL_FOCUS,
                  &DeviceToolBar::OnFocus,
                  this);
-
    SetNames();
-
    RefillCombos();
 }
 
