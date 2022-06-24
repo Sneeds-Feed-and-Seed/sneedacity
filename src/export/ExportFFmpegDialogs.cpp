@@ -1771,7 +1771,7 @@ void ExportFFmpegOptions::FetchFormatList()
 {
    // Enumerate all output formats
    AVOutputFormat *ofmt = NULL;
-   while ((ofmt = av_oformat_next(ofmt))!=NULL)
+   for (auto ofmt : mFFmpeg->GetOutputFormats())
    {
       // Any audio-capable format has default audio codec.
       // If it doesn't, then it doesn't supports any audio codecs
@@ -1792,7 +1792,7 @@ void ExportFFmpegOptions::FetchCodecList()
 {
    // Enumerate all codecs
    AVCodec *codec = NULL;
-   while ((codec = av_codec_next(codec))!=NULL)
+   for (auto codec : mFFmpeg->GetCodecs())
    {
       // We're only interested in audio and only in encoders
       if (codec->type == AVMEDIA_TYPE_AUDIO && av_codec_is_encoder(codec))
@@ -2083,7 +2083,7 @@ int ExportFFmpegOptions::FetchCompatibleCodecList(const wxChar *fmt, AVCodecID i
    if (found == 2)
    {
       AVCodec *codec = NULL;
-      while ((codec = av_codec_next(codec))!=NULL)
+      for (auto codec : mFFmpeg->GetCodecs())
       {
          if (codec->type == AVMEDIA_TYPE_AUDIO && av_codec_is_encoder(codec))
          {
@@ -2131,7 +2131,6 @@ int ExportFFmpegOptions::FetchCompatibleFormatList(AVCodecID id, wxString *selfm
    mShownFormatNames.clear();
    mShownFormatLongNames.clear();
    mFormatList->Clear();
-   AVOutputFormat *ofmt = NULL;
    ofmt = NULL;
    wxArrayString FromList;
    // Find all formats compatible to this codec in compatibility list
@@ -2162,7 +2161,7 @@ int ExportFFmpegOptions::FetchCompatibleFormatList(AVCodecID id, wxString *selfm
    if (found)
    {
       // Find all formats which have this codec as default and which are not in the list yet and add them too
-      while ((ofmt = av_oformat_next(ofmt))!=NULL)
+      for (auto ofmt  : mFFmpeg->GetOutputFormats())
       {
          if (ofmt->audio_codec == id)
          {
