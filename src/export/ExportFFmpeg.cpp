@@ -22,7 +22,7 @@ function.
 
 
 #include "../FFmpeg.h"
-#include "FFmpegFunctions.h"
+#include "../ffmpeg-support/FFmpegFunctions.h"
 
 #include <wx/choice.h>
 #include <wx/log.h>
@@ -36,7 +36,7 @@ function.
 #include <wx/combobox.h>
 
 #include "Mix.h"
-#include "ProjectRate.h"
+#include "../ffmpeg-support/ProjectRate.h"
 #include "ProjectSettings.h"
 #include "../Tags.h"
 #include "Track.h"
@@ -47,7 +47,6 @@ function.
 #include "Export.h"
 
 #include "ExportFFmpegDialogs.h"
-#include "SelectFile.h"
 
 #if defined(WIN32) && _MSC_VER < 1900
 #define snprintf _snprintf

@@ -804,7 +804,7 @@ bool Importer::Import( SneedacityProject &project,
 "Sneedacity did not recognize the type of the file '%s'.\n\n%sFor uncompressed files, also try File > Import > Raw Data.")
          .Format( fName,
 #if defined(USE_FFMPEG)
-                  !FFmpegLibsInst()
+                  !FindFFmpegLibs()
                   ? XO("Try installing FFmpeg.\n\n") :
 #endif
                   Verbatim("") );

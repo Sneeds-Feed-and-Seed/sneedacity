@@ -45,7 +45,7 @@
 #include "ExportFFmpegDialogs.h"
 
 #include "../FFmpeg.h"
-#include "FFmpegFunctions.h"
+#include "../ffmpeg-support/FFmpegFunctions.h"
 
 #include <wx/app.h>
 #include <wx/checkbox.h>
@@ -1131,33 +1131,34 @@ void FFmpegPresets::LoadPreset(ExportFFmpegOptions *parent, wxString &name)
    }
 }
 
-bool FFmpegPresets::HandleXMLTag(const std::string_view& tag, const AttributesList &attrs)
+bool FFmpegPresets::HandleXMLTag(const wxChar *tag, const wxChar **attrs)
 {
    if (mAbortImport)
    {
       return false;
    }
 
-   if (tag == "ffmpeg_presets")
+   if (!wxStrcmp(tag,wxT("ffmpeg_presets")))
    {
       return true;
    }
 
-   if (tag == "preset")
+   if (!wxStrcmp(tag,wxT("preset")))
    {
-      for (auto pair : attrs)
+      while (*attrs)
       {
-         auto attr = pair.first;
-         auto value = pair.second;
+         const wxChar *attr = *attrs++;
+         wxString value = *attrs++;
 
-         if (attr == "name")
+         if (!value)
+            break;
+
+         if (!wxStrcmp(attr,wxT("name")))
          {
-            wxString strValue = value.ToWString();
-            mPreset = FindPreset(strValue);
-
+            mPreset = FindPreset(value);
             if (mPreset)
             {
-               auto query = XO("Replace preset '%s'?").Format( strValue );
+               auto query = XO("Replace preset '%s'?").Format( value );
                int action = SneedacityMessageBox(
                   query,
                   XO("Confirm Overwrite"),
@@ -1176,33 +1177,35 @@ bool FFmpegPresets::HandleXMLTag(const std::string_view& tag, const AttributesLi
             }
             else
             {
-               mPreset = &mPresets[strValue];
+               mPreset = &mPresets[value];
             }
-
-            mPreset->mPresetName = strValue;
+            mPreset->mPresetName = value;
          }
       }
       return true;
    }
 
-   if (tag == "setctrlstate" && mPreset)
+   if (!wxStrcmp(tag,wxT("setctrlstate")) && mPreset)
    {
       long id = -1;
-      for (auto pair : attrs)
+      while (*attrs)
       {
-         auto attr = pair.first;
-         auto value = pair.second;
+         const wxChar *attr = *attrs++;
+         const wxChar *value = *attrs++;
 
-         if (attr == "id")
+         if (!value)
+            break;
+
+         if (!wxStrcmp(attr,wxT("id")))
          {
             for (long i = FEFirstID; i < FELastID; i++)
-               if (!wxStrcmp(FFmpegExportCtrlIDNames[i - FEFirstID], value.ToWString()))
+               if (!wxStrcmp(FFmpegExportCtrlIDNames[i - FEFirstID],value))
                   id = i;
          }
-         else if (attr == "state")
+         else if (!wxStrcmp(attr,wxT("state")))
          {
             if (id > FEFirstID && id < FELastID)
-               mPreset->mControlState[id - FEFirstID] = value.ToWString();
+               mPreset->mControlState[id - FEFirstID] = wxString(value);
          }
       }
       return true;
@@ -1211,18 +1214,18 @@ bool FFmpegPresets::HandleXMLTag(const std::string_view& tag, const AttributesLi
    return false;
 }
 
-XMLTagHandler *FFmpegPresets::HandleXMLChild(const std::string_view& tag)
+XMLTagHandler *FFmpegPresets::HandleXMLChild(const wxChar *tag)
 {
    if (mAbortImport)
    {
       return NULL;
    }
 
-   if (tag == "preset")
+   if (!wxStrcmp(tag, wxT("preset")))
    {
       return this;
    }
-   else if (tag == "setctrlstate")
+   else if (!wxStrcmp(tag, wxT("setctrlstate")))
    {
       return this;
    }

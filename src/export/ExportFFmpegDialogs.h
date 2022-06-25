@@ -14,9 +14,9 @@ LRN
 #if defined(USE_FFMPEG)
 
 #include "../FFmpeg.h"
-#include "FFmpegFunctions.h"
+#include "../ffmpeg-support/FFmpegFunctions.h"
 
-#include "XMLFileReader.h"
+#include "../xml/XMLFileReader.h"
 #include "FileNames.h"
 
 #include <unordered_map>
@@ -331,8 +331,8 @@ public:
    void ImportPresets(wxString &filename);
    void ExportPresets(wxString &filename);
 
-   bool HandleXMLTag(const std::string_view& tag, const AttributesList &attrs) override;
-   XMLTagHandler *HandleXMLChild(const std::string_view& tag) override;
+   bool HandleXMLTag(const wxChar *tag, const wxChar **attrs) override;
+   XMLTagHandler *HandleXMLChild(const wxChar *tag) override;
    void WriteXMLHeader(XMLWriter &xmlFile) const;
    void WriteXML(XMLWriter &xmlFile) const;
 
