@@ -13,7 +13,7 @@
 struct FFmpegFunctions;
 typedef struct AVFifoBuffer AVFifoBuffer;
 
-class FFMPEG_SUPPORT_API AVFifoBufferWrapper
+class AVFifoBufferWrapper
 {
 public:
    AVFifoBufferWrapper(const AVFifoBufferWrapper&) = delete;

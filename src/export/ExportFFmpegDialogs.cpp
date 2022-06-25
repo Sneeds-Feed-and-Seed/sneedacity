@@ -4,9 +4,8 @@
 
    ExportFFmpegDialogs.cpp
 
-   Sneedacity is copyright (c) 1999-2010 Audacity Team,
-                 copyright (c) 2021 Sneedacity Team.
-   License: GPL v2.  See License.txt.
+   Sneedacity(R) is copyright (c) 1999-2010 Sneedacity Team.
+   License: GPL v2 or later.  See License.txt.
 
    LRN
 
@@ -46,7 +45,9 @@
 #include "ExportFFmpegDialogs.h"
 
 #include "../FFmpeg.h"
+#include "FFmpegFunctions.h"
 
+#include <wx/app.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
 #include <wx/intl.h>
@@ -61,12 +62,13 @@
 
 #include "../widgets/FileDialog/FileDialog.h"
 
-#include "../Mix.h"
+#include "Mix.h"
 #include "../Tags.h"
 #include "../widgets/SneedacityMessageBox.h"
 #include "../widgets/HelpSystem.h"
 
 #include "Export.h"
+#include "FFmpeg.h"
 
 #if defined(USE_FFMPEG)
 
@@ -211,6 +213,8 @@ ExportFFmpegAC3Options::~ExportFFmpegAC3Options()
 ///
 void ExportFFmpegAC3Options::PopulateOrExchange(ShuttleGui & S)
 {
+   IntSetting Setting{ L"/FileFormats/AC3BitRate", 160000 };
+
    S.StartVerticalLay();
    {
       S.StartHorizontalLay(wxCENTER);
@@ -218,12 +222,7 @@ void ExportFFmpegAC3Options::PopulateOrExchange(ShuttleGui & S)
          S.StartMultiColumn(2, wxCENTER);
          {
             S.TieNumberAsChoice(
-               XXO("Bit Rate:"),
-               {wxT("/FileFormats/AC3BitRate"),
-                160000},
-               AC3BitRateNames,
-               &AC3BitRateValues
-            );
+               XXO("Bit Rate:"), Setting, AC3BitRateNames, &AC3BitRateValues);
          }
          S.EndMultiColumn();
       }
@@ -366,19 +365,15 @@ ExportFFmpegAMRNBOptions::~ExportFFmpegAMRNBOptions()
 ///
 void ExportFFmpegAMRNBOptions::PopulateOrExchange(ShuttleGui & S)
 {
+   IntSetting Setting{ L"/FileFormats/AMRNBBitRate", 12200 };
    S.StartVerticalLay();
    {
       S.StartHorizontalLay(wxCENTER);
       {
          S.StartMultiColumn(2, wxCENTER);
          {
-            S.TieNumberAsChoice(
-               XXO("Bit Rate:"),
-               {wxT("/FileFormats/AMRNBBitRate"),
-                12200},
-               AMRNBBitRateNames,
-               &AMRNBBitRateValues
-            );
+            S.TieNumberAsChoice(XXO("Bit Rate:"), Setting,
+               AMRNBBitRateNames, &AMRNBBitRateValues);
          }
          S.EndMultiColumn();
       }
@@ -725,19 +720,15 @@ ExportFFmpegWMAOptions::~ExportFFmpegWMAOptions()
 ///
 void ExportFFmpegWMAOptions::PopulateOrExchange(ShuttleGui & S)
 {
+   IntSetting Setting{ L"/FileFormats/WMABitRate", 128000 };
    S.StartVerticalLay();
    {
       S.StartHorizontalLay(wxCENTER);
       {
          S.StartMultiColumn(2, wxCENTER);
          {
-            S.TieNumberAsChoice(
-               XXO("Bit Rate:"),
-               {wxT("/FileFormats/WMABitRate"),
-                128000},
-               WMABitRateNames,
-               &WMABitRateValues
-            );
+            S.TieNumberAsChoice(XXO("Bit Rate:"),
+               Setting, WMABitRateNames, &WMABitRateValues);
          }
          S.EndMultiColumn();
       }
@@ -838,17 +829,15 @@ bool ExportFFmpegCustomOptions::TransferDataFromWindow()
 void ExportFFmpegCustomOptions::OnOpen(wxCommandEvent & WXUNUSED(evt))
 {
    // Show "Locate FFmpeg" dialog
-   PickFFmpegLibs();
-   if (!FFmpegLibsInst()->ValidLibsLoaded())
+   auto ffmpeg = FFmpegFunctions::Load();
+   if (!ffmpeg)
    {
-      FFmpegLibsInst()->FindLibs(NULL);
-      FFmpegLibsInst()->FreeLibs();
+      FindFFmpegLibs();
       if (!LoadFFmpeg(true))
       {
          return;
       }
    }
-   DropFFmpegLibs();
 
 #ifdef __WXMAC__
    // Bug 2077 Must be a parent window on OSX or we will appear behind.
@@ -1142,34 +1131,33 @@ void FFmpegPresets::LoadPreset(ExportFFmpegOptions *parent, wxString &name)
    }
 }
 
-bool FFmpegPresets::HandleXMLTag(const wxChar *tag, const wxChar **attrs)
+bool FFmpegPresets::HandleXMLTag(const std::string_view& tag, const AttributesList &attrs)
 {
    if (mAbortImport)
    {
       return false;
    }
 
-   if (!wxStrcmp(tag,wxT("ffmpeg_presets")))
+   if (tag == "ffmpeg_presets")
    {
       return true;
    }
 
-   if (!wxStrcmp(tag,wxT("preset")))
+   if (tag == "preset")
    {
-      while (*attrs)
+      for (auto pair : attrs)
       {
-         const wxChar *attr = *attrs++;
-         wxString value = *attrs++;
+         auto attr = pair.first;
+         auto value = pair.second;
 
-         if (!value)
-            break;
-
-         if (!wxStrcmp(attr,wxT("name")))
+         if (attr == "name")
          {
-            mPreset = FindPreset(value);
+            wxString strValue = value.ToWString();
+            mPreset = FindPreset(strValue);
+
             if (mPreset)
             {
-               auto query = XO("Replace preset '%s'?").Format( value );
+               auto query = XO("Replace preset '%s'?").Format( strValue );
                int action = SneedacityMessageBox(
                   query,
                   XO("Confirm Overwrite"),
@@ -1188,35 +1176,33 @@ bool FFmpegPresets::HandleXMLTag(const wxChar *tag, const wxChar **attrs)
             }
             else
             {
-               mPreset = &mPresets[value];
+               mPreset = &mPresets[strValue];
             }
-            mPreset->mPresetName = value;
+
+            mPreset->mPresetName = strValue;
          }
       }
       return true;
    }
 
-   if (!wxStrcmp(tag,wxT("setctrlstate")) && mPreset)
+   if (tag == "setctrlstate" && mPreset)
    {
       long id = -1;
-      while (*attrs)
+      for (auto pair : attrs)
       {
-         const wxChar *attr = *attrs++;
-         const wxChar *value = *attrs++;
+         auto attr = pair.first;
+         auto value = pair.second;
 
-         if (!value)
-            break;
-
-         if (!wxStrcmp(attr,wxT("id")))
+         if (attr == "id")
          {
             for (long i = FEFirstID; i < FELastID; i++)
-               if (!wxStrcmp(FFmpegExportCtrlIDNames[i - FEFirstID],value))
+               if (!wxStrcmp(FFmpegExportCtrlIDNames[i - FEFirstID], value.ToWString()))
                   id = i;
          }
-         else if (!wxStrcmp(attr,wxT("state")))
+         else if (attr == "state")
          {
             if (id > FEFirstID && id < FELastID)
-               mPreset->mControlState[id - FEFirstID] = wxString(value);
+               mPreset->mControlState[id - FEFirstID] = value.ToWString();
          }
       }
       return true;
@@ -1225,18 +1211,18 @@ bool FFmpegPresets::HandleXMLTag(const wxChar *tag, const wxChar **attrs)
    return false;
 }
 
-XMLTagHandler *FFmpegPresets::HandleXMLChild(const wxChar *tag)
+XMLTagHandler *FFmpegPresets::HandleXMLChild(const std::string_view& tag)
 {
    if (mAbortImport)
    {
       return NULL;
    }
 
-   if (!wxStrcmp(tag, wxT("preset")))
+   if (tag == "preset")
    {
       return this;
    }
-   else if (!wxStrcmp(tag, wxT("setctrlstate")))
+   else if (tag == "setctrlstate")
    {
       return this;
    }
@@ -1308,305 +1294,305 @@ END_EVENT_TABLE()
 /// Must end with NULL entry
 CompatibilityEntry ExportFFmpegOptions::CompatibilityList[] =
 {
-   { wxT("adts"), AV_CODEC_ID_AAC },
+   { wxT("adts"), SNEEDACITY_AV_CODEC_ID_AAC },
 
-   { wxT("aiff"), AV_CODEC_ID_PCM_S16BE },
-   { wxT("aiff"), AV_CODEC_ID_PCM_S8 },
-   { wxT("aiff"), AV_CODEC_ID_PCM_S24BE },
-   { wxT("aiff"), AV_CODEC_ID_PCM_S32BE },
-   { wxT("aiff"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("aiff"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("aiff"), AV_CODEC_ID_MACE3 },
-   { wxT("aiff"), AV_CODEC_ID_MACE6 },
-   { wxT("aiff"), AV_CODEC_ID_GSM },
-   { wxT("aiff"), AV_CODEC_ID_ADPCM_G726 },
-   { wxT("aiff"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("aiff"), AV_CODEC_ID_ADPCM_IMA_QT },
-   { wxT("aiff"), AV_CODEC_ID_QDM2 },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_S8 },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_S24BE },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_S32BE },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_MACE3 },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_MACE6 },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_GSM },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_ADPCM_G726 },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_QT },
+   { wxT("aiff"), SNEEDACITY_AV_CODEC_ID_QDM2 },
 
-   { wxT("amr"), AV_CODEC_ID_AMR_NB },
-   { wxT("amr"), AV_CODEC_ID_AMR_WB },
+   { wxT("amr"), SNEEDACITY_AV_CODEC_ID_AMR_NB },
+   { wxT("amr"), SNEEDACITY_AV_CODEC_ID_AMR_WB },
 
-   { wxT("asf"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("asf"), AV_CODEC_ID_PCM_U8 },
-   { wxT("asf"), AV_CODEC_ID_PCM_S24LE },
-   { wxT("asf"), AV_CODEC_ID_PCM_S32LE },
-   { wxT("asf"), AV_CODEC_ID_ADPCM_MS },
-   { wxT("asf"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("asf"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("asf"), AV_CODEC_ID_WMAVOICE },
-   { wxT("asf"), AV_CODEC_ID_ADPCM_IMA_WAV },
-   { wxT("asf"), AV_CODEC_ID_ADPCM_YAMAHA },
-   { wxT("asf"), AV_CODEC_ID_TRUESPEECH },
-   { wxT("asf"), AV_CODEC_ID_GSM_MS },
-   { wxT("asf"), AV_CODEC_ID_ADPCM_G726 },
-   //{ wxT("asf"), AV_CODEC_ID_MP2 }, Bug 59
-   { wxT("asf"), AV_CODEC_ID_MP3 },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_PCM_S24LE },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_PCM_S32LE },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ADPCM_MS },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_WMAVOICE },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_WAV },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ADPCM_YAMAHA },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_TRUESPEECH },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_GSM_MS },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ADPCM_G726 },
+   //{ wxT("asf"), SNEEDACITY_AV_CODEC_ID_MP2 }, Bug 59
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_MP3 },
 #if LIBAVCODEC_VERSION_MAJOR < 58
-   { wxT("asf"), AV_CODEC_ID_VOXWARE },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_VOXWARE },
 #endif
-   { wxT("asf"), AV_CODEC_ID_AAC },
-   { wxT("asf"), AV_CODEC_ID_WMAV1 },
-   { wxT("asf"), AV_CODEC_ID_WMAV2 },
-   { wxT("asf"), AV_CODEC_ID_WMAPRO },
-   { wxT("asf"), AV_CODEC_ID_ADPCM_CT },
-   { wxT("asf"), AV_CODEC_ID_ATRAC3 },
-   { wxT("asf"), AV_CODEC_ID_IMC },
-   { wxT("asf"), AV_CODEC_ID_AC3 },
-   { wxT("asf"), AV_CODEC_ID_DTS },
-   { wxT("asf"), AV_CODEC_ID_FLAC },
-   { wxT("asf"), AV_CODEC_ID_ADPCM_SWF },
-   { wxT("asf"), AV_CODEC_ID_VORBIS },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_WMAV1 },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_WMAV2 },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_WMAPRO },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ADPCM_CT },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ATRAC3 },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_IMC },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_FLAC },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_ADPCM_SWF },
+   { wxT("asf"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("au"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("au"), AV_CODEC_ID_PCM_S8 },
-   { wxT("au"), AV_CODEC_ID_PCM_S16BE },
-   { wxT("au"), AV_CODEC_ID_PCM_ALAW },
+   { wxT("au"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("au"), SNEEDACITY_AV_CODEC_ID_PCM_S8 },
+   { wxT("au"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   { wxT("au"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
 
-   { wxT("avi"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("avi"), AV_CODEC_ID_PCM_U8 },
-   { wxT("avi"), AV_CODEC_ID_PCM_S24LE },
-   { wxT("avi"), AV_CODEC_ID_PCM_S32LE },
-   { wxT("avi"), AV_CODEC_ID_ADPCM_MS },
-   { wxT("avi"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("avi"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("avi"), AV_CODEC_ID_WMAVOICE },
-   { wxT("avi"), AV_CODEC_ID_ADPCM_IMA_WAV },
-   { wxT("avi"), AV_CODEC_ID_ADPCM_YAMAHA },
-   { wxT("avi"), AV_CODEC_ID_TRUESPEECH },
-   { wxT("avi"), AV_CODEC_ID_GSM_MS },
-   { wxT("avi"), AV_CODEC_ID_ADPCM_G726 },
-   // { wxT("avi"), AV_CODEC_ID_MP2 }, //Bug 59
-   { wxT("avi"), AV_CODEC_ID_MP3 },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_PCM_S24LE },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_PCM_S32LE },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ADPCM_MS },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_WMAVOICE },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_WAV },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ADPCM_YAMAHA },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_TRUESPEECH },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_GSM_MS },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ADPCM_G726 },
+   // { wxT("avi"), SNEEDACITY_AV_CODEC_ID_MP2 }, //Bug 59
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_MP3 },
 #if LIBAVCODEC_VERSION_MAJOR < 58
-   { wxT("avi"), AV_CODEC_ID_VOXWARE },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_VOXWARE },
 #endif
-   { wxT("avi"), AV_CODEC_ID_AAC },
-   { wxT("avi"), AV_CODEC_ID_WMAV1 },
-   { wxT("avi"), AV_CODEC_ID_WMAV2 },
-   { wxT("avi"), AV_CODEC_ID_WMAPRO },
-   { wxT("avi"), AV_CODEC_ID_ADPCM_CT },
-   { wxT("avi"), AV_CODEC_ID_ATRAC3 },
-   { wxT("avi"), AV_CODEC_ID_IMC },
-   { wxT("avi"), AV_CODEC_ID_AC3 },
-   { wxT("avi"), AV_CODEC_ID_DTS },
-   { wxT("avi"), AV_CODEC_ID_FLAC },
-   { wxT("avi"), AV_CODEC_ID_ADPCM_SWF },
-   { wxT("avi"), AV_CODEC_ID_VORBIS },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_WMAV1 },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_WMAV2 },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_WMAPRO },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ADPCM_CT },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ATRAC3 },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_IMC },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_FLAC },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_ADPCM_SWF },
+   { wxT("avi"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("crc"), AV_CODEC_ID_NONE },
+   { wxT("crc"), SNEEDACITY_AV_CODEC_ID_NONE },
 
-   { wxT("dv"), AV_CODEC_ID_PCM_S16LE },
+   { wxT("dv"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
 
-   { wxT("ffm"), AV_CODEC_ID_NONE },
+   { wxT("ffm"), SNEEDACITY_AV_CODEC_ID_NONE },
 
-   { wxT("flv"), AV_CODEC_ID_MP3 },
-   { wxT("flv"), AV_CODEC_ID_PCM_S8 },
-   { wxT("flv"), AV_CODEC_ID_PCM_S16BE },
-   { wxT("flv"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("flv"), AV_CODEC_ID_ADPCM_SWF },
-   { wxT("flv"), AV_CODEC_ID_AAC },
-   { wxT("flv"), AV_CODEC_ID_NELLYMOSER },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_MP3 },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_PCM_S8 },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_ADPCM_SWF },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("flv"), SNEEDACITY_AV_CODEC_ID_NELLYMOSER },
 
-   { wxT("framecrc"), AV_CODEC_ID_NONE },
+   { wxT("framecrc"), SNEEDACITY_AV_CODEC_ID_NONE },
 
-   { wxT("gxf"), AV_CODEC_ID_PCM_S16LE },
+   { wxT("gxf"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
 
-   { wxT("matroska"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("matroska"), AV_CODEC_ID_PCM_U8 },
-   { wxT("matroska"), AV_CODEC_ID_PCM_S24LE },
-   { wxT("matroska"), AV_CODEC_ID_PCM_S32LE },
-   { wxT("matroska"), AV_CODEC_ID_ADPCM_MS },
-   { wxT("matroska"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("matroska"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("matroska"), AV_CODEC_ID_WMAVOICE },
-   { wxT("matroska"), AV_CODEC_ID_ADPCM_IMA_WAV },
-   { wxT("matroska"), AV_CODEC_ID_ADPCM_YAMAHA },
-   { wxT("matroska"), AV_CODEC_ID_TRUESPEECH },
-   { wxT("matroska"), AV_CODEC_ID_GSM_MS },
-   { wxT("matroska"), AV_CODEC_ID_ADPCM_G726 },
-   // { wxT("matroska"), AV_CODEC_ID_MP2 }, // Bug 59
-   { wxT("matroska"), AV_CODEC_ID_MP3 },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_PCM_S24LE },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_PCM_S32LE },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ADPCM_MS },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_WMAVOICE },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_WAV },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ADPCM_YAMAHA },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_TRUESPEECH },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_GSM_MS },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ADPCM_G726 },
+   // { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_MP2 }, // Bug 59
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_MP3 },
 #if LIBAVCODEC_VERSION_MAJOR < 58
-   { wxT("matroska"), AV_CODEC_ID_VOXWARE },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_VOXWARE },
 #endif
-   { wxT("matroska"), AV_CODEC_ID_AAC },
-   { wxT("matroska"), AV_CODEC_ID_WMAV1 },
-   { wxT("matroska"), AV_CODEC_ID_WMAV2 },
-   { wxT("matroska"), AV_CODEC_ID_WMAPRO },
-   { wxT("matroska"), AV_CODEC_ID_ADPCM_CT },
-   { wxT("matroska"), AV_CODEC_ID_ATRAC3 },
-   { wxT("matroska"), AV_CODEC_ID_IMC },
-   { wxT("matroska"), AV_CODEC_ID_AC3 },
-   { wxT("matroska"), AV_CODEC_ID_DTS },
-   { wxT("matroska"), AV_CODEC_ID_FLAC },
-   { wxT("matroska"), AV_CODEC_ID_ADPCM_SWF },
-   { wxT("matroska"), AV_CODEC_ID_VORBIS },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_WMAV1 },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_WMAV2 },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_WMAPRO },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ADPCM_CT },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ATRAC3 },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_IMC },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_FLAC },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_ADPCM_SWF },
+   { wxT("matroska"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("mmf"), AV_CODEC_ID_ADPCM_YAMAHA },
+   { wxT("mmf"), SNEEDACITY_AV_CODEC_ID_ADPCM_YAMAHA },
 
-   { wxT("mov"), AV_CODEC_ID_PCM_S32BE }, //mov
-   { wxT("mov"), AV_CODEC_ID_PCM_S32LE },
-   { wxT("mov"), AV_CODEC_ID_PCM_S24BE },
-   { wxT("mov"), AV_CODEC_ID_PCM_S24LE },
-   { wxT("mov"), AV_CODEC_ID_PCM_S16BE },
-   { wxT("mov"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("mov"), AV_CODEC_ID_PCM_S8 },
-   { wxT("mov"), AV_CODEC_ID_PCM_U8 },
-   { wxT("mov"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("mov"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("mov"), AV_CODEC_ID_ADPCM_IMA_QT },
-   { wxT("mov"), AV_CODEC_ID_MACE3 },
-   { wxT("mov"), AV_CODEC_ID_MACE6 },
-   { wxT("mov"), AV_CODEC_ID_MP3 },
-   { wxT("mov"), AV_CODEC_ID_AAC },
-   { wxT("mov"), AV_CODEC_ID_AMR_NB },
-   { wxT("mov"), AV_CODEC_ID_AMR_WB },
-   { wxT("mov"), AV_CODEC_ID_GSM },
-   { wxT("mov"), AV_CODEC_ID_ALAC },
-   { wxT("mov"), AV_CODEC_ID_QCELP },
-   { wxT("mov"), AV_CODEC_ID_QDM2 },
-   { wxT("mov"), AV_CODEC_ID_DVAUDIO },
-   { wxT("mov"), AV_CODEC_ID_WMAV2 },
-   { wxT("mov"), AV_CODEC_ID_ALAC },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S32BE }, //mov
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S32LE },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S24BE },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S24LE },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_S8 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_QT },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_MACE3 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_MACE6 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_MP3 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_AMR_NB },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_AMR_WB },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_GSM },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_ALAC },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_QCELP },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_QDM2 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_DVAUDIO },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_WMAV2 },
+   { wxT("mov"), SNEEDACITY_AV_CODEC_ID_ALAC },
 
-   { wxT("mp4"), AV_CODEC_ID_AAC },
-   { wxT("mp4"), AV_CODEC_ID_QCELP },
-   { wxT("mp4"), AV_CODEC_ID_MP3 },
-   { wxT("mp4"), AV_CODEC_ID_VORBIS },
+   { wxT("mp4"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("mp4"), SNEEDACITY_AV_CODEC_ID_QCELP },
+   { wxT("mp4"), SNEEDACITY_AV_CODEC_ID_MP3 },
+   { wxT("mp4"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("psp"), AV_CODEC_ID_AAC },
-   { wxT("psp"), AV_CODEC_ID_QCELP },
-   { wxT("psp"), AV_CODEC_ID_MP3 },
-   { wxT("psp"), AV_CODEC_ID_VORBIS },
+   { wxT("psp"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("psp"), SNEEDACITY_AV_CODEC_ID_QCELP },
+   { wxT("psp"), SNEEDACITY_AV_CODEC_ID_MP3 },
+   { wxT("psp"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("ipod"), AV_CODEC_ID_AAC },
-   { wxT("ipod"), AV_CODEC_ID_QCELP },
-   { wxT("ipod"), AV_CODEC_ID_MP3 },
-   { wxT("ipod"), AV_CODEC_ID_VORBIS },
+   { wxT("ipod"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("ipod"), SNEEDACITY_AV_CODEC_ID_QCELP },
+   { wxT("ipod"), SNEEDACITY_AV_CODEC_ID_MP3 },
+   { wxT("ipod"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("3gp"), AV_CODEC_ID_AAC },
-   { wxT("3gp"), AV_CODEC_ID_AMR_NB },
-   { wxT("3gp"), AV_CODEC_ID_AMR_WB },
+   { wxT("3gp"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("3gp"), SNEEDACITY_AV_CODEC_ID_AMR_NB },
+   { wxT("3gp"), SNEEDACITY_AV_CODEC_ID_AMR_WB },
 
-   { wxT("3g2"), AV_CODEC_ID_AAC },
-   { wxT("3g2"), AV_CODEC_ID_AMR_NB },
-   { wxT("3g2"), AV_CODEC_ID_AMR_WB },
+   { wxT("3g2"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("3g2"), SNEEDACITY_AV_CODEC_ID_AMR_NB },
+   { wxT("3g2"), SNEEDACITY_AV_CODEC_ID_AMR_WB },
 
-   { wxT("mp3"), AV_CODEC_ID_MP3 },
+   { wxT("mp3"), SNEEDACITY_AV_CODEC_ID_MP3 },
 
-   { wxT("mpeg"), AV_CODEC_ID_AC3 },
-   { wxT("mpeg"), AV_CODEC_ID_DTS },
-   { wxT("mpeg"), AV_CODEC_ID_PCM_S16BE },
-   //{ wxT("mpeg"), AV_CODEC_ID_MP2 },// Bug 59
+   { wxT("mpeg"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("mpeg"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("mpeg"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   //{ wxT("mpeg"), SNEEDACITY_AV_CODEC_ID_MP2 },// Bug 59
 
-   { wxT("vcd"), AV_CODEC_ID_AC3 },
-   { wxT("vcd"), AV_CODEC_ID_DTS },
-   { wxT("vcd"), AV_CODEC_ID_PCM_S16BE },
-   //{ wxT("vcd"), AV_CODEC_ID_MP2 },// Bug 59
+   { wxT("vcd"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("vcd"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("vcd"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   //{ wxT("vcd"), SNEEDACITY_AV_CODEC_ID_MP2 },// Bug 59
 
-   { wxT("vob"), AV_CODEC_ID_AC3 },
-   { wxT("vob"), AV_CODEC_ID_DTS },
-   { wxT("vob"), AV_CODEC_ID_PCM_S16BE },
-   //{ wxT("vob"), AV_CODEC_ID_MP2 },// Bug 59
+   { wxT("vob"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("vob"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("vob"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   //{ wxT("vob"), SNEEDACITY_AV_CODEC_ID_MP2 },// Bug 59
 
-   { wxT("svcd"), AV_CODEC_ID_AC3 },
-   { wxT("svcd"), AV_CODEC_ID_DTS },
-   { wxT("svcd"), AV_CODEC_ID_PCM_S16BE },
-   //{ wxT("svcd"), AV_CODEC_ID_MP2 },// Bug 59
+   { wxT("svcd"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("svcd"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("svcd"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   //{ wxT("svcd"), SNEEDACITY_AV_CODEC_ID_MP2 },// Bug 59
 
-   { wxT("dvd"), AV_CODEC_ID_AC3 },
-   { wxT("dvd"), AV_CODEC_ID_DTS },
-   { wxT("dvd"), AV_CODEC_ID_PCM_S16BE },
-   //{ wxT("dvd"), AV_CODEC_ID_MP2 },// Bug 59
+   { wxT("dvd"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("dvd"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("dvd"), SNEEDACITY_AV_CODEC_ID_PCM_S16BE },
+   //{ wxT("dvd"), SNEEDACITY_AV_CODEC_ID_MP2 },// Bug 59
 
-   { wxT("nut"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("nut"), AV_CODEC_ID_PCM_U8 },
-   { wxT("nut"), AV_CODEC_ID_PCM_S24LE },
-   { wxT("nut"), AV_CODEC_ID_PCM_S32LE },
-   { wxT("nut"), AV_CODEC_ID_ADPCM_MS },
-   { wxT("nut"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("nut"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("nut"), AV_CODEC_ID_WMAVOICE },
-   { wxT("nut"), AV_CODEC_ID_ADPCM_IMA_WAV },
-   { wxT("nut"), AV_CODEC_ID_ADPCM_YAMAHA },
-   { wxT("nut"), AV_CODEC_ID_TRUESPEECH },
-   { wxT("nut"), AV_CODEC_ID_GSM_MS },
-   { wxT("nut"), AV_CODEC_ID_ADPCM_G726 },
-   //{ wxT("nut"), AV_CODEC_ID_MP2 },// Bug 59
-   { wxT("nut"), AV_CODEC_ID_MP3 },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_PCM_S24LE },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_PCM_S32LE },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ADPCM_MS },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_WMAVOICE },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_WAV },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ADPCM_YAMAHA },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_TRUESPEECH },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_GSM_MS },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ADPCM_G726 },
+   //{ wxT("nut"), SNEEDACITY_AV_CODEC_ID_MP2 },// Bug 59
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_MP3 },
  #if LIBAVCODEC_VERSION_MAJOR < 58
-   { wxT("nut"), AV_CODEC_ID_VOXWARE },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_VOXWARE },
  #endif
-   { wxT("nut"), AV_CODEC_ID_AAC },
-   { wxT("nut"), AV_CODEC_ID_WMAV1 },
-   { wxT("nut"), AV_CODEC_ID_WMAV2 },
-   { wxT("nut"), AV_CODEC_ID_WMAPRO },
-   { wxT("nut"), AV_CODEC_ID_ADPCM_CT },
-   { wxT("nut"), AV_CODEC_ID_ATRAC3 },
-   { wxT("nut"), AV_CODEC_ID_IMC },
-   { wxT("nut"), AV_CODEC_ID_AC3 },
-   { wxT("nut"), AV_CODEC_ID_DTS },
-   { wxT("nut"), AV_CODEC_ID_FLAC },
-   { wxT("nut"), AV_CODEC_ID_ADPCM_SWF },
-   { wxT("nut"), AV_CODEC_ID_VORBIS },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_AAC },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_WMAV1 },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_WMAV2 },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_WMAPRO },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ADPCM_CT },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ATRAC3 },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_IMC },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_FLAC },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_ADPCM_SWF },
+   { wxT("nut"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { wxT("ogg"), AV_CODEC_ID_VORBIS },
-   { wxT("ogg"), AV_CODEC_ID_FLAC },
+   { wxT("ogg"), SNEEDACITY_AV_CODEC_ID_VORBIS },
+   { wxT("ogg"), SNEEDACITY_AV_CODEC_ID_FLAC },
 
-   { wxT("ac3"), AV_CODEC_ID_AC3 },
+   { wxT("ac3"), SNEEDACITY_AV_CODEC_ID_AC3 },
 
-   { wxT("dts"), AV_CODEC_ID_DTS },
+   { wxT("dts"), SNEEDACITY_AV_CODEC_ID_DTS },
 
-   { wxT("flac"), AV_CODEC_ID_FLAC },
+   { wxT("flac"), SNEEDACITY_AV_CODEC_ID_FLAC },
 
-   { wxT("RoQ"), AV_CODEC_ID_ROQ_DPCM },
+   { wxT("RoQ"), SNEEDACITY_AV_CODEC_ID_ROQ_DPCM },
 
-   { wxT("rm"), AV_CODEC_ID_AC3 },
+   { wxT("rm"), SNEEDACITY_AV_CODEC_ID_AC3 },
 
-   { wxT("swf"), AV_CODEC_ID_MP3 },
+   { wxT("swf"), SNEEDACITY_AV_CODEC_ID_MP3 },
 
-   { wxT("avm2"), AV_CODEC_ID_MP3 },
+   { wxT("avm2"), SNEEDACITY_AV_CODEC_ID_MP3 },
 
-   { wxT("voc"), AV_CODEC_ID_PCM_U8 },
+   { wxT("voc"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
 
-   { wxT("wav"), AV_CODEC_ID_PCM_S16LE },
-   { wxT("wav"), AV_CODEC_ID_PCM_U8 },
-   { wxT("wav"), AV_CODEC_ID_PCM_S24LE },
-   { wxT("wav"), AV_CODEC_ID_PCM_S32LE },
-   { wxT("wav"), AV_CODEC_ID_ADPCM_MS },
-   { wxT("wav"), AV_CODEC_ID_PCM_ALAW },
-   { wxT("wav"), AV_CODEC_ID_PCM_MULAW },
-   { wxT("wav"), AV_CODEC_ID_WMAVOICE },
-   { wxT("wav"), AV_CODEC_ID_ADPCM_IMA_WAV },
-   { wxT("wav"), AV_CODEC_ID_ADPCM_YAMAHA },
-   { wxT("wav"), AV_CODEC_ID_TRUESPEECH },
-   { wxT("wav"), AV_CODEC_ID_GSM_MS },
-   { wxT("wav"), AV_CODEC_ID_ADPCM_G726 },
-   //{ wxT("wav"), AV_CODEC_ID_MP2 }, Bug 59 - It crashes.
-   { wxT("wav"), AV_CODEC_ID_MP3 },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_PCM_S16LE },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_PCM_U8 },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_PCM_S24LE },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_PCM_S32LE },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ADPCM_MS },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_PCM_ALAW },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_PCM_MULAW },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_WMAVOICE },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ADPCM_IMA_WAV },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ADPCM_YAMAHA },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_TRUESPEECH },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_GSM_MS },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ADPCM_G726 },
+   //{ wxT("wav"), SNEEDACITY_AV_CODEC_ID_MP2 }, Bug 59 - It crashes.
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_MP3 },
 #if LIBAVCODEC_VERSION_MAJOR < 58
-   { wxT("wav"), AV_CODEC_ID_VOXWARE },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_VOXWARE },
 #endif
-   { wxT("wav"), AV_CODEC_ID_AAC },
-   // { wxT("wav"), AV_CODEC_ID_WMAV1 },
-   // { wxT("wav"), AV_CODEC_ID_WMAV2 },
-   { wxT("wav"), AV_CODEC_ID_WMAPRO },
-   { wxT("wav"), AV_CODEC_ID_ADPCM_CT },
-   { wxT("wav"), AV_CODEC_ID_ATRAC3 },
-   { wxT("wav"), AV_CODEC_ID_IMC },
-   { wxT("wav"), AV_CODEC_ID_AC3 },
-   //{ wxT("wav"), AV_CODEC_ID_DTS },
-   { wxT("wav"), AV_CODEC_ID_FLAC },
-   { wxT("wav"), AV_CODEC_ID_ADPCM_SWF },
-   { wxT("wav"), AV_CODEC_ID_VORBIS },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_AAC },
+   // { wxT("wav"), SNEEDACITY_AV_CODEC_ID_WMAV1 },
+   // { wxT("wav"), SNEEDACITY_AV_CODEC_ID_WMAV2 },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_WMAPRO },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ADPCM_CT },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ATRAC3 },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_IMC },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_AC3 },
+   //{ wxT("wav"), SNEEDACITY_AV_CODEC_ID_DTS },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_FLAC },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_ADPCM_SWF },
+   { wxT("wav"), SNEEDACITY_AV_CODEC_ID_VORBIS },
 
-   { NULL, AV_CODEC_ID_NONE }
+   { NULL, SNEEDACITY_AV_CODEC_ID_NONE }
 };
 
 /// AAC profiles
 // The FF_PROFILE_* enumeration is defined in the ffmpeg library
-// PRL:  I cant find where this preference is used!
+// PRL:  I can't find where this preference is used!
 ChoiceSetting AACProfiles { wxT("/FileFormats/FFmpegAACProfile"),
    {
       {wxT("1") /*FF_PROFILE_AAC_LOW*/, XO("LC")},
@@ -1620,12 +1606,12 @@ ChoiceSetting AACProfiles { wxT("/FileFormats/FFmpegAACProfile"),
 /// List of export types
 ExposedFormat ExportFFmpegOptions::fmts[] =
 {
-   {FMT_M4A,   wxT("M4A"),    wxT("m4a"),  wxT("ipod"), 48,  AV_CANMETA,              true,  XO("M4A (AAC) Files (FFmpeg)"),         AV_CODEC_ID_AAC,    true},
-   {FMT_AC3,   wxT("AC3"),    wxT("ac3"),  wxT("ac3"),  7,   AV_VERSION_INT(0,0,0),   false, XO("AC3 Files (FFmpeg)"),               AV_CODEC_ID_AC3,    true},
-   {FMT_AMRNB, wxT("AMRNB"),  wxT("amr"),  wxT("amr"),  1,   AV_VERSION_INT(0,0,0),   false, XO("AMR (narrow band) Files (FFmpeg)"), AV_CODEC_ID_AMR_NB, true},
-   {FMT_OPUS,  wxT("OPUS"),   wxT("opus"), wxT("opus"), 255, AV_CANMETA,              true,  XO("Opus (OggOpus) Files (FFmpeg)"),    AV_CODEC_ID_OPUS,   true},
-   {FMT_WMA2,  wxT("WMA"),    wxT("wma"),  wxT("asf"),  2,   AV_VERSION_INT(52,53,0), false, XO("WMA (version 2) Files (FFmpeg)"),   AV_CODEC_ID_WMAV2,  true},
-   {FMT_OTHER, wxT("FFMPEG"), wxT(""),     wxT(""),     255, AV_CANMETA,              true,  XO("Custom FFmpeg Export"),             AV_CODEC_ID_NONE,   true}
+   {FMT_M4A,   wxT("M4A"),    wxT("m4a"),  wxT("ipod"), 48,  AV_CANMETA,              true,  XO("M4A (AAC) Files (FFmpeg)"),         SNEEDACITY_AV_CODEC_ID_AAC,    true},
+   {FMT_AC3,   wxT("AC3"),    wxT("ac3"),  wxT("ac3"),  7,   AV_VERSION_INT(0,0,0),   false, XO("AC3 Files (FFmpeg)"),               SNEEDACITY_AV_CODEC_ID_AC3,    true},
+   {FMT_AMRNB, wxT("AMRNB"),  wxT("amr"),  wxT("amr"),  1,   AV_VERSION_INT(0,0,0),   false, XO("AMR (narrow band) Files (FFmpeg)"), SNEEDACITY_AV_CODEC_ID_AMR_NB, true},
+   {FMT_OPUS,  wxT("OPUS"),   wxT("opus"), wxT("opus"), 255, AV_CANMETA,              true,  XO("Opus (OggOpus) Files (FFmpeg)"),    SNEEDACITY_AV_CODEC_ID_OPUS,   true},
+   {FMT_WMA2,  wxT("WMA"),    wxT("wma"),  wxT("asf"),  2,   AV_VERSION_INT(52,53,0), false, XO("WMA (version 2) Files (FFmpeg)"),   SNEEDACITY_AV_CODEC_ID_WMAV2,  true},
+   {FMT_OTHER, wxT("FFMPEG"), wxT(""),     wxT(""),     255, AV_CANMETA,              true,  XO("Custom FFmpeg Export"),             SNEEDACITY_AV_CODEC_ID_NONE,   true}
 };
 
 /// Some controls (parameters they represent) are only applicable to a number
@@ -1633,84 +1619,84 @@ ExposedFormat ExportFFmpegOptions::fmts[] =
 /// Syntax: first, enable a control for each applicable format-codec combination
 /// then disable it for anything else
 /// "any" - any format
-/// AV_CODEC_ID_NONE - any codec
-/// This list must end with {FALSE,FFmpegExportCtrlID(0),AV_CODEC_ID_NONE,NULL}
+/// SNEEDACITY_AV_CODEC_ID_NONE - any codec
+/// This list must end with {FALSE,FFmpegExportCtrlID(0),SNEEDACITY_AV_CODEC_ID_NONE,NULL}
 ApplicableFor ExportFFmpegOptions::apptable[] =
 {
-   {TRUE,FEQualityID,AV_CODEC_ID_AAC,"any"},
-   {TRUE,FEQualityID,AV_CODEC_ID_MP3,"any"},
-   {TRUE,FEQualityID,AV_CODEC_ID_VORBIS,"any"},
-   {FALSE,FEQualityID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEQualityID,SNEEDACITY_AV_CODEC_ID_AAC,"any"},
+   {TRUE,FEQualityID,SNEEDACITY_AV_CODEC_ID_MP3,"any"},
+   {TRUE,FEQualityID,SNEEDACITY_AV_CODEC_ID_VORBIS,"any"},
+   {FALSE,FEQualityID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FECutoffID,AV_CODEC_ID_AC3,"any"},
-   {TRUE,FECutoffID,AV_CODEC_ID_AAC,"any"},
-   {TRUE,FECutoffID,AV_CODEC_ID_VORBIS,"any"},
-   {FALSE,FECutoffID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FECutoffID,SNEEDACITY_AV_CODEC_ID_AC3,"any"},
+   {TRUE,FECutoffID,SNEEDACITY_AV_CODEC_ID_AAC,"any"},
+   {TRUE,FECutoffID,SNEEDACITY_AV_CODEC_ID_VORBIS,"any"},
+   {FALSE,FECutoffID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEFrameSizeID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEFrameSizeID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEFrameSizeID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEFrameSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEProfileID,AV_CODEC_ID_AAC,"any"},
-   {FALSE,FEProfileID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEProfileID,SNEEDACITY_AV_CODEC_ID_AAC,"any"},
+   {FALSE,FEProfileID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FECompLevelID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FECompLevelID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FECompLevelID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FECompLevelID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEUseLPCID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEUseLPCID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEUseLPCID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEUseLPCID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FELPCCoeffsID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FELPCCoeffsID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FELPCCoeffsID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FELPCCoeffsID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEMinPredID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEMinPredID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEMinPredID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEMinPredID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEMaxPredID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEMaxPredID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEMaxPredID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEMaxPredID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEPredOrderID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEPredOrderID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEPredOrderID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEPredOrderID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEMinPartOrderID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEMinPartOrderID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEMinPartOrderID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEMinPartOrderID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEMaxPartOrderID,AV_CODEC_ID_FLAC,"any"},
-   {FALSE,FEMaxPartOrderID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEMaxPartOrderID,SNEEDACITY_AV_CODEC_ID_FLAC,"any"},
+   {FALSE,FEMaxPartOrderID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEMuxRateID,AV_CODEC_ID_NONE,"mpeg"},
-   {TRUE,FEMuxRateID,AV_CODEC_ID_NONE,"vcd"},
-   {TRUE,FEMuxRateID,AV_CODEC_ID_NONE,"vob"},
-   {TRUE,FEMuxRateID,AV_CODEC_ID_NONE,"svcd"},
-   {TRUE,FEMuxRateID,AV_CODEC_ID_NONE,"dvd"},
-   {FALSE,FEMuxRateID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEMuxRateID,SNEEDACITY_AV_CODEC_ID_NONE,"mpeg"},
+   {TRUE,FEMuxRateID,SNEEDACITY_AV_CODEC_ID_NONE,"vcd"},
+   {TRUE,FEMuxRateID,SNEEDACITY_AV_CODEC_ID_NONE,"vob"},
+   {TRUE,FEMuxRateID,SNEEDACITY_AV_CODEC_ID_NONE,"svcd"},
+   {TRUE,FEMuxRateID,SNEEDACITY_AV_CODEC_ID_NONE,"dvd"},
+   {FALSE,FEMuxRateID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEPacketSizeID,AV_CODEC_ID_NONE,"mpeg"},
-   {TRUE,FEPacketSizeID,AV_CODEC_ID_NONE,"vcd"},
-   {TRUE,FEPacketSizeID,AV_CODEC_ID_NONE,"vob"},
-   {TRUE,FEPacketSizeID,AV_CODEC_ID_NONE,"svcd"},
-   {TRUE,FEPacketSizeID,AV_CODEC_ID_NONE,"dvd"},
-   {FALSE,FEPacketSizeID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEPacketSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"mpeg"},
+   {TRUE,FEPacketSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"vcd"},
+   {TRUE,FEPacketSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"vob"},
+   {TRUE,FEPacketSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"svcd"},
+   {TRUE,FEPacketSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"dvd"},
+   {FALSE,FEPacketSizeID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"matroska"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"mov"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"3gp"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"mp4"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"psp"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"3g2"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"ipod"},
-   {TRUE,FELanguageID,AV_CODEC_ID_NONE,"mpegts"},
-   {FALSE,FELanguageID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"matroska"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"mov"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"3gp"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"mp4"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"psp"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"3g2"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"ipod"},
+   {TRUE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"mpegts"},
+   {FALSE,FELanguageID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEBitReservoirID,AV_CODEC_ID_MP3,"any"},
-   {TRUE,FEBitReservoirID,AV_CODEC_ID_WMAV1,"any"},
-   {TRUE,FEBitReservoirID,AV_CODEC_ID_WMAV2,"any"},
-   {FALSE,FEBitReservoirID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEBitReservoirID,SNEEDACITY_AV_CODEC_ID_MP3,"any"},
+   {TRUE,FEBitReservoirID,SNEEDACITY_AV_CODEC_ID_WMAV1,"any"},
+   {TRUE,FEBitReservoirID,SNEEDACITY_AV_CODEC_ID_WMAV2,"any"},
+   {FALSE,FEBitReservoirID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {TRUE,FEVariableBlockLenID,AV_CODEC_ID_WMAV1,"any"},
-   {TRUE,FEVariableBlockLenID,AV_CODEC_ID_WMAV2,"any"},
-   {FALSE,FEVariableBlockLenID,AV_CODEC_ID_NONE,"any"},
+   {TRUE,FEVariableBlockLenID,SNEEDACITY_AV_CODEC_ID_WMAV1,"any"},
+   {TRUE,FEVariableBlockLenID,SNEEDACITY_AV_CODEC_ID_WMAV2,"any"},
+   {FALSE,FEVariableBlockLenID,SNEEDACITY_AV_CODEC_ID_NONE,"any"},
 
-   {FALSE,FFmpegExportCtrlID(0),AV_CODEC_ID_NONE,NULL}
+   {FALSE,FFmpegExportCtrlID(0),SNEEDACITY_AV_CODEC_ID_NONE,NULL}
 };
 
 namespace {
@@ -1731,7 +1717,6 @@ const TranslatableStrings PredictionOrderMethodNames {
 
 ExportFFmpegOptions::~ExportFFmpegOptions()
 {
-   DropFFmpegLibs();
 }
 
 ExportFFmpegOptions::ExportFFmpegOptions(wxWindow *parent)
@@ -1740,13 +1725,13 @@ ExportFFmpegOptions::ExportFFmpegOptions(wxWindow *parent)
 {
    SetName();
    ShuttleGui S(this, eIsCreatingFromPrefs);
-   PickFFmpegLibs();
+   mFFmpeg = FFmpegFunctions::Load();
    //FFmpegLibsInst()->LoadLibs(NULL,true); //Loaded at startup or from Prefs now
 
    mPresets = std::make_unique<FFmpegPresets>();
    mPresets->GetPresetList(mPresetNames);
 
-   if (FFmpegLibsInst()->ValidLibsLoaded())
+   if (mFFmpeg)
    {
       FetchFormatList();
       FetchCodecList();
@@ -1758,8 +1743,11 @@ ExportFFmpegOptions::ExportFFmpegOptions(wxWindow *parent)
       DoOnFormatList();
 
       //Select the codec that was selected last time this dialog was closed
-      AVCodec *codec = avcodec_find_encoder_by_name(gPrefs->Read(wxT("/FileFormats/FFmpegCodec")).ToUTF8());
-      if (codec != NULL) mCodecList->Select(mCodecList->FindString(wxString::FromUTF8(codec->name)));
+      auto codec = mFFmpeg->CreateEncoder(gPrefs->Read(wxT("/FileFormats/FFmpegCodec")).ToUTF8());
+
+      if (codec != nullptr)
+         mCodecList->Select(mCodecList->FindString(wxString::FromUTF8(codec->GetName())));
+
       DoOnCodecList();
    }
 
@@ -1769,16 +1757,17 @@ ExportFFmpegOptions::ExportFFmpegOptions(wxWindow *parent)
 ///
 void ExportFFmpegOptions::FetchFormatList()
 {
-   // Enumerate all output formats
-   AVOutputFormat *ofmt = NULL;
+   if (!mFFmpeg)
+      return;
+
    for (auto ofmt : mFFmpeg->GetOutputFormats())
    {
       // Any audio-capable format has default audio codec.
       // If it doesn't, then it doesn't supports any audio codecs
-      if (ofmt->audio_codec != AV_CODEC_ID_NONE)
+      if (ofmt->GetAudioCodec() != SNEEDACITY_AV_CODEC_ID_NONE)
       {
-         mFormatNames.push_back(wxString::FromUTF8(ofmt->name));
-         mFormatLongNames.push_back(wxString::Format(wxT("%s - %s"),mFormatNames.back(),wxString::FromUTF8(ofmt->long_name)));
+         mFormatNames.push_back(wxString::FromUTF8(ofmt->GetName()));
+         mFormatLongNames.push_back(wxString::Format(wxT("%s - %s"),mFormatNames.back(),wxString::FromUTF8(ofmt->GetLongName())));
       }
    }
    // Show all formats
@@ -1790,18 +1779,21 @@ void ExportFFmpegOptions::FetchFormatList()
 ///
 void ExportFFmpegOptions::FetchCodecList()
 {
+   if (!mFFmpeg)
+      return;
    // Enumerate all codecs
-   AVCodec *codec = NULL;
+   std::unique_ptr<AVCodecWrapper> codec;
    for (auto codec : mFFmpeg->GetCodecs())
    {
       // We're only interested in audio and only in encoders
-      if (codec->type == AVMEDIA_TYPE_AUDIO && av_codec_is_encoder(codec))
+      if (codec->IsAudio() && mFFmpeg->av_codec_is_encoder(codec->GetWrappedValue()))
       {
          // MP2 Codec is broken.  Don't allow it.
-         if( codec->id == AV_CODEC_ID_MP2)
+         if( codec->GetId() == mFFmpeg->GetAVCodecID(SNEEDACITY_AV_CODEC_ID_MP2))
             continue;
-         mCodecNames.push_back(wxString::FromUTF8(codec->name));
-         mCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mCodecNames.back(),wxString::FromUTF8(codec->long_name)));
+
+         mCodecNames.push_back(wxString::FromUTF8(codec->GetName()));
+         mCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mCodecNames.back(),wxString::FromUTF8(codec->GetLongName())));
       }
    }
    // Show all codecs
@@ -1813,6 +1805,9 @@ void ExportFFmpegOptions::FetchCodecList()
 ///
 void ExportFFmpegOptions::PopulateOrExchange(ShuttleGui & S)
 {
+   IntSetting PredictionOrderSetting{ L"/FileFormats/FFmpegPredOrderMethod",
+      4 };  // defaults to Full search
+
    S.StartVerticalLay(1);
    S.StartMultiColumn(1, wxEXPAND);
    {
@@ -1899,6 +1894,7 @@ void ExportFFmpegOptions::PopulateOrExchange(ShuttleGui & S)
                      .ToolTip(XO("Audio cutoff bandwidth (Hz)\nOptional\n0 - automatic"))
                      .TieSpinCtrl(XXO("Cutoff:"), {wxT("/FileFormats/FFmpegCutOff"), 0}, 10000000, 0);
 
+                  // PRL:  As commented elsewhere, this preference does nothing
                   S.Id(FEProfileID)
                      .ToolTip(XO("AAC Profile\nLow Complexity - default\nMost players won't play anything other than LC"))
                      .MinSize( { 100, -1 } )
@@ -1928,8 +1924,7 @@ void ExportFFmpegOptions::PopulateOrExchange(ShuttleGui & S)
                      .MinSize( { 100, -1 } )
                      .TieNumberAsChoice(
                         XXO("PdO Method:"),
-                        {wxT("/FileFormats/FFmpegPredOrderMethod"),
-                         4}, // Full search
+                        PredictionOrderSetting,
                         PredictionOrderMethodNames
                      );
 
@@ -2043,8 +2038,10 @@ void ExportFFmpegOptions::FindSelectedCodec(wxString **name, wxString **longname
 
 ///
 ///
-int ExportFFmpegOptions::FetchCompatibleCodecList(const wxChar *fmt, AVCodecID id)
+int ExportFFmpegOptions::FetchCompatibleCodecList(const wxChar *fmt, SneedacityAVCodecID id)
 {
+   const auto ffmpegId = mFFmpeg->GetAVCodecID(id);
+
    // By default assume that id is not in the list
    int index = -1;
    // By default no codecs are compatible (yet)
@@ -2061,41 +2058,46 @@ int ExportFFmpegOptions::FetchCompatibleCodecList(const wxChar *fmt, AVCodecID i
       {
          // Format is found in the list
          found = 1;
-         if (CompatibilityList[i].codec == AV_CODEC_ID_NONE)
+         if (CompatibilityList[i].codec.value == SNEEDACITY_AV_CODEC_ID_NONE)
          {
-            // Format is found in the list and it is compatible with AV_CODEC_ID_NONE (means that it is compatible to anything)
+            // Format is found in the list and it is compatible with SNEEDACITY_AV_CODEC_ID_NONE (means that it is compatible to anything)
             found = 2;
             break;
          }
          // Find the codec, that is claimed to be compatible
-         AVCodec *codec = avcodec_find_encoder(CompatibilityList[i].codec);
+         std::unique_ptr<AVCodecWrapper> codec = mFFmpeg->CreateEncoder(mFFmpeg->GetAVCodecID(CompatibilityList[i].codec));
          // If it exists, is audio and has encoder
-         if (codec != NULL && (codec->type == AVMEDIA_TYPE_AUDIO) && av_codec_is_encoder(codec))
+         if (codec != NULL && codec->IsAudio() && mFFmpeg->av_codec_is_encoder(codec->GetWrappedValue()))
          {
             // If it was selected - remember its NEW index
-            if ((id >= 0) && codec->id == id) index = mShownCodecNames.size();
-            mShownCodecNames.push_back(wxString::FromUTF8(codec->name));
-            mShownCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownCodecNames.back(),wxString::FromUTF8(codec->long_name)));
+            if ((ffmpegId >= 0) && codec->GetId() == ffmpegId)
+               index = mShownCodecNames.size();
+
+            mShownCodecNames.push_back(wxString::FromUTF8(codec->GetName()));
+            mShownCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownCodecNames.back(),wxString::FromUTF8(codec->GetLongName())));
          }
       }
    }
    // All codecs are compatible with this format
    if (found == 2)
    {
-      AVCodec *codec = NULL;
+      std::unique_ptr<AVCodecWrapper> codec;
       for (auto codec : mFFmpeg->GetCodecs())
       {
-         if (codec->type == AVMEDIA_TYPE_AUDIO && av_codec_is_encoder(codec))
+         if (codec->IsAudio() && mFFmpeg->av_codec_is_encoder(codec->GetWrappedValue()))
          {
             // MP2 is broken.
-            if( codec->id == AV_CODEC_ID_MP2)
+            if( codec->GetId() == mFFmpeg->GetAVCodecID(SNEEDACITY_AV_CODEC_ID_MP2) )
                continue;
+
             if (! make_iterator_range( mShownCodecNames )
-               .contains( wxString::FromUTF8(codec->name) ) )
+               .contains( wxString::FromUTF8(codec->GetName()) ) )
             {
-               if ((id >= 0) && codec->id == id) index = mShownCodecNames.size();
-               mShownCodecNames.push_back(wxString::FromUTF8(codec->name));
-               mShownCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownCodecNames.back(),wxString::FromUTF8(codec->long_name)));
+               if ((ffmpegId >= 0) && codec->GetId() == ffmpegId)
+                  index = mShownCodecNames.size();
+
+               mShownCodecNames.push_back(wxString::FromUTF8(codec->GetName()));
+               mShownCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownCodecNames.back(),wxString::FromUTF8(codec->GetLongName())));
             }
          }
       }
@@ -2105,15 +2107,20 @@ int ExportFFmpegOptions::FetchCompatibleCodecList(const wxChar *fmt, AVCodecID i
    else if (found == 0)
    {
       wxCharBuffer buf = str.ToUTF8();
-      AVOutputFormat *format = av_guess_format(buf,NULL,NULL);
-      if (format != NULL)
+      auto format = mFFmpeg->GuessOutputFormat(buf, nullptr, nullptr);
+
+      if (format != nullptr)
       {
-         AVCodec *codec = avcodec_find_encoder(format->audio_codec);
-         if (codec != NULL && (codec->type == AVMEDIA_TYPE_AUDIO) && av_codec_is_encoder(codec))
+         auto codec = mFFmpeg->CreateEncoder(format->GetAudioCodec());
+
+         if (
+            codec != nullptr && codec->IsAudio() && mFFmpeg->av_codec_is_encoder(codec->GetWrappedValue()))
          {
-            if ((id >= 0) && codec->id == id) index = mShownCodecNames.size();
-            mShownCodecNames.push_back(wxString::FromUTF8(codec->name));
-            mShownCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownCodecNames.back(),wxString::FromUTF8(codec->long_name)));
+            if ((ffmpegId >= 0) && codec->GetId() == ffmpegId)
+               index = mShownCodecNames.size();
+
+            mShownCodecNames.push_back(wxString::FromUTF8(codec->GetName()));
+            mShownCodecLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownCodecNames.back(),wxString::FromUTF8(codec->GetLongName())));
          }
       }
    }
@@ -2125,24 +2132,32 @@ int ExportFFmpegOptions::FetchCompatibleCodecList(const wxChar *fmt, AVCodecID i
 
 ///
 ///
-int ExportFFmpegOptions::FetchCompatibleFormatList(AVCodecID id, wxString *selfmt)
+int ExportFFmpegOptions::FetchCompatibleFormatList(
+   SneedacityAVCodecID id, wxString* selfmt)
 {
    int index = -1;
    mShownFormatNames.clear();
    mShownFormatLongNames.clear();
    mFormatList->Clear();
-   ofmt = NULL;
+
    wxArrayString FromList;
    // Find all formats compatible to this codec in compatibility list
    for (int i = 0; CompatibilityList[i].fmt != NULL; i++)
    {
-      if (CompatibilityList[i].codec == id || (CompatibilityList[i].codec == AV_CODEC_ID_NONE) )
+      if (CompatibilityList[i].codec == id || (CompatibilityList[i].codec.value == SNEEDACITY_AV_CODEC_ID_NONE) )
       {
          if ((selfmt != NULL) && (*selfmt == CompatibilityList[i].fmt)) index = mShownFormatNames.size();
          FromList.push_back(CompatibilityList[i].fmt);
          mShownFormatNames.push_back(CompatibilityList[i].fmt);
-         AVOutputFormat *tofmt = av_guess_format(wxString(CompatibilityList[i].fmt).ToUTF8(),NULL,NULL);
-         if (tofmt != NULL) mShownFormatLongNames.push_back(wxString::Format(wxT("%s - %s"),CompatibilityList[i].fmt,wxString::FromUTF8(tofmt->long_name)));
+         auto tofmt = mFFmpeg->GuessOutputFormat(
+            wxString(CompatibilityList[i].fmt).ToUTF8(), nullptr, nullptr);
+
+         if (tofmt != NULL)
+         {
+            mShownFormatLongNames.push_back(wxString::Format(
+               wxT("%s - %s"), CompatibilityList[i].fmt,
+               wxString::FromUTF8(tofmt->GetLongName())));
+         }
       }
    }
    bool found = false;
@@ -2163,9 +2178,9 @@ int ExportFFmpegOptions::FetchCompatibleFormatList(AVCodecID id, wxString *selfm
       // Find all formats which have this codec as default and which are not in the list yet and add them too
       for (auto ofmt  : mFFmpeg->GetOutputFormats())
       {
-         if (ofmt->audio_codec == id)
+         if (ofmt->GetAudioCodec() == mFFmpeg->GetAVCodecID(id))
          {
-            wxString ofmtname = wxString::FromUTF8(ofmt->name);
+            wxString ofmtname = wxString::FromUTF8(ofmt->GetName());
             found = false;
             for (unsigned int i = 0; i < FromList.size(); i++)
             {
@@ -2178,10 +2193,14 @@ int ExportFFmpegOptions::FetchCompatibleFormatList(AVCodecID id, wxString *selfm
             if (!found)
             {
                if ((selfmt != NULL) &&
-                  (*selfmt == wxString::FromUTF8(ofmt->name)))
+                  (*selfmt == wxString::FromUTF8(ofmt->GetName())))
                   index = mShownFormatNames.size();
-               mShownFormatNames.push_back(wxString::FromUTF8(ofmt->name));
-               mShownFormatLongNames.push_back(wxString::Format(wxT("%s - %s"),mShownFormatNames.back(),wxString::FromUTF8(ofmt->long_name)));
+
+               mShownFormatNames.push_back(wxString::FromUTF8(ofmt->GetName()));
+
+               mShownFormatLongNames.push_back(wxString::Format(
+                  wxT("%s - %s"), mShownFormatNames.back(),
+                  wxString::FromUTF8(ofmt->GetLongName())));
             }
          }
       }
@@ -2349,7 +2368,7 @@ void ExportFFmpegOptions::OnAllCodecs(wxCommandEvent& WXUNUSED(event))
    mCodecList->Append(mCodecNames);
 }
 
-/// ReportIfBadCombination will trap 
+/// ReportIfBadCombination will trap
 /// bad combinations of format and codec and report
 /// using a message box.
 /// We may later extend it to catch bad parameters too.
@@ -2358,30 +2377,36 @@ void ExportFFmpegOptions::OnAllCodecs(wxCommandEvent& WXUNUSED(event))
 /// or codec.  (We do not expect them to happen ever).
 bool ExportFFmpegOptions::ReportIfBadCombination()
 {
-   wxString *selcdc = NULL;
-   wxString *selcdclong = NULL;
+   wxString *selcdc = nullptr;
+   wxString* selcdclong = nullptr;
+
    FindSelectedCodec(&selcdc, &selcdclong);
-   if (selcdc == NULL)
-      return false; // unrecognised codec. Treated as OK
-   AVCodec *cdc = avcodec_find_encoder_by_name(selcdc->ToUTF8());
-   if (cdc == NULL)
+
+   if (selcdc == nullptr)
       return false; // unrecognised codec. Treated as OK
 
-   wxString *selfmt = NULL;
-   wxString *selfmtlong = NULL;
+   auto cdc = mFFmpeg->CreateEncoder(selcdc->ToUTF8());
+
+   if (cdc == nullptr)
+      return false; // unrecognised codec. Treated as OK
+
+   wxString* selfmt = nullptr;
+   wxString* selfmtlong = nullptr;
+
    FindSelectedFormat(&selfmt, &selfmtlong);
-   if( selfmt == NULL )
+
+   if (selfmt == nullptr)
       return false; // unrecognised format; Treated as OK
-   
+
    // This is intended to test for illegal combinations.
    // However, the list updating now seems to be working correctly
    // making it impossible to select illegal combinations
    bool bFound = false;
    for (int i = 0; CompatibilityList[i].fmt != NULL; i++)
    {
-      if (*selfmt == CompatibilityList[i].fmt) 
+      if (*selfmt == CompatibilityList[i].fmt)
       {
-         if (CompatibilityList[i].codec == cdc->id || (CompatibilityList[i].codec == AV_CODEC_ID_NONE) ){
+         if (CompatibilityList[i].codec == mFFmpeg->GetSneedacityCodecID(cdc->GetId()) || (CompatibilityList[i].codec == SNEEDACITY_AV_CODEC_ID_NONE) ){
             bFound = true;
             break;
          }
@@ -2392,7 +2417,7 @@ bool ExportFFmpegOptions::ReportIfBadCombination()
    // We could also test for illegal parameters, and deliver
    // custom error messages in that case.
    // The below would make AAC codec disallowed.
-   //if( cdc->id == AV_CODEC_ID_AAC)
+   //if( cdc->id == SNEEDACITY_AV_CODEC_ID_AAC)
    //   bFound = false;
 
    // Valid combination was found, so no reporting.
@@ -2411,7 +2436,7 @@ bool ExportFFmpegOptions::ReportIfBadCombination()
 
 
 
-void ExportFFmpegOptions::EnableDisableControls(AVCodec *cdc, wxString *selfmt)
+void ExportFFmpegOptions::EnableDisableControls(AVCodecWrapper *cdc, wxString *selfmt)
 {
    int handled = -1;
    for (int i = 0; apptable[i].control != 0; i++)
@@ -2420,8 +2445,17 @@ void ExportFFmpegOptions::EnableDisableControls(AVCodec *cdc, wxString *selfmt)
       {
          bool codec = false;
          bool format = false;
-         if (apptable[i].codec == AV_CODEC_ID_NONE) codec = true;
-         else if (cdc != NULL && apptable[i].codec == cdc->id) codec = true;
+         if (apptable[i].codec == SNEEDACITY_AV_CODEC_ID_NONE)
+         {
+            codec = true;
+         }
+         else if (
+            cdc != NULL &&
+            apptable[i].codec == mFFmpeg->GetSneedacityCodecID(cdc->GetId()))
+         {
+            codec = true;
+         }
+
          if (wxString::FromUTF8(apptable[i].format) == wxT("any")) format = true;
          else if (selfmt != NULL &&
             *selfmt == wxString::FromUTF8(apptable[i].format)) format = true;
@@ -2449,7 +2483,7 @@ void ExportFFmpegOptions::DoOnFormatList()
    wxString *selcdclong = NULL;
    FindSelectedCodec(&selcdc, &selcdclong);
 
-   AVOutputFormat *fmt = av_guess_format(selfmt->ToUTF8(),NULL,NULL);
+   auto fmt = mFFmpeg->GuessOutputFormat(selfmt->ToUTF8(),NULL,NULL);
    if (fmt == NULL)
    {
       //This shouldn't really happen
@@ -2457,23 +2491,29 @@ void ExportFFmpegOptions::DoOnFormatList()
       return;
    }
    mFormatName->SetLabel(wxString::Format(wxT("%s"), *selfmtlong));
-   int selcdcid = -1;
 
-   if (selcdc != NULL)
+   SneedacityAVCodecID selcdcid = SNEEDACITY_AV_CODEC_ID_NONE;
+
+   if (selcdc != nullptr)
    {
-      AVCodec *cdc = avcodec_find_encoder_by_name(selcdc->ToUTF8());
-      if (cdc != NULL)
+      auto cdc = mFFmpeg->CreateEncoder(selcdc->ToUTF8());
+
+      if (cdc != nullptr)
       {
-         selcdcid = cdc->id;
+         selcdcid = mFFmpeg->GetSneedacityCodecID(cdc->GetId());
       }
    }
-   int newselcdc = FetchCompatibleCodecList(*selfmt, (AVCodecID)selcdcid);
+   int newselcdc =
+      FetchCompatibleCodecList(*selfmt, selcdcid);
+
    if (newselcdc >= 0) mCodecList->Select(newselcdc);
 
-   AVCodec *cdc = NULL;
-   if (selcdc != NULL)
-      cdc = avcodec_find_encoder_by_name(selcdc->ToUTF8());
-   EnableDisableControls(cdc, selfmt);
+   std::unique_ptr<AVCodecWrapper> cdc;
+
+   if (selcdc != nullptr)
+      cdc = mFFmpeg->CreateEncoder(selcdc->ToUTF8());
+
+   EnableDisableControls(cdc.get(), selfmt);
    Layout();
    Fit();
    return;
@@ -2481,42 +2521,49 @@ void ExportFFmpegOptions::DoOnFormatList()
 
 void ExportFFmpegOptions::DoOnCodecList()
 {
-   wxString *selcdc = NULL;
-   wxString *selcdclong = NULL;
+   wxString *selcdc = nullptr;
+   wxString* selcdclong = nullptr;
+
    FindSelectedCodec(&selcdc, &selcdclong);
-   if (selcdc == NULL)
+
+   if (selcdc == nullptr)
    {
       return;
    }
 
-   wxString *selfmt = NULL;
-   wxString *selfmtlong = NULL;
+   wxString* selfmt = nullptr;
+   wxString* selfmtlong = nullptr;
+
    FindSelectedFormat(&selfmt, &selfmtlong);
 
-   AVCodec *cdc = avcodec_find_encoder_by_name(selcdc->ToUTF8());
-   if (cdc == NULL)
+   auto cdc = mFFmpeg->CreateEncoder(selcdc->ToUTF8());
+   if (cdc == nullptr)
    {
       //This shouldn't really happen
       /* i18n-hint: "codec" is short for a "coder-decoder" algorithm */
       mCodecName->SetLabel(wxString(_("Failed to find the codec")));
       return;
    }
-   mCodecName->SetLabel(wxString::Format(wxT("[%d] %s"), (int) cdc->id, *selcdclong));
 
-   if (selfmt != NULL)
+   mCodecName->SetLabel(wxString::Format(wxT("[%d] %s"), (int) mFFmpeg->GetSneedacityCodecID(cdc->GetId()).value, *selcdclong));
+
+   if (selfmt != nullptr)
    {
-      AVOutputFormat *fmt = av_guess_format(selfmt->ToUTF8(),NULL,NULL);
-      if (fmt == NULL)
+      auto fmt = mFFmpeg->GuessOutputFormat(selfmt->ToUTF8(), nullptr, nullptr);
+      if (fmt == nullptr)
       {
-         selfmt = NULL;
-         selfmtlong = NULL;
+         selfmt = nullptr;
+         selfmtlong = nullptr;
       }
    }
 
-   int newselfmt = FetchCompatibleFormatList(cdc->id,selfmt);
-   if (newselfmt >= 0) mFormatList->Select(newselfmt);
+   int newselfmt = FetchCompatibleFormatList(
+      mFFmpeg->GetSneedacityCodecID(cdc->GetId()), selfmt);
 
-   EnableDisableControls(cdc, selfmt);
+   if (newselfmt >= 0)
+      mFormatList->Select(newselfmt);
+
+   EnableDisableControls(cdc.get(), selfmt);
    Layout();
    Fit();
    return;

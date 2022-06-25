@@ -14,7 +14,7 @@
 
 #include "FFmpegTypes.h"
 
-struct FFMPEG_SUPPORT_API AVFormatFunctions
+struct AVFormatFunctions
 {
    FFMPegVersion      AVFormatVersion;
 

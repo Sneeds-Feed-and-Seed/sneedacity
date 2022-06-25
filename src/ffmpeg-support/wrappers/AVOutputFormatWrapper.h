@@ -15,7 +15,7 @@
 struct FFmpegFunctions;
 typedef struct AVOutputFormat AVOutputFormat;
 
-class FFMPEG_SUPPORT_API AVOutputFormatWrapper
+class AVOutputFormatWrapper
 {
 public:
    AVOutputFormatWrapper(const AVOutputFormatWrapper&) = delete;

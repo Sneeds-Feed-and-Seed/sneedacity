@@ -17,7 +17,7 @@
 struct FFmpegFunctions;
 typedef struct AVPacket AVPacket;
 
-class FFMPEG_SUPPORT_API AVPacketWrapper
+class AVPacketWrapper
 {
 public:
    AVPacketWrapper(const AVPacketWrapper&) = delete;

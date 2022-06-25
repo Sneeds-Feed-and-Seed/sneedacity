@@ -22,7 +22,6 @@ License: GPL v2.  See License.txt.
 #include "FFmpeg.h"
 
 #include "FileNames.h"
-#include "SelectFile.h"
 #include "widgets/HelpSystem.h"
 #include "widgets/SneedacityMessageBox.h"
 
@@ -199,7 +198,7 @@ public:
       "Where would I find the file '%s'?" instead if you want. */
       auto question = XO("Where is '%s'?").Format( mName );
 
-      wxString path = SelectFile(
+      wxString path = FileNames::SelectFile(
          FileNames::Operation::_None,
          question,
          mFullPath.GetPath(),
@@ -343,7 +342,6 @@ bool FindFFmpegLibs(wxWindow* parent)
 
    wxLogMessage(wxT("User-specified path = '%s'"), path);
 
-   SettingTransaction transaction;
    AVFormatPath.Write(path);
 
    // Try to load FFmpeg from the user provided path
@@ -353,7 +351,6 @@ bool FindFFmpegLibs(wxWindow* parent)
       return false;
    }
 
-   transaction.Commit();
 
    wxLogMessage(wxT("User-specified FFmpeg file exists. Success."));
 

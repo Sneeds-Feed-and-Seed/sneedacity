@@ -20,7 +20,7 @@ typedef struct AVDictionary AVDictionary;
 #define DICT_MATCH_CASE 1
 #define DICT_IGNORE_SUFFIX 2
 
-class FFMPEG_SUPPORT_API AVDictionaryWrapper
+class AVDictionaryWrapper
 {
 public:
    //! Unlike the other FFmpeg wrapper classes, this one is copyable.

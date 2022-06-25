@@ -18,7 +18,7 @@
 struct FFmpegFunctions;
 typedef struct AVIOContext AVIOContext;
 
-class FFMPEG_SUPPORT_API AVIOContextWrapper
+class AVIOContextWrapper
 {
 public:
    enum class OpenResult

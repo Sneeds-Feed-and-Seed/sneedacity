@@ -28,7 +28,7 @@ class AVInputFormatWrapper;
 class AVOutputFormatWrapper;
 class AVCodecWrapper;
 
-class FFMPEG_SUPPORT_API AVFormatContextWrapper
+class AVFormatContextWrapper
 {
 public:
    using StreamsList = std::vector<std::unique_ptr<AVStreamWrapper>>;

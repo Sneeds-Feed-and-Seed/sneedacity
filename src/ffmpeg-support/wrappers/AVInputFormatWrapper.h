@@ -13,7 +13,7 @@
 struct FFmpegFunctions;
 typedef struct AVInputFormat AVInputFormat;
 
-class FFMPEG_SUPPORT_API AVInputFormatWrapper
+class AVInputFormatWrapper
 {
 public:
    AVInputFormatWrapper(const AVInputFormatWrapper&) = delete;

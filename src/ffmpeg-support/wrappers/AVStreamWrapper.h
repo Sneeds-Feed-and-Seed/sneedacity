@@ -21,7 +21,7 @@ typedef struct AVCodecContext AVCodecContext;
 
 class AVCodecContextWrapper;
 
-class FFMPEG_SUPPORT_API AVStreamWrapper
+class AVStreamWrapper
 {
 public:
    AVStreamWrapper(const AVStreamWrapper&) = delete;

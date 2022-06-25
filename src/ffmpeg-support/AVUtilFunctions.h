@@ -15,7 +15,7 @@
 
 #include "FFmpegTypes.h"
 
-struct FFMPEG_SUPPORT_API AVUtilFunctions
+struct AVUtilFunctions
 {
    FFMPegVersion      AVUtilVersion;
 

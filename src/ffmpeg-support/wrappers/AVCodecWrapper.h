@@ -17,7 +17,7 @@ struct FFmpegFunctions;
 typedef struct AVCodec AVCodec;
 typedef struct AVRational AVRational;
 
-class FFMPEG_SUPPORT_API AVCodecWrapper
+class AVCodecWrapper
 {
 public:
    AVCodecWrapper(const AVCodecWrapper&) = delete;

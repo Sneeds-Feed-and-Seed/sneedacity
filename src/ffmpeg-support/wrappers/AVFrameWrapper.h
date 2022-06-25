@@ -21,7 +21,7 @@ typedef struct AVFrame AVFrame;
 #define FF_DECODE_ERROR_INVALID_BITSTREAM 1
 #define FF_DECODE_ERROR_MISSING_REFERENCE 2
 
-class FFMPEG_SUPPORT_API AVFrameWrapper
+class AVFrameWrapper
 {
 public:
    AVFrameWrapper(const AVFrameWrapper&) = delete;

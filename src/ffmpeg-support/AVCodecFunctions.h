@@ -16,7 +16,7 @@
 
 typedef struct AVCodecParameters AVCodecParameters;
 
-struct FFMPEG_SUPPORT_API AVCodecFunctions
+struct AVCodecFunctions
 {
    FFMPegVersion      AVCodecVersion;
 

@@ -26,7 +26,7 @@ class AVDictionaryWrapper;
 class AVFrameWrapper;
 class AVPacketWrapper;
 
-class FFMPEG_SUPPORT_API AVCodecContextWrapper
+class AVCodecContextWrapper
 {
 public:
    AVCodecContextWrapper(const AVCodecContextWrapper&) = delete;

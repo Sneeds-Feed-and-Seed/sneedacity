@@ -34,7 +34,7 @@
 
 class StringSetting;
 
-extern FFMPEG_SUPPORT_API StringSetting AVFormatPath;
+extern StringSetting AVFormatPath;
 
 class FFmpegFunctions;
 template <typename T>
@@ -78,7 +78,7 @@ private:
 template<typename T>
 using AVDataBuffer = std::vector<T, AVAllocator<T>>;
 
-struct FFMPEG_SUPPORT_API FFmpegFunctions :
+struct FFmpegFunctions :
    AVCodecFunctions,
    AVFormatFunctions,
    AVUtilFunctions

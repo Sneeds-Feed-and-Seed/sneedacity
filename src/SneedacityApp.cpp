@@ -2248,10 +2248,6 @@ int SneedacityApp::OnExit()
 
    FinishPreferences();
 
-#ifdef USE_FFMPEG
-   DropFFmpegLibs();
-#endif
-
    DeinitFFT();
 
    AudioIO::Deinit();
