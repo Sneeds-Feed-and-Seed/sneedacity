@@ -10,7 +10,7 @@
 
 #include "AVStreamWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 AVStreamWrapper::AVStreamWrapper(
    const FFmpegFunctions& ffmpeg, AVStream* wrapped) noexcept

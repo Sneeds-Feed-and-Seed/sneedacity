@@ -14,8 +14,8 @@ Paul Licameli split from ProjectSettings.cpp
 #include "Prefs.h"
 #include "Project.h"
 #include "QualitySettings.h"
-#include "XMLWriter.h"
-#include "XMLAttributeValueView.h"
+#include "../xml/XMLWriter.h"
+#include "../ProjectFileIORegistry.h"
 
 static const SneedacityProject::AttachedObjects::RegisteredFactory
 sKey{
@@ -63,17 +63,19 @@ void ProjectRate::SetRate(double rate)
    }
 }
 
-static ProjectFileIORegistry::AttributeWriterEntry entry {
-[](const SneedacityProject &project, XMLWriter &xmlFile){
-   xmlFile.WriteAttr(wxT("rate"), ProjectRate::Get(project).GetRate());
-}
-};
+/* ripped out to work with current version FileIORegistry, god help */
+/* static ProjectFileIORegistry::AttributeWriterEntry entry { */
+/* [](const SneedacityProject &project, XMLWriter &xmlFile){ */
+/*    xmlFile.WriteAttr(wxT("rate"), ProjectRate::Get(project).GetRate()); */
+/* } */
+/* }; */
 
-static ProjectFileIORegistry::AttributeReaderEntries entries {
-// Just a pointer to function, but needing overload resolution as non-const:
-(ProjectRate& (*)(SneedacityProject &)) &ProjectRate::Get, {
-   { "rate", [](auto &settings, auto value){
-      double rate = value.Get(settings.GetRate());
-      settings.SetRate( rate );
-   } },
-} };
+/* static ProjectFileIORegistry::AttributeReaderEntries entries { */
+/* // Just a pointer to function, but needing overload resolution as non-const: */
+/* (ProjectRate& (*)(SneedacityProject &)) &ProjectRate::Get, { */
+/*    { "rate", [](auto &settings, auto value){ */
+/*       double rate = value.Get(settings.GetRate()); */
+/*       settings.SetRate( rate ); */
+/*    } }, */
+/* } }; */
+

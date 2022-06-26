@@ -13,8 +13,8 @@
 #include <vector>
 #include <map>
 
-#include "FFmpegTypes.h"
-#include "AVCodecID.h"
+#include "../FFmpegTypes.h"
+#include "../AVCodecID.h"
 
 struct FFmpegFunctions;
 class FFmpegLog;

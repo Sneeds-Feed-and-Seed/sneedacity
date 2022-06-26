@@ -17,9 +17,9 @@
 class IntSetting;
 
 namespace QualitySettings {
-extern PROJECT_RATE_API IntSetting DefaultSampleRate;
-extern PROJECT_RATE_API EnumSetting< sampleFormat > SampleFormatSetting;
-extern PROJECT_RATE_API sampleFormat SampleFormatChoice();
+extern IntSetting DefaultSampleRate;
+extern EnumSetting< sampleFormat > SampleFormatSetting;
+extern sampleFormat SampleFormatChoice();
 }
 
 #endif

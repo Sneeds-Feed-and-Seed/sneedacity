@@ -10,7 +10,7 @@
 
 #include "AVOutputFormatWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 AVOutputFormatWrapper::AVOutputFormatWrapper(const AVOutputFormat* wrapped) noexcept
     : mAVOutputFormat(wrapped)

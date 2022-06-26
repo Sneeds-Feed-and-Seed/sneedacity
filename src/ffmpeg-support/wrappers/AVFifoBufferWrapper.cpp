@@ -10,7 +10,7 @@
 
 #include "AVFifoBufferWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 
 AVFifoBufferWrapper::AVFifoBufferWrapper(

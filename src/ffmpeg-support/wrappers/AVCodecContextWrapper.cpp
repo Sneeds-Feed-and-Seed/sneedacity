@@ -12,7 +12,7 @@
 
 #include <cstring>
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 #include "AVCodecWrapper.h"
 
 AVCodecContextWrapper::AVCodecContextWrapper(

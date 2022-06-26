@@ -10,8 +10,8 @@
 
 #include "AVDictionaryWrapper.h"
 
-#include "FFmpegFunctions.h"
-#include "FFmpegTypes.h"
+#include "../FFmpegFunctions.h"
+#include "../FFmpegTypes.h"
 
 #include <utility>
 

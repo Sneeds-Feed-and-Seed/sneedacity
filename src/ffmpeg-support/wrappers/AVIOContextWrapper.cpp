@@ -10,7 +10,7 @@
 
 #include "AVIOContextWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 #define AVSEEK_FORCE 0x20000
 #define AVSEEK_SIZE 0x10000

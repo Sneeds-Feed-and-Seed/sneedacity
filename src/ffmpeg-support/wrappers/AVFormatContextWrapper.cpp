@@ -10,7 +10,7 @@
 
 #include "AVFormatContextWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 #include "AVInputFormatWrapper.h"
 #include "AVOutputFormatWrapper.h"

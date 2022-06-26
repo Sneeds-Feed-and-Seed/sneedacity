@@ -10,7 +10,7 @@
 
 #include "AVCodecWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 AVCodecWrapper::AVCodecWrapper(const AVCodec* wrapped) noexcept
     : mAVCodec(wrapped)

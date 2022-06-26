@@ -12,7 +12,7 @@
 
 #include <wx/dynlib.h>
 
-#include "FFmpegTypes.h"
+#include "../FFmpegTypes.h"
 
 using GetVersionFn = unsigned (*)();
 

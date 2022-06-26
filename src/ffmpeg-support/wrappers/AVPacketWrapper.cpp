@@ -10,7 +10,7 @@
 
 #include "AVPacketWrapper.h"
 
-#include "FFmpegFunctions.h"
+#include "../FFmpegFunctions.h"
 
 AVPacketWrapper::AVPacketWrapper(const FFmpegFunctions& ffmpeg) noexcept
     : mFFmpeg(ffmpeg)
