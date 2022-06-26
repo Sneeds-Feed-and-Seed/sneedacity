@@ -620,6 +620,50 @@ list( APPEND SOURCES
          export/ExportFFmpeg.cpp
          export/ExportFFmpegDialogs.cpp
          export/ExportFFmpegDialogs.h
+         ffmpeg-support/
+         ffmpeg-support/AVCodecFunctions.h
+         ffmpeg-support/AVCodecID.h
+         ffmpeg-support/AVFormatFunctions.h
+         ffmpeg-support/AVUtilFunctions.h
+         ffmpeg-support/FFmpegFunctions.cpp
+         ffmpeg-support/FFmpegFunctions.h
+         ffmpeg-support/FFmpegTypes.h
+         ffmpeg-support/ProjectRate.cpp
+         ffmpeg-support/ProjectRate.h
+         ffmpeg-support/QualitySettings.cpp
+         ffmpeg-support/QualitySettings.h
+         ffmpeg-support/generator/generator.cpp
+         ffmpeg-support/impl/DynamicLibraryHelpers.cpp
+         ffmpeg-support/impl/DynamicLibraryHelpers.h
+         ffmpeg-support/impl/ffmpeg-2.3.6-single-header.h
+         ffmpeg-support/impl/ffmpeg-3.4.8-single-header.h
+         ffmpeg-support/impl/ffmpeg-4.2.4-single-header.h
+         ffmpeg-support/impl/ffmpeg-5.0.1-single-header.h
+         ffmpeg-support/impl/FFmpegAPIResolver.cpp
+         ffmpeg-support/impl/FFmpegAPIResolver.h
+         ffmpeg-support/impl/FFmpegLog.h
+         ffmpeg-support/wrappers/AVCodecContextWrapper.cpp
+         ffmpeg-support/wrappers/AVCodecContextWrapper.h
+         ffmpeg-support/wrappers/AVCodecWrapper.cpp
+         ffmpeg-support/wrappers/AVCodecWrapper.h
+         ffmpeg-support/wrappers/AVDictionaryWrapper.cpp
+         ffmpeg-support/wrappers/AVDictionaryWrapper.h
+         ffmpeg-support/wrappers/AVFifoBufferWrapper.cpp
+         ffmpeg-support/wrappers/AVFifoBufferWrapper.h
+         ffmpeg-support/wrappers/AVFormatContextWrapper.cpp
+         ffmpeg-support/wrappers/AVFormatContextWrapper.h
+         ffmpeg-support/wrappers/AVFrameWrapper.cpp
+         ffmpeg-support/wrappers/AVFrameWrapper.h
+         ffmpeg-support/wrappers/AVInputFormatWrapper.cpp
+         ffmpeg-support/wrappers/AVInputFormatWrapper.h
+         ffmpeg-support/wrappers/AVIOContextWrapper.cpp
+         ffmpeg-support/wrappers/AVIOContextWrapper.h
+         ffmpeg-support/wrappers/AVOutputFormatWrapper.cpp
+         ffmpeg-support/wrappers/AVOutputFormatWrapper.h
+         ffmpeg-support/wrappers/AVPacketWrapper.cpp
+         ffmpeg-support/wrappers/AVPacketWrapper.h
+         ffmpeg-support/wrappers/AVStreamWrapper.cpp
+         ffmpeg-support/wrappers/AVStreamWrapper.h
       >
 
       $<$<BOOL:${USE_LIBFLAC}>:
