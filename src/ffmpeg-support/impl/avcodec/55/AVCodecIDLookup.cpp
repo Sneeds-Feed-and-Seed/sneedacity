@@ -16,7 +16,7 @@ extern "C"
 
 #include <algorithm>
 
-#include "AVCodecID.h"
+#include "../../../AVCodecID.h"
 
 #include "../../FFmpegAPIResolver.h"
 

@@ -36,7 +36,6 @@ function.
 #include <wx/combobox.h>
 
 #include "Mix.h"
-#include "../ffmpeg-support/ProjectRate.h"
 #include "ProjectSettings.h"
 #include "../Tags.h"
 #include "Track.h"
@@ -433,7 +432,7 @@ bool ExportFFmpeg::InitCodecs(SneedacityProject *project)
    // dialogs in the event the codec can't support the specified rate.
    if (!mSampleRate)
    {
-      mSampleRate = (int)ProjectRate::Get(*project).GetRate();
+      mSampleRate = (int)settings.GetRate();
    }
 
    // Configure the audio stream's codec context.

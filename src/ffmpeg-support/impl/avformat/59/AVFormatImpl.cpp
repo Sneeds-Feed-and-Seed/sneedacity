@@ -16,15 +16,15 @@ extern "C"
 
 #include <cstring>
 
-#include "FFmpegFunctions.h"
+#include "../../../FFmpegFunctions.h"
 
-#include "wrappers/AVFormatContextWrapper.h"
-#include "wrappers/AVInputFormatWrapper.h"
-#include "wrappers/AVIOContextWrapper.h"
-#include "wrappers/AVOutputFormatWrapper.h"
-#include "wrappers/AVStreamWrapper.h"
+#include "../../../wrappers/AVFormatContextWrapper.h"
+#include "../../../wrappers/AVInputFormatWrapper.h"
+#include "../../../wrappers/AVIOContextWrapper.h"
+#include "../../../wrappers/AVOutputFormatWrapper.h"
+#include "../../../wrappers/AVStreamWrapper.h"
 
-#include "wrappers/AVCodecWrapper.h"
+#include "../../../wrappers/AVCodecWrapper.h"
 
 #include "../../FFmpegAPIResolver.h"
 

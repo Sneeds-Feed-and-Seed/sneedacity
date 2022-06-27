@@ -12,8 +12,8 @@
 
 #include <wx/dynlib.h>
 
-#include "AVFormatFunctions.h"
-#include "impl/DynamicLibraryHelpers.h"
+#include "../../AVFormatFunctions.h"
+#include "../DynamicLibraryHelpers.h"
 
 
 bool LoadAVFormatFunctions(

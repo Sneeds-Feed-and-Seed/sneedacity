@@ -16,9 +16,9 @@ extern "C"
 
 #include <wx/log.h>
 
-#include "FFmpegFunctions.h"
+#include "../../../FFmpegFunctions.h"
 
-#include "wrappers/AVFrameWrapper.h"
+#include "../../../wrappers/AVFrameWrapper.h"
 
 #include "../../FFmpegAPIResolver.h"
 #include "../../FFmpegLog.h"

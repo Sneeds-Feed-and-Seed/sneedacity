@@ -12,8 +12,8 @@
 
 #include <wx/dynlib.h>
 
-#include "AVUtilFunctions.h"
-#include "impl/DynamicLibraryHelpers.h"
+#include "../../AVUtilFunctions.h"
+#include "../DynamicLibraryHelpers.h"
 
 
 bool LoadAVUtilFunctions(

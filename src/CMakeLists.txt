@@ -620,7 +620,6 @@ list( APPEND SOURCES
          export/ExportFFmpeg.cpp
          export/ExportFFmpegDialogs.cpp
          export/ExportFFmpegDialogs.h
-         ffmpeg-support/
          ffmpeg-support/AVCodecFunctions.h
          ffmpeg-support/AVCodecID.h
          ffmpeg-support/AVFormatFunctions.h
@@ -628,11 +627,33 @@ list( APPEND SOURCES
          ffmpeg-support/FFmpegFunctions.cpp
          ffmpeg-support/FFmpegFunctions.h
          ffmpeg-support/FFmpegTypes.h
-         ffmpeg-support/ProjectRate.cpp
-         ffmpeg-support/ProjectRate.h
-         ffmpeg-support/QualitySettings.cpp
-         ffmpeg-support/QualitySettings.h
          ffmpeg-support/generator/generator.cpp
+         ffmpeg-support/impl/avcodec/55/AVCodecIDLookup.cpp
+         ffmpeg-support/impl/avcodec/55/AVCodecImpl.cpp
+         ffmpeg-support/impl/avcodec/57/AVCodecIDLookup.cpp
+         ffmpeg-support/impl/avcodec/57/AVCodecImpl.cpp
+         ffmpeg-support/impl/avcodec/58/AVCodecIDLookup.cpp
+         ffmpeg-support/impl/avcodec/58/AVCodecImpl.cpp
+         ffmpeg-support/impl/avcodec/59/AVCodecIDLookup.cpp
+         ffmpeg-support/impl/avcodec/59/AVCodecImpl.cpp
+         ffmpeg-support/impl/avcodec/AVCodecFunctionsLoader.cpp
+         ffmpeg-support/impl/avcodec/AVCodecFunctionsLoader.h
+         ffmpeg-support/impl/avformat/55/AVFormatImpl.cpp
+         ffmpeg-support/impl/avformat/57/AVFormatImpl.cpp
+         ffmpeg-support/impl/avformat/58/AVFormatImpl.cpp
+         ffmpeg-support/impl/avformat/59/AVFormatImpl.cpp
+         ffmpeg-support/impl/avformat/AVFormatFunctionsLoader.cpp
+         ffmpeg-support/impl/avformat/AVFormatFunctionsLoader.h
+         ffmpeg-support/impl/avutil/52/avconfig.h
+         ffmpeg-support/impl/avutil/52/AVUtilImpl.cpp
+         ffmpeg-support/impl/avutil/55/avconfig.h
+         ffmpeg-support/impl/avutil/55/AVUtilImpl.cpp
+         ffmpeg-support/impl/avutil/56/avconfig.h
+         ffmpeg-support/impl/avutil/56/AVUtilImpl.cpp
+         ffmpeg-support/impl/avutil/57/avconfig.h
+         ffmpeg-support/impl/avutil/57/AVUtilImpl.cpp
+         ffmpeg-support/impl/avutil/AVUtilFunctionsLoader.cpp
+         ffmpeg-support/impl/avutil/AVUtilFunctionsLoader.h
          ffmpeg-support/impl/DynamicLibraryHelpers.cpp
          ffmpeg-support/impl/DynamicLibraryHelpers.h
          ffmpeg-support/impl/ffmpeg-2.3.6-single-header.h

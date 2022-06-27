@@ -12,8 +12,8 @@
 
 #include <wx/dynlib.h>
 
-#include "AVCodecFunctions.h"
-#include "impl/DynamicLibraryHelpers.h"
+#include "../../AVCodecFunctions.h"
+#include "../DynamicLibraryHelpers.h"
 
 
 bool LoadAVCodecFunctions(

@@ -19,11 +19,11 @@ extern "C"
 
 #include "float_cast.h"
 
-#include "FFmpegFunctions.h"
+#include "../../../FFmpegFunctions.h"
 
-#include "wrappers/AVCodecContextWrapper.h"
-#include "wrappers/AVCodecWrapper.h"
-#include "wrappers/AVPacketWrapper.h"
+#include "../../../wrappers/AVCodecContextWrapper.h"
+#include "../../../wrappers/AVCodecWrapper.h"
+#include "../../../wrappers/AVPacketWrapper.h"
 
 #include "../../FFmpegAPIResolver.h"
 
@@ -45,7 +45,7 @@ const bool registered = ([]() {
 })();
 }
 
-#include "FFmpegTypes.h"
+#include "../../../FFmpegTypes.h"
 static_assert(
    CODEC_FLAG_GLOBAL_HEADER == SNEEDACITY_AV_CODEC_FLAG_GLOBAL_HEADER
    && CODEC_CAP_SMALL_LAST_FRAME == SNEEDACITY_AV_CODEC_CAP_SMALL_LAST_FRAME
