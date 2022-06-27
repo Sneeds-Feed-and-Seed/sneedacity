@@ -627,7 +627,6 @@ list( APPEND SOURCES
          ffmpeg-support/FFmpegFunctions.cpp
          ffmpeg-support/FFmpegFunctions.h
          ffmpeg-support/FFmpegTypes.h
-         ffmpeg-support/generator/generator.cpp
          ffmpeg-support/impl/avcodec/55/AVCodecIDLookup.cpp
          ffmpeg-support/impl/avcodec/55/AVCodecImpl.cpp
          ffmpeg-support/impl/avcodec/57/AVCodecIDLookup.cpp

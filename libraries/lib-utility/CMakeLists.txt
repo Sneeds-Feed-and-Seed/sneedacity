@@ -19,8 +19,6 @@ set( SOURCES
    MemoryX.cpp
    MemoryX.h
    ModuleConstants.h
-   Observer.cpp
-   Observer.h
 )
 sneedacity_library( lib-utility "${SOURCES}" ""
    "" ""
