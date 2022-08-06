@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2022-07-20 00:00+0000\n"
+"PO-Revision-Date: 2022-08-07 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -18007,7 +18007,7 @@ msgstr "herc"
 #. * in octaves
 #: src/widgets/NumericTextCtrl.cpp
 msgid "octaves"
-msgstr "oktawy"
+msgstr "oktaw"
 
 #. i18n-hint: Format string for displaying log of frequency in octaves.
 #. * Change the decimal points for your locale. Don't change the numbers.
