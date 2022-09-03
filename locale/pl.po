@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2022-08-07 00:00+0000\n"
+"PO-Revision-Date: 2022-09-03 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -4970,7 +4970,7 @@ msgstr "Sneedacity nie mógł wczytać pliku:\n%s.\nByć może format png jest n
 msgid ""
 "Sneedacity could not read its default theme.\n"
 "Please report the problem."
-msgstr "Sneedacity nie mógł odczytać tego domyślnego motywu.\nZgłoś problem."
+msgstr "Sneedacity nie mógł odczytać tego motywu domyślnego.\nZgłoś problem."
 
 #: src/Theme.cpp
 #, c-format
@@ -5586,7 +5586,7 @@ msgid ""
 "The following commands have had their shortcuts removed, because their "
 "default shortcut is new or changed, and is the same shortcut that you have "
 "assigned to another command."
-msgstr "Poniższe polecenia zostały usunięte, ponieważ ich domyślny skrót jest nowy lub zmieniony i jest tym samym skrótem, który masz przypisany do innego polecenia."
+msgstr "Poniższe polecenia zostały usunięte, ponieważ ich skrót domyślny jest nowy lub zmieniony i jest tym samym skrótem, który masz przypisany do innego polecenia."
 
 #: src/commands/CommandManager.cpp
 msgid "Shortcuts have been removed"
@@ -15408,7 +15408,7 @@ msgstr "Kliknięcie rolką myszki"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Zoom default"
-msgstr "Ustaw domyślne powiększenie"
+msgstr "Ustaw powiększenie domyślne"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Move clip left/right or between tracks"
@@ -16103,7 +16103,7 @@ msgstr "Powiększ do zaznaczenia"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Zoom Default"
-msgstr "Ustaw domyślne powiększenie"
+msgstr "Ustaw powiększenie domyślne"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Minutes"
