@@ -2585,7 +2585,7 @@ msgstr "&Kopiuj nieskompresowane pliki do projektu (bezpieczniejsze)"
 
 #: src/FileFormats.cpp
 msgid "&Read uncompressed files from original location (faster)"
-msgstr "&Czytaj nieskompresowane pliki dźwiękowe z oryginalnej lokacji (szybsze)"
+msgstr "&Wczytaj nieskompresowane pliki dźwiękowe z oryginalnej lokacji (szybsze)"
 
 #: src/FileFormats.cpp
 msgid "&Copy all audio into project (safest)"
@@ -9933,7 +9933,7 @@ msgstr "Bieżący program został zmodyfikowany.\nPorzucić zmiany?"
 
 #: src/effects/nyquist/Nyquist.cpp
 msgid "File could not be loaded"
-msgstr "Plik nie może zostać wczytany"
+msgstr "Plik nie może zostać załadowany"
 
 #: src/effects/nyquist/Nyquist.cpp
 msgid "File could not be saved"
