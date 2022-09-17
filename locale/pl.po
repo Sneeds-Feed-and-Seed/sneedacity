@@ -8051,15 +8051,15 @@ msgstr "Do&myślnie"
 msgid ""
 "Rename 'unnamed' to save a new entry.\n"
 "'OK' saves all changes, 'Cancel' doesn't."
-msgstr "Zmień nazwę 'nienazwanego', aby zapisać nowy wpis.\n'OK' zapisuje wszystkie zmiany, 'Anuluj' nie zapisuje zmian."
+msgstr "Zmień nazwę 'nienazwanej', aby zapisać nowy wpis.\n'OK' zapisuje wszystkie zmiany, 'Anuluj' nie zapisuje zmian."
 
 #: src/effects/Equalization.cpp
 msgid "'unnamed' always stays at the bottom of the list"
-msgstr "'nienazwany' zawsze pozostaje na dole listy"
+msgstr "'nienazwana' zawsze pozostaje na dole listy"
 
 #: src/effects/Equalization.cpp
 msgid "'unnamed' is special"
-msgstr "'nienazwany' jest specjalny"
+msgstr "'nienazwana' jest specjalna"
 
 #: src/effects/Equalization.cpp
 #, c-format
