@@ -8013,7 +8013,7 @@ msgstr "Błąd zapisywania krzywych korektora graficznego"
 
 #: src/effects/Equalization.cpp
 msgid "Requested curve not found, using 'unnamed'"
-msgstr "Nie znaleziono oczekiwanej krzywej, użyto 'nienazwaną'"
+msgstr "Nie znaleziono oczekiwanej krzywej, użyto 'nienazwanej'"
 
 #: src/effects/Equalization.cpp
 msgid "Curve not found"
@@ -8059,7 +8059,7 @@ msgstr "'nienazwana' zawsze pozostaje na dole listy"
 
 #: src/effects/Equalization.cpp
 msgid "'unnamed' is special"
-msgstr "'nienazwana' jest specjalna"
+msgstr "'nienazwana' jest specjalną"
 
 #: src/effects/Equalization.cpp
 #, c-format
