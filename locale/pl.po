@@ -1,27 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Sneedacity Team
+# Copyright (C) 2022 Sneedacity Team
 # This file is distributed under the same license as the sneedacity package.
 # 
 # Translators:
-# Andrzej Supermocny <blackwhattack@gmail.com>, 2015
 # Aron <aron.plotnikowski@cryptolab.net>, 2013
-# Aron <aron.plotnikowski@cryptolab.net>, 2013
-# Grzegorz Pruchniakowski <gootector@o2.pl>, 2013
 # Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2022
-# jacbob77 <jacbob77@tlen.pl>, 2012
 # jacbob77 <jacbob77@tlen.pl>, 2012
 # Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012
 # Michał Trzebiatowski <michtrz@gmail.com>, 2017
-# Michał Trzebiatowski <michtrz@gmail.com>, 2017
 # Patrick Mala <tatater56@gmail.com>, 2013
-# Patrick Mala <tatater56@gmail.com>, 2013
-# Aron <aron.plotnikowski@cryptolab.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2022-09-14 00:00+0000\n"
+"PO-Revision-Date: 2022-09-17 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2022\n"
 "Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -8058,15 +8051,15 @@ msgstr "Do&myślnie"
 msgid ""
 "Rename 'unnamed' to save a new entry.\n"
 "'OK' saves all changes, 'Cancel' doesn't."
-msgstr "Zmień nazwę 'nienazwanego', aby zapisać nowy wpis.\n'OK' zapisuje wszystkie zmiany, 'Anuluj' nie zapisuje zmian."
+msgstr "Zmień nazwę 'nienazwanej', aby zapisać nowy wpis.\n'OK' zapisuje wszystkie zmiany, 'Anuluj' nie zapisuje zmian."
 
 #: src/effects/Equalization.cpp
 msgid "'unnamed' always stays at the bottom of the list"
-msgstr "'nienazwany' zawsze pozostaje na dole listy"
+msgstr "'nienazwana' zawsze pozostaje na dole listy"
 
 #: src/effects/Equalization.cpp
 msgid "'unnamed' is special"
-msgstr "'nienazwany' jest specjalny"
+msgstr "'nienazwana' jest specjalna"
 
 #: src/effects/Equalization.cpp
 #, c-format
@@ -19686,7 +19679,7 @@ msgid ""
 "Error~%~\n"
 "              Data must be numbers in plain ASCII text.~%~\n"
 "              '~a' is not a numeric value."
-msgstr "Błąd~%~\n              Dane muszą być liczbami w prostym tekście ASCII.~%~\n              '~a' nie jest wartością liczbową."
+msgstr "Błąd~%~\n              Dane muszą być liczbami w zwykłym tekście ASCII.~%~\n              '~a' nie jest wartością liczbową."
 
 #: plug-ins/sample-data-import.ny
 #, lisp-format
