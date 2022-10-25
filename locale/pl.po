@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2022-09-17 00:00+0000\n"
+"PO-Revision-Date: 2022-10-25 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2022\n"
 "Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -2526,7 +2526,7 @@ msgstr "Nie pokazuj więcej tego ostrzeżenia"
 
 #: src/FFmpeg.cpp
 msgid "Failed to find compatible FFmpeg libraries."
-msgstr "Nie udało się znaleźć zgodnych bibliotek FFmpeg."
+msgstr "Nie udało się znaleźć kompatybilnych bibliotek FFmpeg."
 
 #. i18n-hint: do not translate avformat.  Preserve the computer gibberish.
 #: src/FFmpeg.h
@@ -3354,7 +3354,7 @@ msgstr "Nie"
 
 #: src/ModuleManager.cpp
 msgid "Sneedacity Module Loader"
-msgstr "Ładowarka modułu Sneedacity"
+msgstr "Ładowarka modułów Sneedacity"
 
 #: src/ModuleManager.cpp
 msgid "Try and load this module?"
@@ -11102,7 +11102,7 @@ msgstr "Gdzie jest %s?"
 msgid ""
 "You are linking to lame_enc.dll v%d.%d. This version is not compatible with Sneedacity %d.%d.%d.\n"
 "Please download the latest version of 'LAME for Sneedacity'."
-msgstr "Łączysz do lame_enc.dll v%d.%d. Ta wersja nie współpracuje z Sneedacity %d.%d.%d.\nPobierz najnowszą wersję 'LAME dla Sneedacity'."
+msgstr "Łączysz do lame_enc.dll v%d.%d. Ta wersja jest niekompatybilna z Sneedacity %d.%d.%d.\nPobierz najnowszą wersję 'LAME dla Sneedacity'."
 
 #: src/export/ExportMP3.cpp
 msgid "Only lame_enc.dll"
@@ -11429,7 +11429,7 @@ msgstr "GSM 6.10 wymaga mono"
 
 #: src/export/ExportPCM.cpp
 msgid "WAVEX and GSM 6.10 formats are not compatible"
-msgstr "Formaty WAVEX i GSM 6.10 nie są kompatybilne"
+msgstr "Formaty WAVEX i GSM 6.10 są niekompatybilne"
 
 #: src/export/ExportPCM.cpp
 msgid "Cannot export audio in this format."
@@ -11804,7 +11804,7 @@ msgstr "Pliki kompatybilne z GStreamerem"
 
 #: src/import/ImportGStreamer.cpp
 msgid "Unable to add decoder to pipeline"
-msgstr "Nie można dodać dekodera do rurociągu"
+msgstr "Nie można dodać dekodera do przetwarzania potokowego"
 
 #: src/import/ImportGStreamer.cpp
 msgid "GStreamer Importer"
@@ -13417,7 +13417,7 @@ msgstr "&Odzyskaj zaznaczenie"
 
 #: src/menus/SelectMenus.cpp
 msgid "S&pectral"
-msgstr "&Widmowy"
+msgstr "&Widmowe"
 
 #: src/menus/SelectMenus.cpp
 msgid "To&ggle Spectral Selection"
@@ -18121,7 +18121,7 @@ msgstr "-Nieskończoność"
 
 #: src/widgets/valnum.cpp
 msgid "Validation error"
-msgstr "Błąd walidacji"
+msgstr "Błąd weryfikacji"
 
 #: src/widgets/valnum.cpp
 msgid "Empty value"
