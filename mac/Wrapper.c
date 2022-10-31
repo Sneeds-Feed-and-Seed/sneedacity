@@ -43,8 +43,9 @@ int main(int argc, char *argv[])
    char *slash = strrchr(path, '/');
    if (slash)
    {
-      strncpy(++slash, sneedacity, exlen);
+       strncpy(++slash, sneedacity, SNEEDACITY_LEN);
    }
+   argv[0] = path; // argv[0] should now also be the Sneedacity path, not the Wrapper path
 
    unsetenv("DYLD_LIBRARY_PATH");
 
