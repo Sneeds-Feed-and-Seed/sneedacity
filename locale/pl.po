@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2022-12-18 00:00+0000\n"
+"PO-Revision-Date: 2022-12-28 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2022\n"
-"Language-Team: Polish (http://www.transifex.com/klyok/sneedacity/language/pl/)\n"
+"Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7154,7 +7154,7 @@ msgstr "Zniekształcenie rektyfikatora"
 
 #: src/effects/Distortion.cpp
 msgid "Hard Limiter 1413"
-msgstr "Twardy ogranicznik 1413"
+msgstr "Twardy limiter 1413"
 
 #: src/effects/Distortion.cpp
 #, no-c-format
@@ -7236,7 +7236,7 @@ msgstr "Rektyfikator pełnofalowy (DC zablokowane)"
 
 #: src/effects/Distortion.cpp
 msgid "Percussion Limiter"
-msgstr "Ogranicznik perkusji"
+msgstr "Limiter perkusji"
 
 #: src/effects/Distortion.cpp
 msgid "Upper Threshold"
