@@ -1,10 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2022 Sneedacity Team
+# Copyright (C) 2023 Sneedacity Team
 # This file is distributed under the same license as the sneedacity package.
 # 
 # Translators:
 # Aron <aron.plotnikowski@cryptolab.net>, 2013
-# Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2022
+# Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2023
 # jacbob77 <jacbob77@tlen.pl>, 2012
 # Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012
 # Michał Trzebiatowski <michtrz@gmail.com>, 2017
@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2022-12-28 00:00+0000\n"
-"Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2022\n"
+"PO-Revision-Date: 2023-04-14 00:00+0000\n"
+"Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2023\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4267,7 +4267,7 @@ msgstr "Błąd otwierania projektu"
 msgid ""
 "Project resides on FAT formatted drive.\n"
 "Copy it to another drive to open it."
-msgstr "Projekt znajduje się na nośniku sformatowanym w systemie plików FAT.\nSkopiuj go na inny dysk, aby go otworzyć."
+msgstr "Projekt znajduje się na nośniku sformatowanym w systemie plików FAT.\nSkopiuj go na inny nośnik, aby go otworzyć."
 
 #: src/ProjectFileManager.cpp
 msgid ""
@@ -6355,7 +6355,7 @@ msgstr "db"
 
 #: src/effects/AutoDuck.cpp
 msgid "Duck &amount:"
-msgstr "Liczba &duck:"
+msgstr "Wartość &duck:"
 
 #. i18n-hint: Name of time display format that shows time in seconds
 #: src/effects/AutoDuck.cpp src/effects/TruncSilence.cpp
@@ -12204,7 +12204,7 @@ msgstr "bajtów"
 
 #: src/import/ImportRaw.cpp
 msgid "Amount to import:"
-msgstr "Wielkość do importu:"
+msgstr "Wartość do importu:"
 
 #. i18n-hint: (noun)
 #: src/import/ImportRaw.cpp
@@ -14893,7 +14893,7 @@ msgstr "&Daj sygnał dźwiękowy po ukończeniu czynności"
 
 #: src/prefs/GUIPrefs.cpp
 msgid "Re&tain labels if selection snaps to a label"
-msgstr "&Zachowaj etykiety, jeśli zaznaczenie jest przyciągane do etykiety"
+msgstr "&Zachowaj etykiety, jeśli zaznaczenie jest przyczepiane do etykiety"
 
 #: src/prefs/GUIPrefs.cpp
 msgid "B&lend system and Sneedacity theme"
@@ -14955,7 +14955,7 @@ msgstr "&Sekundy"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "&Beats"
-msgstr "&Uderzenia"
+msgstr "&Miary"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "When exporting tracks to an audio file"
@@ -17422,7 +17422,7 @@ msgstr "Kliknij i przeciągnij, aby zaznaczyć dźwięk."
 #. nearby label or clip boundaries
 #: src/tracks/ui/SelectHandle.cpp
 msgid "(snapping)"
-msgstr "(podpinanie)"
+msgstr "(przyczepianie)"
 
 #: src/tracks/ui/TimeShiftHandle.cpp
 msgid "Click and drag to move a track in time"
@@ -17901,7 +17901,7 @@ msgstr "klatki NTSC"
 #. * rate!
 #: src/widgets/NumericTextCtrl.cpp
 msgid "01000,01000 frames|29.97002997"
-msgstr "01000,01000 klatki|29.97002997"
+msgstr "01000,01000 klatki|29,97002997"
 
 #. i18n-hint: Name of time display format that shows time in hours, minutes,
 #. * seconds and frames at PAL TV frame rate (used for European TV)
@@ -17990,7 +17990,7 @@ msgstr "kHz"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "01000>01000 kHz|0.001"
-msgstr "01000>01000 kHz|0.001"
+msgstr "01000>01000 kHz|0,001"
 
 #: src/widgets/NumericTextCtrl.cpp
 msgid "hertz"
@@ -18009,7 +18009,7 @@ msgstr "oktaw"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "100>01000 octaves|1.442695041"
-msgstr "100>01000 oktaw|1.442695041"
+msgstr "100>01000 oktaw|1,442695041"
 
 #. i18n-hint: an octave is a doubling of frequency
 #: src/widgets/NumericTextCtrl.cpp
@@ -18030,7 +18030,7 @@ msgstr "półtonów + centów"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "1000 semitones >0100 cents|17.312340491"
-msgstr "1000 półtonów >0100 centów|17.312340491"
+msgstr "1000 półtonów >0100 centów|17,312340491"
 
 #. i18n-hint: a cent is a hundredth of a semitone (which is 1/12 octave)
 #: src/widgets/NumericTextCtrl.cpp
@@ -18047,7 +18047,7 @@ msgstr "dekad"
 #. * Change the decimal points for your locale. Don't change the numbers.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "10>01000 decades|0.434294482"
-msgstr "10>01000 dekad|0.434294482"
+msgstr "10>01000 dekad|0,434294482"
 
 #. i18n-hint: a decade is a tenfold increase of frequency
 #: src/widgets/NumericTextCtrl.cpp
@@ -18439,11 +18439,11 @@ msgstr "~adB wartości nie mogą być większe niż +100 dB.~%~%~\n             
 
 #: plug-ins/beat.ny
 msgid "Beat Finder"
-msgstr "Szukaj uderzenia"
+msgstr "Szukaj miary"
 
 #: plug-ins/beat.ny
 msgid "Finding beats..."
-msgstr "Znajdowanie uderzeń..."
+msgstr "Znajdowanie miar..."
 
 #: plug-ins/beat.ny
 msgid "Threshold Percentage"
@@ -18805,7 +18805,7 @@ msgstr "48 dB"
 
 #: plug-ins/highpass.ny plug-ins/lowpass.ny plug-ins/notch.ny
 msgid "Frequency must be at least 0.1 Hz."
-msgstr "Częstotliwość musi wynosić przynajmniej 0.1 Hz."
+msgstr "Częstotliwość musi wynosić przynajmniej 0,1 Hz."
 
 #: plug-ins/highpass.ny plug-ins/lowpass.ny
 #, lisp-format
@@ -19350,7 +19350,7 @@ msgstr "Szerokość pasma szumów (Hz)"
 
 #: plug-ins/rissetdrum.ny
 msgid "Amount of noise in mix (percent)"
-msgstr "Ilość szumu w miksie (procent)"
+msgstr "Wartość szumu w miksie (procent)"
 
 #: plug-ins/rissetdrum.ny
 msgid "Amplitude (0 - 1)"
