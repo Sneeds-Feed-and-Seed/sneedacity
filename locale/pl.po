@@ -2522,7 +2522,7 @@ msgstr "Sneedacity usiłował użyć pakietu FFmpeg do importowania\npliku dźwi
 
 #: src/FFmpeg.cpp
 msgid "Do not show this warning again"
-msgstr "Nie pokazuj więcej tego ostrzeżenia"
+msgstr "Nie pokazuj ponownie tego ostrzeżenia"
 
 #: src/FFmpeg.cpp
 msgid "Failed to find compatible FFmpeg libraries."
@@ -2590,7 +2590,7 @@ msgstr "&Nie kopiuj żadnego dźwięku"
 
 #: src/FileFormats.cpp
 msgid "As&k"
-msgstr "&Pytaj"
+msgstr "&Zapytaj"
 
 #: src/FileNames.cpp plug-ins/eq-xml-to-txt-converter.ny
 #: plug-ins/nyquist-plug-in-installer.ny plug-ins/sample-data-export.ny
@@ -4768,7 +4768,7 @@ msgstr "Witamy w Sneedacity!"
 
 #: src/SplashDialog.cpp
 msgid "Don't show this again at start up"
-msgstr "Nie pokazuj tego więcej przy starcie"
+msgstr "Nie pokazuj ponownie tego przy starcie"
 
 #: src/SqliteSampleBlock.cpp
 msgid "Connection to project file is null"
