@@ -11461,7 +11461,7 @@ msgid ""
 "is a MIDI file, not an audio file. \n"
 "Sneedacity cannot open this type of file for playing, but you can\n"
 "edit it by clicking File > Import > MIDI."
-msgstr "\"%s\" \njest plikiem MIDI, a nie plikiem dźwiękowym. \nSneedacity nie może otworzyć tego typu pliku do odtwarzania, ale może go edytować\nprzez kliknięcie na 'Plik > Importuj > MIDI...'."
+msgstr "\"%s\" \njest plikiem MIDI, a nie plikiem dźwiękowym.\nSneedacity nie może otworzyć tego typu pliku do odtwarzania, ale może go edytować\nprzez kliknięcie na 'Plik > Importuj > MIDI...'."
 
 #: src/import/Import.cpp
 #, c-format
@@ -11469,7 +11469,7 @@ msgid ""
 "\"%s\" \n"
 "is a not an audio file. \n"
 "Sneedacity cannot open this type of file."
-msgstr "\"%s\" \nnie jest plikiem dźwiękowym. \nSneedacity nie może otworzyć tego typu pliku."
+msgstr "\"%s\" \nnie jest plikiem dźwiękowym.\nSneedacity nie może otworzyć tego typu pliku."
 
 #: src/import/Import.cpp
 msgid "Select stream(s) to import"
@@ -11488,7 +11488,7 @@ msgid ""
 "Sneedacity cannot open audio CDs directly. \n"
 "Extract (rip) the CD tracks to an audio format that \n"
 "Sneedacity can import, such as WAV or AIFF."
-msgstr "\"%s\" jest ścieżką Audio CD. \nSneedacity nie może otworzyć bezpośrednio ścieżek Audio CD. \nWypakuj ścieżki do formatu, który \nSneedacity może importować, takich jak WAV lub AIFF."
+msgstr "\"%s\" jest ścieżką Audio CD.\nSneedacity nie może otworzyć bezpośrednio ścieżek Audio CD. \nWypakuj ścieżki do formatu, który \nSneedacity może importować, takich jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11497,7 +11497,7 @@ msgid ""
 "\"%s\" is a playlist file. \n"
 "Sneedacity cannot open this file because it only contains links to other files. \n"
 "You may be able to open it in a text editor and download the actual audio files."
-msgstr "\"%s\" jest plikiem listy.\nSneedacity nie może otworzyć tego pliku, ponieważ zawiera on tylko linki do innych plików. \nMożesz otworzyć go w edytorze tekstowym i pobrać aktualne pliki dźwiękowe."
+msgstr "\"%s\" jest plikiem playlisty.\nSneedacity nie może otworzyć tego pliku, ponieważ zawiera on tylko linki do innych plików. \nMożesz otworzyć go w edytorze tekstowym i pobrać aktualne pliki dźwiękowe."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11506,7 +11506,7 @@ msgid ""
 "\"%s\" is a Windows Media Audio file. \n"
 "Sneedacity cannot open this type of file due to patent restrictions. \n"
 "You need to convert it to a supported audio format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem Windows Media Audio. \nSneedacity nie może otworzyć tego typu pliku z powodów patentowych. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem Windows Media Audio.\nSneedacity nie może otworzyć tego typu pliku z powodów patentowych. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11526,7 +11526,7 @@ msgid ""
 "Sneedacity cannot open this type of file due to the encryption. \n"
 "Try recording the file into Sneedacity, or burn it to audio CD then \n"
 "extract the CD track to a supported audio format such as WAV or AIFF."
-msgstr "\"%s\" jest zakodowanym plikiem dźwiękowym. \nPliki te pochodzą zazwyczaj z internetowych sklepów muzycznych. \nSneedacity nie może otworzyć tego typu pliku z powodu jego zakodowania. \nSpróbuj zgrać plik w Sneedacity lub wypal go na płytę Audio CD, a następnie \nwypakuj ścieżkę do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest zakodowanym plikiem dźwiękowym.\nPliki te pochodzą zazwyczaj z internetowych sklepów muzycznych. \nSneedacity nie może otworzyć tego typu pliku z powodu jego zakodowania. \nSpróbuj zgrać plik w Sneedacity lub wypal go na płytę Audio CD, a następnie \nwypakuj ścieżkę do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11535,7 +11535,7 @@ msgid ""
 "\"%s\" is a RealPlayer media file. \n"
 "Sneedacity cannot open this proprietary format. \n"
 "You need to convert it to a supported audio format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem RealPlayer. \nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem RealPlayer.\nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11545,7 +11545,7 @@ msgid ""
 "Sneedacity cannot open this type of file. \n"
 "Try converting it to an audio file such as WAV or AIFF and \n"
 "then import it, or record it into Sneedacity."
-msgstr "\"%s\" jest plikiem opartym o nuty, a nie plikiem dźwiękowym. \nSneedacity nie może otworzyć tego typu pliku. \nSpróbuj przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF, \na następnie importuj go lub nagraj w Sneedacity."
+msgstr "\"%s\" jest plikiem opartym o nuty, a nie plikiem dźwiękowym.\nSneedacity nie może otworzyć tego typu pliku. \nSpróbuj przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF, \na następnie importuj go lub nagraj w Sneedacity."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11556,7 +11556,7 @@ msgid ""
 "If you think it might be an mp3 file, rename it to end with \".mp3\" \n"
 "and try importing it again. Otherwise you need to convert it to a supported audio \n"
 "format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem dźwiękowym Musepack. \nSneedacity nie może otworzyć tego typu pliku. \nJeśli myślisz, że może to być plik mp3, to zmień jego nazwę na zakończoną \".mp3\" \ni spróbuj ponownie go importować. W przeciwnym razie musisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem dźwiękowym Musepack.\nSneedacity nie może otworzyć tego typu pliku. \nJeśli myślisz, że może to być plik mp3, to zmień jego nazwę na zakończoną \".mp3\" \ni spróbuj ponownie go importować. W przeciwnym razie musisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11565,7 +11565,7 @@ msgid ""
 "\"%s\" is a Wavpack audio file. \n"
 "Sneedacity cannot open this type of file. \n"
 "You need to convert it to a supported audio format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem dźwiękowym Wavpack. \nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem dźwiękowym Wavpack.\nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11574,7 +11574,7 @@ msgid ""
 "\"%s\" is a Dolby Digital audio file. \n"
 "Sneedacity cannot currently open this type of file. \n"
 "You need to convert it to a supported audio format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem dźwiękowym Dolby Digital. \nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem dźwiękowym Dolby Digital.\nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11583,7 +11583,7 @@ msgid ""
 "\"%s\" is an Ogg Speex audio file. \n"
 "Sneedacity cannot currently open this type of file. \n"
 "You need to convert it to a supported audio format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem dźwiękowym Ogg Speex. \nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem dźwiękowym Ogg Speex.\nSneedacity nie może otworzyć tego typu pliku. \nMusisz przekonwertować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
@@ -11592,7 +11592,7 @@ msgid ""
 "\"%s\" is a video file. \n"
 "Sneedacity cannot currently open this type of file. \n"
 "You need to extract the audio to a supported format, such as WAV or AIFF."
-msgstr "\"%s\" jest plikiem zawierającym film. \nSneedacity nie może otworzyć tego typu pliku. \nMusisz wypakować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
+msgstr "\"%s\" jest plikiem zawierającym film.\nSneedacity nie może otworzyć tego typu pliku. \nMusisz wypakować plik do obsługiwanego formatu, takiego jak WAV lub AIFF."
 
 #: src/import/Import.cpp
 #, c-format
@@ -15248,7 +15248,7 @@ msgstr "Ustawienia modułu"
 msgid ""
 "These are experimental modules. Enable them only if you've read the Sneedacity Manual\n"
 "and know what you are doing."
-msgstr "To są moduły eksperymentalne. Włącz je, jeśli już\nprzeczytałeś/aś instrukcję i wiesz, co robisz."
+msgstr "To są moduły eksperymentalne. Włącz je, jeśli już\nprzeczytałeś/aś Podręcznik Audacity i wiesz, co robisz."
 
 #. i18n-hint preserve the leading spaces
 #: src/prefs/ModulePrefs.cpp
