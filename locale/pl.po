@@ -1373,7 +1373,7 @@ msgstr "Wystąpił błąd uruchamiania warstwy wej./wyj. MIDI.\n"
 msgid ""
 "You will not be able to play midi.\n"
 "\n"
-msgstr "Nie będzie można odtworzyć MIDI.\n\n"
+msgstr "Nie będzie można odtwarzać MIDI.\n\n"
 
 #: src/AudioIO.cpp
 msgid "Error Initializing Midi"
