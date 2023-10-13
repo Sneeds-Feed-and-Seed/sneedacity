@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2023-09-15 00:00+0000\n"
+"PO-Revision-Date: 2023-10-17 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2023\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,7 @@ msgstr "Nie udało się wysłać raportu o awarii"
 #: libraries/lib-strings/UnusedStrings.h
 msgctxt "spectrum prefs"
 msgid "Sche&me"
-msgstr "Sche&mat"
+msgstr "Sche&mat:"
 
 #. i18n-hint Choice of spectrogram colors
 #: libraries/lib-strings/UnusedStrings.h
@@ -271,11 +271,11 @@ msgstr "Wybierz &czcionkę..."
 
 #: modules/mod-nyq-bench/NyqBench.cpp
 msgid "Split &Vertically"
-msgstr "Rozdziel p&ionowo"
+msgstr "Podziel piono&wo"
 
 #: modules/mod-nyq-bench/NyqBench.cpp
 msgid "Split &Horizontally"
-msgstr "Rozdziel p&oziomo"
+msgstr "Po&dziel poziomo"
 
 #: modules/mod-nyq-bench/NyqBench.cpp
 msgid "Show S&cript"
@@ -685,7 +685,7 @@ msgstr "OK"
 msgid ""
 "%s is a free program written by a worldwide team of %s. %s is %s for "
 "Windows, Mac, and GNU/Linux (and other Unix-like systems)."
-msgstr "%s jest darmowym programem, napisanym przez globalny zespół %s. %s jest %s na Windows, Maca i GNU/Linux (oraz inne systemy typu Unix)."
+msgstr "%s jest darmowym programem, napisanym przez zespół %s z całego świata. %s jest %s na Windows, Maca i GNU/Linux (oraz inne systemy typu Unix)."
 
 #. i18n-hint: substitutes into "a worldwide team of %s"
 #: src/AboutDialog.cpp
@@ -755,7 +755,7 @@ msgstr "Dostosowywanie DarkSneedacity"
 #: src/AboutDialog.cpp
 #, c-format
 msgid "%s Team Members"
-msgstr "Członkowie zespołu %s"
+msgstr "Członkowie Zespołu %s"
 
 #: src/AboutDialog.cpp
 msgid "Emeritus:"
@@ -765,7 +765,7 @@ msgstr "Emeritus:"
 #: src/AboutDialog.cpp
 #, c-format
 msgid "Distinguished %s Team members, not currently active"
-msgstr "Zespół wybitnych członków %s, obecnie nieaktywnych"
+msgstr "Wybitni członkowie Zespołu %s, obecnie nieaktywni"
 
 #: src/AboutDialog.cpp
 msgid "Contributors"
@@ -1074,7 +1074,7 @@ msgstr "Błąd"
 #: src/SneedacityApp.cpp
 #, c-format
 msgid "Failed to remove %s"
-msgstr "Błąd przy usuwaniu %s"
+msgstr "Nie udało się usunąć %s"
 
 #: src/SneedacityApp.cpp
 msgid "Failed!"
@@ -1089,7 +1089,7 @@ msgstr "Zresetować ustawienia?\n\nJest to jednorazowe pytanie po 'zainstalowani
 
 #: src/SneedacityApp.cpp
 msgid "Reset Sneedacity Preferences"
-msgstr "Zresetuj ustawienia Sneedacity"
+msgstr "Resetuj ustawienia Sneedacity"
 
 #: src/SneedacityApp.cpp
 #, c-format
@@ -1142,7 +1142,7 @@ msgid ""
 "Sneedacity could not find a safe place to store temporary files.\n"
 "Sneedacity needs a place where automatic cleanup programs won't delete the temporary files.\n"
 "Please enter an appropriate directory in the preferences dialog."
-msgstr "Sneedacity nie może znaleźć miejsca na przechowywanie plików tymczasowych.\nSneedacity potrzebuje miejsca, gdzie automatyczne programy oczyszczania nie usuną plików tymczasowych.\nPodaj odpowiedni katalog w oknie dialogowym Ustawienia."
+msgstr "Sneedacity nie może znaleźć miejsca na przechowywanie plików tymczasowych.\nSneedacity potrzebuje miejsca, w którym programy do automatycznego czyszczenia nie usuną plików tymczasowych.\nPodaj odpowiedni katalog w oknie dialogowym Ustawienia."
 
 #: src/SneedacityApp.cpp
 msgid ""
@@ -1589,7 +1589,7 @@ msgstr "Obsługuje wejście: %d\n"
 #: src/AudioIOBase.cpp
 #, c-format
 msgid "Opened: %d\n"
-msgstr "Otwarty: %d\n"
+msgstr "Otwarto: %d\n"
 
 #: src/AudioIOBase.cpp
 #, c-format
@@ -1613,7 +1613,7 @@ msgstr "Nie znaleziono urządzenia odtwarzającego MIDI '%s'.\n"
 
 #: src/AutoRecoveryDialog.cpp
 msgid "Automatic Crash Recovery"
-msgstr "Samoczynne przywracanie po awarii"
+msgstr "Automatyczne przywracanie po awarii"
 
 #: src/AutoRecoveryDialog.cpp
 msgid ""
@@ -1947,7 +1947,7 @@ msgstr "Nazwa nie może być pusta"
 #: src/BatchProcessDialog.cpp
 #, c-format
 msgid "Names may not contain '%c' and '%c'"
-msgstr "Nazwy nie mogą zawierać '%c' ani '%c'"
+msgstr "Nazwy nie mogą zawierać '%c' i '%c'"
 
 #. i18n-hint: %s will be replaced by the name of a file.
 #: src/BatchProcessDialog.cpp
@@ -1976,7 +1976,7 @@ msgstr "Rozmiar danych testowych (MB):"
 #. pseudorandom number generating algorithm
 #: src/Benchmark.cpp
 msgid "Random Seed:"
-msgstr "Dowolna szybkość:"
+msgstr "Liczba losowa:"
 
 #: src/Benchmark.cpp
 msgid "Show detailed info about each block file"
@@ -2383,7 +2383,7 @@ msgstr "Sprawdzanie zależności"
 #: src/prefs/TracksBehaviorsPrefs.cpp plug-ins/equalabel.ny
 #: plug-ins/sample-data-export.ny
 msgid "None"
-msgstr "Żaden"
+msgstr "Brak"
 
 #: src/Dither.cpp
 msgid "Rectangle"
@@ -2650,7 +2650,7 @@ msgstr "Widmo"
 
 #: src/FreqWindow.cpp
 msgid "Standard Autocorrelation"
-msgstr "Standardowa autokorelacja"
+msgstr "Autokorelacja standardowa"
 
 #: src/FreqWindow.cpp
 msgid "Cuberoot Autocorrelation"
@@ -2658,7 +2658,7 @@ msgstr "Autokorelacja Cuberoot"
 
 #: src/FreqWindow.cpp
 msgid "Enhanced Autocorrelation"
-msgstr "Ulepszona autokorelacja"
+msgstr "Autokorelacja ulepszona"
 
 #. i18n-hint: This is a technical term, derived from the word
 #. * "spectrum".  Do not translate it unless you are sure you
@@ -2673,7 +2673,7 @@ msgstr "Cepstrum"
 #: src/FreqWindow.cpp
 #, c-format
 msgid "%s window"
-msgstr "%s okno"
+msgstr "Okno %s"
 
 #: src/FreqWindow.cpp
 msgid "Linear frequency"
@@ -2907,7 +2907,7 @@ msgstr "Zdecydowanie zalecamy korzystać z naszej najnowszej stabilnej wersji, k
 msgid ""
 "You can help us get Sneedacity ready for release by joining our "
 "[[https://www.audacityteam.org/community/|community]].<hr><br><br>"
-msgstr "Możesz pomóc nam stworzyć gotowego do wydania Sneedacity, dołączając do naszej [[https://www.audacityteam.org/community/|społeczności]].<hr><br><br>"
+msgstr "Możesz pomóc nam przygotować Sneedacity do wydania, dołączając do naszej [[https://www.audacityteam.org/community/|społeczności]].<hr><br><br>"
 
 #: src/HelpText.cpp
 msgid "How to get help"
@@ -3041,14 +3041,14 @@ msgstr "&Historia..."
 msgid ""
 "Internal error in %s at %s line %d.\n"
 "Please inform the Sneedacity team at https://forum.audacityteam.org/."
-msgstr "Błąd wewnętrzny w %s w %s, linia %d.\nPoinformuj zespół Sneedacity przez https://forum.audacityteam.org/."
+msgstr "Błąd wewnętrzny w %s w %s, linia %d.\nPoinformuj Zespół Sneedacity przez https://forum.audacityteam.org/."
 
 #: src/InconsistencyException.cpp
 #, c-format
 msgid ""
 "Internal error at %s line %d.\n"
 "Please inform the Sneedacity team at https://forum.audacityteam.org/."
-msgstr "Błąd wewnętrzny w %s, linia %d.\nPoinformuj zespół Sneedacity przez https://forum.audacityteam.org/."
+msgstr "Błąd wewnętrzny w %s, linia %d.\nPoinformuj Zespół Sneedacity przez https://forum.audacityteam.org/."
 
 #: src/InconsistencyException.h
 msgid "Internal Error"
@@ -3073,12 +3073,12 @@ msgstr "Etykieta"
 #. i18n-hint: (noun) of a label
 #: src/LabelDialog.cpp src/TimerRecordDialog.cpp
 msgid "Start Time"
-msgstr "Czas początku"
+msgstr "Czas rozpoczęcia"
 
 #. i18n-hint: (noun) of a label
 #: src/LabelDialog.cpp src/TimerRecordDialog.cpp
 msgid "End Time"
-msgstr "Czas końca"
+msgstr "Czas zakończenia"
 
 #. i18n-hint: (noun) of a label
 #: src/LabelDialog.cpp src/toolbars/SpectralSelectionBar.cpp
@@ -3520,7 +3520,7 @@ msgstr "Pokaż wyłączone"
 #. i18n-hint: Radio button to show just the currently disabled effects
 #: src/PluginManager.cpp
 msgid "D&isabled"
-msgstr "W&yłączony"
+msgstr "W&yłączone"
 
 #. i18n-hint: Radio button to show just the currently enabled effects
 #: src/PluginManager.cpp
@@ -3530,7 +3530,7 @@ msgstr "Pokaż włączone"
 #. i18n-hint: Radio button to show just the currently enabled effects
 #: src/PluginManager.cpp
 msgid "E&nabled"
-msgstr "W&łączony"
+msgstr "Włączo&ne"
 
 #. i18n-hint: Radio button to show just the newly discovered effects
 #: src/PluginManager.cpp
@@ -3587,7 +3587,7 @@ msgstr "Włączony efekt lub polecenie:\n\n%s"
 msgid ""
 "Effect or Command at %s failed to register:\n"
 "%s"
-msgstr "Efekt lub polecenie %s nie powiodły się:\n%s"
+msgstr "Efektu lub polecenia %s nie udało się zarejestrować:\n%s"
 
 #: src/PluginManager.cpp
 #, c-format
@@ -3600,14 +3600,14 @@ msgstr "Wtyczka już istnieje"
 
 #: src/PluginManager.cpp
 msgid "Plug-in file is in use. Failed to overwrite"
-msgstr "Plik wtyczki jest w użyciu. Nie udało się nadpisać"
+msgstr "Plik wtyczki jest w użyciu. Nie udało się zastąpić"
 
 #: src/PluginManager.cpp
 #, c-format
 msgid ""
 "Failed to register:\n"
 "%s"
-msgstr "Błąd przy rejestracji:\n%s"
+msgstr "Nie udało się zarejestrować:\n%s"
 
 #. i18n-hint A plug-in is an optional added program for a sound
 #. effect, or generator, or analyzer
@@ -3698,11 +3698,11 @@ msgid ""
 "Other applications are competing with Sneedacity for processor time\n"
 "\n"
 "You are saving directly to a slow external storage device\n"
-msgstr "Nagrany dźwięk zaginął w oznaczonych miejscach. Możliwe przyczyny:\n\nInne aplikacje konkurują z Sneedacity o czas procesora\n\nZapisujesz bezpośrednio na wolnym zewnętrznym urządzeniu\npamięci masowej\n"
+msgstr "Nagrany dźwięk został utracony w oznaczonych miejscach. Możliwe przyczyny:\n\nInne aplikacje konkurują z Sneedacity o czas procesora\n\nZapisujesz bezpośrednio na wolnym zewnętrznym urządzeniu\npamięci masowej\n"
 
 #: src/ProjectAudioManager.cpp
 msgid "Turn off dropout detection"
-msgstr "Wyłącz wykrywanie przerwań"
+msgstr "Wyłącz wykrywanie przerw"
 
 #. i18n-hint: The sneedacity project file is XML and has 'tags' in it,
 #. rather like html tags <something>some stuff</something>.
@@ -3750,7 +3750,7 @@ msgid ""
 "If you choose the third option, this will save the \n"
 "project in its current state, unless you \"Close \n"
 "project immediately\" on further error alerts."
-msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujący(ch) zewnętrzny(ch) plik(ów) dźwiękowy(ch) \n('pliki z aliasami'). Sneedacity nie ma możliwości \nodzyskania tych plików samoczynnie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące pliki \nna ich poprzednie położenia. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy. \n\nJeśli wybierzesz trzecią opcję, to zapiszesz projekt \nw jego obecnym stanie, chyba że \"Zamkniesz \nprojekt natychmiastowo\" przy przyszłych ostrzeżeniach o błędach."
+msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujący(ch) zewnętrzny(ch) plik(ów) dźwiękowy(ch) \n('pliki z aliasami'). Sneedacity nie ma możliwości \nodzyskania tych plików automatycznie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące pliki \nna ich poprzednie położenia. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy. \n\nJeśli wybierzesz trzecią opcję, to zapiszesz projekt \nw jego obecnym stanie, chyba że \"Zamkniesz \nprojekt natychmiastowo\" przy przyszłych ostrzeżeniach o błędach."
 
 #: src/ProjectFSCK.cpp
 msgid "Treat missing audio as silence (this session only)"
@@ -3804,7 +3804,7 @@ msgid ""
 "\n"
 "Note that for the second option, the waveform \n"
 "may not show silence."
-msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujące(ych) dane(ych) dźwiękowe(ych) (.au) pliku(ów) blokowego(ych), \nprawdopodobnie ze względu na błąd, awarię systemu lub przypadkowe \nusunięcie. Sneedacity nie może przywrócić tych plików \nsamoczynnie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące pliki \nna ich poprzednie położenia. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy."
+msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujące(ych) dane(ych) dźwiękowe(ych) (.au) pliku(ów) blokowego(ych), \nprawdopodobnie ze względu na błąd, awarię systemu lub przypadkowe \nusunięcie. Sneedacity nie może przywrócić tych plików \nautomatycznie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące pliki \nna ich poprzednie położenia. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy."
 
 #: src/ProjectFSCK.cpp
 msgid "Replace missing audio with silence (permanent immediately)"
@@ -3851,11 +3851,11 @@ msgid ""
 "Project check found file inconsistencies during automatic recovery.\n"
 "\n"
 "Select 'Help > Diagnostics > Show Log...' to see details."
-msgstr "Sprawdzanie projektu znalazło nieciągłości w plikach podczas samoczynnego odzyskiwania.\n\nWybierz 'Pomoc > Diagnostyka > Pokaż dziennik...', aby zobaczyć szczegóły."
+msgstr "Sprawdzanie projektu znalazło nieciągłości w plikach podczas automatycznego odzyskiwania.\n\nWybierz 'Pomoc > Diagnostyka > Pokaż dziennik...', aby zobaczyć szczegóły."
 
 #: src/ProjectFSCK.cpp
 msgid "Warning: Problems in Automatic Recovery"
-msgstr "Ostrzeżenie - Problemy z samoczynnym odzyskiwaniem"
+msgstr "Ostrzeżenie - Problemy z automatycznym odzyskiwaniem"
 
 #: src/ProjectFileIO.cpp src/menus/WindowMenus.cpp
 msgid "<untitled>"
@@ -4275,7 +4275,7 @@ msgid ""
 "Doing this may result in severe data loss.\n"
 "\n"
 "Please open the actual Sneedacity project file instead."
-msgstr "Próbujesz otworzyć samoczynnie utworzony plik kopii zapasowej.\nZrobienie tego może skutkować poważną utratą danych.\n\nZamiast tego, musisz otworzyć aktualny projekt Sneedacity."
+msgstr "Próbujesz otworzyć utworzony automatycznie plik kopii zapasowej.\nZrobienie tego może skutkować poważną utratą danych.\n\nZamiast tego, musisz otworzyć aktualny projekt Sneedacity."
 
 #: src/ProjectFileManager.cpp
 msgid "Warning - Backup File Detected"
@@ -4311,7 +4311,7 @@ msgstr "Odzyskaj"
 #: src/ProjectFileManager.cpp
 #, c-format
 msgid "Imported '%s'"
-msgstr "Importowano '%s'"
+msgstr "Zaimportowano '%s'"
 
 #: src/ProjectFileManager.cpp
 msgid "Import"
@@ -4720,7 +4720,7 @@ msgstr "Długi komunikat"
 msgid ""
 "Sequence has block file exceeding maximum %s samples per block.\n"
 "Truncating to this maximum length."
-msgstr "Sekwencja zawiera plik blokowy przekraczający maksymalną %s sampli na blok.\nObcinanie do tej maksymalnej długości."
+msgstr "Sekwencja zawiera plik blokowy przekraczający maksymalnie %s sampli na blok.\nObcinanie do tej maksymalnej długości."
 
 #: src/Sequence.cpp
 msgid "Warning - Truncating Overlong Block File"
@@ -4744,7 +4744,7 @@ msgstr "Debu&guj"
 
 #: src/Snap.cpp src/export/ExportFFmpegDialogs.cpp
 msgid "Off"
-msgstr "Wyłączone"
+msgstr "Wyłączony"
 
 #: src/Snap.cpp
 msgid "Nearest"
@@ -4780,7 +4780,7 @@ msgstr "Nazwisko artysty"
 
 #: src/Tags.cpp
 msgid "Track Title"
-msgstr "Tytuł utworu"
+msgstr "Tytuł ścieżki"
 
 #: src/Tags.cpp
 msgid "Album Title"
@@ -4856,11 +4856,11 @@ msgstr "Nie można zapisać pliku z gatunkami."
 
 #: src/Tags.cpp
 msgid "Reset Genres"
-msgstr "Zresetuj gatunki"
+msgstr "Resetuj gatunki"
 
 #: src/Tags.cpp
 msgid "Are you sure you want to reset the genre list to defaults?"
-msgstr "Na pewno chcesz zresetować listę gatunków do domyślnych?"
+msgstr "Na pewno chcesz zresetować listę gatunków do wartości domyślnych?"
 
 #: src/Tags.cpp
 msgid "Unable to open genre file."
@@ -5218,19 +5218,19 @@ msgstr "099 dni 024 g 060 m 060 s"
 #. displayed is seconds.
 #: src/TimerRecordDialog.cpp
 msgid "Start Date and Time"
-msgstr "Data i czas początku"
+msgstr "Data i godzina rozpoczęcia"
 
 #: src/TimerRecordDialog.cpp
 msgid "Start Date"
-msgstr "Data początku"
+msgstr "Data rozpoczęcia"
 
 #: src/TimerRecordDialog.cpp
 msgid "End Date and Time"
-msgstr "Data i czas końca"
+msgstr "Data i godzina zakończenia"
 
 #: src/TimerRecordDialog.cpp
 msgid "End Date"
-msgstr "Data końca"
+msgstr "Data zakończenia"
 
 #: src/TimerRecordDialog.cpp
 msgid "Automatic Save"
@@ -5357,7 +5357,7 @@ msgstr " Wyciszona"
 #. this track is soloed. (The Solo button is on.)
 #: src/TrackPanelAx.cpp
 msgid " Soloed"
-msgstr " Zsolowana"
+msgstr " Solowa"
 
 #. i18n-hint: This is for screen reader software and indicates that
 #. this track is selected.
@@ -5375,21 +5375,21 @@ msgstr " Blokada synchronizacji"
 
 #: src/TrackPanelAx.cpp
 msgid " Mute On"
-msgstr " Włącz wycisz"
+msgstr " Cisza wł."
 
 #: src/TrackPanelAx.cpp
 msgid " Solo On"
-msgstr " Włącz solo"
+msgstr " Solo wł."
 
 #: src/TrackPanelAx.cpp
 msgid " Select On"
-msgstr " Włącz zaznacz"
+msgstr " Zaznacz wł."
 
 #: src/TrackPanelResizeHandle.cpp
 msgid ""
 "Click and drag to adjust relative size of stereo tracks, double-click to "
 "make heights equal"
-msgstr "Kliknij i przeciągnij, aby określić relatywny rozmiar ścieżek stereo, kliknij podwójnie myszką, aby wyrównać wysokości"
+msgstr "Kliknij i przeciągnij, aby dostosować relatywny rozmiar ścieżek stereo, kliknij podwójnie myszką, aby wyrównać wysokości"
 
 #: src/TrackPanelResizeHandle.cpp
 msgid "Click and drag to resize the track."
@@ -5397,7 +5397,7 @@ msgstr "Kliknij i przeciągnij, aby zmienić rozmiar ścieżki."
 
 #: src/TrackUtilities.cpp
 msgid "Removed audio track(s)"
-msgstr "Usunięta(e) ścieżka(i) dźwiękowa(e)"
+msgstr "Usunięto ścieżkę(i) dźwiękową(e)"
 
 #: src/TrackUtilities.cpp
 msgid "Remove Track"
@@ -5406,7 +5406,7 @@ msgstr "Usuń ścieżkę"
 #: src/TrackUtilities.cpp
 #, c-format
 msgid "Removed track '%s.'"
-msgstr "Usunięta ścieżka '%s.'"
+msgstr "Usunięto ścieżkę '%s'."
 
 #: src/TrackUtilities.cpp
 msgid "Track Remove"
@@ -5416,7 +5416,7 @@ msgstr "Usunięcie ścieżki"
 #: src/TrackUtilities.cpp
 #, c-format
 msgid "Moved '%s' to Top"
-msgstr "Przesuń '%s' na samą górę"
+msgstr "Przesunięto '%s' na samą górę"
 
 #: src/TrackUtilities.cpp
 msgid "Move Track to Top"
@@ -5426,7 +5426,7 @@ msgstr "Przesuń ścieżkę dźwiękową na samą górę"
 #: src/TrackUtilities.cpp
 #, c-format
 msgid "Moved '%s' to Bottom"
-msgstr "Przesuń '%s' na sam dół"
+msgstr "Przesunięto '%s' na sam dół"
 
 #: src/TrackUtilities.cpp
 msgid "Move Track to Bottom"
@@ -5436,12 +5436,12 @@ msgstr "Przesuń ścieżkę dźwiękową na sam dół"
 #: src/TrackUtilities.cpp
 #, c-format
 msgid "Moved '%s' Up"
-msgstr "Przesuń '%s' wyżej"
+msgstr "Przesunięto '%s' wyżej"
 
 #: src/TrackUtilities.cpp
 #, c-format
 msgid "Moved '%s' Down"
-msgstr "Przesuń '%s' niżej"
+msgstr "Przesunięto '%s' niżej"
 
 #. i18n-hint: Past tense of 'to move', as in 'moved audio track up'.
 #: src/TrackUtilities.cpp
@@ -5660,7 +5660,7 @@ msgstr "Do Y:"
 
 #: src/commands/DragCommand.cpp src/commands/SelectCommand.cpp
 msgid "Relative To:"
-msgstr "Względem do:"
+msgstr "Względem:"
 
 #: src/commands/DragCommand.h
 msgid "Drags mouse from one place to another."
@@ -5697,7 +5697,7 @@ msgstr "Etykiety"
 
 #: src/commands/GetInfoCommand.cpp
 msgid "Boxes"
-msgstr "Pudełka"
+msgstr "Ramki"
 
 #. i18n-hint JavaScript Object Notation
 #: src/commands/GetInfoCommand.cpp src/commands/HelpCommand.cpp
@@ -6018,11 +6018,11 @@ msgstr "Koniec zaznaczenia"
 
 #: src/commands/SelectCommand.cpp
 msgid "Start Time:"
-msgstr "Czas początku:"
+msgstr "Czas rozpoczęcia:"
 
 #: src/commands/SelectCommand.cpp
 msgid "End Time:"
-msgstr "Czas końca:"
+msgstr "Czas zakończenia:"
 
 #: src/commands/SelectCommand.cpp
 msgid "Select Frequencies"
@@ -6030,11 +6030,11 @@ msgstr "Zaznacz częstotliwości"
 
 #: src/commands/SelectCommand.cpp
 msgid "High:"
-msgstr "Wysoki:"
+msgstr "Wysokie:"
 
 #: src/commands/SelectCommand.cpp
 msgid "Low:"
-msgstr "Niski:"
+msgstr "Niskie:"
 
 #: src/commands/SelectCommand.cpp
 msgid "Select Tracks"
@@ -6158,7 +6158,7 @@ msgstr "Koniec:"
 
 #: src/commands/SetLabelCommand.cpp src/commands/SetTrackInfoCommand.cpp
 msgid "Selected"
-msgstr "Zaznaczony"
+msgstr "Zaznaczona"
 
 #: src/commands/SetLabelCommand.cpp
 msgid "Edited Label"
@@ -6214,11 +6214,11 @@ msgstr "Ustaw status ścieżki"
 
 #: src/commands/SetTrackInfoCommand.cpp
 msgid "Unnamed"
-msgstr "Nienazwany"
+msgstr "Nienazwana"
 
 #: src/commands/SetTrackInfoCommand.cpp
 msgid "Focused"
-msgstr "Skupiony"
+msgstr "Skupiona"
 
 #: src/commands/SetTrackInfoCommand.cpp
 msgid "Set Track Audio"
@@ -6245,7 +6245,7 @@ msgstr "Liniowa"
 
 #: src/commands/SetTrackInfoCommand.cpp
 msgid "Reset"
-msgstr "Zresetuj"
+msgstr "Resetuj"
 
 #: src/commands/SetTrackInfoCommand.cpp
 msgid "Times 2"
@@ -6456,7 +6456,7 @@ msgstr "Zmień wysokość bez zmiany tempa"
 #: src/effects/ChangePitch.cpp
 #, c-format
 msgid "Estimated Start Pitch: %s%d (%.3f Hz)"
-msgstr "Szacowana początkowa wysokość: %s%d (%.3f Hz)"
+msgstr "Szacowana wysokość początkowa: %s%d (%.3f Hz)"
 
 #. i18n-hint: (noun) Musical pitch.
 #: src/effects/ChangePitch.cpp
@@ -6535,7 +6535,7 @@ msgstr "Zmiana procentowa"
 
 #: src/effects/ChangePitch.cpp src/effects/ChangeTempo.cpp
 msgid "&Use high quality stretching (slow)"
-msgstr "&Użyj wysokiej jakości rozciągania (wolne)"
+msgstr "&Użyj rozciągania wysokiej jakości (wolne)"
 
 #: src/effects/ChangeSpeed.cpp
 msgid "33⅓"
@@ -6826,7 +6826,7 @@ msgstr "Czas zanikania"
 #. it.
 #: src/effects/Compressor.cpp
 msgid "Ma&ke-up gain for 0 dB after compressing"
-msgstr "Uczyń ze &wzmocnienia 0 dB po skompresowaniu"
+msgstr "Upię&kszanie wzmocnienia 0 dB po skompresowaniu"
 
 #. i18n-hint: "Compress" here means reduce variations of sound volume,
 #. NOT related to file-size compression; Peaks means extremes in volume
@@ -7071,12 +7071,12 @@ msgstr "Pierwszy plan"
 #: src/effects/Contrast.cpp
 #, c-format
 msgid "Time started = %2d hour(s), %2d minute(s), %.2f seconds."
-msgstr "Czas początku = %2d godzina(y), %2d minuta(y), %.2f sekundy."
+msgstr "Początek czasu = %2d godzina(y), %2d minuta(y), %.2f sekundy."
 
 #: src/effects/Contrast.cpp
 #, c-format
 msgid "Time ended = %2d hour(s), %2d minute(s), %.2f seconds."
-msgstr "Czas końca = %2d godzina(y), %2d minuta(y), %.2f sekundy."
+msgstr "Koniec czasu = %2d godzina(y), %2d minuta(y), %.2f sekundy."
 
 #: src/effects/Contrast.cpp
 msgid "Background"
@@ -7159,12 +7159,12 @@ msgstr "Twardy limiter 1413"
 #: src/effects/Distortion.cpp
 #, no-c-format
 msgid "Hard clip -12dB, 80% make-up gain"
-msgstr "Twarde obcięcie -12 dB, 80%"
+msgstr "Twarde obcięcie -12 dB, 80% upiększania wzmocnienia"
 
 #: src/effects/Distortion.cpp
 #, no-c-format
 msgid "Soft clip -12dB, 80% make-up gain"
-msgstr "Miękkie obcięcie -12 dB, 80%"
+msgstr "Miękkie obcięcie -12 dB, 80% upiększania wzmocnienia"
 
 #: src/effects/Distortion.cpp
 msgid "Fuzz Box"
@@ -7188,7 +7188,7 @@ msgstr "Ciężkie przesterowanie"
 
 #: src/effects/Distortion.cpp
 msgid "3rd Harmonic (Perfect Fifth)"
-msgstr "3. harmoniczna (kwinta)"
+msgstr "3. harmoniczna (kwinta czysta)"
 
 #: src/effects/Distortion.cpp
 msgid "Valve Overdrive"
@@ -7526,7 +7526,7 @@ msgstr "Presety użytkownika"
 
 #: src/effects/EffectManager.cpp src/effects/EffectUI.cpp
 msgid "Factory Presets"
-msgstr "Presety fabryczne"
+msgstr "Presety wbudowane"
 
 #: src/effects/EffectManager.cpp
 msgid "Current Settings"
@@ -7534,7 +7534,7 @@ msgstr "Bieżące ustawienia"
 
 #: src/effects/EffectManager.cpp
 msgid "Factory Defaults"
-msgstr "Ustawienia fabryczne"
+msgstr "Ustawienia domyślne"
 
 #: src/effects/EffectManager.cpp
 #, c-format
@@ -7725,7 +7725,7 @@ msgstr "Wersja: %s"
 #: src/effects/EffectUI.cpp
 #, c-format
 msgid "Vendor: %s"
-msgstr "Sprzedawca: %s"
+msgstr "Dostawca: %s"
 
 #: src/effects/EffectUI.cpp
 #, c-format
@@ -8180,7 +8180,7 @@ msgstr "Znajdź obcinanie"
 
 #: src/effects/FindClipping.cpp
 msgid "Creates labels where clipping is detected"
-msgstr "Tworzy etykiety, gdzie obcinanie jest wykryte"
+msgstr "Tworzy etykiety w miejscach wykrycia obcinania"
 
 #: src/effects/FindClipping.cpp
 msgid "Clipping"
@@ -8188,11 +8188,11 @@ msgstr "Obcinanie"
 
 #: src/effects/FindClipping.cpp
 msgid "&Start threshold (samples):"
-msgstr "&Rozpocznij próg (sample):"
+msgstr "Próg początkowy (&sample):"
 
 #: src/effects/FindClipping.cpp
 msgid "St&op threshold (samples):"
-msgstr "&Zatrzymaj próg (sample):"
+msgstr "Próg k&ońcowy (sample):"
 
 #: src/effects/Generator.cpp
 msgid "There is not enough room available to generate the audio"
@@ -8771,11 +8771,11 @@ msgstr "Sprzężenie zwrotne w procentach"
 
 #: src/effects/Phaser.cpp src/effects/Wahwah.cpp
 msgid "&Output gain (dB):"
-msgstr "&Wzmocnienie sygnału (dB):"
+msgstr "Wzm&ocnienie wyjściowe (dB):"
 
 #: src/effects/Phaser.cpp src/effects/Wahwah.cpp
 msgid "Output gain (dB)"
-msgstr "Wzmocnienie sygnału (dB)"
+msgstr "Wzmocnienie wyjściowe (dB)"
 
 #: src/effects/Repair.cpp
 msgid "Repair"
@@ -9437,7 +9437,7 @@ msgstr "VST"
 
 #: src/effects/Wahwah.cpp
 msgid "Wahwah"
-msgstr "Wahwah"
+msgstr "Wah-wah"
 
 #: src/effects/Wahwah.cpp
 msgid ""
@@ -9968,7 +9968,7 @@ msgstr "Zapewnia efekty Vamp w Sneedacity"
 msgid ""
 "Sorry, Vamp Plug-ins cannot be run on stereo tracks where the individual "
 "channels of the track do not match."
-msgstr "Niestety, wtyczka Vamp nie działa na ścieżkach stereo, gdzie poszczególne kanały nie pasują."
+msgstr "Niestety, wtyczek Vamp nie można uruchomić na ścieżkach stereo, w których poszczególne kanały ścieżki nie pasują do siebie."
 
 #: src/effects/vamp/VampEffect.cpp
 msgid "Sorry, failed to load Vamp Plug-in."
@@ -10007,7 +10007,7 @@ msgstr "Edytuj znaczniki metadanych"
 
 #: src/export/Export.cpp
 msgid "Exported Tags"
-msgstr "Eksportowane znaczniki"
+msgstr "Wyeksportowano znaczniki"
 
 #: src/export/Export.cpp
 msgid "All selected audio is muted."
@@ -10304,7 +10304,7 @@ msgstr "Częstotliwość próbkowania (%d) projektu nie jest obsługiwana\nprzez
 msgid ""
 "The project sample rate (%d) and bit rate (%d kbps) combination is not\n"
 "supported by the current output file format. "
-msgstr "Kombinacja częstotliwości próbkowania (%d) i szybkości transmisji (%d kbps)\nprojektu nie są obsługiwane przez bieżący format pliku wyjściowego."
+msgstr "Kombinacja częstotliwości próbkowania (%d) i bitrate'u (%d kbps)\nprojektu nie są obsługiwane przez bieżący format pliku wyjściowego."
 
 #: src/export/ExportFFmpeg.cpp src/export/ExportMP3.cpp
 msgid "You may resample to one of the rates below."
@@ -10324,7 +10324,7 @@ msgstr "%d kbps"
 
 #: src/export/ExportFFmpegDialogs.cpp src/export/ExportMP2.cpp
 msgid "Bit Rate:"
-msgstr "Szybkość transmisji:"
+msgstr "Bitrate:"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Quality (kbps):"
@@ -10446,7 +10446,7 @@ msgstr "Długość ramki:"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Vbr Mode:"
-msgstr "Tryb Vbr:"
+msgstr "Tryb VBR:"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Application:"
@@ -10640,7 +10640,7 @@ msgid ""
 "Some codecs may only accept specific values (128k, 192k, 256k etc)\n"
 "0 - automatic\n"
 "Recommended - 192000"
-msgstr "Szybkość transmisji (bity na sekundę) - wpływa na rozmiar i jakość pliku\nNiektóre kodeki akceptują tylko niektóre wartości (128k, 192k, 256k itp.)\n0 - automatycznie\nZalecane - 192000"
+msgstr "Bitrate (bity na sekundę) - wpływa na rozmiar i jakość pliku\nNiektóre kodeki akceptują tylko niektóre wartości (128k, 192k, 256k itp.)\n0 - automatycznie\nZalecane - 192000"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10648,7 +10648,7 @@ msgid ""
 "Required for vorbis\n"
 "0 - automatic\n"
 "-1 - off (use bitrate instead)"
-msgstr "Ogólna jakość używana różnie przez różne kodeki\nWymagane dla Vorbis\n0 - automatycznie\n-1 - wyłączone (zamiast tego użyj częstotliwości próbkowania)"
+msgstr "Ogólna jakość używana różnie przez różne kodeki\nWymagane dla Vorbis\n0 - automatycznie\n-1 - wyłączone (zamiast tego użyj bitrate'u)"
 
 #: src/export/ExportFFmpegDialogs.cpp src/export/ExportOGG.cpp
 msgid "Quality:"
@@ -10804,7 +10804,7 @@ msgid ""
 "Maximum bit rate of the multiplexed stream\n"
 "Optional\n"
 "0 - default"
-msgstr "Maksymalna szybkość transmisji multipleksowego strumienia\nOpcjonalna\n0 - domyślna"
+msgstr "Maksymalny bitrate multipleksowego strumienia\nOpcjonalna\n0 - domyślna"
 
 #. i18n-hint: 'mux' is short for multiplexor, a device that selects between
 #. several inputs
@@ -10813,7 +10813,7 @@ msgstr "Maksymalna szybkość transmisji multipleksowego strumienia\nOpcjonalna\
 #. it has a hard to predict effect on the degree of compression
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Mux Rate:"
-msgstr "Współczynnik Muks:"
+msgstr "Współczynnik MUX:"
 
 #. i18n-hint: 'Packet Size' is a parameter that has some bearing on
 #. compression ratio for MPEG
@@ -10872,20 +10872,20 @@ msgstr "Niekompatybilny format i kodek"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Failed to guess format"
-msgstr "Nie odgadnięto formatu"
+msgstr "Nie udało się odgadnąć formatu"
 
 #. i18n-hint: "codec" is short for a "coder-decoder" algorithm
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Failed to find the codec"
-msgstr "Nie znaleziono kodeka"
+msgstr "Nie udało się znaleźć kodeka"
 
 #: src/export/ExportFLAC.cpp
 msgid "16 bit"
-msgstr "16-bitowy"
+msgstr "16-bitowa"
 
 #: src/export/ExportFLAC.cpp
 msgid "24 bit"
-msgstr "24-bitowy"
+msgstr "24-bitowa"
 
 #: src/export/ExportFLAC.cpp
 msgid "0 (fastest)"
@@ -10933,7 +10933,7 @@ msgstr "Pliki MP2"
 
 #: src/export/ExportMP2.cpp
 msgid "Cannot export MP2 with this sample rate and bit rate"
-msgstr "Nie można eksportować MP2 z tą częstotliwością próbkowania i szybkością transmisji"
+msgstr "Nie można eksportować MP2 z tą częstotliwością próbkowania i bitrate'em"
 
 #: src/export/ExportMP2.cpp src/export/ExportMP3.cpp src/export/ExportOGG.cpp
 msgid "Unable to open target file for writing"
@@ -11046,7 +11046,7 @@ msgstr "Stereo"
 
 #: src/export/ExportMP3.cpp
 msgid "Bit Rate Mode:"
-msgstr "Tryb szybkości transmisji:"
+msgstr "Tryb bitrate'u:"
 
 #. i18n-hint: meaning accuracy in reproduction of sounds
 #: src/export/ExportMP3.cpp src/prefs/QualityPrefs.cpp
@@ -11195,7 +11195,7 @@ msgstr "Częstotliwość próbkowania (%d) nie jest obsługiwana przez\nformat p
 msgid ""
 "The project sample rate (%d) and bit rate (%d kbps) combination is not\n"
 "supported by the MP3 file format. "
-msgstr "Kombinacja częstotliwości próbkowania (%d) i szybkości transmisji (%d kbps)\nprojektu nie są obsługiwane przez format plików MP3."
+msgstr "Kombinacja częstotliwości próbkowania (%d) i bitrate'u (%d kbps)\nprojektu nie są obsługiwane przez format plików MP3."
 
 #: src/export/ExportMP3.cpp
 msgid "MP3 export library not found"
@@ -11237,7 +11237,7 @@ msgstr "Opcje:"
 
 #: src/export/ExportMultiple.cpp
 msgid "Split files based on:"
-msgstr "Rozdziel pliki na podstawie:"
+msgstr "Podziel pliki na podstawie:"
 
 #: src/export/ExportMultiple.cpp
 msgid "Include audio before first label"
@@ -11286,7 +11286,7 @@ msgstr "Pomyślnie utworzono \"%s\"."
 
 #: src/export/ExportMultiple.cpp
 msgid "Choose a location to save the exported files"
-msgstr "Wybierz miejsce do zapisania eksportowanych plików"
+msgstr "Wybierz miejsce do zapisania wyeksportowanych plików"
 
 #: src/export/ExportMultiple.cpp
 #, c-format
@@ -11710,7 +11710,7 @@ msgstr "Importuj projekt"
 msgid ""
 "The active project already has a time track and one was encountered in the "
 "project being imported, bypassing imported time track."
-msgstr "Aktywny projekt ma już ścieżkę czasową i napotkano ją w importowanym projekcie, pomijając importowaną ścieżkę czasową."
+msgstr "Aktywny projekt ma już ścieżkę czasową i napotkano ją w zaimportowanym projekcie, pomijając zaimportowaną ścieżkę czasową."
 
 #: src/import/ImportAUP.cpp
 msgid "Invalid sequence 'maxsamples' attribute."
@@ -11726,7 +11726,7 @@ msgstr "Nieprawidłowy atrybut 'numsamples' sekwencji."
 
 #: src/import/ImportAUP.cpp
 msgid "Unable to parse the waveblock 'start' attribute"
-msgstr "Nie można przeanalizować atrybutu waveblock 'start'"
+msgstr "Nie można przeanalizować atrybutu waveblock 'start'."
 
 #: src/import/ImportAUP.cpp
 #, c-format
@@ -11771,7 +11771,7 @@ msgstr "Błąd podczas przetwarzania %s\n\nWstawianie ciszy."
 #: src/import/ImportAUP.cpp
 #, c-format
 msgid "Failed to open %s"
-msgstr "Błąd przy otwieraniu %s"
+msgstr "Nie udało się otworzyć %s"
 
 #: src/import/ImportAUP.cpp
 #, c-format
@@ -11792,7 +11792,7 @@ msgstr "Pliki kompatybilne z FFmpeg"
 #, c-format
 msgid ""
 "Index[%02x] Codec[%s], Language[%s], Bitrate[%s], Channels[%d], Duration[%d]"
-msgstr "Indeks[%02x] Kodek[%s], Język[%s], Częstotliwość próbkowania[%s], Kanały[%d], Długość[%d]"
+msgstr "Indeks[%02x] Kodek[%s], Język[%s], Bitrate[%s], Kanały[%d], Długość[%d]"
 
 #: src/import/ImportFLAC.cpp
 msgid "FLAC files"
@@ -11863,7 +11863,7 @@ msgstr "Nieprawidłowe przesunięcie ścieżki w pliku LOF."
 #: src/import/ImportMIDI.cpp
 #, c-format
 msgid "Imported MIDI from '%s'"
-msgstr "Importowano MIDI z '%s'"
+msgstr "Zaimportowano MIDI z '%s'"
 
 #: src/import/ImportMIDI.cpp
 msgid "Import MIDI"
@@ -12024,31 +12024,31 @@ msgstr "XI (FastTracker 2)"
 
 #: src/import/ImportPCM.cpp
 msgid "Signed 8 bit PCM"
-msgstr "Signed 8-bitowy PCM"
+msgstr "Signed 8-bitowe PCM"
 
 #: src/import/ImportPCM.cpp
 msgid "Signed 16 bit PCM"
-msgstr "Signed 16-bitowy PCM"
+msgstr "Signed 16-bitowe PCM"
 
 #: src/import/ImportPCM.cpp
 msgid "Signed 24 bit PCM"
-msgstr "Signed 24-bitowy PCM"
+msgstr "Signed 24-bitowe PCM"
 
 #: src/import/ImportPCM.cpp
 msgid "Signed 32 bit PCM"
-msgstr "Signed 32-bitowy PCM"
+msgstr "Signed 32-bitowe PCM"
 
 #: src/import/ImportPCM.cpp
 msgid "Unsigned 8 bit PCM"
-msgstr "Unsigned 8-bitowy PCM"
+msgstr "Unsigned 8-bitowe PCM"
 
 #: src/import/ImportPCM.cpp
 msgid "32 bit float"
-msgstr "32-bitowy float"
+msgstr "32-bitowe float"
 
 #: src/import/ImportPCM.cpp
 msgid "64 bit float"
-msgstr "64-bitowy float"
+msgstr "64-bitowe float"
 
 #: src/import/ImportPCM.cpp
 msgid "U-Law"
@@ -12080,15 +12080,15 @@ msgstr "24kbs G723 ADPCM"
 
 #: src/import/ImportPCM.cpp
 msgid "12 bit DWVW"
-msgstr "12-bitowy DWVW"
+msgstr "12-bitowe DWVW"
 
 #: src/import/ImportPCM.cpp
 msgid "16 bit DWVW"
-msgstr "16-bitowy DWVW"
+msgstr "16-bitowe DWVW"
 
 #: src/import/ImportPCM.cpp
 msgid "24 bit DWVW"
-msgstr "24-bitowy DWVW"
+msgstr "24-bitowe DWVW"
 
 #: src/import/ImportPCM.cpp
 msgid "VOX ADPCM"
@@ -12096,11 +12096,11 @@ msgstr "VOX ADPCM"
 
 #: src/import/ImportPCM.cpp
 msgid "16 bit DPCM"
-msgstr "16-bitowy DPCM"
+msgstr "16-bitowe DPCM"
 
 #: src/import/ImportPCM.cpp
 msgid "8 bit DPCM"
-msgstr "8-bitowy DPCM"
+msgstr "8-bitowe DPCM"
 
 #: src/import/ImportPCM.cpp
 msgid "Vorbis"
@@ -12196,7 +12196,7 @@ msgstr "Kanały:"
 #. i18n-hint: (noun)
 #: src/import/ImportRaw.cpp
 msgid "Start offset:"
-msgstr "Przesunięcie początku:"
+msgstr "Przesunięcie początkowe:"
 
 #: src/import/ImportRaw.cpp
 msgid "bytes"
@@ -12398,20 +12398,20 @@ msgstr "Duplikuj"
 
 #: src/menus/EditMenus.cpp
 msgid "Split-cut to the clipboard"
-msgstr "Rozdziel wytnij do schowka"
+msgstr "Podziel wytnij do schowka"
 
 #: src/menus/EditMenus.cpp
 msgid "Split Cut"
-msgstr "Rozdziel wytnij"
+msgstr "Podziel wytnij"
 
 #: src/menus/EditMenus.cpp
 #, c-format
 msgid "Split-deleted %.2f seconds at t=%.2f"
-msgstr "Rozdzielono usunięto %.2f sekund w t=%.2f"
+msgstr "Podziel usunięto %.2f sekund w t=%.2f"
 
 #: src/menus/EditMenus.cpp
 msgid "Split Delete"
-msgstr "Rodziel usuń"
+msgstr "Podziel usuń"
 
 #: src/menus/EditMenus.cpp
 #, c-format
@@ -12436,15 +12436,15 @@ msgstr "Przytnij dźwięk"
 #: src/menus/EditMenus.cpp
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 msgid "Split"
-msgstr "Rozdziel"
+msgstr "Podziel"
 
 #: src/menus/EditMenus.cpp
 msgid "Split to new track"
-msgstr "Rozdziel do nowej ścieżki"
+msgstr "Podziel do nowej ścieżki"
 
 #: src/menus/EditMenus.cpp
 msgid "Split New"
-msgstr "Rozdziel nowy"
+msgstr "Podziel nowy"
 
 #: src/menus/EditMenus.cpp
 #, c-format
@@ -12503,12 +12503,12 @@ msgstr "&Usuń dźwięk"
 #. i18n-hint: (verb) Do a special kind of cut
 #: src/menus/EditMenus.cpp
 msgid "Spl&it Cut"
-msgstr "Rozdziel &wytnij"
+msgstr "Podz&iel wytnij"
 
 #. i18n-hint: (verb) Do a special kind of DELETE
 #: src/menus/EditMenus.cpp
 msgid "Split D&elete"
-msgstr "Rozdziel &usuń"
+msgstr "Podzi&el usuń"
 
 #. i18n-hint: (verb)
 #: src/menus/EditMenus.cpp
@@ -12523,11 +12523,11 @@ msgstr "Przy&tnij dźwięk"
 #. i18n-hint: (verb) It's an item on a menu.
 #: src/menus/EditMenus.cpp
 msgid "Sp&lit"
-msgstr "&Rozdziel"
+msgstr "Podzie&l"
 
 #: src/menus/EditMenus.cpp
 msgid "Split Ne&w"
-msgstr "Rozdziel no&wy"
+msgstr "Podziel no&wy"
 
 #. i18n-hint: (verb)
 #: src/menus/EditMenus.cpp src/menus/LabelMenus.cpp
@@ -12663,7 +12663,7 @@ msgstr "Eksportuj MIDI"
 #: src/menus/FileMenus.cpp
 #, c-format
 msgid "Imported labels from '%s'"
-msgstr "Importowano etykiety z '%s'"
+msgstr "Zaimportowano etykiety z '%s'"
 
 #: src/menus/FileMenus.cpp
 msgid "Import Labels"
@@ -12894,7 +12894,7 @@ msgstr "&Sprawdź aktualizacje..."
 #: src/menus/LabelMenus.cpp src/toolbars/TranscriptionToolBar.cpp
 #: src/tracks/labeltrack/ui/LabelTrackView.cpp
 msgid "Added label"
-msgstr "Dodaj etykietę"
+msgstr "Dodano etykietę"
 
 #: src/menus/LabelMenus.cpp
 msgid "Paste Text to New Label"
@@ -12904,98 +12904,98 @@ msgstr "Wklej tekst do nowej etykiety"
 #. regions.
 #: src/menus/LabelMenus.cpp
 msgid "Cut labeled audio regions to clipboard"
-msgstr "Wytnij zaznaczone obszary dźwięku do schowka"
+msgstr "Wytnij oznaczone obszary dźwięku do schowka"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Cut Labeled Audio"
-msgstr "Wytnij zaznaczony dźwięk"
+msgstr "Wytnij oznaczony dźwięk"
 
 #. i18n-hint: (verb) Sneedacity has just deleted the labeled audio regions
 #: src/menus/LabelMenus.cpp
 msgid "Deleted labeled audio regions"
-msgstr "Usunięto zaznaczone obszary dźwięku"
+msgstr "Usunięto oznaczone obszary dźwięku"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Delete Labeled Audio"
-msgstr "Usuń zaznaczony dźwięk"
+msgstr "Usuń oznaczony dźwięk"
 
 #. i18n-hint: (verb) Sneedacity has just split cut the labeled audio
 #. regions
 #: src/menus/LabelMenus.cpp
 msgid "Split Cut labeled audio regions to clipboard"
-msgstr "Rodziel wycięte zaznaczone obszary dźwięku do schowka"
+msgstr "Podziel wytnij oznaczone obszary dźwięku do schowka"
 
 #. i18n-hint: (verb) Do a special kind of cut on the labels
 #: src/menus/LabelMenus.cpp
 msgid "Split Cut Labeled Audio"
-msgstr "Rodziel wycięty zaznaczony dźwięk"
+msgstr "Podziel wytnij oznaczony dźwięk"
 
 #. i18n-hint: (verb) Sneedacity has just done a special kind of DELETE on
 #. the labeled audio regions
 #: src/menus/LabelMenus.cpp
 msgid "Split Deleted labeled audio regions"
-msgstr "Rodziel usunięte zaznaczone obszary dźwięku"
+msgstr "Podziel usunięto oznaczone obszary dźwięku"
 
 #. i18n-hint: (verb) Do a special kind of DELETE on labeled audio
 #. regions
 #: src/menus/LabelMenus.cpp
 msgid "Split Delete Labeled Audio"
-msgstr "Rodziel usunięty zaznaczony dźwięk"
+msgstr "Podziel usuń oznaczony dźwięk"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Silenced labeled audio regions"
-msgstr "Wyciszono zaznaczone obszary dźwięku"
+msgstr "Wyciszono oznaczone obszary dźwięku"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Silence Labeled Audio"
-msgstr "Wycisz zaznaczony dźwięk"
+msgstr "Wycisz oznaczony dźwięk"
 
 #: src/menus/LabelMenus.cpp
 msgid "Copied labeled audio regions to clipboard"
-msgstr "Skopiowano zaznaczone obszary dźwięku do schowka"
+msgstr "Skopiowano oznaczone obszary dźwięku do schowka"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Copy Labeled Audio"
-msgstr "Kopiuj zaznaczony dźwięk"
+msgstr "Kopiuj oznaczony dźwięk"
 
 #. i18n-hint: (verb) past tense.  Sneedacity has just split the labeled
 #. audio (a point or a region)
 #: src/menus/LabelMenus.cpp
 msgid "Split labeled audio (points or regions)"
-msgstr "Rodziel zaznaczony dźwięk (punkty lub obszary)"
+msgstr "Podziel oznaczony dźwięk (punkty lub obszary)"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Split Labeled Audio"
-msgstr "Rodziel zaznaczony dźwięk"
+msgstr "Podziel oznaczony dźwięk"
 
 #. i18n-hint: (verb) Sneedacity has just joined the labeled audio (points or
 #. regions)
 #: src/menus/LabelMenus.cpp
 msgid "Joined labeled audio (points or regions)"
-msgstr "Połączono zaznaczony dźwięk (punkty lub obszary)"
+msgstr "Połączono oznaczony dźwięk (punkty lub obszary)"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Join Labeled Audio"
-msgstr "Połącz zaznaczony dźwięk"
+msgstr "Połącz oznaczony dźwięk"
 
 #. i18n-hint: (verb) Sneedacity has just detached the labeled audio regions.
 #. This message appears in history and tells you about something
 #. Sneedacity has done.
 #: src/menus/LabelMenus.cpp
 msgid "Detached labeled audio regions"
-msgstr "Odłączono zaznaczone obszary dźwięku"
+msgstr "Odłączono oznaczone obszary dźwięku"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Detach Labeled Audio"
-msgstr "Odłącz zaznaczony dźwięk"
+msgstr "Odłącz oznaczony dźwięk"
 
 #: src/menus/LabelMenus.cpp
 msgid "&Labels"
@@ -13023,7 +13023,7 @@ msgstr "&Wpisz, aby utworzyć etykietę (włącz/wyłącz)"
 
 #: src/menus/LabelMenus.cpp
 msgid "La&beled Audio"
-msgstr "Ety&kieta dźwięku"
+msgstr "Etykieta &dźwięku"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
@@ -13041,19 +13041,19 @@ msgstr "Etykieta usuń"
 #. i18n-hint: (verb) A special way to cut out a piece of audio
 #: src/menus/LabelMenus.cpp
 msgid "&Split Cut"
-msgstr "&Rozdziel wytnij"
+msgstr "Pod&ziel wytnij"
 
 #: src/menus/LabelMenus.cpp
 msgid "Label Split Cut"
-msgstr "Etykieta rozdziel wytnij"
+msgstr "Etykieta podziel wytnij"
 
 #: src/menus/LabelMenus.cpp
 msgid "Sp&lit Delete"
-msgstr "Roz&dziel usuń"
+msgstr "Podzie&l usuń"
 
 #: src/menus/LabelMenus.cpp
 msgid "Label Split Delete"
-msgstr "Etykieta rozdziel usuń"
+msgstr "Etykieta podziel usuń"
 
 #: src/menus/LabelMenus.cpp
 msgid "Silence &Audio"
@@ -13061,7 +13061,7 @@ msgstr "Wycisz &dźwięk"
 
 #: src/menus/LabelMenus.cpp
 msgid "Label Silence"
-msgstr "Etykieta cisza"
+msgstr "Etykieta wycisz"
 
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
@@ -13075,11 +13075,11 @@ msgstr "Etykieta kopiuj"
 #. i18n-hint: (verb)
 #: src/menus/LabelMenus.cpp
 msgid "Spli&t"
-msgstr "Roz&dziel"
+msgstr "Pod&ziel"
 
 #: src/menus/LabelMenus.cpp
 msgid "Label Split"
-msgstr "Etykieta rozdziel"
+msgstr "Etykieta podziel"
 
 #: src/menus/LabelMenus.cpp
 msgid "Label Join"
@@ -13107,35 +13107,35 @@ msgstr "Przejdź do &przodu z pasków narzędzi do ścieżek"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Move Focus to &Previous Track"
-msgstr "Przenieś uaktywnienie do &poprzedniej ścieżki"
+msgstr "&Przenieś skupienie do poprzedniej ścieżki"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Move Focus to &Next Track"
-msgstr "Przenieś uaktywnienie do &następnej ścieżki"
+msgstr "Prze&nieś skupienie do następnej ścieżki"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Move Focus to &First Track"
-msgstr "Przenieś uaktywnienie do &pierwszej ścieżki"
+msgstr "Przenieś skupienie do pier&wszej ścieżki"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Move Focus to &Last Track"
-msgstr "Przenieś uaktywnienie do &ostatniej ścieżki"
+msgstr "&Przenieś skupienie do ostatniej ścieżki"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Move Focus to P&revious and Select"
-msgstr "Przenieś uaktywnienie do p&oprzedniej i zaznacz"
+msgstr "P&rzenieś skupienie do poprzedniej i zaznacz"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Move Focus to N&ext and Select"
-msgstr "Przenieś uaktywnienie do n&astępnej i zaznacz"
+msgstr "Prz&enieś skupienie do następnej i zaznacz"
 
 #: src/menus/NavigationMenus.cpp
 msgid "&Toggle Focused Track"
-msgstr "&Przemieszczaj się między ścieżkami"
+msgstr "Pr&zełącz się między skupionymi ścieżkami"
 
 #: src/menus/NavigationMenus.cpp
 msgid "Toggle Focuse&d Track"
-msgstr "Przemieszczaj się &między ścieżkami"
+msgstr "Przełącz się mię&dzy skupionymi ścieżkami"
 
 #: src/menus/PluginMenus.cpp
 msgid "Uncategorized"
@@ -13417,7 +13417,7 @@ msgstr "&Odzyskaj zaznaczenie"
 
 #: src/menus/SelectMenus.cpp
 msgid "S&pectral"
-msgstr "&Widmowe"
+msgstr "Wi&dmo"
 
 #: src/menus/SelectMenus.cpp
 msgid "To&ggle Spectral Selection"
@@ -13557,11 +13557,11 @@ msgstr "&Kursor"
 
 #: src/menus/SelectMenus.cpp
 msgid "Cursor &Left"
-msgstr "&Lewy kursor"
+msgstr "Kursor w &lewo"
 
 #: src/menus/SelectMenus.cpp
 msgid "Cursor &Right"
-msgstr "&Prawy kursor"
+msgstr "Kursor w p&rawo"
 
 #: src/menus/SelectMenus.cpp
 msgid "Cursor Sh&ort Jump Left"
@@ -13609,12 +13609,12 @@ msgstr "Paski &narzędzi"
 #. i18n-hint: (verb)
 #: src/menus/ToolbarMenus.cpp
 msgid "Reset Toolb&ars"
-msgstr "Zresetuj paski na&rzędzi"
+msgstr "Resetuj p&aski narzędzi"
 
 #: src/menus/TrackMenus.cpp
 #, c-format
 msgid "Rendered all audio in track '%s'"
-msgstr "Wszystkie dźwięki renderowane w ścieżce '%s'"
+msgstr "Wyrenderowano cały dźwięk w ścieżce '%s'"
 
 #. i18n-hint: Convert the audio into a more usable form, so apply
 #. * panning and amplification and write to some external file.
@@ -13625,17 +13625,17 @@ msgstr "Renderuj"
 #: src/menus/TrackMenus.cpp
 #, c-format
 msgid "Mixed and rendered %d tracks into one new stereo track"
-msgstr "Wymieszane i renderowane %d ścieżki w jedną nową ścieżkę stereo"
+msgstr "Zmiksowano i wyrenderowano %d ścieżki w jedną nową ścieżkę stereo"
 
 #: src/menus/TrackMenus.cpp
 #, c-format
 msgid "Mixed and rendered %d tracks into one new mono track"
-msgstr "Wymieszane i renderowane %d ścieżki w jedną nową ścieżkę mono"
+msgstr "Zmiksowano i wyrenderowano %d ścieżki w jedną nową ścieżkę mono"
 
 #. i18n-hint: One or more audio tracks have been panned
 #: src/menus/TrackMenus.cpp
 msgid "Panned audio track(s)"
-msgstr "Wyśrodkowana(e) ścieżka(i) dźwiękowa(e)"
+msgstr "Wyśrodkowano ścieżkę(i) dźwiękową(e)"
 
 #: src/menus/TrackMenus.cpp
 msgid "Pan Track"
@@ -13766,11 +13766,11 @@ msgstr "Synchronizowanie MIDI i ścieżek dźwiękowych"
 
 #: src/menus/TrackMenus.cpp
 msgid "Adjusted gain"
-msgstr "Dostrojone wzmocnienie"
+msgstr "Skorygowano wzmocnienie"
 
 #: src/menus/TrackMenus.cpp
 msgid "Adjusted Pan"
-msgstr "Dostrojone przesunięcie"
+msgstr "Skorygowano panoramę"
 
 #: src/menus/TrackMenus.cpp
 msgid "Created new audio track"
@@ -13936,7 +13936,7 @@ msgstr "&Panorama"
 
 #: src/menus/TrackMenus.cpp
 msgid "&Left"
-msgstr "&Lewo"
+msgstr "W &lewo"
 
 #: src/menus/TrackMenus.cpp
 msgid "Pan Left"
@@ -13944,7 +13944,7 @@ msgstr "Lewa panorama"
 
 #: src/menus/TrackMenus.cpp
 msgid "&Right"
-msgstr "&Prawo"
+msgstr "W p&rawo"
 
 #: src/menus/TrackMenus.cpp
 msgid "Pan Right"
@@ -13984,7 +13984,7 @@ msgstr "S&ortuj ścieżki"
 
 #: src/menus/TrackMenus.cpp
 msgid "By &Start Time"
-msgstr "Według czasu &początku"
+msgstr "Według cza&su rozpoczęcia"
 
 #: src/menus/TrackMenus.cpp
 msgid "By &Name"
@@ -13992,7 +13992,7 @@ msgstr "Według &nazwy"
 
 #: src/menus/TrackMenus.cpp
 msgid "Sync-&Lock Tracks (on/off)"
-msgstr "Synchronizuj-zab&lokuj ścieżki (włącz/wyłącz)"
+msgstr "Ścieżki z b&lokadą synchronizacji (włącz/wyłącz)"
 
 #: src/menus/TrackMenus.cpp
 msgid "&Track"
@@ -14000,59 +14000,59 @@ msgstr "&Ścieżka"
 
 #: src/menus/TrackMenus.cpp
 msgid "Change P&an on Focused Track..."
-msgstr "Zmień &przesunięcie na zaznaczonej ścieżce..."
+msgstr "Zmień p&anoramę na skupionej ścieżce..."
 
 #: src/menus/TrackMenus.cpp
 msgid "Pan &Left on Focused Track"
-msgstr "Przesuń w &lewo na zaznaczonej ścieżce"
+msgstr "Panorama w &lewo na skupionej ścieżce"
 
 #: src/menus/TrackMenus.cpp
 msgid "Pan &Right on Focused Track"
-msgstr "Przesuń w &prawo na zaznaczonej ścieżce"
+msgstr "Pano&rama w prawo na skupionej ścieżce"
 
 #: src/menus/TrackMenus.cpp
 msgid "Change Gai&n on Focused Track..."
-msgstr "Zmień moc syg&nału na zaznaczonej ścieżce..."
+msgstr "Zmień moc syg&nału na skupionej ścieżce..."
 
 #: src/menus/TrackMenus.cpp
 msgid "&Increase Gain on Focused Track"
-msgstr "Z&większ moc sygnału na zaznaczonej ścieżce"
+msgstr "Zw&iększ moc sygnału na skupionej ścieżce"
 
 #: src/menus/TrackMenus.cpp
 msgid "&Decrease Gain on Focused Track"
-msgstr "Z&mniejsz moc sygnału na zaznaczonej ścieżce"
+msgstr "Zmniejsz mo&c sygnału na skupionej ścieżce"
 
 #: src/menus/TrackMenus.cpp
 msgid "Op&en Menu on Focused Track..."
-msgstr "Ot&wórz menu na zaznaczonej ścieżce..."
+msgstr "Otwórz m&enu na skupionej ścieżce..."
 
 #: src/menus/TrackMenus.cpp
 msgid "M&ute/Unmute Focused Track"
-msgstr "Wy&cisz/zgłośnij zaznaczoną ścieżkę"
+msgstr "Wycisz/zgłośnij sk&upioną ścieżkę"
 
 #: src/menus/TrackMenus.cpp
 msgid "&Solo/Unsolo Focused Track"
-msgstr "&Solo/unsolo zaznaczoną ścieżkę"
+msgstr "&Soluj/niesoluj skupioną ścieżkę"
 
 #: src/menus/TrackMenus.cpp
 msgid "&Close Focused Track"
-msgstr "&Zamknij zaznaczoną ścieżkę"
+msgstr "Zamknij skupioną ś&cieżkę"
 
 #: src/menus/TrackMenus.cpp
 msgid "Move Focused Track U&p"
-msgstr "Przesuń zaznaczoną ścieżkę w &górę"
+msgstr "&Przesuń skupioną ścieżkę w górę"
 
 #: src/menus/TrackMenus.cpp
 msgid "Move Focused Track Do&wn"
-msgstr "Przesuń zaznaczoną ścieżkę w &dół"
+msgstr "Przesuń skupioną ścieżkę &w dół"
 
 #: src/menus/TrackMenus.cpp
 msgid "Move Focused Track to T&op"
-msgstr "Przesuń zaznaczoną ścieżkę na samą gó&rę"
+msgstr "Przesuń skupi&oną ścieżkę na samą górę"
 
 #: src/menus/TrackMenus.cpp
 msgid "Move Focused Track to &Bottom"
-msgstr "Przesuń zaznaczoną ścieżkę na sam dó&ł"
+msgstr "Przesuń skupioną ścieżkę na sam &dół"
 
 #. i18n-hint: These are strings for the status bar, and indicate whether
 #. Sneedacity
@@ -14076,7 +14076,7 @@ msgstr "brak etykiety ścieżki"
 
 #: src/menus/TransportMenus.cpp
 msgid "no label track at or below focused track"
-msgstr "brak etykiety powyżej lub poniżej zaznaczonej ścieżki"
+msgstr "brak etykiety powyżej lub poniżej skupionej ścieżki"
 
 #: src/menus/TransportMenus.cpp
 #, c-format
@@ -14262,11 +14262,11 @@ msgstr "Odtwarzaj prze&d i po końcu zaznaczenia"
 
 #: src/menus/TransportMenus.cpp
 msgid "Play C&ut Preview"
-msgstr "Odtwarzaj wy&cięty podgląd"
+msgstr "&Odtwarzaj podgląd cięcia"
 
 #: src/menus/TransportMenus.cpp
 msgid "&Play-at-Speed"
-msgstr "&Odtwarzaj z prędkością"
+msgstr "Odtwarzaj z &prędkością"
 
 #. i18n-hint: 'Normal Play-at-Speed' doesn't loop or cut preview.
 #: src/menus/TransportMenus.cpp
@@ -14333,7 +14333,7 @@ msgstr "&Przełącz powiększenie"
 
 #: src/menus/ViewMenus.cpp
 msgid "Advanced &Vertical Zooming"
-msgstr "Zaawansowane &pionowe powiększanie"
+msgstr "Zaa&wansowane powiększanie pionowe"
 
 #: src/menus/ViewMenus.cpp
 msgid "T&rack Size"
@@ -14373,7 +14373,7 @@ msgstr "Skocz do końca zaznaczenia"
 
 #: src/menus/ViewMenus.cpp
 msgid "&Extra Menus (on/off)"
-msgstr "&Dodatkowe menu (włącz/wyłącz)"
+msgstr "M&enu Ekstra (włącz/wyłącz)"
 
 #: src/menus/ViewMenus.cpp
 msgid "Track &Name (on/off)"
@@ -14786,11 +14786,11 @@ msgid ""
 "the items. They are likely to break the pattern matching. Unless you know "
 "what you are doing, it is recommended to trim spaces. Do you want Sneedacity "
 "to trim spaces for you?"
-msgstr "W jednym z elementów istnieją znaki odstępu (spacje, nowe linie, tabulatory). Na pewno popsują one dopasowywanie do wzorca. Zalecane jest obcięcie spacji, chyba że wiesz, co robisz. Chcesz, aby Sneedacity obciął spacje za Ciebie?"
+msgstr "W jednym z elementów istnieją znaki niedrukowalne (spacje, znaki nowej linii, tabulatory lub znaki końca linii). Na pewno popsują one dopasowywanie do wzorca. Zalecane jest obcięcie spacji, chyba że wiesz, co robisz. Chcesz, aby Sneedacity obciął spacje za Ciebie?"
 
 #: src/prefs/ExtImportPrefs.cpp
 msgid "Spaces detected"
-msgstr "Usuniętych odstępów"
+msgstr "Wykryto spacje"
 
 #: src/prefs/ExtImportPrefs.cpp
 msgid "Do you really want to delete selected rule?"
@@ -14881,7 +14881,7 @@ msgstr "Pokaż 'Jak uzyskać &pomoc' przy starcie"
 
 #: src/prefs/GUIPrefs.cpp
 msgid "Show e&xtra menus"
-msgstr "Pokaż &dodatkowe menu"
+msgstr "Po&każ menu Ekstra"
 
 #: src/prefs/GUIPrefs.cpp
 msgid "Show alternative &styling (Mac vs PC)"
@@ -14902,7 +14902,7 @@ msgstr "B&lend systemu i motyw Sneedacity"
 #. i18n-hint: RTL stands for 'Right to Left'
 #: src/prefs/GUIPrefs.cpp
 msgid "Use mostly Left-to-Right layouts in RTL languages"
-msgstr "Użyj najczęściej układy od lewej do prawej w językach RTL"
+msgstr "W językach \"od prawej do lewej\" użyj układów \"od lewej do prawej\""
 
 #: src/prefs/GUIPrefs.cpp
 msgid "Never use comma as decimal point"
@@ -14943,7 +14943,7 @@ msgstr "&Użyj zaawansowanych opcji miksowania"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "S&tandard"
-msgstr "S&tandardowe"
+msgstr "S&tandardowy"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "E&xtended (with frequency ranges)"
@@ -14972,7 +14972,7 @@ msgstr "&Ignoruj puste miejsce na początku"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "Exported Label Style:"
-msgstr "Eksportowany styl etykiety:"
+msgstr "Wyeksportowany styl etykiety:"
 
 #: src/prefs/ImportExportPrefs.cpp
 msgid "Exported Allegro (.gro) files save time as:"
@@ -15009,7 +15009,7 @@ msgstr "Powiązania klawiaturowe"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "View by:"
-msgstr "Widok:"
+msgstr "Wyświetl według:"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "&Tree"
@@ -15025,15 +15025,15 @@ msgstr "&Klucz"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "View by tree"
-msgstr "Widok drzewa"
+msgstr "Wyświetl według drzewa"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "View by name"
-msgstr "Widok nazwy"
+msgstr "Wyświetl według nazwy"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "View by key"
-msgstr "Widok klucza"
+msgstr "Wyświetl według klucza"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "Searc&h:"
@@ -15084,7 +15084,7 @@ msgstr "Błąd importowania skrótów klawiaturowych"
 msgid ""
 "The file with the shortcuts contains illegal shortcut duplicates for \"%s\" and \"%s\".\n"
 "Nothing is imported."
-msgstr "Plik ze skrótami zawiera niedozwolone duplikaty skrótów dla \"%s\" i \"%s\".\nNic nie zostało importowane."
+msgstr "Plik ze skrótami zawiera niedozwolone duplikaty skrótów dla \"%s\" i \"%s\".\nNic nie zostało zaimportowane."
 
 #: src/prefs/KeyConfigPrefs.cpp
 #, c-format
@@ -15095,7 +15095,7 @@ msgstr "Załadowano %d skróty klawiaturowe\n"
 msgid ""
 "\n"
 "The following commands are not mentioned in the imported file, but have their shortcuts removed because of the conflict with other new shortcuts:\n"
-msgstr "\nNastępujące polecenia nie są wymienione w importowanym pliku, ale ich skróty zostały usunięte z powodu konfliktu z innymi nowymi skrótami:\n"
+msgstr "\nNastępujące polecenia nie są wymienione w zaimportowanym pliku, ale ich skróty zostały usunięte z powodu konfliktu z innymi nowymi skrótami:\n"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "Loading Keyboard Shortcuts"
@@ -15189,7 +15189,7 @@ msgstr "Po&bierz"
 msgid ""
 "Sneedacity has automatically detected valid FFmpeg libraries.\n"
 "Do you still want to locate them manually?"
-msgstr "Sneedacity samoczynnie wykrył prawidłowe biblioteki FFmpeg.\nNadal chcesz ustalić ich położenie ręcznie?"
+msgstr "Sneedacity automatycznie wykrył prawidłowe biblioteki FFmpeg.\nNadal chcesz ustalić ich położenie ręcznie?"
 
 #: src/prefs/LibraryPrefs.cpp
 msgid "Success"
@@ -15314,7 +15314,7 @@ msgstr "Działanie polecenia"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Buttons"
-msgstr "Klawisze"
+msgstr "Przyciski"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Left-Click"
@@ -15511,7 +15511,7 @@ msgstr "&Długość:"
 #. i18n-hint: (noun) this is a preview of the cut
 #: src/prefs/PlaybackPrefs.cpp
 msgid "Cut Preview"
-msgstr "Wycięty podgląd"
+msgstr "Podgląd cięcia"
 
 #: src/prefs/PlaybackPrefs.cpp
 msgid "&Before cut region:"
@@ -16044,7 +16044,7 @@ msgstr "Edytowanie klipu może &przesunąć inne klipy"
 
 #: src/prefs/TracksBehaviorsPrefs.cpp
 msgid "\"Move track focus\" c&ycles repeatedly through tracks"
-msgstr "\"Przesuń uaktywnienie ścieżki\" przesuwa się c&yklicznie przez ścieżki"
+msgstr "\"Przesuń skupienie ścieżki\" przesuwa się c&yklicznie przez ścieżki"
 
 #: src/prefs/TracksBehaviorsPrefs.cpp
 msgid "&Type to create a label"
@@ -16060,7 +16060,7 @@ msgstr "Włącz przewijanie na lewo od &zera"
 
 #: src/prefs/TracksBehaviorsPrefs.cpp
 msgid "Advanced &vertical zooming"
-msgstr "Zaawansowane &pionowe powiększanie"
+msgstr "Zaa&wansowane powiększanie pionowe"
 
 #: src/prefs/TracksBehaviorsPrefs.cpp
 msgid "Solo &Button:"
@@ -16100,11 +16100,11 @@ msgstr "Ustaw powiększenie domyślne"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Minutes"
-msgstr "Minut"
+msgstr "Minuty"
 
 #: src/prefs/TracksPrefs.cpp plug-ins/sample-data-export.ny
 msgid "Seconds"
-msgstr "Sekund"
+msgstr "Sekundy"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "5ths of Seconds"
@@ -16132,11 +16132,11 @@ msgstr "Pięćsetne sekundy"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "MilliSeconds"
-msgstr "Milisekund"
+msgstr "Milisekundy"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Samples"
-msgstr "Sampli"
+msgstr "Sample"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "4 Pixels per Sample"
@@ -16153,7 +16153,7 @@ msgstr "Ustawienia ścieżek"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Auto-&fit track height"
-msgstr "Automatycznie &dopasuj wysokość ścieżki"
+msgstr "Autodo&pasowanie wysokości ścieżki"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Sho&w track name as overlay"
@@ -16161,7 +16161,7 @@ msgstr "Po&każ nazwę ścieżki jako nakładki"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Use &half-wave display when collapsed"
-msgstr "Użyj wyświetlacza &półfalowego, gdy zwinięty"
+msgstr "Użyj wyświetlacza &półfalowego, gdy jest zwinięty"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "&Pinned Recording/Playback head"
@@ -16169,7 +16169,7 @@ msgstr "&Podpięty do głowicy nagrywania/odtwarzania"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "A&uto-scroll if head unpinned"
-msgstr "A&utomatycznie przewiń, jeśli głowica jest odpięta"
+msgstr "A&utoprzewijanie, jeśli głowica jest odpięta"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Pinned &head position"
@@ -16262,7 +16262,7 @@ msgstr "&Zakres dB kształtu fali:"
 #. is playing or recording or stopped, and whether it is paused.
 #: src/toolbars/ControlToolBar.cpp
 msgid "Stopped"
-msgstr "Zatrzymano"
+msgstr "Zatrzymanie"
 
 #: src/toolbars/ControlToolBar.cpp
 msgid "Pause"
@@ -16302,7 +16302,7 @@ msgstr "Zaznacz do początku"
 #: src/toolbars/ControlToolBar.cpp src/tracks/ui/Scrubbing.cpp
 #, c-format
 msgid "%s Paused."
-msgstr "%s Zapauzowano."
+msgstr "%s zapauzowane."
 
 #: src/toolbars/ControlToolBar.cpp
 #, c-format
@@ -16596,7 +16596,7 @@ msgstr "Długość"
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackSliderHandles.cpp
 #: src/widgets/ASlider.cpp
 msgid "Center"
-msgstr "Wyśrodkuj"
+msgstr "Środek"
 
 #: src/toolbars/SelectionBar.cpp
 #, c-format
@@ -16644,7 +16644,7 @@ msgstr "Przepustowość"
 #. for selecting a frequency range of audio
 #: src/toolbars/SpectralSelectionBar.cpp
 msgid "Spe&ctral Selection Toolbar"
-msgstr "Pasek narzędzi &widmowego zaznaczenia"
+msgstr "Pasek narzędzi zazna&czenia widma"
 
 #: src/toolbars/TimeToolBar.cpp
 msgid "Time"
@@ -16851,7 +16851,7 @@ msgstr "Kliknij prawym przyciskiem myszki, aby wyświetlić menu."
 #: src/tracks/playabletrack/wavetrack/ui/SpectrumVZoomHandle.cpp
 #: src/tracks/playabletrack/wavetrack/ui/WaveformVZoomHandle.cpp
 msgid "Zoom Reset"
-msgstr "Zresetuj powiększenie"
+msgstr "Resetuj powiększenie"
 
 #: src/tracks/playabletrack/notetrack/ui/NoteTrackVZoomHandle.cpp
 #: src/tracks/playabletrack/wavetrack/ui/SpectrumVZoomHandle.cpp
@@ -16901,7 +16901,7 @@ msgstr "Połącz"
 
 #: src/tracks/playabletrack/wavetrack/ui/CutlineHandle.cpp
 msgid "Expanded Cut Line"
-msgstr "Rozszerzona linia cięcia"
+msgstr "Rozszerzono linię cięcia"
 
 #: src/tracks/playabletrack/wavetrack/ui/CutlineHandle.cpp
 #: src/tracks/ui/TrackButtonHandles.cpp
@@ -16910,7 +16910,7 @@ msgstr "Rozszerz"
 
 #: src/tracks/playabletrack/wavetrack/ui/CutlineHandle.cpp
 msgid "Removed Cut Line"
-msgstr "Usunięta linia cięcia"
+msgstr "Usunięto linię cięcia"
 
 #: src/tracks/playabletrack/wavetrack/ui/SampleHandle.cpp
 msgid "Click and drag to edit the samples"
@@ -16922,7 +16922,7 @@ msgstr "Aby użyć rysowania, powiększaj do momentu zobaczenia pojedynczych sam
 
 #: src/tracks/playabletrack/wavetrack/ui/SampleHandle.cpp
 msgid "Moved Samples"
-msgstr "Przeniesiono sample"
+msgstr "Przesunięto sample"
 
 #: src/tracks/playabletrack/wavetrack/ui/SampleHandle.cpp
 msgid "Sample Edit"
@@ -17071,11 +17071,11 @@ msgstr "Zamień &kanały stereo"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 msgid "Spl&it Stereo Track"
-msgstr "Roz&dziel ścieżkę stereo"
+msgstr "Podz&iel ścieżkę stereo"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 msgid "Split Stereo to Mo&no"
-msgstr "Rozdziel stereo do mo&no"
+msgstr "Podziel stereo do mo&no"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 msgid "Mono"
@@ -17117,17 +17117,17 @@ msgstr "Zamień kanały"
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 #, c-format
 msgid "Split stereo track '%s'"
-msgstr "Rozdziel ścieżkę stereo '%s'"
+msgstr "Podziel ścieżkę stereo '%s'"
 
 #. i18n-hint: The string names a track
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 #, c-format
 msgid "Split Stereo to Mono '%s'"
-msgstr "Rozdziel stereo do mono '%s'"
+msgstr "Podziel stereo do mono '%s'"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 msgid "Split to Mono"
-msgstr "Rozdziel do mono"
+msgstr "Podziel do mono"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackControls.cpp
 #, c-format
@@ -17161,14 +17161,14 @@ msgstr "%+.1f dB"
 #: src/widgets/ASlider.cpp
 #, c-format
 msgid "%.0f%% Left"
-msgstr "%.0f%% lewo"
+msgstr "%.0f%% w lewo"
 
 #. i18n-hint: Stereo pan setting
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackSliderHandles.cpp
 #: src/widgets/ASlider.cpp
 #, c-format
 msgid "%.0f%% Right"
-msgstr "%.0f%% prawo"
+msgstr "%.0f%% w prawo"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackView.cpp
 msgid ""
@@ -17326,7 +17326,7 @@ msgstr "Kliknij i przeciągnij, aby edytować obwiednię wzmocnienia"
 #. i18n-hint: (verb) Sneedacity has just adjusted the envelope .
 #: src/tracks/ui/EnvelopeHandle.cpp
 msgid "Adjusted envelope."
-msgstr "Wyrównana obwiednia."
+msgstr "Skorygowano obwiednię."
 
 #. i18n-hint: These commands assist the user in finding a sound by ear. ...
 #. "Scrubbing" is variable-speed playback, ...
@@ -17396,7 +17396,7 @@ msgstr "Kliknij i przeciągnij, aby przesunąć środek zaznaczonej częstotliwo
 
 #: src/tracks/ui/SelectHandle.cpp
 msgid "Click and drag to adjust frequency bandwidth."
-msgstr "Kliknij i przeciągnij, aby określić przepustowość pasma częstotliwości."
+msgstr "Kliknij i przeciągnij, aby dostosować przepustowość pasma częstotliwości."
 
 #. i18n-hint: These are the names of a menu and a command in that menu
 #: src/tracks/ui/SelectHandle.cpp
@@ -17434,7 +17434,7 @@ msgstr "Nie można przełączać się między ścieżkami"
 
 #: src/tracks/ui/TimeShiftHandle.cpp
 msgid "Moved clips to another track"
-msgstr "Klipy przeniesione do innej ścieżki"
+msgstr "Przesunięto klipy do innej ścieżki"
 
 #: src/tracks/ui/TimeShiftHandle.cpp
 #, c-format
@@ -17494,12 +17494,12 @@ msgstr "%s, aby zaznaczyć lub odznaczyć ścieżki."
 #: src/tracks/ui/TrackSelectHandle.cpp
 #, c-format
 msgid "Moved '%s' up"
-msgstr "Przesuń '%s' w górę"
+msgstr "Przesunięto '%s' w górę"
 
 #: src/tracks/ui/TrackSelectHandle.cpp
 #, c-format
 msgid "Moved '%s' down"
-msgstr "Przesuń '%s' w dół"
+msgstr "Przesunięto '%s' w dół"
 
 #: src/tracks/ui/TrackSelectHandle.cpp
 msgid "Move Track"
@@ -17550,7 +17550,7 @@ msgstr "%.2fx"
 #: src/widgets/FileDialog/gtk/FileDialogPrivate.cpp
 #, c-format
 msgid "File '%s' already exists, do you really want to overwrite it?"
-msgstr "Plik '%s' już istnieje, na pewno chcesz go zastąpić?"
+msgstr "Plik '%s' już istnieje. Na pewno chcesz go zastąpić?"
 
 #: src/widgets/FileDialog/gtk/FileDialogPrivate.cpp
 msgid "Please choose an existing file."
@@ -17643,7 +17643,7 @@ msgid ""
 "Higher refresh rates make the meter show more frequent\n"
 "changes. A rate of 30 per second or less should prevent\n"
 "the meter affecting audio quality on slower machines."
-msgstr "Wyższy współczynnik odświeżania sprawia, że miernik częściej pokazuje\nzmiany. Współczynnik 30 na sekundę lub mniej, powinien zapobiec\nwpływowi miernika na jakość dźwięku na słabszych komputerach."
+msgstr "Wyższe częstotliwości odświeżania sprawiają, że miernik pokazuje częstsze\nzmiany. Częstotliwość 30 na sekundę lub mniejsza powinna zapobiec\nwpływowi miernika na jakość dźwięku na słabszych komputerach."
 
 #: src/widgets/Meter.cpp
 msgid "Meter refresh rate per second [1-100]"
@@ -17671,7 +17671,7 @@ msgstr "Orientacja"
 
 #: src/widgets/Meter.cpp plug-ins/crossfadetracks.ny
 msgid "Automatic"
-msgstr "Automatyczna"
+msgstr "Automatycznie"
 
 #: src/widgets/Meter.cpp
 msgid "Horizontal"
@@ -17683,11 +17683,11 @@ msgstr "Pionowa"
 
 #: src/widgets/Meter.cpp
 msgid " Monitoring "
-msgstr "Monitorowanie"
+msgstr " Monitorowanie "
 
 #: src/widgets/Meter.cpp
 msgid " Active "
-msgstr "Aktywna"
+msgstr " Aktywne "
 
 #: src/widgets/Meter.cpp
 #, c-format
@@ -17701,7 +17701,7 @@ msgstr " Szczyt %.2f "
 
 #: src/widgets/Meter.cpp
 msgid " Clipped "
-msgstr "Obcięty"
+msgstr " Obcięte "
 
 #: src/widgets/MultiDialog.cpp
 msgid "Show Log for Details"
@@ -17765,7 +17765,7 @@ msgstr "gg:mm:ss + setne"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060>0100 s"
-msgstr "0100 g 060 m 060>0100 s"
+msgstr "0100 g 060 m 060<0100 s"
 
 #. i18n-hint: Name of time display format that shows time in hours,
 #. * minutes, seconds and milliseconds (1/1000 second)
@@ -17784,7 +17784,7 @@ msgstr "gg:mm:ss + milisekundy"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060>01000 s"
-msgstr "0100 g 060 m 060>01000 s"
+msgstr "0100 g 060 m 060<01000 s"
 
 #. i18n-hint: Name of time display format that shows time in hours,
 #. * minutes, seconds and samples (at the current project sample rate)
@@ -17802,7 +17802,7 @@ msgstr "gg:mm:ss + sample"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060 s+># samples"
-msgstr "0100 g 060 m 060 s+># sampli"
+msgstr "0100 g 060 m 060 s+<# sampli"
 
 #. i18n-hint: Name of time display format that shows time in samples (at the
 #. * current project sample rate).  For example the number of a sample at 1
@@ -17835,7 +17835,7 @@ msgstr "gg:mm:ss + klatki filmu (24 fps)"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060 s+>24 frames"
-msgstr "0100 g 060 m 060 s+>24 klatki"
+msgstr "0100 g 060 m 060 s+<24 klatki"
 
 #. i18n-hint: Name of time display format that shows time in frames (lots of
 #. * frames) at 24 frames per second (commonly used for films)
@@ -17867,7 +17867,7 @@ msgstr "gg:mm:ss + porzucone klatki NTSC"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060 s+>30 frames|N"
-msgstr "0100 g 060 m 060 s+>30 klatek|N"
+msgstr "0100 g 060 m 060 s+<30 klatek|N"
 
 #. i18n-hint: Name of time display format that shows time in hours, minutes,
 #. * seconds and frames at NTSC TV non-drop-frame rate (used for American /
@@ -17886,7 +17886,7 @@ msgstr "gg:mm:ss + nieporzucone klatki NTSC"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060 s+>030 frames| .999000999"
-msgstr "0100 g 060 m 060 s+>030 klatek| .999000999"
+msgstr "0100 g 060 m 060 s+<030 klatek| .999000999"
 
 #. i18n-hint: Name of time display format that shows time in frames at NTSC
 #. * TV frame rate (used for American / Japanese TV
@@ -17918,7 +17918,7 @@ msgstr "gg:mm:ss + klatki PAL (25 fps)"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060 s+>25 frames"
-msgstr "0100 g 060 m 060 s+>25 klatek"
+msgstr "0100 g 060 m 060 s+<25 klatek"
 
 #. i18n-hint: Name of time display format that shows time in frames at PAL
 #. * TV frame rate (used for European TV)
@@ -17949,7 +17949,7 @@ msgstr "gg:mm:ss + klatki CDDA (75 fps)"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "0100 h 060 m 060 s+>75 frames"
-msgstr "0100 g 060 m 060 s+>75 klatek"
+msgstr "0100 g 060 m 060 s+<75 klatek"
 
 #. i18n-hint: Name of time display format that shows time in frames at CD
 #. * Audio frame rate (75 frames per second)
@@ -17972,7 +17972,7 @@ msgstr "01000,01000 klatek|75"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "010,01000>0100 Hz"
-msgstr "010,01000>0100 Hz"
+msgstr "010,01000<0100 Hz"
 
 #: src/widgets/NumericTextCtrl.cpp
 msgid "centihertz"
@@ -17990,7 +17990,7 @@ msgstr "kHz"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "01000>01000 kHz|0.001"
-msgstr "01000>01000 kHz|0,001"
+msgstr "01000<01000 kHz|0,001"
 
 #: src/widgets/NumericTextCtrl.cpp
 msgid "hertz"
@@ -18009,7 +18009,7 @@ msgstr "oktaw"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "100>01000 octaves|1.442695041"
-msgstr "100>01000 oktaw|1,442695041"
+msgstr "100<01000 oktaw|1,442695041"
 
 #. i18n-hint: an octave is a doubling of frequency
 #: src/widgets/NumericTextCtrl.cpp
@@ -18030,7 +18030,7 @@ msgstr "półtonów + centów"
 #. * to '>' if your language uses a '.'.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "1000 semitones >0100 cents|17.312340491"
-msgstr "1000 półtonów >0100 centów|17,312340491"
+msgstr "1000 półtonów <0100 centów|17,312340491"
 
 #. i18n-hint: a cent is a hundredth of a semitone (which is 1/12 octave)
 #: src/widgets/NumericTextCtrl.cpp
@@ -18047,7 +18047,7 @@ msgstr "dekad"
 #. * Change the decimal points for your locale. Don't change the numbers.
 #: src/widgets/NumericTextCtrl.cpp
 msgid "10>01000 decades|0.434294482"
-msgstr "10>01000 dekad|0,434294482"
+msgstr "10<01000 dekad|0,434294482"
 
 #. i18n-hint: a decade is a tenfold increase of frequency
 #: src/widgets/NumericTextCtrl.cpp
@@ -18312,7 +18312,7 @@ msgstr "Zaznaczenie jest za krótkie.~%Musi być większe niż 2 sample."
 
 #: plug-ins/adjustable-fade.ny
 msgid "Adjustable Fade"
-msgstr "Przejście dające się regulować"
+msgstr "Regulowane przejście"
 
 #: plug-ins/adjustable-fade.ny
 msgid "Fade Type"
@@ -18491,7 +18491,7 @@ msgstr "Błąd.~%Nieprawidłowe zaznaczenie.~%Zaznaczono więcej niż 2 klipy d�
 #, lisp-format
 msgid ""
 "Error.~%Invalid selection.~%Empty space at start/ end of the selection."
-msgstr "Błąd.~%Nieprawidłowe zaznaczenie.~%EPusta przestrzeń na początku/końcu zaznaczenia."
+msgstr "Błąd.~%Nieprawidłowe zaznaczenie.~%EPuste miejsce na początku/końcu zaznaczenia."
 
 #: plug-ins/crossfadeclips.ny
 #, lisp-format
@@ -18636,7 +18636,7 @@ msgstr "Błąd.~%Nie można otworzyć pliku~%~s"
 #: plug-ins/eq-xml-to-txt-converter.ny
 #, lisp-format
 msgid "Error.~%File overwrite disallowed:~%\"~a.txt\""
-msgstr "Błąd.~%FNadpisywanie pliku jest niedozwolone:~%\"~a.txt\""
+msgstr "Błąd.~%FZastępowanie pliku jest niedozwolone:~%\"~a.txt\""
 
 #: plug-ins/eq-xml-to-txt-converter.ny
 #, lisp-format
@@ -18839,7 +18839,7 @@ msgstr "Poziom szczytowy"
 
 #: plug-ins/label-sounds.ny
 msgid "Average level"
-msgstr "Średni poziom"
+msgstr "Poziom średni"
 
 #: plug-ins/label-sounds.ny
 msgid "RMS level"
@@ -18964,11 +18964,11 @@ msgstr "Ogranicz do (dB)"
 
 #: plug-ins/limiter.ny plug-ins/noisegate.ny
 msgid "Hold (ms)"
-msgstr "Przytrzymaj (ms)"
+msgstr "Przytrzymanie (ms)"
 
 #: plug-ins/limiter.ny
 msgid "Apply Make-up Gain"
-msgstr "Zastosuj Uczyń ze wzmocnienia"
+msgstr "Zastosuj Upiększanie wzmocnienia"
 
 #: plug-ins/lowpass.ny
 msgid "Low-Pass Filter"
@@ -19120,7 +19120,7 @@ msgstr "Wszystkie obsługiwane"
 
 #: plug-ins/nyquist-plug-in-installer.ny
 msgid "Allow overwriting"
-msgstr "Zezwalaj na nadpisywanie"
+msgstr "Zezwalaj na zastępowanie"
 
 #: plug-ins/nyquist-plug-in-installer.ny
 msgid "Disallow"
@@ -19163,7 +19163,7 @@ msgstr "Nieobsługiwany typ pliku:"
 
 #: plug-ins/nyquist-plug-in-installer.ny
 msgid "Files already installed ('Allow Overwriting' disabled):"
-msgstr "Pliki już zainstalowane ('Zezwalaj na nadpisywanie' wyłączone):"
+msgstr "Pliki już zainstalowane ('Zezwalaj na zastępowanie' wyłączone):"
 
 #: plug-ins/nyquist-plug-in-installer.ny
 msgid "Cannot be written to plug-ins folder:"
@@ -19264,7 +19264,7 @@ msgstr "Używany, jeśli 'Liczba taktów' = 0"
 
 #: plug-ins/rhythmtrack.ny
 msgid "Start time offset"
-msgstr "Przesunięcie początku"
+msgstr "Przesunięcie czasu rozpoczęcia"
 
 #: plug-ins/rhythmtrack.ny
 msgid "Silence before first beat"
@@ -19419,7 +19419,7 @@ msgstr "Układ kanału dla stereo"
 #. i18n-hint: Left and Right
 #: plug-ins/sample-data-export.ny
 msgid "L-R on Same Line"
-msgstr "L-P na tej samej linii"
+msgstr "Lewy i prawy na tej samej linii"
 
 #: plug-ins/sample-data-export.ny
 msgid "Alternate Lines"
@@ -19428,7 +19428,7 @@ msgstr "Alternatywne linie"
 #. i18n-hint: L for Left
 #: plug-ins/sample-data-export.ny
 msgid "L Channel First"
-msgstr "Najpierw l. kanał"
+msgstr "Najpierw lewy kanał"
 
 #: plug-ins/sample-data-export.ny
 msgid "Show messages"
