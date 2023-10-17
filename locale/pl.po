@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2023-10-17 00:00+0000\n"
+"PO-Revision-Date: 2023-10-19 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2023\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -2119,7 +2119,7 @@ msgstr "Czas na sprawdzenie wszystkich danych (2): %ld ms\n"
 msgid ""
 "At 44100 Hz, %d bytes per sample, the estimated number of\n"
 " simultaneous tracks that could be played at once: %.1f\n"
-msgstr "Przy 44100 Hz, %d-bitowym próbkowaniu szacowana liczba\njednoczesnych ścieżek, które mogą być odtwarzane od razu: %.1f\n"
+msgstr "Przy 44100 Hz, %d-bitowym próbkowaniu, szacowana liczba\njednoczesnych ścieżek, które mogą być odtwarzane od razu: %.1f\n"
 
 #: src/Benchmark.cpp
 msgid "TEST FAILED!!!\n"
@@ -4567,7 +4567,7 @@ msgstr "Wszystkie efekty"
 
 #: src/Screenshot.cpp
 msgid "All Scriptables"
-msgstr "Wszystkie skryptowalne"
+msgstr "Wszystkie skrypty"
 
 #: src/Screenshot.cpp
 msgid "All Preferences"
@@ -4642,7 +4642,7 @@ msgstr "Przewijaj"
 
 #: src/Screenshot.cpp src/TrackPanel.cpp
 msgid "Track Panel"
-msgstr "Panel śledzący"
+msgstr "Panel ścieżki"
 
 #: src/Screenshot.cpp src/commands/ScreenshotCommand.cpp
 msgid "Ruler"
@@ -5915,7 +5915,7 @@ msgstr "Efekty"
 
 #: src/commands/ScreenshotCommand.cpp
 msgid "Scriptables"
-msgstr "Skryptowalne"
+msgstr "Skrypty"
 
 #: src/commands/ScreenshotCommand.cpp
 msgid "Selectionbar"
@@ -9786,7 +9786,7 @@ msgstr "Błąd Nyquista"
 #: src/effects/nyquist/Nyquist.cpp
 msgid ""
 "Sorry, cannot apply effect on stereo tracks where the tracks don't match."
-msgstr "Niestety, ale nie można używać efektu na ścieżkach stereo, jeśli ścieżki do siebie nie pasują."
+msgstr "Niestety, ale nie można używać efektu na ścieżkach stereo, jeśli ścieżki nie pasują do siebie."
 
 #: src/effects/nyquist/Nyquist.cpp
 #, c-format
@@ -10608,7 +10608,7 @@ msgid ""
 "ISO 639 3-letter language code\n"
 "Optional\n"
 "empty - automatic"
-msgstr "ISO 639 3-literowy kod języka\nOpcjonalny\npusty - automatycznie"
+msgstr "ISO 639 3-literowy kod języka\nOpcjonalny\npusty - automatyczny"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Language:"
@@ -10640,7 +10640,7 @@ msgid ""
 "Some codecs may only accept specific values (128k, 192k, 256k etc)\n"
 "0 - automatic\n"
 "Recommended - 192000"
-msgstr "Bitrate (bity na sekundę) - wpływa na rozmiar i jakość pliku\nNiektóre kodeki akceptują tylko niektóre wartości (128k, 192k, 256k itp.)\n0 - automatycznie\nZalecane - 192000"
+msgstr "Bitrate (bity na sekundę) - wpływa na rozmiar i jakość pliku\nNiektóre kodeki akceptują tylko niektóre wartości (128k, 192k, 256k itp.)\n0 - automatyczny\nZalecany - 192000"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10648,7 +10648,7 @@ msgid ""
 "Required for vorbis\n"
 "0 - automatic\n"
 "-1 - off (use bitrate instead)"
-msgstr "Ogólna jakość używana różnie przez różne kodeki\nWymagane dla Vorbis\n0 - automatycznie\n-1 - wyłączone (zamiast tego użyj bitrate'u)"
+msgstr "Ogólna jakość używana różnie przez różne kodeki\nWymagana dla Vorbis\n0 - automatyczna\n-1 - wyłączona (zamiast tego użyj bitrate'u)"
 
 #: src/export/ExportFFmpegDialogs.cpp src/export/ExportOGG.cpp
 msgid "Quality:"
@@ -10669,7 +10669,7 @@ msgid ""
 "Audio cutoff bandwidth (Hz)\n"
 "Optional\n"
 "0 - automatic"
-msgstr "Pasmo odcinania dźwięku (Hz)\nOpcjonalna\n0 - automatyczna"
+msgstr "Pasmo odcinania dźwięku (Hz)\nOpcjonalne\n0 - automatyczne"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10719,7 +10719,7 @@ msgid ""
 "0 - default\n"
 "min - 1\n"
 "max - 15"
-msgstr "Precyzja LPC\nOpcjonalna\n0 - domyślne\nmin. - 1\nmaks. - 15"
+msgstr "Precyzja współczynników LPC\nOpcjonalna\n0 - domyślna\nmin. - 1\nmaks. - 15"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "LPC"
@@ -10731,11 +10731,11 @@ msgid ""
 "Estimate - fastest, lower compression\n"
 "Log search - slowest, best compression\n"
 "Full search - default"
-msgstr "Metoda zlecenia\nOszacowana - najszybsza, niska kompresja\nSzukany rejestr - najwolniejsza, najlepsza kompresja\nPełny rejestr - domyślna"
+msgstr "Metoda kolejności przewidywań\nSzacunkowa - najszybsza, niska kompresja\nSzukany rejestr - najwolniejsza, najlepsza kompresja\nPełny rejestr - domyślna"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "PdO Method:"
-msgstr "Metoda PdO:"
+msgstr "Metoda KPd:"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10744,11 +10744,11 @@ msgid ""
 "-1 - default\n"
 "min - 0\n"
 "max - 32 (with LPC) or 4 (without LPC)"
-msgstr "Minimalne zlecenie\nOpcjonalne\n-1 - domyślne\nmin. - 0\nmaks. - 32 (z LPC) lub 4 (bez LPC)"
+msgstr "Minimalna kolejność przewidywań\nOpcjonalna\n-1 - domyślna\nmin. - 0\nmaks. - 32 (z LPC) lub 4 (bez LPC)"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Min. PdO"
-msgstr "Min. PdO"
+msgstr "Min. KPd"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10757,11 +10757,11 @@ msgid ""
 "-1 - default\n"
 "min - 0\n"
 "max - 32 (with LPC) or 4 (without LPC)"
-msgstr "Maksymalne zlecenie\nOpcjonalne\n-1 - domyślne\nmin. - 0\nmaks. - 32 (z LPC) lub 4 (bez LPC)"
+msgstr "Maksymalna kolejność przewidywań\nOpcjonalna\n-1 - domyślna\nmin. - 0\nmaks. - 32 (z LPC) lub 4 (bez LPC)"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Max. PdO"
-msgstr "Maks. PdO"
+msgstr "Maks. KPd"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10770,11 +10770,11 @@ msgid ""
 "-1 - default\n"
 "min - 0\n"
 "max - 8"
-msgstr "Minimalne zlecenie partycji\nOpcjonalne\n-1 - domyślne\nmin. - 0\nmaks. - 8"
+msgstr "Minimalna kolejność partycji\nOpcjonalna\n-1 - domyślna\nmin. - 0\nmaks. - 8"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Min. PtO"
-msgstr "Min. PtO"
+msgstr "Min. KPt"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -10783,11 +10783,11 @@ msgid ""
 "-1 - default\n"
 "min - 0\n"
 "max - 8"
-msgstr "Maksymalne zlecenie partycji\nOpcjonalne\n-1 - domyślne\nmin. - 0\nmaks. - 8"
+msgstr "Maksymalna kolejność partycji\nOpcjonalna\n-1 - domyślna\nmin. - 0\nmaks. - 8"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Max. PtO"
-msgstr "Maks. PtO"
+msgstr "Maks. KPt"
 
 #. i18n-hint:  Abbreviates "Linear Predictive Coding",
 #. but this text needs to be kept very short
@@ -10804,7 +10804,7 @@ msgid ""
 "Maximum bit rate of the multiplexed stream\n"
 "Optional\n"
 "0 - default"
-msgstr "Maksymalny bitrate multipleksowego strumienia\nOpcjonalna\n0 - domyślna"
+msgstr "Maksymalny bitrate multipleksowego strumienia\nOpcjonalny\n0 - domyślny"
 
 #. i18n-hint: 'mux' is short for multiplexor, a device that selects between
 #. several inputs
@@ -13230,7 +13230,7 @@ msgstr "Wykryj przerwy pod prąd"
 #. i18n-hint: Scriptables are commands normally used from Python, Perl etc.
 #: src/menus/PluginMenus.cpp
 msgid "Script&ables I"
-msgstr "&Biblioteki I"
+msgstr "Skr&ypty I"
 
 #: src/menus/PluginMenus.cpp
 msgid "Select Time..."
@@ -13283,7 +13283,7 @@ msgstr "Ustaw projekt..."
 #. i18n-hint: Scriptables are commands normally used from Python, Perl etc.
 #: src/menus/PluginMenus.cpp
 msgid "Scripta&bles II"
-msgstr "&Biblioteki II"
+msgstr "Skry&pty II"
 
 #: src/menus/PluginMenus.cpp
 msgid "Set Track..."
