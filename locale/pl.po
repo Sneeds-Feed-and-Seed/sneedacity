@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2023-10-19 00:00+0000\n"
+"PO-Revision-Date: 2023-10-22 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2023\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -2372,7 +2372,7 @@ msgid ""
 "Some older Sneedacity projects may not be self-contained, and care \n"
 "is needed to keep their external dependencies in the right place.\n"
 "New projects will be self-contained and are less risky."
-msgstr "Twój projekt jest obecnie samowystarczalny; nie zależy on od żadnych zewnętrznych plików dźwiękowych. \n\nNiektóre starsze projekty Sneedacity mogą być niesamodzielne i należy zachować ostrożność, aby utrzymać ich zewnętrzne zależności we właściwym miejscu.\nNowe projekty będą niezależne i mniej ryzykowne."
+msgstr "Twój projekt jest obecnie samowystarczalny; nie zależy on od żadnych zewnętrznych plików dźwiękowych. \n\nNiektóre starsze projekty Sneedacity mogą być niesamodzielne i należy zachować ostrożność, aby zachować ich zewnętrzne zależności we właściwym miejscu.\nNowe projekty będą niezależne i mniej ryzykowne."
 
 #: src/Dependencies.cpp
 msgid "Dependency Check"
@@ -5102,7 +5102,7 @@ msgstr "Biorąc pod uwagę bieżące ustawienia, nie masz wystarczająco wolnego
 
 #: src/TimerRecordDialog.cpp
 msgid "Timer Recording Disk Space Warning"
-msgstr "Nagrywanie czasowe Miejsce na dysku Ostrzeżenie"
+msgstr "Ostrzeżenie o miejscu na dysku podczas nagrywania czasowego"
 
 #: src/TimerRecordDialog.cpp
 msgid "Current Project"
@@ -10669,7 +10669,7 @@ msgid ""
 "Audio cutoff bandwidth (Hz)\n"
 "Optional\n"
 "0 - automatic"
-msgstr "Pasmo odcinania dźwięku (Hz)\nOpcjonalne\n0 - automatyczne"
+msgstr "Pasmo odcięcia dźwięku (Hz)\nOpcjonalne\n0 - automatyczne"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid ""
@@ -13291,7 +13291,7 @@ msgstr "Ustaw ścieżkę..."
 
 #: src/menus/PluginMenus.cpp
 msgid "Get Info..."
-msgstr "&Uzyskaj informacje..."
+msgstr "Uzyskaj informacje..."
 
 #: src/menus/PluginMenus.cpp
 msgid "Message..."
