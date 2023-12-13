@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2023-10-22 00:00+0000\n"
+"PO-Revision-Date: 2023-12-13 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2023\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -4071,7 +4071,7 @@ msgstr "Nie można otworzyć pliku projektu"
 
 #: src/ProjectFileIO.cpp
 msgid "Failed to remove the autosave information from the project file."
-msgstr "Nie udało się usunąć informacji automatycznego zapisywania z pliku projektu."
+msgstr "Nie udało się usunąć informacji o autozapisywaniu z pliku projektu."
 
 #: src/ProjectFileIO.cpp
 msgid "Unable to bind to blob"
@@ -4119,7 +4119,7 @@ msgid ""
 "on the storage device.\n"
 "\n"
 "%s"
-msgstr "Nie można usunąć informacji z autozapisu, prawdopodobnie z powodu\nograniczonej ilości miejsca na urządzeniu pamięci masowej.\n\n%s"
+msgstr "Nie można usunąć informacji o autozapisywaniu, prawdopodobnie z powodu\nograniczonej ilości miejsca na urządzeniu pamięci masowej.\n\n%s"
 
 #: src/ProjectFileIO.cpp
 msgid "Backing up project"
@@ -11927,7 +11927,7 @@ msgstr "Wewnętrzny błąd logiczny"
 
 #: src/import/ImportPCM.cpp
 msgid "WAV, AIFF, and other uncompressed types"
-msgstr "WAV, AIFF i inne nieskompresowane typy"
+msgstr "Pliki WAV, AIFF i inne nieskompresowane typy"
 
 #: src/import/ImportPCM.cpp
 msgid "AU (Sun/NeXT)"
