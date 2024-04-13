@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-02-27 00:00+0000\n"
+"PO-Revision-Date: 2024-04-13 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -1299,7 +1299,7 @@ msgid ""
 "You can attempt to correct the issue and then click \"Retry\" to continue.\n"
 "\n"
 "If you choose to \"Quit Sneedacity\", your project may be left in an unsaved state which will be recovered the next time you open it."
-msgstr "Nie można uzyskać dostępu do następującego pliku konfiguracyjnego:\n\n\t%s\n\nMoże to mieć wiele przyczyn, ale najprawdopodobniej dysk jest pełny lub nie masz uprawnień do zapisu do pliku. Więcej informacji można uzyskać, klikając poniższy przycisk pomocy.\n\nMożesz spróbować rozwiązać problem, a następnie kliknąć \"Spróbuj ponownie\", aby kontynuować.\n\nJeśli wybierzesz opcję \"Opuść Sneedacity\", Twój projekt może pozostać w stanie niezapisanym, który zostanie odzyskany przy następnym otwarciu."
+msgstr "Nie można uzyskać dostępu do następującego pliku konfiguracyjnego:\n\n\t%s\n\nMoże to mieć wiele przyczyn, ale najprawdopodobniej dysk jest pełny lub nie masz uprawnień do zapisu do pliku. Więcej informacji można uzyskać, klikając poniższy przycisk pomocy.\n\nMożesz spróbować rozwiązać problem, a następnie kliknąć \"Ponów\", aby kontynuować.\n\nJeśli wybierzesz opcję \"Opuść Sneedacity\", Twój projekt może pozostać w stanie niezapisanym, który zostanie odzyskany przy następnym otwarciu."
 
 #: src/SneedacityFileConfig.cpp src/ShuttleGui.cpp src/commands/HelpCommand.cpp
 #: src/effects/Equalization.cpp src/export/Export.cpp src/menus/HelpMenus.cpp
@@ -1313,7 +1313,7 @@ msgstr "&Opuść Sneedacity"
 
 #: src/SneedacityFileConfig.cpp
 msgid "&Retry"
-msgstr "Sp&róbuj ponownie"
+msgstr "&Ponów"
 
 #: src/SneedacityLogger.cpp
 msgid "Sneedacity Log"
@@ -3661,7 +3661,7 @@ msgstr "Wszystkie zaznaczone ścieżki do nagrania muszą mieć taką samą czę
 
 #: src/ProjectAudioManager.cpp src/menus/TransportMenus.cpp
 msgid "Mismatched Sampling Rates"
-msgstr "Niedopasowane częstotliwości próbkowania"
+msgstr "Niezgodne częstotliwości próbkowania"
 
 #: src/ProjectAudioManager.cpp src/menus/TransportMenus.cpp
 msgid ""
@@ -4275,7 +4275,7 @@ msgid ""
 "Doing this may result in severe data loss.\n"
 "\n"
 "Please open the actual Sneedacity project file instead."
-msgstr "Próbujesz otworzyć utworzony automatycznie plik kopii zapasowej.\nZrobienie tego może skutkować poważną utratą danych.\n\nZamiast tego, musisz otworzyć aktualny projekt Sneedacity."
+msgstr "Próbujesz otworzyć utworzony automatycznie plik kopii zapasowej.\nZrobienie tego może skutkować poważną utratą danych.\n\nZamiast tego musisz otworzyć aktualny projekt Sneedacity."
 
 #: src/ProjectFileManager.cpp
 msgid "Warning - Backup File Detected"
@@ -11142,7 +11142,7 @@ msgstr "Nie można zainicjować biblioteki kodowania MP3!"
 
 #: src/export/ExportMP3.cpp
 msgid "Not a valid or supported MP3 encoding library!"
-msgstr "Nieaktualna lub niewspierana biblioteka kodowania MP3!"
+msgstr "Nieaktualna lub nieobsługiwana biblioteka kodowania MP3!"
 
 #: src/export/ExportMP3.cpp
 msgid "Unable to initialize MP3 stream"
@@ -11915,7 +11915,7 @@ msgstr "To nie jest plik Ogg Vorbis"
 
 #: src/import/ImportOGG.cpp
 msgid "Vorbis version mismatch"
-msgstr "Błąd wersji Vorbis"
+msgstr "Niezgodność wersji Vorbis"
 
 #: src/import/ImportOGG.cpp
 msgid "Invalid Vorbis bitstream header"
