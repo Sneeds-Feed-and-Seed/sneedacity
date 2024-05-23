@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-04-13 00:00+0000\n"
+"PO-Revision-Date: 2024-05-21 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -2285,7 +2285,7 @@ msgid ""
 "\n"
 "Files shown as MISSING have been moved or deleted and cannot be copied.\n"
 "Restore them to their original location to be able to copy into project."
-msgstr "\n\nPliki pokazane jako BRAKUJĄCE zostały przeniesione lub usunięte i nie mogą zostać skopiowane.\nPrzywróć je do ich pierwotnych położeń, aby móc je skopiować do projektu."
+msgstr "\n\nPliki pokazane jako BRAKUJĄCE zostały przeniesione lub usunięte i nie mogą zostać skopiowane.\nPrzywróć je do ich pierwotnej lokalizacji, aby móc je skopiować do projektu."
 
 #: src/Dependencies.cpp
 msgid "Project Dependencies"
@@ -2468,7 +2468,7 @@ msgstr "Nie znaleziono biblioteki FFmpeg"
 
 #: src/FFmpeg.cpp
 msgid "Locate FFmpeg"
-msgstr "Ustal położenie FFmpeg"
+msgstr "Ustal lokalizację FFmpeg"
 
 #: src/FFmpeg.cpp
 #, c-format
@@ -2478,7 +2478,7 @@ msgstr "Sneedacity potrzebuje pliku '%s' do importu i eksportu dźwięku przez F
 #: src/FFmpeg.cpp
 #, c-format
 msgid "Location of '%s':"
-msgstr "Położenie '%s':"
+msgstr "Lokalizacja '%s':"
 
 #: src/FFmpeg.cpp
 #, c-format
@@ -2518,7 +2518,7 @@ msgid ""
 "\n"
 "To use FFmpeg import, go to Edit > Preferences > Libraries\n"
 "to download or locate the FFmpeg libraries."
-msgstr "Sneedacity usiłował użyć pakietu FFmpeg do importowania\npliku dźwiękowego, ale nie znaleziono bibliotek.\n\nAby użyć importowania FFmpeg, idź do 'Edycja > Ustawienia... > Biblioteki',\naby pobrać lub ustalić położenie bibliotek FFmpeg."
+msgstr "Sneedacity usiłował użyć pakietu FFmpeg do importowania\npliku dźwiękowego, ale nie znaleziono bibliotek.\n\nAby użyć importowania FFmpeg, idź do 'Edycja > Ustawienia... > Biblioteki',\naby pobrać lub ustalić lokalizację bibliotek FFmpeg."
 
 #: src/FFmpeg.cpp
 msgid "Do not show this warning again"
@@ -2578,7 +2578,7 @@ msgstr "Kopiuj nieskompresowane pliki do projektu (bezpie&czniejsze)"
 
 #: src/FileFormats.cpp
 msgid "&Read uncompressed files from original location (faster)"
-msgstr "Wczytaj nieskomp&resowane pliki dźwiękowe z oryginalnej lokacji (szybsze)"
+msgstr "Wczytaj nieskomp&resowane pliki dźwiękowe z pierwotnej lokalizacji (szybsze)"
 
 #: src/FileFormats.cpp
 msgid "&Copy all audio into project (safest)"
@@ -2880,7 +2880,7 @@ msgstr "Wypal na płycie"
 
 #: src/HelpText.cpp
 msgid "No Local Help"
-msgstr "Brak lokalnej pomocy"
+msgstr "Brak pomocy lokalnej"
 
 #: src/HelpText.cpp
 msgid ""
@@ -3750,7 +3750,7 @@ msgid ""
 "If you choose the third option, this will save the \n"
 "project in its current state, unless you \"Close \n"
 "project immediately\" on further error alerts."
-msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujący(ch) zewnętrzny(ch) plik(ów) dźwiękowy(ch) \n('pliki z aliasami'). Sneedacity nie ma możliwości \nodzyskania tych plików automatycznie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące pliki \nna ich poprzednie położenia. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy. \n\nJeśli wybierzesz trzecią opcję, to zapiszesz projekt \nw jego obecnym stanie, chyba że \"Zamkniesz \nprojekt natychmiastowo\" przy przyszłych ostrzeżeniach o błędach."
+msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujący(ch) zewnętrzny(ch) plik(ów) dźwiękowy(ch) \n('pliki z aliasami'). Sneedacity nie ma możliwości \nodzyskania tych plików automatycznie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące \npliki na ich poprzednią lokalizację. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy. \n\nJeśli wybierzesz trzecią opcję, to zapiszesz projekt \nw jego obecnym stanie, chyba że \"Zamkniesz \nprojekt natychmiastowo\" przy przyszłych ostrzeżeniach o błędach."
 
 #: src/ProjectFSCK.cpp
 msgid "Treat missing audio as silence (this session only)"
@@ -3804,7 +3804,7 @@ msgid ""
 "\n"
 "Note that for the second option, the waveform \n"
 "may not show silence."
-msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujące(ych) dane(ych) dźwiękowe(ych) (.au) pliku(ów) blokowego(ych), \nprawdopodobnie ze względu na błąd, awarię systemu lub przypadkowe \nusunięcie. Sneedacity nie może przywrócić tych plików \nautomatycznie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące pliki \nna ich poprzednie położenia. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy."
+msgstr "Sprawdzanie projektu folderu \"%s\" \nwykryło %lld brakujące(ych) dane(ych) dźwiękowe(ych) (.au) pliku(ów) blokowego(ych), \nprawdopodobnie ze względu na błąd, awarię systemu lub przypadkowe \nusunięcie. Sneedacity nie może przywrócić tych plików \nautomatycznie. \n\nJeśli wybierzesz pierwszą lub drugą opcję poniżej, \nto możesz spróbować znaleźć i przywrócić brakujące \npliki na ich poprzednią lokalizację. \n\nZauważ, że dla drugiej opcji, kształt fali \nmoże nie pokazywać ciszy."
 
 #: src/ProjectFSCK.cpp
 msgid "Replace missing audio with silence (permanent immediately)"
@@ -4499,7 +4499,7 @@ msgstr "Zrzut ekranu"
 
 #: src/Screenshot.cpp
 msgid "Choose location to save files"
-msgstr "Wybierz miejsce zapisu plików"
+msgstr "Wybierz lokalizację do zapisywania plików"
 
 #: src/Screenshot.cpp
 msgid "Save images to:"
@@ -4705,7 +4705,7 @@ msgstr "Wysokie ścieżki"
 
 #: src/Screenshot.cpp
 msgid "Choose a location to save screenshot images"
-msgstr "Wybierz miejsce zapisywania obrazów zrzutów ekranu"
+msgstr "Wybierz lokalizację do zapisywania obrazów zrzutów ekranu"
 
 #: src/Screenshot.cpp
 msgid "Capture failed!"
@@ -9537,7 +9537,7 @@ msgstr "Preset"
 
 #: src/effects/audiounits/AudioUnitEffect.cpp
 msgid "Location"
-msgstr "Położenie"
+msgstr "Lokalizacja"
 
 #: src/effects/audiounits/AudioUnitEffect.cpp
 #, c-format
@@ -10167,7 +10167,7 @@ msgstr "Nie można znaleźć \"%s\"."
 #: src/export/ExportCL.cpp
 #, c-format
 msgid "Unable to locate \"%s\" in your path."
-msgstr "Nie można znaleźć \"%s\" w Twojej ścieżce."
+msgstr "Nie można ustalić lokalizacji \"%s\" w Twojej ścieżce."
 
 #: src/export/ExportFFmpeg.cpp
 msgid ""
@@ -11066,7 +11066,7 @@ msgstr "Wymuś eksport do mono"
 #. translated
 #: src/export/ExportMP3.cpp
 msgid "Locate LAME"
-msgstr "Ustal położenie LAME"
+msgstr "Ustal lokalizację LAME"
 
 #: src/export/ExportMP3.cpp
 #, c-format
@@ -11076,7 +11076,7 @@ msgstr "Sneedacity potrzebuje pliku %s do utworzenia pliku MP3."
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Location of %s:"
-msgstr "Położenie %s:"
+msgstr "Lokalizacja %s:"
 
 #. i18n-hint: There is a  button to the right of the arrow.
 #: src/export/ExportMP3.cpp
@@ -11286,7 +11286,7 @@ msgstr "Pomyślnie utworzono \"%s\"."
 
 #: src/export/ExportMultiple.cpp
 msgid "Choose a location to save the exported files"
-msgstr "Wybierz miejsce do zapisania wyeksportowanych plików"
+msgstr "Wybierz lokalizację do zapisania wyeksportowanych plików"
 
 #: src/export/ExportMultiple.cpp
 #, c-format
@@ -11411,7 +11411,7 @@ msgstr "Inne nieskompresowane pliki"
 msgid ""
 "You have attempted to Export a WAV or AIFF file which would be greater than 4GB.\n"
 "Sneedacity cannot do this, the Export was abandoned."
-msgstr "Próbowano wyeksportować plik WAV lub AIFF, który był większy niż 4 GB.\nSneedacity nie może tego zrobić, eksport został przerwany."
+msgstr "Próbowano wyeksportować plik WAV lub AIFF, który był większy niż 4 GB.\nSneedacity nie może tego zrobić. Eksport został przerwany."
 
 #: src/export/ExportPCM.cpp
 msgid "Error Exporting"
@@ -14572,7 +14572,7 @@ msgstr "Katalog plików tymczasowych"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "&Location:"
-msgstr "&Położenie:"
+msgstr "&Lokalizacja:"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "Temporary files directory cannot be on a FAT drive."
@@ -14588,15 +14588,15 @@ msgstr "&Wolne miejsce:"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "Choose a location to place the temporary directory"
-msgstr "Wybierz miejsce dla katalogu tymczasowego"
+msgstr "Wybierz lokalizację dla katalogu tymczasowego"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "unavailable - above location doesn't exist"
-msgstr "niedostępne - powyższe położenie nie istnieje"
+msgstr "niedostępne - powyższa lokalizacja nie istnieje"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "Choose a location"
-msgstr "Wybierz miejsce"
+msgstr "Wybierz lokalizację"
 
 #: src/prefs/DirectoriesPrefs.cpp
 #, c-format
@@ -14865,7 +14865,7 @@ msgstr "&Język:"
 
 #: src/prefs/GUIPrefs.cpp
 msgid "Location of &Manual:"
-msgstr "Ścieżka Podręcz&nika:"
+msgstr "Lokalizacja Podręcz&nika:"
 
 #: src/prefs/GUIPrefs.cpp
 msgid "Th&eme:"
@@ -15189,7 +15189,7 @@ msgstr "Po&bierz"
 msgid ""
 "Sneedacity has automatically detected valid FFmpeg libraries.\n"
 "Do you still want to locate them manually?"
-msgstr "Sneedacity automatycznie wykrył prawidłowe biblioteki FFmpeg.\nNadal chcesz ustalić ich położenie ręcznie?"
+msgstr "Sneedacity automatycznie wykrył prawidłowe biblioteki FFmpeg.\nNadal chcesz ustalić ich lokalizację ręcznie?"
 
 #: src/prefs/LibraryPrefs.cpp
 msgid "Success"
