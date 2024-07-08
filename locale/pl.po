@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Aron <aron.plotnikowski@cryptolab.net>, 2013
-# Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2024
+# Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024
 # jacbob77 <jacbob77@tlen.pl>, 2012
 # Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012
 # Michał Trzebiatowski <michtrz@gmail.com>, 2017
@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-06-04 00:00+0000\n"
-"Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2024\n"
+"PO-Revision-Date: 2024-07-17 00:00+0000\n"
+"Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3015,7 +3015,7 @@ msgstr "&Porzuć"
 
 #: src/HistoryWindow.cpp
 msgid "Clip&board space used"
-msgstr "Używane miejsce w &schowku"
+msgstr "Używane miejs&ce w schowku"
 
 #: src/HistoryWindow.cpp
 msgid "D&iscard"
@@ -15139,7 +15139,7 @@ msgid ""
 "\t%s\n"
 "\n"
 "instead. Otherwise, click Cancel."
-msgstr "Skrót klawiaturowy '%s' jest już przypisany do:\n\n\t%s\n\n\nKliknij na przycisk 'OK', aby zamiast tego przypisać skrót do\n\n\t%s\n\nW przeciwnym razie kliknij 'Anuluj'."
+msgstr "Skrót klawiaturowy '%s' jest już przypisany do:\n\n\t%s\n\n\nKliknij na przycisk 'OK', aby przypisać skrót do\n\n\t%s\n\nW przeciwnym razie kliknij 'Anuluj'."
 
 #: src/prefs/KeyConfigPrefs.h
 msgid "Key Config"
