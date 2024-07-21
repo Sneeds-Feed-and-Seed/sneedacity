@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Aron <aron.plotnikowski@cryptolab.net>, 2013
-# Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2024
+# Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024
 # jacbob77 <jacbob77@tlen.pl>, 2012
 # Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012
 # Michał Trzebiatowski <michtrz@gmail.com>, 2017
@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-06-04 00:00+0000\n"
-"Last-Translator: Grzegorz Pruchniakowski <gootector@o2.pl>, 2013-2024\n"
+"PO-Revision-Date: 2024-08-16 00:00+0000\n"
+"Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -380,7 +380,7 @@ msgstr "Nie znaleziono żadnych dopasowań"
 
 #: modules/mod-nyq-bench/NyqBench.cpp
 msgid "Code has been modified. Are you sure?"
-msgstr "Kod został zmodyfikowany. Jesteś pewny/a?"
+msgstr "Kod został zmodyfikowany. Kontynuować?"
 
 #: modules/mod-nyq-bench/NyqBench.cpp
 msgid "Untitled"
@@ -958,11 +958,11 @@ msgstr "Licencja GPL"
 
 #: src/AdornedRulerPanel.cpp
 msgid "Timeline actions disabled during recording"
-msgstr "Działania osi czasu są wyłączone podczas nagrywania"
+msgstr "Czynności osi czasu są wyłączone podczas nagrywania"
 
 #: src/AdornedRulerPanel.cpp
 msgid "Click and drag to adjust, double-click to reset"
-msgstr "Kliknij i przeciągnij, aby dostosować, kliknij podwójnie myszką, aby zresetować"
+msgstr "Kliknij i przeciągnij, aby dostosować, kliknij dwukrotnie myszką, aby zresetować"
 
 #. i18n-hint: This text is a tooltip on the icon (of a pin) representing
 #. the temporal position in the audio.
@@ -1272,7 +1272,7 @@ msgid ""
 "associated with Sneedacity. \n"
 "\n"
 "Associate them, so they open on double-click?"
-msgstr "Pliki projektów Sneedacity (.aup3) nie są \nobecnie przypisane do programu Sneedacity. \n\nPrzypisać je, aby móc otworzyć je programem przez podwójne kliknięcie przyciskiem myszki?"
+msgstr "Pliki projektów Sneedacity (.aup3) nie są \nobecnie przypisane do programu Sneedacity. \n\nPrzypisać je, aby móc otworzyć je programem przez dwukrotne kliknięcie przyciskiem myszki?"
 
 #: src/SneedacityApp.cpp
 msgid "Sneedacity Project Files"
@@ -2990,7 +2990,7 @@ msgstr "&Zarządzaj historią"
 
 #: src/HistoryWindow.cpp src/effects/TruncSilence.cpp plug-ins/vocalrediso.ny
 msgid "Action"
-msgstr "Działanie"
+msgstr "Czynność"
 
 #: src/HistoryWindow.cpp
 msgid "Used Space"
@@ -3015,7 +3015,7 @@ msgstr "&Porzuć"
 
 #: src/HistoryWindow.cpp
 msgid "Clip&board space used"
-msgstr "Używane miejsce w &schowku"
+msgstr "Używane miejs&ce w schowku"
 
 #: src/HistoryWindow.cpp
 msgid "D&iscard"
@@ -3096,7 +3096,7 @@ msgstr "Nowy..."
 
 #: src/LabelDialog.cpp
 msgid "Press F2 or double click to edit cell contents."
-msgstr "Naciśnij F2 lub kliknij podwójnie myszką, aby edytować zawartość komórek."
+msgstr "Naciśnij F2 lub kliknij dwukrotnie myszką, aby edytować zawartość komórek."
 
 #: src/LabelDialog.cpp src/menus/FileMenus.cpp
 msgid "Select a text file containing labels"
@@ -3859,7 +3859,7 @@ msgstr "Ostrzeżenie - Problemy z automatycznym odzyskiwaniem"
 
 #: src/ProjectFileIO.cpp src/menus/WindowMenus.cpp
 msgid "<untitled>"
-msgstr "<untitled>"
+msgstr "<bez nazwy>"
 
 #: src/ProjectFileIO.cpp
 #, c-format
@@ -5131,7 +5131,7 @@ msgstr "Automatyczny eksport włączony:"
 
 #: src/TimerRecordDialog.cpp
 msgid "Action after Timer Recording:"
-msgstr "Działanie po nagrywaniu czasowym:"
+msgstr "Czynność po nagrywaniu czasowym:"
 
 #: src/TimerRecordDialog.cpp
 msgid "Sneedacity Timer Record Progress"
@@ -5389,7 +5389,7 @@ msgstr " Zaznacz wł."
 msgid ""
 "Click and drag to adjust relative size of stereo tracks, double-click to "
 "make heights equal"
-msgstr "Kliknij i przeciągnij, aby dostosować relatywny rozmiar ścieżek stereo, kliknij podwójnie myszką, aby wyrównać wysokości"
+msgstr "Kliknij i przeciągnij, aby dostosować relatywny rozmiar ścieżek stereo, kliknij dwukrotnie myszką, aby wyrównać wysokości"
 
 #: src/TrackPanelResizeHandle.cpp
 msgid "Click and drag to resize the track."
@@ -5607,11 +5607,11 @@ msgstr "Czas opóźnienia (sekundy):"
 
 #: src/commands/Demo.cpp
 msgid "Decay factor:"
-msgstr "Współczynnik zaniku:"
+msgstr "Współczynnik opadania:"
 
 #: src/commands/Demo.h
 msgid "Does the demo action."
-msgstr "Robi działanie demo."
+msgstr "Robi demo."
 
 #: src/commands/DragCommand.cpp
 msgid "Drag"
@@ -6812,7 +6812,7 @@ msgstr "Czas narastania"
 #. * sound dies away.
 #: src/effects/Compressor.cpp
 msgid "R&elease Time:"
-msgstr "&Czas zanikania:"
+msgstr "&Czas opadania:"
 
 #. i18n-hint: Particularly in percussion, sounds can be regarded as having
 #. * an 'attack' phase where the sound builds up and a 'decay' or 'release'
@@ -6820,7 +6820,7 @@ msgstr "&Czas zanikania:"
 #. * sound dies away.
 #: src/effects/Compressor.cpp
 msgid "Release Time"
-msgstr "Czas zanikania"
+msgstr "Czas opadania"
 
 #. i18n-hint: Make-up, i.e. correct for any reduction, rather than fabricate
 #. it.
@@ -6852,7 +6852,7 @@ msgstr "Czas narastania: %.2f sek."
 #: src/effects/Compressor.cpp
 #, c-format
 msgid "Release Time %.1f secs"
-msgstr "Czas zanikania: %.1f sek."
+msgstr "Czas opadania: %.1f sek."
 
 #: src/effects/Contrast.cpp
 msgid "You can only measure one track at a time."
@@ -7440,7 +7440,7 @@ msgstr "Czas opóźnienia (sekun&dy):"
 
 #: src/effects/Echo.cpp
 msgid "D&ecay factor:"
-msgstr "Współ&czynnik zaniku:"
+msgstr "Współ&czynnik opadania:"
 
 #: src/effects/Effect.cpp
 msgid "Built-in"
@@ -8271,7 +8271,7 @@ msgstr "Normalizuj kanały &stereo niezależnie"
 
 #: src/effects/Loudness.cpp
 msgid "&Treat mono as dual-mono (recommended)"
-msgstr "&Traktuj mono jako dual-mono (rekomendowane)"
+msgstr "&Traktuj mono jako dual-mono (zalecane)"
 
 #: src/effects/Loudness.cpp src/effects/Normalize.cpp
 msgid "(Maximum 0dB)"
@@ -8416,11 +8416,11 @@ msgstr "Czas narastania"
 
 #: src/effects/NoiseReduction.cpp
 msgid "R&elease time (secs):"
-msgstr "Czas zanikania (s&ekundy):"
+msgstr "Czas opadania (s&ekundy):"
 
 #: src/effects/NoiseReduction.cpp
 msgid "Release time"
-msgstr "Czas zanikania"
+msgstr "Czas opadania"
 
 #: src/effects/NoiseReduction.cpp
 msgid "&Frequency smoothing (bands):"
@@ -8590,7 +8590,7 @@ msgstr "Czas narastania/zani&kania (sekundy):"
 
 #: src/effects/NoiseRemoval.cpp
 msgid "Attack/decay time"
-msgstr "Czas narastania/zanikania"
+msgstr "Czas narastania/opadania"
 
 #: src/effects/NoiseRemoval.cpp
 msgid "Re&move"
@@ -9857,7 +9857,7 @@ msgstr "Nyquist zwrócił dźwięk nil.\n"
 #: src/effects/nyquist/Nyquist.cpp
 msgid ""
 "[Warning: Nyquist returned invalid UTF-8 string, converted here as Latin-1]"
-msgstr "[Ostrzeżenie - Nyquist zwrócił nieprawidłowy ciąg znaków UTF-8, przekształcony tutaj na Łaciński-1]"
+msgstr "[Ostrzeżenie - Nyquist zwrócił nieprawidłowy ciąg znaków UTF-8, przekształcony tutaj na Łaciński 1]"
 
 #: src/effects/nyquist/Nyquist.cpp
 #, c-format
@@ -10153,7 +10153,7 @@ msgstr "&OK"
 
 #: src/export/ExportCL.cpp
 msgid "You've specified a file name without an extension. Are you sure?"
-msgstr "Podałeś/aś nazwę pliku bez rozszerzenia. Jesteś pewny/a?"
+msgstr "Podałeś/aś nazwę pliku bez rozszerzenia. Kontynuować?"
 
 #: src/export/ExportCL.cpp
 msgid "Program name appears to be missing."
@@ -11700,7 +11700,7 @@ msgstr "Nie można odnaleźć folderu projektu: \"%s\""
 msgid ""
 "MIDI tracks found in project file, but this build of Sneedacity does not "
 "include MIDI support, bypassing track."
-msgstr "Ścieżki MIDI znalezione w pliku projektu, ale ta kompilacja Sneedacity nie obejmuje obsługi MIDI, pomijając ścieżkę."
+msgstr "Ścieżki MIDI zostały znalezione w pliku projektu, ale ta kompilacja Sneedacity nie obejmuje obsługi MIDI, pomijając ścieżkę."
 
 #: src/import/ImportAUP.cpp
 msgid "Project Import"
@@ -11853,7 +11853,7 @@ msgstr "Nieprawidłowa długość w pliku LOF."
 
 #: src/import/ImportLOF.cpp
 msgid "MIDI tracks cannot be offset individually, only audio files can be."
-msgstr "Ścieżki MIDI nie mogą być przesuwane indywidualnie, mogą to być jedynie pliki dźwiękowe."
+msgstr "Ścieżki MIDI nie mogą być przesuwane indywidualnie. Mogą to być jedynie pliki dźwiękowe."
 
 #. i18n-hint: You do not need to translate "LOF"
 #: src/import/ImportLOF.cpp
@@ -14786,7 +14786,7 @@ msgid ""
 "the items. They are likely to break the pattern matching. Unless you know "
 "what you are doing, it is recommended to trim spaces. Do you want Sneedacity "
 "to trim spaces for you?"
-msgstr "W jednym z elementów istnieją znaki niedrukowalne (spacje, znaki nowej linii, tabulatory lub znaki końca linii). Na pewno popsują one dopasowywanie do wzorca. Zalecane jest obcięcie spacji, chyba że wiesz, co robisz. Chcesz, aby Sneedacity obciął spacje za Ciebie?"
+msgstr "W jednym z elementów występują znaki niedrukowalne (spacje, znaki nowej linii, tabulatory lub znaki końca linii). Na pewno popsują one dopasowywanie do wzorca. Zalecane jest obcięcie spacji, chyba że wiesz, co robisz. Chcesz, aby Sneedacity obciął spacje za Ciebie?"
 
 #: src/prefs/ExtImportPrefs.cpp
 msgid "Spaces detected"
@@ -15139,7 +15139,7 @@ msgid ""
 "\t%s\n"
 "\n"
 "instead. Otherwise, click Cancel."
-msgstr "Skrót klawiaturowy '%s' jest już przypisany do:\n\n\t%s\n\n\nKliknij na przycisk 'OK', aby zamiast tego przypisać skrót do\n\n\t%s\n\nW przeciwnym razie kliknij 'Anuluj'."
+msgstr "Skrót klawiaturowy '%s' jest już przypisany do:\n\n\t%s\n\n\nKliknij na przycisk 'OK', aby przypisać skrót do\n\n\t%s\n\nW przeciwnym razie kliknij 'Anuluj'."
 
 #: src/prefs/KeyConfigPrefs.h
 msgid "Key Config"
@@ -15310,7 +15310,7 @@ msgstr "Narzędzie"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Command Action"
-msgstr "Działanie polecenia"
+msgstr "Czynność polecenia"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Buttons"
@@ -15345,7 +15345,7 @@ msgstr "Powiększ zaznaczony zakres"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Left-Double-Click"
-msgstr "Podwójne kliknięcie lewym przyciskiem myszki"
+msgstr "Dwukrotne kliknięcie lewym przyciskiem myszki"
 
 #: src/prefs/MousePrefs.cpp
 msgid "Select Clip or Entire Track"
@@ -17173,7 +17173,7 @@ msgstr "%.0f%% w prawo"
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackView.cpp
 msgid ""
 "Click and drag to adjust sizes of sub-views, double-click to split evenly"
-msgstr "Kliknij i przeciągnij, aby dostosować rozmiary widoków podrzędnych, kliknij podwójnie myszką, aby rozdzielić równomiernie"
+msgstr "Kliknij i przeciągnij, aby dostosować rozmiary widoków podrzędnych, kliknij dwukrotnie myszką, aby rozdzielić równomiernie"
 
 #: src/tracks/playabletrack/wavetrack/ui/WaveTrackView.cpp
 msgid "Click and drag to rearrange sub-views"
@@ -17511,7 +17511,7 @@ msgstr "Kliknij, aby powiększyć podgląd; kliknij z Shift, aby pomniejszyć"
 
 #: src/tracks/ui/ZoomHandle.cpp
 msgid "Drag to Zoom Into Region, Right-Click to Zoom Out"
-msgstr "Przeciągnij lewym przyciskiem myszki, aby powiększyć; kliknij z prawym przyciskiem myszki, aby pomniejszyć"
+msgstr "Przeciągnij, aby powiększyć obszar; kliknij prawym przyciskiem myszki, aby pomniejszyć"
 
 #: src/tracks/ui/ZoomHandle.cpp
 msgid "Left=Zoom In, Right=Zoom Out, Middle=Normal"
@@ -17709,7 +17709,7 @@ msgstr "Pokaż dziennik dla szczegółów"
 
 #: src/widgets/MultiDialog.cpp
 msgid "Please select an action"
-msgstr "Wybierz działanie"
+msgstr "Wybierz czynność"
 
 #. i18n-hint: Format string for displaying time in seconds. Change the comma
 #. * in the middle to the 1000s separator for your locale, and the 'seconds'
@@ -19024,7 +19024,7 @@ msgstr "Narastanie (ms)"
 
 #: plug-ins/noisegate.ny
 msgid "Decay (ms)"
-msgstr "Zanikanie (ms)"
+msgstr "Opadanie (ms)"
 
 #: plug-ins/noisegate.ny
 #, lisp-format
@@ -19338,7 +19338,7 @@ msgstr "Steven Jones"
 
 #: plug-ins/rissetdrum.ny
 msgid "Decay (seconds)"
-msgstr "Zanik (sekundy)"
+msgstr "Opadanie (sekundy)"
 
 #: plug-ins/rissetdrum.ny
 msgid "Center frequency of noise (Hz)"
@@ -19725,7 +19725,7 @@ msgstr "Redukcja i izolacja wokalu"
 
 #: plug-ins/vocalrediso.ny
 msgid "Applying Action..."
-msgstr "Stosowanie działania..."
+msgstr "Stosowanie czynności..."
 
 #: plug-ins/vocalrediso.ny
 msgid "Robert Haenggi"
