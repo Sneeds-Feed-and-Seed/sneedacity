@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-07-17 00:00+0000\n"
+"PO-Revision-Date: 2024-08-05 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -5607,7 +5607,7 @@ msgstr "Czas opóźnienia (sekundy):"
 
 #: src/commands/Demo.cpp
 msgid "Decay factor:"
-msgstr "Współczynnik zaniku:"
+msgstr "Współczynnik opadania:"
 
 #: src/commands/Demo.h
 msgid "Does the demo action."
@@ -6812,7 +6812,7 @@ msgstr "Czas narastania"
 #. * sound dies away.
 #: src/effects/Compressor.cpp
 msgid "R&elease Time:"
-msgstr "&Czas zanikania:"
+msgstr "&Czas opadania:"
 
 #. i18n-hint: Particularly in percussion, sounds can be regarded as having
 #. * an 'attack' phase where the sound builds up and a 'decay' or 'release'
@@ -6820,7 +6820,7 @@ msgstr "&Czas zanikania:"
 #. * sound dies away.
 #: src/effects/Compressor.cpp
 msgid "Release Time"
-msgstr "Czas zanikania"
+msgstr "Czas opadania"
 
 #. i18n-hint: Make-up, i.e. correct for any reduction, rather than fabricate
 #. it.
@@ -6852,7 +6852,7 @@ msgstr "Czas narastania: %.2f sek."
 #: src/effects/Compressor.cpp
 #, c-format
 msgid "Release Time %.1f secs"
-msgstr "Czas zanikania: %.1f sek."
+msgstr "Czas opadania: %.1f sek."
 
 #: src/effects/Contrast.cpp
 msgid "You can only measure one track at a time."
@@ -7440,7 +7440,7 @@ msgstr "Czas opóźnienia (sekun&dy):"
 
 #: src/effects/Echo.cpp
 msgid "D&ecay factor:"
-msgstr "Współ&czynnik zaniku:"
+msgstr "Współ&czynnik opadania:"
 
 #: src/effects/Effect.cpp
 msgid "Built-in"
@@ -8416,11 +8416,11 @@ msgstr "Czas narastania"
 
 #: src/effects/NoiseReduction.cpp
 msgid "R&elease time (secs):"
-msgstr "Czas zanikania (s&ekundy):"
+msgstr "Czas opadania (s&ekundy):"
 
 #: src/effects/NoiseReduction.cpp
 msgid "Release time"
-msgstr "Czas zanikania"
+msgstr "Czas opadania"
 
 #: src/effects/NoiseReduction.cpp
 msgid "&Frequency smoothing (bands):"
@@ -8590,7 +8590,7 @@ msgstr "Czas narastania/zani&kania (sekundy):"
 
 #: src/effects/NoiseRemoval.cpp
 msgid "Attack/decay time"
-msgstr "Czas narastania/zanikania"
+msgstr "Czas narastania/opadania"
 
 #: src/effects/NoiseRemoval.cpp
 msgid "Re&move"
@@ -9857,7 +9857,7 @@ msgstr "Nyquist zwrócił dźwięk nil.\n"
 #: src/effects/nyquist/Nyquist.cpp
 msgid ""
 "[Warning: Nyquist returned invalid UTF-8 string, converted here as Latin-1]"
-msgstr "[Ostrzeżenie - Nyquist zwrócił nieprawidłowy ciąg znaków UTF-8, przekształcony tutaj na Łaciński-1]"
+msgstr "[Ostrzeżenie - Nyquist zwrócił nieprawidłowy ciąg znaków UTF-8, przekształcony tutaj na Łaciński 1]"
 
 #: src/effects/nyquist/Nyquist.cpp
 #, c-format
@@ -11700,7 +11700,7 @@ msgstr "Nie można odnaleźć folderu projektu: \"%s\""
 msgid ""
 "MIDI tracks found in project file, but this build of Sneedacity does not "
 "include MIDI support, bypassing track."
-msgstr "Ścieżki MIDI znalezione w pliku projektu, ale ta kompilacja Sneedacity nie obejmuje obsługi MIDI, pomijając ścieżkę."
+msgstr "Ścieżki MIDI zostały znalezione w pliku projektu, ale ta kompilacja Sneedacity nie obejmuje obsługi MIDI, pomijając ścieżkę."
 
 #: src/import/ImportAUP.cpp
 msgid "Project Import"
@@ -11853,7 +11853,7 @@ msgstr "Nieprawidłowa długość w pliku LOF."
 
 #: src/import/ImportLOF.cpp
 msgid "MIDI tracks cannot be offset individually, only audio files can be."
-msgstr "Ścieżki MIDI nie mogą być przesuwane indywidualnie, mogą to być jedynie pliki dźwiękowe."
+msgstr "Ścieżki MIDI nie mogą być przesuwane indywidualnie. Mogą to być jedynie pliki dźwiękowe."
 
 #. i18n-hint: You do not need to translate "LOF"
 #: src/import/ImportLOF.cpp
@@ -14786,7 +14786,7 @@ msgid ""
 "the items. They are likely to break the pattern matching. Unless you know "
 "what you are doing, it is recommended to trim spaces. Do you want Sneedacity "
 "to trim spaces for you?"
-msgstr "W jednym z elementów istnieją znaki niedrukowalne (spacje, znaki nowej linii, tabulatory lub znaki końca linii). Na pewno popsują one dopasowywanie do wzorca. Zalecane jest obcięcie spacji, chyba że wiesz, co robisz. Chcesz, aby Sneedacity obciął spacje za Ciebie?"
+msgstr "W jednym z elementów występują znaki niedrukowalne (spacje, znaki nowej linii, tabulatory lub znaki końca linii). Na pewno popsują one dopasowywanie do wzorca. Zalecane jest obcięcie spacji, chyba że wiesz, co robisz. Chcesz, aby Sneedacity obciął spacje za Ciebie?"
 
 #: src/prefs/ExtImportPrefs.cpp
 msgid "Spaces detected"
@@ -19024,7 +19024,7 @@ msgstr "Narastanie (ms)"
 
 #: plug-ins/noisegate.ny
 msgid "Decay (ms)"
-msgstr "Zanikanie (ms)"
+msgstr "Opadanie (ms)"
 
 #: plug-ins/noisegate.ny
 #, lisp-format
@@ -19338,7 +19338,7 @@ msgstr "Steven Jones"
 
 #: plug-ins/rissetdrum.ny
 msgid "Decay (seconds)"
-msgstr "Zanik (sekundy)"
+msgstr "Opadanie (sekundy)"
 
 #: plug-ins/rissetdrum.ny
 msgid "Center frequency of noise (Hz)"
