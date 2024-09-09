@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-09-06 00:00+0000\n"
+"PO-Revision-Date: 2024-09-10 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -938,7 +938,7 @@ msgstr "Ciemne motywy specjalne"
 
 #: src/AboutDialog.cpp
 msgid "Plug-in support"
-msgstr "Obsługa wtyczki"
+msgstr "Obsługa wtyczek"
 
 #: src/AboutDialog.cpp
 msgid "Sound card mixer support"
@@ -1662,7 +1662,7 @@ msgstr "Na pewno chcesz porzucić wszystkie zaznaczone projekty?\n\nWybranie \"T
 
 #: src/BatchCommandDialog.cpp
 msgid "Select Command"
-msgstr "Wybierz polecenie"
+msgstr "Zaznacz polecenie"
 
 #: src/BatchCommandDialog.cpp
 msgid "&Command"
@@ -2959,7 +2959,7 @@ msgid ""
 "files]] and tracks from "
 "[[https://manual.audacityteam.org/man/faq_opening_and_saving_files.html#fromcd|"
 " audio CDs]]."
-msgstr "Możesz również przeczytać naszą pomoc na temat importowania [[https://manual.audacityteam.org/man/playing_and_recording.html#midi|plików MIDI]] i ścieżek z [[https://manual.audacityteam.org/man/faq_opening_and_saving_files.html#fromcd| płyt Audio CD]]."
+msgstr "Możesz również przeczytać naszą pomoc na temat importowania [[https://manual.audacityteam.org/man/playing_and_recording.html#midi|plików MIDI]] i ścieżek z [[https://manual.audacityteam.org/man/faq_opening_and_saving_files.html#fromcd|płyt Audio CD]]."
 
 #: src/HelpText.cpp
 msgid ""
@@ -3152,7 +3152,7 @@ msgstr "Wybierz język używany w Sneedacity:"
 msgid ""
 "The language you have chosen, %s (%s), is not the same as the system "
 "language, %s (%s)."
-msgstr "Wybrany przez Ciebie język %s (%s), nie jest taki sam jak język systemowy %s (%s)."
+msgstr "Wybrany przez Ciebie język: %s (%s), nie jest taki sam jak język systemu: %s (%s)."
 
 #: src/LangChoice.cpp src/effects/VST/VSTEffect.cpp
 #: src/widgets/FileDialog/gtk/FileDialogPrivate.cpp
@@ -3382,7 +3382,7 @@ msgstr "C"
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "C♯"
-msgstr "C♯"
+msgstr "Cis"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
@@ -3392,7 +3392,7 @@ msgstr "D"
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "D♯"
-msgstr "D♯"
+msgstr "Dis"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
@@ -3407,7 +3407,7 @@ msgstr "F"
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "F♯"
-msgstr "F♯"
+msgstr "Fis"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
@@ -3417,7 +3417,7 @@ msgstr "G"
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "G♯"
-msgstr "G♯"
+msgstr "Gis"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
@@ -3427,67 +3427,67 @@ msgstr "A"
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "A♯"
-msgstr "A♯"
+msgstr "Ais"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "B"
-msgstr "B"
+msgstr "H"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "D♭"
-msgstr "D♭"
+msgstr "Des"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "E♭"
-msgstr "E♭"
+msgstr "Es"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "G♭"
-msgstr "G♭"
+msgstr "Ges"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "A♭"
-msgstr "A♭"
+msgstr "As"
 
 #. i18n-hint: Name of a musical note in the 12-tone chromatic scale
 #: src/PitchName.cpp
 msgid "B♭"
-msgstr "B♭"
+msgstr "B"
 
 #. i18n-hint: Two, alternate names of a musical note in the 12-tone chromatic
 #. scale
 #: src/PitchName.cpp
 msgid "C♯/D♭"
-msgstr "C♯/D♭"
+msgstr "Cis/Des"
 
 #. i18n-hint: Two, alternate names of a musical note in the 12-tone chromatic
 #. scale
 #: src/PitchName.cpp
 msgid "D♯/E♭"
-msgstr "D♯/E♭"
+msgstr "Dis/Es"
 
 #. i18n-hint: Two, alternate names of a musical note in the 12-tone chromatic
 #. scale
 #: src/PitchName.cpp
 msgid "F♯/G♭"
-msgstr "F♯/G♭"
+msgstr "Fis/Ges"
 
 #. i18n-hint: Two, alternate names of a musical note in the 12-tone chromatic
 #. scale
 #: src/PitchName.cpp
 msgid "G♯/A♭"
-msgstr "G♯/A♭"
+msgstr "Gis/As"
 
 #. i18n-hint: Two, alternate names of a musical note in the 12-tone chromatic
 #. scale
 #: src/PitchName.cpp
 msgid "A♯/B♭"
-msgstr "A♯/B♭"
+msgstr "Ais/B"
 
 #: src/PluginManager.cpp
 msgid "Manage Plug-ins"
@@ -4179,7 +4179,7 @@ msgstr "Rozmiar projektu przekracza dostępne wolne miejsce na dysku docelowym.\
 msgid ""
 "The project exceeds the maximum size of 4GB when writing to a FAT32 "
 "formatted filesystem."
-msgstr "Projekt przekracza maksymalny rozmiar 4 GB przy zapisywaniu do systemu plików FAT32."
+msgstr "Projekt przekracza maksymalny rozmiar 4 GB podczas zapisywania do systemu plików FAT32."
 
 #: src/ProjectFileManager.cpp src/commands/ScreenshotCommand.cpp
 #, c-format
@@ -4844,7 +4844,7 @@ msgstr "Ustaw do&myślny"
 
 #: src/Tags.cpp
 msgid "Don't show this when exporting audio"
-msgstr "Nie pokazuj tego przy eksportowaniu dźwięku"
+msgstr "Nie pokazuj tego podczas eksportowania dźwięku"
 
 #: src/Tags.cpp
 msgid "Edit Genres"
@@ -4905,7 +4905,7 @@ msgstr "%s\n\nAby uzyskać wskazówki dotyczące odpowiednich nośników, klikni
 msgid ""
 "Sneedacity could not write file:\n"
 "  %s."
-msgstr "Sneedacity nie mógł zapisać pliku:\n%s."
+msgstr "Sneedacity nie mógł zapisać pliku:\n  %s."
 
 #. i18n-hint: A theme is a consistent visual style across an application's
 #. graphical user interface, including choices of colors, and similarity of
@@ -4925,14 +4925,14 @@ msgid ""
 "Sneedacity could not open file:\n"
 "  %s\n"
 "for writing."
-msgstr "Sneedacity nie mógł otworzyć pliku:\n%s\ndo zapisu."
+msgstr "Sneedacity nie mógł otworzyć pliku:\n  %s\ndo zapisu."
 
 #: src/Theme.cpp
 #, c-format
 msgid ""
 "Sneedacity could not write images to file:\n"
 "  %s."
-msgstr "Sneedacity nie mógł zapisać obrazów do pliku:\n%s."
+msgstr "Sneedacity nie mógł zapisać obrazów do pliku:\n  %s."
 
 #. i18n-hint "Cee" means the C computer programming language
 #: src/Theme.cpp
@@ -4948,7 +4948,7 @@ msgid ""
 "Sneedacity could not find file:\n"
 "  %s.\n"
 "Theme not loaded."
-msgstr "Sneedacity nie mógł znaleźć pliku:\n%s.\nMotyw nie został załadowany."
+msgstr "Sneedacity nie mógł znaleźć pliku:\n  %s.\nMotyw nie został załadowany."
 
 #. i18n-hint: Do not translate png.  It is the name of a file format.
 #: src/Theme.cpp
@@ -4957,7 +4957,7 @@ msgid ""
 "Sneedacity could not load file:\n"
 "  %s.\n"
 "Bad png format perhaps?"
-msgstr "Sneedacity nie mógł załadować pliku:\n  %s.\nByć może format png jest nieprawidłowy?"
+msgstr "Sneedacity nie mógł załadować pliku:\n  %s.\nByć może format PNG jest nieprawidłowy?"
 
 #: src/Theme.cpp
 msgid ""
@@ -4971,14 +4971,14 @@ msgid ""
 "None of the expected theme component files\n"
 " were found in:\n"
 "  %s."
-msgstr "Nie znaleziono żadnego z\nelementów motywu w:\n%s."
+msgstr "Nie znaleziono żadnego z\nelementów motywu w:\n  %s."
 
 #: src/Theme.cpp
 #, c-format
 msgid ""
 "Could not create directory:\n"
 "  %s"
-msgstr "Nie można utworzyć katalogu:\n%s"
+msgstr "Nie można utworzyć katalogu:\n  %s"
 
 #: src/Theme.cpp
 #, c-format
@@ -4993,7 +4993,7 @@ msgstr "Niektóre wymagane pliki w:\n  %s\nbyły już obecne. Zastąpić?"
 msgid ""
 "Sneedacity could not save file:\n"
 "  %s"
-msgstr "Sneedacity nie mógł zapisać pliku:\n%s"
+msgstr "Sneedacity nie mógł zapisać pliku:\n  %s"
 
 #. i18n-hint: describing the "classic" or traditional
 #. appearance of older versions of Sneedacity
@@ -6128,7 +6128,7 @@ msgstr "Czas:"
 
 #: src/commands/SetEnvelopeCommand.cpp src/menus/EditMenus.cpp
 msgid "Delete"
-msgstr "Kasuj"
+msgstr "Usuń"
 
 #: src/commands/SetEnvelopeCommand.cpp
 msgid "Edited Envelope"
@@ -6395,7 +6395,7 @@ msgstr "Podgląd niedostępny"
 
 #: src/effects/BassTreble.cpp
 msgid "Bass and Treble"
-msgstr "Bas i sopran"
+msgstr "Basy i soprany"
 
 #: src/effects/BassTreble.cpp
 msgid "Simple tone control effect"
@@ -6407,23 +6407,23 @@ msgstr "Kontrola dźwięku"
 
 #: src/effects/BassTreble.cpp
 msgid "Bass (dB):"
-msgstr "Bas (dB):"
+msgstr "Basy (dB):"
 
 #: src/effects/BassTreble.cpp
 msgid "Ba&ss (dB):"
-msgstr "Ba&s (dB):"
+msgstr "Ba&sy (dB):"
 
 #: src/effects/BassTreble.cpp
 msgid "Bass"
-msgstr "Bas"
+msgstr "Basy"
 
 #: src/effects/BassTreble.cpp
 msgid "&Treble (dB):"
-msgstr "&Sopran (dB):"
+msgstr "&Soprany (dB):"
 
 #: src/effects/BassTreble.cpp
 msgid "Treble"
-msgstr "Sopran"
+msgstr "Soprany"
 
 #: src/effects/BassTreble.cpp
 msgid "&Volume (dB):"
@@ -8045,7 +8045,7 @@ msgstr "&Uzyskaj więcej..."
 
 #: src/effects/Equalization.cpp
 msgid "De&faults"
-msgstr "Do&myślnie"
+msgstr "Do&myślne"
 
 #: src/effects/Equalization.cpp
 msgid ""
@@ -8424,7 +8424,7 @@ msgstr "Czas opadania"
 
 #: src/effects/NoiseReduction.cpp
 msgid "&Frequency smoothing (bands):"
-msgstr "Wy&gładzanie częstotliwości (zespoły):"
+msgstr "Wy&gładzanie częstotliwości (pasma):"
 
 #: src/effects/NoiseReduction.cpp src/effects/NoiseRemoval.cpp
 msgid "Frequency smoothing"
@@ -9417,7 +9417,7 @@ msgstr "Ustawienia efektu"
 
 #: src/effects/VST/VSTEffect.cpp
 msgid "Unable to allocate memory when loading presets file."
-msgstr "Nie można przydzielić pamięci przy ładowaniu pliku presetów."
+msgstr "Nie można przydzielić pamięci podczas ładowania pliku presetów."
 
 #: src/effects/VST/VSTEffect.cpp
 msgid "Unable to read presets file."
@@ -9862,7 +9862,7 @@ msgstr "[Ostrzeżenie - Nyquist zwrócił nieprawidłowy ciąg znaków UTF-8, pr
 #: src/effects/nyquist/Nyquist.cpp
 #, c-format
 msgid "This version of Sneedacity does not support Nyquist plug-in version %ld"
-msgstr "Ta wersja Sneedacity nie obsługuje wersji wtyczki Nyquista %ld"
+msgstr "Ta wersja Sneedacity nie obsługuje wersji %ld wtyczki Nyquista"
 
 #: src/effects/nyquist/Nyquist.cpp
 msgid "Could not open file"
@@ -10693,7 +10693,7 @@ msgid ""
 "-1 - automatic\n"
 "min - 0 (fast encoding, large output file)\n"
 "max - 10 (slow encoding, small output file)"
-msgstr "Poziom kompresji\nWymagany dla FLAC\n-1 - automatyczny\nmin. - 0 (szybkie kodowanie, duży plik)\nmaks. - 10 (wolne kodowanie, mały plik)"
+msgstr "Poziom kompresji\nWymagany dla FLAC\n-1 - automatyczny\nmin. - 0 (szybkie kodowanie, duży plik wyjściowy)\nmaks. - 10 (wolne kodowanie, mały plik wyjściowy)"
 
 #: src/export/ExportFFmpegDialogs.cpp
 msgid "Compression:"
@@ -11694,7 +11694,7 @@ msgstr "Nieprawidłowy atrybut 'selHigh' projektu."
 #: src/import/ImportAUP.cpp
 #, c-format
 msgid "Couldn't find the project data folder: \"%s\""
-msgstr "Nie można odnaleźć folderu projektu: \"%s\""
+msgstr "Nie można znaleźć folderu projektu: \"%s\""
 
 #: src/import/ImportAUP.cpp
 msgid ""
@@ -12479,7 +12479,7 @@ msgstr "Wy&tnij"
 
 #: src/menus/EditMenus.cpp src/menus/LabelMenus.cpp
 msgid "&Delete"
-msgstr "&Kasuj"
+msgstr "&Usuń"
 
 #. i18n-hint: (verb)
 #: src/menus/EditMenus.cpp
@@ -13782,7 +13782,7 @@ msgstr "Nowa ścieżka"
 
 #: src/menus/TrackMenus.cpp
 msgid "Created new stereo audio track"
-msgstr "Utworzono nową stereofoniczną ścieżkę dźwiękową"
+msgstr "Utworzono nową ścieżkę dźwiękową stereo"
 
 #: src/menus/TrackMenus.cpp
 msgid "Created new label track"
@@ -14436,7 +14436,7 @@ msgstr "Zachowania"
 
 #: src/prefs/BatchPrefs.cpp
 msgid "&Don't apply effects in batch mode"
-msgstr "Nie stosuje efektów w trybie wsa&dowym"
+msgstr "Nie stosuj efektów w trybie wsa&dowym"
 
 #: src/prefs/DevicePrefs.cpp
 msgid "Devices"
@@ -14708,7 +14708,7 @@ msgstr "Opcje wtyczki"
 
 #: src/prefs/EffectsPrefs.cpp
 msgid "Check for updated plugins when Sneedacity starts"
-msgstr "Sprawdź aktualizacje wtyczek po uruchomieniu Sneedacity"
+msgstr "Sprawdź aktualizacje wtyczek podczas uruchamiania Sneedacity"
 
 #: src/prefs/EffectsPrefs.cpp
 msgid "Rescan plugins next time Sneedacity is started"
@@ -14802,7 +14802,7 @@ msgstr "Zasada potwierdzania przy usuwaniu"
 
 #: src/prefs/ExtImportPrefs.h
 msgid "Ext Import"
-msgstr "Rozsz. import"
+msgstr "Import rozsz."
 
 #. i18n-hint: refers to Sneedacity's user interface settings
 #: src/prefs/GUIPrefs.cpp
@@ -15523,7 +15523,7 @@ msgstr "Po wyciętym obsz&arze:"
 
 #: src/prefs/PlaybackPrefs.cpp
 msgid "Seek Time when playing"
-msgstr "Czas przewijania przy odtwarzaniu"
+msgstr "Czas przewijania podczas odtwarzania"
 
 #: src/prefs/PlaybackPrefs.cpp
 msgid "&Short period:"
@@ -17309,7 +17309,7 @@ msgstr "Ustaw nazwę ścieżki"
 #: src/tracks/ui/CommonTrackControls.cpp
 #, c-format
 msgid "Renamed '%s' to '%s'"
-msgstr "Zmiana nazwy z '%s' na '%s'"
+msgstr "Zmieniono nazwę z '%s' na '%s'"
 
 #: src/tracks/ui/CommonTrackControls.cpp
 msgid "Name Change"
@@ -18165,7 +18165,7 @@ msgstr "Okno dialogowe"
 
 #: src/widgets/wxPanelWrapper.h
 msgid "Select a directory"
-msgstr "Zaznacz katalog"
+msgstr "Wybierz katalog"
 
 #: src/widgets/wxPanelWrapper.h
 msgid "Directory Dialog"
@@ -18360,7 +18360,7 @@ msgstr "Koniec (lub początek)"
 
 #: plug-ins/adjustable-fade.ny
 msgid "Handy Presets (override controls)"
-msgstr "Poręczne presety (zastąp kontrole)"
+msgstr "Przydatne presety (zastąp kontrole)"
 
 #: plug-ins/adjustable-fade.ny
 msgid "None Selected"
@@ -19208,7 +19208,7 @@ msgstr "Stopniowy"
 
 #: plug-ins/pluck.ny
 msgid "Duration (60s max)"
-msgstr "Długość (maksymalnie 60)"
+msgstr "Długość (maks. 60)"
 
 #: plug-ins/rhythmtrack.ny
 msgid "Rhythm Track"
@@ -19220,7 +19220,7 @@ msgstr "Generowanie rytmu..."
 
 #: plug-ins/rhythmtrack.ny
 msgid "Tempo (bpm)"
-msgstr "Tempo (bpm)"
+msgstr "Tempo (BPM)"
 
 #: plug-ins/rhythmtrack.ny
 msgid "30 - 300 beats/minute"
@@ -19441,7 +19441,7 @@ msgstr "Tylko błędy"
 #. i18n-hint abbreviates negative infinity
 #: plug-ins/sample-data-export.ny
 msgid "[-inf]"
-msgstr "[-inf]"
+msgstr "[-niesk.]"
 
 #: plug-ins/sample-data-export.ny
 #, lisp-format
