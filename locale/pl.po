@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-10-08 00:00+0000\n"
+"PO-Revision-Date: 2024-10-12 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -9761,14 +9761,14 @@ msgstr "Zepsuty nagłówek wtyczki Nyquista"
 msgid ""
 "Enable track spectrogram view before\n"
 "applying 'Spectral' effects."
-msgstr "Włącz widok spektrogramu ścieżek przed\nzastosowaniem efektów 'Widma'."
+msgstr "Włącz widok spektrogramu ścieżki przed\nzastosowaniem efektów 'Widma'."
 
 #: src/effects/nyquist/Nyquist.cpp
 msgid ""
 "To use 'Spectral effects', enable 'Spectral Selection'\n"
 "in the track Spectrogram settings and select the\n"
 "frequency range for the effect to act on."
-msgstr "Aby użyć 'Efektów widma', włącz 'Zaznaczenie widma'\nw ustawieniach toru spektrogramu i wybierz\nzakres częstotliwości efektu."
+msgstr "Aby użyć 'Efektów widma', włącz 'Zaznaczenie widma'\nw ustawieniach spektrogramu ścieżki i wybierz\nzakres częstotliwości efektu."
 
 #: src/effects/nyquist/Nyquist.cpp
 #, c-format
@@ -11877,7 +11877,7 @@ msgstr "Nie można otworzyć pliku %s: nazwa pliku jest za krótka."
 #: src/import/ImportMIDI.cpp
 #, c-format
 msgid "Could not open file %s: Incorrect filetype."
-msgstr "Nie można otworzyć pliku %s: niepoprawny typ pliku."
+msgstr "Nie można otworzyć pliku %s: nieprawidłowy typ pliku."
 
 #: src/import/ImportMIDI.cpp
 #, c-format
@@ -16945,7 +16945,7 @@ msgstr "&Spektrogram"
 msgid ""
 "To change Spectrogram Settings, stop any\n"
 " playing or recording first."
-msgstr "Aby zmienić Ustawienia spektrogramu, najpierw\nzatrzymaj odtwarzanie lub nagrywanie."
+msgstr "Aby zmienić ustawienia spektrogramu, najpierw\nzatrzymaj odtwarzanie lub nagrywanie."
 
 #: src/tracks/playabletrack/wavetrack/ui/SpectrumView.cpp
 msgid "Stop the Audio First"
