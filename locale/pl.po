@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-10-12 00:00+0000\n"
+"PO-Revision-Date: 2024-10-13 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -7200,27 +7200,27 @@ msgstr "2. harmoniczna (oktawa)"
 
 #: src/effects/Distortion.cpp
 msgid "Gated Expansion Distortion"
-msgstr "Zniekształcenie ekspansji"
+msgstr "Zniekształcenie ekspansji bramkowej"
 
 #: src/effects/Distortion.cpp
 msgid "Leveller, Light, -70dB noise floor"
-msgstr "Niwelator, Lekki, -70 dB szumu"
+msgstr "Niwelator, lekki, -70 dB szumu"
 
 #: src/effects/Distortion.cpp
 msgid "Leveller, Moderate, -70dB noise floor"
-msgstr "Niwelator, Umiarkowany, -70 dB szumu"
+msgstr "Niwelator, umiarkowany, -70 dB szumu"
 
 #: src/effects/Distortion.cpp
 msgid "Leveller, Heavy, -70dB noise floor"
-msgstr "Niwelator, Ciężki, -70 dB szumu"
+msgstr "Niwelator, ciężki, -70 dB szumu"
 
 #: src/effects/Distortion.cpp
 msgid "Leveller, Heavier, -70dB noise floor"
-msgstr "Niwelator, Cięższy, -70 dB szumu"
+msgstr "Niwelator, cięższy, -70 dB szumu"
 
 #: src/effects/Distortion.cpp
 msgid "Leveller, Heaviest, -70dB noise floor"
-msgstr "Niwelator, Najcięższy, -70 dB szumu"
+msgstr "Niwelator, najcięższy, -70 dB szumu"
 
 #: src/effects/Distortion.cpp
 msgid "Half-wave Rectifier"
@@ -8294,7 +8294,7 @@ msgstr "Różowy"
 #: src/effects/Noise.cpp
 msgctxt "noise"
 msgid "Brownian"
-msgstr "Browna"
+msgstr "Brązowy"
 
 #: src/effects/Noise.cpp
 msgid "Noise"
