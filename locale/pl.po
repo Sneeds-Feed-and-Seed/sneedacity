@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-10-13 00:00+0000\n"
+"PO-Revision-Date: 2024-11-12 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -2372,7 +2372,7 @@ msgid ""
 "Some older Sneedacity projects may not be self-contained, and care \n"
 "is needed to keep their external dependencies in the right place.\n"
 "New projects will be self-contained and are less risky."
-msgstr "Twój projekt jest obecnie samowystarczalny; nie zależy on od żadnych zewnętrznych plików dźwiękowych. \n\nNiektóre starsze projekty Sneedacity mogą być niesamodzielne i należy zachować ostrożność, aby zachować ich zewnętrzne zależności we właściwym miejscu.\nNowe projekty będą niezależne i mniej ryzykowne."
+msgstr "Twój projekt jest obecnie samodzielny; nie zależy on od żadnych zewnętrznych plików dźwiękowych. \n\nNiektóre starsze projekty Sneedacity mogą nie być samodzielne i należy zachować ostrożność, aby zachować ich zewnętrzne zależności we właściwym miejscu.\nNowe projekty będą samodzielne i mniej ryzykowne."
 
 #: src/Dependencies.cpp
 msgid "Dependency Check"
@@ -7394,7 +7394,7 @@ msgstr "W&spółczynnik dźwięk/cisza:"
 
 #: src/effects/DtmfGen.cpp
 msgid "Duty cycle:"
-msgstr "Cykl:"
+msgstr "Cykl pracy:"
 
 #: src/effects/DtmfGen.cpp
 #, c-format
@@ -12142,7 +12142,7 @@ msgstr "Nie można uzyskać wypełnienia bufora"
 #. i18n-hint: 'Raw' means 'unprocessed' here and should usually be translated.
 #: src/import/ImportRaw.cpp
 msgid "Import Raw"
-msgstr "Importuj dane surowe"
+msgstr "Importuj surowe"
 
 #: src/import/ImportRaw.cpp
 msgid "Import Raw Data"
@@ -12394,7 +12394,7 @@ msgstr "Powielone"
 
 #: src/menus/EditMenus.cpp
 msgid "Duplicate"
-msgstr "Duplikuj"
+msgstr "Powiel"
 
 #: src/menus/EditMenus.cpp
 msgid "Split-cut to the clipboard"
