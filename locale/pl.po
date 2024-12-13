@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-11-12 00:00+0000\n"
+"PO-Revision-Date: 2024-12-10 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -14993,7 +14993,7 @@ msgstr "Ustawienia KeyConfig"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "Keyboard preferences currently unavailable."
-msgstr "Ustawienia klawiatury chwilowo niedostępne."
+msgstr "Ustawienia klawiatury obecnie niedostępne."
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "Open a new project to modify keyboard shortcuts."
@@ -15974,7 +15974,7 @@ msgid ""
 "\n"
 "(Only the Transport Toolbar and the colors on the wavetrack are currently affected, even\n"
 "though the image file shows other icons too.)"
-msgstr "Ubieranie w motywy jest funkcją eksperymentalną.\n\nAby ją wypróbować, kliknij \"Zapisz pamięć podręczną motywu\", a następnie znajdź i zmodyfikuj obrazy i kolory w\nImageCacheVxx.png, wykorzystując edytor obrazów, np. Gimpa.\n\nKliknij \"Załaduj pamięć podręczną motywu\", aby załadować zmienione obrazy i kolory z powrotem do Sneedacity.\n\n(Na razie tylko pasek narzędzi transportu i kolory na ścieżce fali są zmieniane, nawet\nw przypadku, gdy plik obrazu pokazuje także inne ikony.)"
+msgstr "Ubieranie w motywy jest funkcją eksperymentalną.\n\nAby ją wypróbować, kliknij \"Zapisz pamięć podręczną motywu\", a następnie znajdź i zmodyfikuj obrazy i kolory w\nImageCacheVxx.png, wykorzystując edytor obrazów, np. Gimpa.\n\nKliknij \"Załaduj pamięć podręczną motywu\", aby załadować zmienione obrazy i kolory z powrotem do Sneedacity.\n\n(Obecnie tylko pasek narzędzi transportu i kolory na ścieżce fali są zmieniane, nawet\nw przypadku, gdy plik obrazu pokazuje również inne ikony.)"
 
 #: src/prefs/ThemePrefs.cpp
 msgid ""
