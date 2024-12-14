@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2024-12-10 00:00+0000\n"
+"PO-Revision-Date: 2024-12-15 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2024\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -968,7 +968,7 @@ msgstr "Kliknij i przeciągnij, aby dostosować, kliknij dwukrotnie myszką, aby
 #. the temporal position in the audio.
 #: src/AdornedRulerPanel.cpp
 msgid "Record/Play head"
-msgstr "Głowica nagrywania/odtwarzania"
+msgstr "Wskaźnik nagrywania/odtwarzania"
 
 #: src/AdornedRulerPanel.cpp src/prefs/GUIPrefs.cpp
 msgid "Timeline"
@@ -1051,7 +1051,7 @@ msgstr "Zablokuj obszar odtwarzania"
 
 #: src/AdornedRulerPanel.cpp
 msgid "Pinned Play Head"
-msgstr "Podpięty do głowicy odtwarzania"
+msgstr "Podpięty do wskaźnika odtwarzania"
 
 #: src/AdornedRulerPanel.cpp
 msgid ""
@@ -1299,7 +1299,7 @@ msgid ""
 "You can attempt to correct the issue and then click \"Retry\" to continue.\n"
 "\n"
 "If you choose to \"Quit Sneedacity\", your project may be left in an unsaved state which will be recovered the next time you open it."
-msgstr "Nie można uzyskać dostępu do następującego pliku konfiguracyjnego:\n\n\t%s\n\nMoże to mieć wiele przyczyn, ale najprawdopodobniej dysk jest pełny lub nie masz uprawnień do zapisu do pliku. Więcej informacji można uzyskać, klikając poniższy przycisk pomocy.\n\nMożesz spróbować rozwiązać problem, a następnie kliknąć \"Ponów\", aby kontynuować.\n\nJeśli wybierzesz opcję \"Opuść Sneedacity\", Twój projekt może pozostać w stanie niezapisanym, który zostanie odzyskany przy następnym otwarciu."
+msgstr "Nie można uzyskać dostępu do następującego pliku konfiguracyjnego:\n\n\t%s\n\nMoże to mieć wiele przyczyn, ale najprawdopodobniej dysk jest pełny lub nie masz uprawnień do zapisu do pliku. Więcej informacji można uzyskać, klikając poniższy przycisk pomocy.\n\nMożesz spróbować rozwiązać problem, a następnie kliknąć \"Ponów\", aby kontynuować.\n\nJeśli wybierzesz opcję \"Zakończ Sneedacity\", Twój projekt może pozostać w stanie niezapisanym, który zostanie odzyskany przy następnym otwarciu."
 
 #: src/SneedacityFileConfig.cpp src/ShuttleGui.cpp src/commands/HelpCommand.cpp
 #: src/effects/Equalization.cpp src/export/Export.cpp src/menus/HelpMenus.cpp
@@ -1309,7 +1309,7 @@ msgstr "Pomoc"
 
 #: src/SneedacityFileConfig.cpp src/AutoRecoveryDialog.cpp
 msgid "&Quit Sneedacity"
-msgstr "&Opuść Sneedacity"
+msgstr "Za&kończ Sneedacity"
 
 #: src/SneedacityFileConfig.cpp
 msgid "&Retry"
@@ -2826,7 +2826,7 @@ msgstr "Narysuj widmo..."
 
 #: src/HelpText.cpp
 msgid "Welcome!"
-msgstr "Witamy!"
+msgstr "Witaj!"
 
 #. i18n-hint: Title for a topic.
 #: src/HelpText.cpp
@@ -4364,7 +4364,7 @@ msgstr "Automatyczna kopia zapasowa bazy danych zakończona niepowodzeniem."
 #: src/ProjectManager.cpp
 #, c-format
 msgid "Welcome to Sneedacity version %s"
-msgstr "Witamy w wersji %s Sneedacity"
+msgstr "Witaj w wersji %s Sneedacity"
 
 #. i18n-hint: The first %s numbers the project, the second %s is the project
 #. name.
@@ -4764,7 +4764,7 @@ msgstr "Poziom aktywacji (dB):"
 
 #: src/SplashDialog.cpp
 msgid "Welcome to Sneedacity!"
-msgstr "Witamy w Sneedacity!"
+msgstr "Witaj w Sneedacity!"
 
 #: src/SplashDialog.cpp
 msgid "Don't show this again at start up"
@@ -8633,7 +8633,7 @@ msgstr "Analizowanie drugiej ścieżki z pary stereo: %s"
 #: src/effects/Normalize.cpp
 #, c-format
 msgid "Processing stereo channels independently: %s"
-msgstr "Przetwarzanie ścieżki stereo niezależnie: %s"
+msgstr "Przetwarzanie kanałów stereo niezależnie: %s"
 
 #: src/effects/Normalize.cpp
 #, c-format
@@ -9999,7 +9999,7 @@ msgstr "Brak konkretnych opcji formatowania"
 
 #: src/export/Export.cpp
 msgid "Export Audio"
-msgstr "Eksportuj dźwięk"
+msgstr "Eksportuj nagranie"
 
 #: src/export/Export.cpp src/export/ExportMultiple.cpp src/menus/EditMenus.cpp
 msgid "Edit Metadata Tags"
@@ -10129,7 +10129,7 @@ msgstr "(program zewnętrzny)"
 #: src/export/ExportCL.cpp src/export/ExportPCM.cpp
 #, c-format
 msgid "Cannot export audio to %s"
-msgstr "Nie można eksportować dźwięku do %s"
+msgstr "Nie można eksportować nagrania do %s"
 
 #: src/export/ExportCL.cpp src/export/ExportMultiple.cpp
 msgid "Export"
@@ -10137,11 +10137,11 @@ msgstr "Eksportuj"
 
 #: src/export/ExportCL.cpp
 msgid "Exporting the selected audio using command-line encoder"
-msgstr "Eksportowanie zaznaczonego dźwięku za pomocą kodera wiersza poleceń"
+msgstr "Eksportowanie zaznaczonego nagrania za pomocą kodera wiersza poleceń"
 
 #: src/export/ExportCL.cpp
 msgid "Exporting the audio using command-line encoder"
-msgstr "Eksportowanie dźwięku za pomocą kodera wiersza poleceń"
+msgstr "Eksportowanie nagrania za pomocą kodera wiersza poleceń"
 
 #: src/export/ExportCL.cpp
 msgid "Command Output"
@@ -10276,12 +10276,12 @@ msgstr "Usiłowano eksportować %d kanałów, ale maksymalna liczba kanałów dl
 #: src/export/ExportFFmpeg.cpp
 #, c-format
 msgid "Exporting selected audio as %s"
-msgstr "Eksportowanie zaznaczonego dźwięku jako %s"
+msgstr "Eksportowanie zaznaczonego nagrania jako %s"
 
 #: src/export/ExportFFmpeg.cpp src/export/ExportPCM.cpp
 #, c-format
 msgid "Exporting the audio as %s"
-msgstr "Eksportowanie dźwięku jako %s"
+msgstr "Eksportowanie nagrania jako %s"
 
 #: src/export/ExportFFmpeg.cpp src/export/ExportMP3.cpp
 msgid "Invalid sample rate"
@@ -10921,11 +10921,11 @@ msgstr "Inicjowanie kodera FLAC zakończone niepowodzeniem\nStan: %d"
 
 #: src/export/ExportFLAC.cpp
 msgid "Exporting the selected audio as FLAC"
-msgstr "Eksportowanie zaznaczonego dźwięku jako FLAC"
+msgstr "Eksportowanie zaznaczonego nagrania jako FLAC"
 
 #: src/export/ExportFLAC.cpp
 msgid "Exporting the audio as FLAC"
-msgstr "Eksportowanie dźwięku jako FLAC"
+msgstr "Eksportowanie nagrania jako FLAC"
 
 #: src/export/ExportMP2.cpp
 msgid "MP2 Files"
@@ -10942,12 +10942,12 @@ msgstr "Nie można otworzyć pliku do zapisu"
 #: src/export/ExportMP2.cpp
 #, c-format
 msgid "Exporting selected audio at %ld kbps"
-msgstr "Eksportowanie zaznaczonego dźwięku z jakością %ld kbps"
+msgstr "Eksportowanie zaznaczonego nagrania z jakością %ld kbps"
 
 #: src/export/ExportMP2.cpp
 #, c-format
 msgid "Exporting the audio at %ld kbps"
-msgstr "Eksportowanie dźwięku jako %ld kbps"
+msgstr "Eksportowanie nagrania z jakością %ld kbps"
 
 #: src/export/ExportMP3.cpp
 msgid "220-260 kbps (Best Quality)"
@@ -11151,32 +11151,32 @@ msgstr "Nie można zainicjować strumienia MP3"
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Exporting selected audio with %s preset"
-msgstr "Eksportowanie zaznaczonego dźwięku z presetem %s"
+msgstr "Eksportowanie zaznaczonego nagrania z presetem %s"
 
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Exporting the audio with %s preset"
-msgstr "Eksportowanie dźwięku z presetem %s"
+msgstr "Eksportowanie nagrania z presetem %s"
 
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Exporting selected audio with VBR quality %s"
-msgstr "Eksportowanie zaznaczonego dźwięku z jakością VBR %s"
+msgstr "Eksportowanie zaznaczonego nagrania z jakością VBR %s"
 
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Exporting the audio with VBR quality %s"
-msgstr "Eksportowanie dźwięku z jakością VBR %s"
+msgstr "Eksportowanie nagrania z jakością VBR %s"
 
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Exporting selected audio at %d Kbps"
-msgstr "Eksportowanie zaznaczonego dźwięku z jakością %d Kbps"
+msgstr "Eksportowanie zaznaczonego nagrania z jakością %d Kbps"
 
 #: src/export/ExportMP3.cpp
 #, c-format
 msgid "Exporting the audio at %d Kbps"
-msgstr "Eksportowanie dźwięku jako %d Kbps"
+msgstr "Eksportowanie nagrania z jakością %d Kbps"
 
 #: src/export/ExportMP3.cpp
 #, c-format
@@ -11381,11 +11381,11 @@ msgstr "Nie można eksportować - problem z plikiem"
 
 #: src/export/ExportOGG.cpp
 msgid "Exporting the selected audio as Ogg Vorbis"
-msgstr "Eksportowanie zaznaczonego dźwięku jako Ogg Vorbis"
+msgstr "Eksportowanie zaznaczonego nagrania jako Ogg Vorbis"
 
 #: src/export/ExportOGG.cpp
 msgid "Exporting the audio as Ogg Vorbis"
-msgstr "Eksportowanie dźwięku jako Ogg Vorbis"
+msgstr "Eksportowanie nagrania jako Ogg Vorbis"
 
 #: src/export/ExportPCM.cpp src/import/ImportPCM.cpp
 msgid "AIFF (Apple/SGI)"
@@ -11433,12 +11433,12 @@ msgstr "Formaty WAVEX i GSM 6.10 są niekompatybilne"
 
 #: src/export/ExportPCM.cpp
 msgid "Cannot export audio in this format."
-msgstr "Nie można eksportować danych w tym formacie."
+msgstr "Nie można eksportować nagrania w tym formacie."
 
 #: src/export/ExportPCM.cpp
 #, c-format
 msgid "Exporting the selected audio as %s"
-msgstr "Eksportowanie zaznaczonego dźwięku jako %s"
+msgstr "Eksportowanie zaznaczonego nagrania jako %s"
 
 #. i18n-hint: %s will be the error message from libsndfile, which
 #. * is usually something unhelpful (and untranslated) like "system
@@ -12729,11 +12729,11 @@ msgstr "Eksportuj jako &OGG"
 
 #: src/menus/FileMenus.cpp
 msgid "&Export Audio..."
-msgstr "&Eksportuj dźwięk..."
+msgstr "&Eksportuj nagranie..."
 
 #: src/menus/FileMenus.cpp
 msgid "Expo&rt Selected Audio..."
-msgstr "Ekspo&rtuj zaznaczony dźwięk..."
+msgstr "Ekspo&rtuj zaznaczone nagranie..."
 
 #: src/menus/FileMenus.cpp
 msgid "Export &Labels..."
@@ -14200,7 +14200,7 @@ msgstr "Aktywa&cja nagrywania dźwięku (włącz/wyłącz)"
 
 #: src/menus/TransportMenus.cpp
 msgid "Pinned Play/Record &Head (on/off)"
-msgstr "Podpięty do &głowicy nagrywania/odtwarzania (włącz/wyłącz)"
+msgstr "Podpięty do wskaźnika na&grywania/odtwarzania (włącz/wyłącz)"
 
 #: src/menus/TransportMenus.cpp
 msgid "&Overdub (on/off)"
@@ -14621,7 +14621,7 @@ msgstr "Katalog %s nie jest przeznaczony do zapisu"
 msgid ""
 "Changes to temporary directory will not take effect until Sneedacity is "
 "restarted"
-msgstr "Zmiana katalogu tymczasowego będzie nieaktywna aż do zrestartowania programu Sneedacity"
+msgstr "Zmiana katalogu tymczasowego będzie nieaktywna aż do ponownego uruchomienia Sneedacity"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "Temp Directory Update"
@@ -15054,7 +15054,7 @@ msgstr "U&staw"
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "Note: Pressing Cmd+Q will quit. All other keys are valid."
-msgstr "Uwaga: Naciśnięcie Cmd+Q spowoduje wyjście. Pozostałe klawisze są prawidłowe."
+msgstr "Uwaga: Naciśnięcie Cmd+Q spowoduje zakończenie. Pozostałe klawisze są prawidłowe."
 
 #: src/prefs/KeyConfigPrefs.cpp
 msgid "&Import..."
@@ -15672,7 +15672,7 @@ msgstr "Niestandardowa nazwa tekstu"
 
 #: src/prefs/RecordingPrefs.cpp
 msgid "Recorded_Audio"
-msgstr "Nagrany_dźwięk"
+msgstr "Nagranie"
 
 #: src/prefs/RecordingPrefs.cpp
 msgid "&Track Number"
@@ -16165,15 +16165,15 @@ msgstr "Użyj wyświetlacza &półfalowego, gdy jest zwinięty"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "&Pinned Recording/Playback head"
-msgstr "&Podpięty do głowicy nagrywania/odtwarzania"
+msgstr "&Podpięty do wskaźnika nagrywania/odtwarzania"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "A&uto-scroll if head unpinned"
-msgstr "A&utoprzewijanie, jeśli głowica jest odpięta"
+msgstr "A&utoprzewijanie, jeśli wskaźnik jest odpięty"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Pinned &head position"
-msgstr "Pozycja podpiętej &głowicy"
+msgstr "Pozycja podpięte&go wskaźnika"
 
 #: src/prefs/TracksPrefs.cpp
 msgid "Default &view mode:"
@@ -19358,7 +19358,7 @@ msgstr "Amplituda (0-1)"
 
 #: plug-ins/sample-data-export.ny
 msgid "Sample Data Export"
-msgstr "Eksportuj przykładowe dane"
+msgstr "Eksportuj dane przykładowe"
 
 #: plug-ins/sample-data-export.ny
 msgid "Analyzing..."
@@ -19545,7 +19545,7 @@ msgstr "Lewy: ~a lin, ~a dB | Prawy: ~a liniowy, &nbsp;&nbsp;~a dB."
 
 #: plug-ins/sample-data-export.ny
 msgid "sample data"
-msgstr "przykładowe dane"
+msgstr "dane przykładowe"
 
 #: plug-ins/sample-data-export.ny
 msgid "Sample #"
@@ -19585,7 +19585,7 @@ msgid ""
 "Produced with <span>Sample Data Export</span> for\n"
 "<a href=\"~a\">Sneedacity</a> by Steve\n"
 "Daulton"
-msgstr "Stworzone przez Steve'a Daultona\nz <span>Eksportu przykładowych danych</span> dla\n<a href=\"~a\">Sneedacity</a>"
+msgstr "Stworzone przez Steve'a Daultona\nz <span>Eksportu danych przykładowych</span> dla\n<a href=\"~a\">Sneedacity</a>"
 
 #: plug-ins/sample-data-export.ny
 msgid "linear"
@@ -19635,7 +19635,7 @@ msgstr "Błąd.~%\"~a\" nie może zostać zapisany."
 
 #: plug-ins/sample-data-import.ny
 msgid "Sample Data Import"
-msgstr "Importuj przykładowe dane"
+msgstr "Importuj dane przykładowe"
 
 #: plug-ins/sample-data-import.ny
 msgid "Reading and rendering samples..."
