@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2025-02-14 00:00+0000\n"
+"PO-Revision-Date: 2025-03-29 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2025\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -729,7 +729,7 @@ msgstr "forum"
 #. *  For example:  "English translation by Dominic Mazzoni."
 #: src/AboutDialog.cpp
 msgid "translator_credits"
-msgstr "Polskie tłumaczenie Sneedacity: Grzegorz \"Gootector\" Pruchniakowski."
+msgstr "Polskie tłumaczenie Sneedacity: Grzegorz Pruchniakowski."
 
 #: src/AboutDialog.cpp
 msgid "<h3>"
