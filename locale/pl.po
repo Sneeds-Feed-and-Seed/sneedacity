@@ -11488,7 +11488,7 @@ msgid ""
 "Sneedacity cannot open audio CDs directly. \n"
 "Extract (rip) the CD tracks to an audio format that \n"
 "Sneedacity can import, such as WAV or AIFF."
-msgstr "\"%s\" jest ścieżką Audio CD.\nSneedacity nie może otworzyć bezpośrednio ścieżek Audio CD. \nWypakuj (zgraj) ścieżki do formatu, który Sneedacity \nmoże importować, takich jak WAV lub AIFF."
+msgstr "\"%s\" jest ścieżką Audio CD.\nSneedacity nie może otworzyć bezpośrednio ścieżek Audio CD. \nWypakuj (zgraj) ścieżki do formatu, który Sneedacity \nmoże importować, takiego jak WAV lub AIFF."
 
 #. i18n-hint: %s will be the filename
 #: src/import/Import.cpp
