@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2025-10-27 00:00+0000\n"
+"PO-Revision-Date: 2025-11-20 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2025\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -5420,7 +5420,7 @@ msgstr "Przesunięto '%s' na samą górę"
 
 #: src/TrackUtilities.cpp
 msgid "Move Track to Top"
-msgstr "Przesuń ścieżkę dźwiękową na samą górę"
+msgstr "Przesuń ścieżkę na samą górę"
 
 #. i18n-hint: Past tense of 'to move', as in 'moved audio track up'.
 #: src/TrackUtilities.cpp
@@ -5430,7 +5430,7 @@ msgstr "Przesunięto '%s' na sam dół"
 
 #: src/TrackUtilities.cpp
 msgid "Move Track to Bottom"
-msgstr "Przesuń ścieżkę dźwiękową na sam dół"
+msgstr "Przesuń ścieżkę na sam dół"
 
 #. i18n-hint: Past tense of 'to move', as in 'moved audio track up'.
 #: src/TrackUtilities.cpp
@@ -5446,11 +5446,11 @@ msgstr "Przesunięto '%s' niżej"
 #. i18n-hint: Past tense of 'to move', as in 'moved audio track up'.
 #: src/TrackUtilities.cpp
 msgid "Move Track Up"
-msgstr "Przesuń ścieżkę dźwiękową wyżej"
+msgstr "Przesuń ścieżkę wyżej"
 
 #: src/TrackUtilities.cpp
 msgid "Move Track Down"
-msgstr "Przesuń ścieżkę dźwiękową niżej"
+msgstr "Przesuń ścieżkę niżej"
 
 #: src/UndoManager.cpp
 msgid "Discarding undo/redo history"
@@ -7514,7 +7514,7 @@ msgstr "Zastosowano polecenie: %s"
 
 #: src/effects/EffectManager.cpp
 msgid "Select Preset"
-msgstr "Zaznacz preset"
+msgstr "Wybierz preset"
 
 #: src/effects/EffectManager.cpp
 msgid "&Preset:"
@@ -8460,7 +8460,7 @@ msgstr "Krok 2"
 msgid ""
 "Select all of the audio you want filtered, choose how much noise you want\n"
 "filtered out, and then click 'OK' to reduce noise.\n"
-msgstr "Zaznacz cały dźwięk, który chcesz przefiltrować, wybierz ilość szumów do\nprzefiltrowania i kliknij na przycisk 'OK', aby zredukować szumy.\n"
+msgstr "Zaznacz cały dźwięk, który chcesz przefiltrować, wybierz, ile szumu chcesz\nprzefiltrować i kliknij na przycisk 'OK', aby zredukować szum.\n"
 
 #: src/effects/NoiseReduction.cpp src/effects/NoiseRemoval.cpp
 msgid "Noise:"
@@ -8790,7 +8790,7 @@ msgid ""
 "The Repair effect is intended to be used on very short sections of damaged audio (up to 128 samples).\n"
 "\n"
 "Zoom in and select a tiny fraction of a second to repair."
-msgstr "Efekt naprawy jest przeznaczony do użytku na bardzo krótkich odcinkach uszkodzonego dźwięku (do 128 próbek).\n\nPowiększ i zaznacz ułamek sekundy do naprawy."
+msgstr "Efekt naprawy jest przeznaczony do użycia na bardzo krótkich odcinkach uszkodzonego dźwięku (do 128 próbek).\n\nPowiększ i zaznacz ułamek sekundy do naprawy."
 
 #: src/effects/Repair.cpp
 msgid ""
@@ -13011,7 +13011,7 @@ msgstr "Dodaj etykietę w miej&scu zaznaczenia"
 
 #: src/menus/LabelMenus.cpp
 msgid "Add Label at &Playback Position"
-msgstr "Dodaj etykietę w &pozycji odtwarzania"
+msgstr "Dodaj etykietę w miejscu odtwa&rzania"
 
 #: src/menus/LabelMenus.cpp
 msgid "Paste Te&xt to New Label"
@@ -17288,19 +17288,19 @@ msgstr "&Nazwa..."
 
 #: src/tracks/ui/CommonTrackControls.cpp
 msgid "Move Track &Up"
-msgstr "Przes&uń ścieżkę dźwiękową wyżej"
+msgstr "Przes&uń ścieżkę wyżej"
 
 #: src/tracks/ui/CommonTrackControls.cpp
 msgid "Move Track &Down"
-msgstr "Przesuń ścieżkę &dźwiękową niżej"
+msgstr "Prz&esuń ścieżkę niżej"
 
 #: src/tracks/ui/CommonTrackControls.cpp
 msgid "Move Track to &Top"
-msgstr "Pr&zesuń ścieżkę dźwiękową na samą górę"
+msgstr "Pr&zesuń ścieżkę na samą górę"
 
 #: src/tracks/ui/CommonTrackControls.cpp
 msgid "Move Track to &Bottom"
-msgstr "Przesuń ścieżkę &dźwiękową na sam dół"
+msgstr "Przesuń ś&cieżkę na sam dół"
 
 #: src/tracks/ui/CommonTrackControls.cpp
 msgid "Set Track Name"
