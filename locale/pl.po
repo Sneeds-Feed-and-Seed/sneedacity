@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Sneedacity\n"
 "Report-Msgid-Bugs-To: sneedacity-translation@lists.sourceforge.net\n"
 "POT-Creation-Date: 2021-06-07 08:17-0400\n"
-"PO-Revision-Date: 2026-01-08 00:00+0000\n"
+"PO-Revision-Date: 2026-03-31 00:00+0000\n"
 "Last-Translator: Grzegorz Pruchniakowski <grzegorz.pruchniakowski@gmail.com>, 2013-2026\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -14621,7 +14621,7 @@ msgstr "Katalog %s nie jest przeznaczony do zapisu"
 msgid ""
 "Changes to temporary directory will not take effect until Sneedacity is "
 "restarted"
-msgstr "Zmiana katalogu tymczasowego będzie nieaktywna aż do zrestartowania Sneedacity"
+msgstr "Zmiana katalogu tymczasowego zostanie wprowadzona dopiero po zrestartowaniu Sneedacity"
 
 #: src/prefs/DirectoriesPrefs.cpp
 msgid "Temp Directory Update"
@@ -15270,7 +15270,7 @@ msgstr "  'Nowy' oznacza wybór, który nie został jeszcze wykonany."
 
 #: src/prefs/ModulePrefs.cpp
 msgid "Changes to these settings only take effect when Sneedacity starts up."
-msgstr "Zmiany tych ustawień wejdą w życie tylko po ponownym uruchomieniu Sneedacity."
+msgstr "Zmiany w tych ustawieniach zostaną wprowadzone dopiero po zrestartowaniu Sneedacity."
 
 #: src/prefs/ModulePrefs.cpp
 msgid "Ask"
